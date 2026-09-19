@@ -1,0 +1,6 @@
+[submodule "vendor/MethodicConfigurator"]
+	path = vendor/MethodicConfigurator
+	url = https://github.com/ArduPilot/MethodicConfigurator.git
+[submodule "apps/arduconfigurator"]
+	path = apps/arduconfigurator
+	url = https://github.com/j-w9/arduconfigurator.git

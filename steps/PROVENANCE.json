@@ -1,0 +1,12 @@
+{
+  "upstream": "https://github.com/ArduPilot/MethodicConfigurator",
+  "commit": "34f3cafdf70ab5cb365a2eb478692a38394fc606",
+  "files": [
+    "configuration_steps_ArduCopter.json",
+    "configuration_steps_ArduPlane.json",
+    "configuration_steps_Heli.json",
+    "configuration_steps_Rover.json",
+    "configuration_steps_schema.json"
+  ],
+  "syncedBy": "scripts/sync-from-vendor.mjs"
+}

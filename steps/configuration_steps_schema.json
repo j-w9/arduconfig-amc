@@ -1,0 +1,299 @@
+{
+  "type": "object",
+  "required": ["steps"],
+  "properties": {
+    "steps": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+_.+\\.param$": {
+          "type": "object",
+          "required": [
+            "why",
+            "why_now",
+            "blog_text",
+            "blog_url",
+            "wiki_text",
+            "wiki_url",
+            "external_tool_text",
+            "external_tool_url",
+            "mandatory_text"
+          ],
+          "properties": {
+            "why": {
+              "type": "string",
+              "description": "Explanation of why this step is needed"
+            },
+            "autoimport_nondefault_regexp": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "A list of regular expressions to match parameters for automatic import if they have non-default values."
+            },
+            "why_now": {
+              "type": "string",
+              "description": "Explanation of why this step needs to be done at this point"
+            },
+            "blog_text": {
+              "type": "string",
+              "description": "Short description for blog reference"
+            },
+            "blog_url": {
+              "type": "string",
+              "pattern": "^https://",
+              "description": "URL to blog documentation"
+            },
+            "wiki_text": {
+              "type": "string",
+              "description": "Short description for wiki reference"
+            },
+            "wiki_url": {
+              "type": "string",
+              "description": "URL to wiki documentation"
+            },
+            "external_tool_text": {
+              "type": "string",
+              "description": "Name/description of external tool needed"
+            },
+            "external_tool_url": {
+              "type": "string",
+              "description": "URL to external tool"
+            },
+            "mandatory_text": {
+              "type": "string",
+              "pattern": "^[0-9]{1,3}% mandatory \\([0-9]{1,3}% optional\\)$",
+              "description": "Text indicating if step is mandatory or optional with percentages"
+            },
+            "component": {
+              "type": "string",
+              "description": "Name of the vehicle component edited inline for this configuration step"
+            },
+            "auto_changed_by": {
+              "type": "string",
+              "description": "Name of tool/process that automatically changes these parameters"
+            },
+            "forced_parameters": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z0-9_]+$": {
+                  "type": "object",
+                  "required": ["New Value", "Change Reason"],
+                  "properties": {
+                    "New Value": {
+                      "type": ["number", "string"],
+                      "description": "New value for the parameter"
+                    },
+                    "Change Reason": {
+                      "type": "string",
+                      "description": "Reason for changing the parameter"
+                    }
+                  }
+                }
+              }
+            },
+            "derived_parameters": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z0-9_]+$": {
+                  "type": "object",
+                  "description": "Computed value: evaluate New Value expression and set the parameter",
+                  "required": ["New Value", "Change Reason"],
+                  "properties": {
+                    "if": {
+                      "type": "string",
+                      "description": "Optional Python expression; if present, the parameter is only applied when this expression evaluates to true"
+                    },
+                    "New Value": {
+                      "type": "string",
+                      "description": "Expression to derive new parameter value"
+                    },
+                    "Change Reason": {
+                      "type": "string",
+                      "description": "Reason for the derived parameter"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "description": "Parameters whose values are derived from vehicle component data or FC state."
+            },
+            "add_parameters": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z0-9_]+$": {
+                  "type": "object",
+                  "description": "If not already present, add parameter to the file: use 'New Value' if provided, otherwise copy the current FC value. Optionally conditioned on a Python expression.",
+                  "properties": {
+                    "if": {
+                      "type": "string",
+                      "description": "Optional Python expression; the parameter is only added when this evaluates to true"
+                    },
+                    "New Value": {
+                      "type": "string",
+                      "description": "Optional expression for the parameter value; if absent, the current FC value is used"
+                    },
+                    "Change Reason": {
+                      "type": "string",
+                      "description": "Optional reason for the parameter value"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "description": "Parameters to add to the configuration file, if not already present, editable in the UI. Value comes from 'New Value' expression if given, otherwise copied from the FC."
+            },
+            "delete_parameters": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z0-9_]+$": {
+                  "type": "object",
+                  "properties": {
+                    "if": {
+                      "type": "string",
+                      "description": "Optional Python expression; if present, the parameter is only deleted when this expression evaluates to true"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "description": "Parameters to remove from the configuration file, optionally conditioned on a Python expression"
+            },
+            "jump_possible": {
+              "type": "object",
+              "patternProperties": {
+                "^[0-9]+_.+\\.param$": {
+                  "type": "string",
+                  "description": "Message about possible jump to another step"
+                }
+              }
+            },
+            "old_filenames": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[0-9]+_.+\\.param$"
+              },
+              "description": "Previous filenames for this step"
+            },
+            "rename_connection": {
+              "type": "string",
+              "description": "Expression to rename connection"
+            },
+            "related_bin_messages": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z0-9_]+$": {
+                  "type": "object",
+                  "required": ["name", "required"],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Human readable name of the log message"
+                    },
+                    "required": {
+                      "type": "boolean",
+                      "description": "Whether this message is required for the step"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false,
+              "description": "ArduPilot log messages related to this configuration step"
+            },
+            "download_file": {
+              "type": "object",
+              "required": ["source_url", "dest_local"],
+              "properties": {
+                "source_url": {
+                  "type": "string",
+                  "pattern": "^https://"
+                },
+                "dest_local": {
+                  "type": "string"
+                }
+              }
+            },
+            "upload_file": {
+              "type": "object",
+              "required": ["source_local", "dest_on_fc"],
+              "properties": {
+                "source_local": {
+                  "type": "string"
+                },
+                "dest_on_fc": {
+                  "type": "string",
+                  "pattern": "^/APM/"
+                }
+              }
+            },
+            "plugin": {
+              "type": "object",
+              "required": ["name", "placement"],
+              "properties": {
+                "if": {
+                  "type": "string",
+                  "description": "Optional Python expression; if present, the plugin is only shown when this expression evaluates to true"
+                },
+                "name": {
+                  "type": "string",
+                  "enum": ["motor_test", "battery_monitor", "compass_calibration", "accelerometer_calibration", "ahrs_orientation", "esc_rpm_scale", "rc_calibration"],
+                  "description": "The name of the plugin to load"
+                },
+                "placement": {
+                  "type": "string",
+                  "enum": ["left", "top"],
+                  "description": "Where to place the plugin: 'left' for left of scrollable frame, 'top' for above contents"
+                }
+              },
+              "additionalProperties": false
+            },
+            "instructions_popup": {
+              "type": "object",
+              "description": "Optional instructions to display as a popup when entering this step",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["info", "warning"],
+                  "description": "The type of popup dialog to display (info or warning)"
+                },
+                "msg": {
+                  "type": "string",
+                  "description": "The instruction message to display to the user"
+                }
+              },
+              "required": ["type", "msg"],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "object",
+          "required": ["description"],
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Description of the phase"
+            },
+            "optional": {
+              "type": "boolean",
+              "description": "Whether this phase is optional"
+            },
+            "start": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Starting step number of this phase"
+            }
+          }
+        }
+      },
+      "description": "Phases of the configuration process"
+    }
+  },
+  "additionalProperties": false
+}
