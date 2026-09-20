@@ -39,6 +39,21 @@ export function vehicleContext(componentsJson: string, parameters: Readonly<Reco
   return { components, parameters: fromParameterMap(parameters) }
 }
 
+/**
+ * The same vehicle with a different set of parameters.
+ *
+ * Exists for threading the sequence: each step is evaluated against the
+ * parameters the steps before it left behind, and rebuilding the whole context
+ * per step would re-parse the components document 63 times to change the other
+ * half of it.
+ */
+export function withParameters(
+  vehicle: VehicleContext,
+  parameters: Readonly<Record<string, number>>
+): VehicleContext {
+  return { components: vehicle.components, parameters: fromParameterMap(parameters) }
+}
+
 function scopeOf(vehicle: VehicleContext): Map<string, PyValue> {
   return new Map([
     ['vehicle_components', vehicle.components],

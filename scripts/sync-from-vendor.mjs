@@ -30,6 +30,33 @@ copyFileSync(join(src, 'vehicle_components_schema.json'), join(dest, 'vehicle_co
 // whatever upstream ships.
 const templatesDir = join(src, 'vehicle_templates')
 const observed = new Map()
+// Which Protocol values were seen alongside each Type, within one connection
+// group. A serial connection does not carry an analog protocol and a CAN one
+// carries DroneCAN, so the pairing is real -- but the templates are evidence,
+// not the whole truth, so this narrows the ORDER a field offers rather than
+// the set. Hiding a valid protocol because no template happened to use it
+// would be worse than showing an unlikely one.
+const pairings = new Map()
+const notePairing = (component, group, node) => {
+  const type = node?.Type
+  const protocol = node?.Protocol
+  if (type === undefined || protocol === undefined) return
+  if (type === '' || protocol === '') return
+  const key = `${component}/${group}`
+  if (!pairings.has(key)) pairings.set(key, new Map())
+  const byType = pairings.get(key)
+  if (!byType.has(String(type))) byType.set(String(type), new Set())
+  byType.get(String(type)).add(String(protocol))
+}
+const walkPairings = (components) => {
+  for (const [component, groups] of Object.entries(components ?? {})) {
+    if (groups === null || typeof groups !== 'object') continue
+    for (const [group, node] of Object.entries(groups)) {
+      if (node === null || typeof node !== 'object') continue
+      notePairing(component, group, node)
+    }
+  }
+}
 const walkComponents = (node, trail) => {
   if (node === null || typeof node !== 'object' || Array.isArray(node)) {
     if (node === '' || node === null || node === undefined) return
@@ -51,7 +78,9 @@ if (existsSync(templatesDir)) {
       const file = join(vehicleDir, template, 'vehicle_components.json')
       if (!existsSync(file)) continue
       try {
-        walkComponents(JSON.parse(readFileSync(file, 'utf8')).Components ?? {}, [])
+        const components = JSON.parse(readFileSync(file, 'utf8')).Components ?? {}
+        walkComponents(components, [])
+        walkPairings(components)
       } catch {
         // A template we cannot read contributes no suggestions; the field just
         // falls back to free text.
@@ -69,6 +98,24 @@ writeFileSync(
   ) + '\n'
 )
 
+writeFileSync(
+  join(dest, 'component-pairings.json'),
+  JSON.stringify(
+    Object.fromEntries(
+      [...pairings]
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([key, byType]) => [
+          key,
+          Object.fromEntries(
+            [...byType].sort(([a], [b]) => a.localeCompare(b)).map(([type, values]) => [type, [...values].sort()])
+          )
+        ])
+    ),
+    null,
+    1
+  ) + '\n'
+)
+
 const pin = execFileSync('git', ['-C', join(root, 'vendor/MethodicConfigurator'), 'rev-parse', 'HEAD'])
   .toString()
   .trim()
@@ -77,5 +124,5 @@ writeFileSync(
   JSON.stringify({ upstream: 'https://github.com/ArduPilot/MethodicConfigurator', commit: pin, files: wanted, syncedBy: 'scripts/sync-from-vendor.mjs' }, null, 2) + '\n'
 )
 console.log(
-  `synced ${wanted.length} step files and ${observed.size} observed component fields from AMC @ ${pin.slice(0, 8)}`
+  `synced ${wanted.length} step files, ${observed.size} observed component fields and ${pairings.size} connection pairings from AMC @ ${pin.slice(0, 8)}`
 )

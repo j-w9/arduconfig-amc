@@ -89,3 +89,14 @@ export {
   readVehicleProject
 } from './read-project.js'
 export { type ZipEntry, buildZip } from './zip.js'
+export {
+  type ThreadOptions,
+  type ThreadedRun,
+  type ThreadedStep,
+  runThreaded
+} from './thread.js'
+export {
+  type ConnectionPairings,
+  connectionGroupOf,
+  orderByPairing
+} from './pairings.js'

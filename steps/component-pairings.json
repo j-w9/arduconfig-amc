@@ -1,0 +1,110 @@
+{
+ "Battery Monitor/FC Connection": {
+  "Analog": [
+   "Analog Voltage Only",
+   "Analog Voltage and Current"
+  ],
+  "I2C1": [
+   "Solo"
+  ],
+  "I2C3": [
+   "INA2XX"
+  ],
+  "None": [
+   "Disabled"
+  ],
+  "other": [
+   "ESC",
+   "Sum Of Selected Monitors"
+  ]
+ },
+ "ESC/ESC->FC Telemetry": {
+  "Main Out": [
+   "BDShotOnly"
+  ],
+  "None": [
+   "None"
+  ],
+  "SERIAL1": [
+   "FETtecOneWire"
+  ],
+  "SERIAL2": [
+   "Scripting"
+  ],
+  "SERIAL3": [
+   "ESC Telemetry"
+  ],
+  "SERIAL5": [
+   "ESC Telemetry"
+  ],
+  "SERIAL7": [
+   "ESC Telemetry"
+  ]
+ },
+ "ESC/FC->ESC Connection": {
+  "AIO": [
+   "DShot600"
+  ],
+  "Main Out": [
+   "DShot600",
+   "Normal"
+  ],
+  "SERIAL1": [
+   "FETtecOneWire"
+  ]
+ },
+ "GNSS Receiver/FC Connection": {
+  "CAN1": [
+   "DroneCAN"
+  ],
+  "CAN2": [
+   "DroneCAN"
+  ],
+  "SERIAL3": [
+   "AUTO",
+   "uBlox"
+  ],
+  "SERIAL4": [
+   "AUTO",
+   "uBlox"
+  ],
+  "SERIAL7": [
+   "uBlox"
+  ]
+ },
+ "RC Receiver/FC Connection": {
+  "RCin/SBUS": [
+   "All",
+   "CRSF",
+   "PPM",
+   "SBUS",
+   "SBUS_NI"
+  ],
+  "SERIAL1": [
+   "All"
+  ],
+  "SERIAL2": [
+   "All"
+  ],
+  "SERIAL4": [
+   "CRSF"
+  ],
+  "SERIAL6": [
+   "CRSF"
+  ]
+ },
+ "Telemetry/FC Connection": {
+  "SERIAL1": [
+   "MAVLink2"
+  ],
+  "SERIAL2": [
+   "MAVLink2"
+  ],
+  "SERIAL4": [
+   "MAVLink2"
+  ],
+  "SERIAL7": [
+   "MAVLink2"
+  ]
+ }
+}
