@@ -54,3 +54,29 @@ git add -A && git commit
 ```
 
 The app submodule moves the same way, on its `amc-guided` branch.
+
+## A known hang: the packed parameter defaults
+
+`runtime.downloadParamPack()` — the MAVFTP read behind the "changed only"
+filter, the Default column, and this experiment's capture of settings already
+on a vehicle — **can hang indefinitely in the browser**. It neither resolves
+nor rejects, so nothing downstream reports anything.
+
+What is established:
+
+- The demo serves the file (`tests/mock-scenario-param-pack.test.mjs`).
+- A freshly connected runtime fetches it in about a second
+  (`tests/runtime.param-defaults.test.mjs`).
+- In the browser, `handleFetchParamDefaults` is entered and the call never
+  settles — confirmed by instrumenting it and waiting twenty seconds.
+
+The difference between the two is the app's other MAVFTP activity. The service
+serialises transfers through `withExclusiveSession`, a promise chain with no
+timeout on the link itself: an earlier operation that never settles leaves every
+later one queued forever. That is the shape of what is happening, though the
+operation actually holding it has not been identified.
+
+It is an app-level bug rather than an AMC one, and it predates this experiment —
+the Parameters view's Default column depends on the same call. The AMC tab now
+says when nothing arrived rather than sitting silent, which is the part that was
+in scope here.
