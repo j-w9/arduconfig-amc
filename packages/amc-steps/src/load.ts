@@ -90,6 +90,12 @@ export function expressionsOf(step: ConfigurationStep): string[] {
     const value = directive['New Value']
     if (typeof value === 'string') found.push(value)
   }
+  // The connection a step's parameters belong to is an expression like any
+  // other, and reads a component field the operator has to declare. Leaving it
+  // out meant a step could report needing a field that the form never offered.
+  if (typeof step.rename_connection === 'string' && step.rename_connection.trim().length > 0) {
+    found.push(step.rename_connection)
+  }
   return found
 }
 

@@ -13,6 +13,7 @@ import { evaluateIn } from '@arduconfig/amc-expr'
 
 import { type ParameterDocs, UnresolvableValueError, resolveNamedValue } from './docs.js'
 import { directivesOf } from './load.js'
+import { planConnectionRenames } from './rename.js'
 import type { ConfigurationStep, ParameterDirective } from './types.js'
 import type { DirectiveGroup } from './load.js'
 
@@ -71,6 +72,12 @@ export interface FailedDirective {
   readonly errorType: string
 }
 
+/** A parameter moved onto the connection this vehicle actually uses. */
+export interface RenamedParameter {
+  readonly from: string
+  readonly to: string
+}
+
 export interface StepOutcome {
   /** Parameters to write, in the order the step lists them. */
   readonly changes: readonly ParameterChange[]
@@ -80,6 +87,19 @@ export interface StepOutcome {
   readonly skipped: readonly SkippedDirective[]
   /** Directives that could not be evaluated. A step with any of these is incomplete. */
   readonly failures: readonly FailedDirective[]
+  /**
+   * Parameters moved onto the connection the vehicle declared.
+   *
+   * The step is written against one port; this is where they actually went.
+   */
+  readonly renamed: readonly RenamedParameter[]
+  /**
+   * Renames refused because the destination was already in use.
+   *
+   * Reported rather than resolved: two parameters wanting one name is
+   * something to look at.
+   */
+  readonly renameConflicts: readonly string[]
 }
 
 /**
@@ -207,7 +227,44 @@ export function applyStep(step: ConfigurationStep, vehicle: VehicleContext, opti
     }
   }
 
-  return { changes, deletions, skipped, failures }
+  // The step is written against one connection; the vehicle may use another.
+  // Done last, over everything the step produced, so a rename cannot collide
+  // with a parameter the step was about to add.
+  let renamed: RenamedParameter[] = []
+  let renameConflicts: readonly string[] = []
+  if (step.rename_connection !== undefined) {
+    try {
+      const connection = evaluateIn(step.rename_connection, scope)
+      if (connection.t === 'str') {
+        const names = [...changes.map((change) => change.parameter), ...deletions]
+        const plan = planConnectionRenames(names, connection.v)
+        renamed = [...plan.renames].map(([from, to]) => ({ from, to }))
+        renameConflicts = plan.conflicts
+      }
+    } catch (error) {
+      // The connection could not be worked out -- usually a component the
+      // operator has not declared. The step's parameters stay where the
+      // sequence put them, and the failure is reported like any other.
+      failures.push({
+        parameter: '(connection)',
+        group: 'forced_parameters',
+        expression: step.rename_connection,
+        ...describe(error)
+      })
+    }
+  }
+
+  const moved = new Map(renamed.map((entry) => [entry.from, entry.to]))
+  return {
+    changes: changes.map((change) =>
+      moved.has(change.parameter) ? { ...change, parameter: moved.get(change.parameter) as string } : change
+    ),
+    deletions: deletions.map((name) => moved.get(name) ?? name),
+    skipped,
+    failures,
+    renamed,
+    renameConflicts
+  }
 }
 
 export { evaluate }
