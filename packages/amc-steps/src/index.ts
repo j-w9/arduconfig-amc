@@ -124,3 +124,15 @@ export {
   upgradeParameters,
   upgradesBetween
 } from './upgrade.js'
+export {
+  POLYNOMIAL_ORDER,
+  TEMPERATURE_REFERENCE,
+  type ImuCalibration,
+  type ImuCalibrationInput,
+  type ImuSamples,
+  type TempcalOptions,
+  type TempcalResult,
+  fitTemperatureCalibration,
+  imuSamplesFromLog,
+  polyfit
+} from './tempcal.js'
