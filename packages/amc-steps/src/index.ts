@@ -25,6 +25,7 @@ export {
   applyStep,
   vehicleContext
 } from './run.js'
+export { componentOptionSources, optionsForField } from './options.js'
 export {
   type Diagnosis,
   type DiagnosisKind,
