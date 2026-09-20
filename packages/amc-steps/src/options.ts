@@ -16,7 +16,7 @@
 import { type Node, parse } from '@arduconfig/amc-expr'
 
 import type { ComponentPath } from './components.js'
-import type { ParameterDocs } from './docs.js'
+import { ALIASES, type ParameterDocs } from './docs.js'
 import { directivesOf } from './load.js'
 import type { ConfigurationStep } from './types.js'
 
@@ -80,6 +80,14 @@ export function optionsForField(
   for (const parameter of parameters) {
     const doc = docs(parameter)
     if (doc?.options && doc.options.length > 0) return doc.options.map((option) => option.label)
+  }
+  // The same aliasing resolveNamedValue uses: a vehicle that has only
+  // Q_M_PWM_TYPE should still offer its choices for a MOT_PWM_TYPE directive.
+  for (const parameter of parameters) {
+    for (const alias of ALIASES[parameter] ?? []) {
+      const doc = docs(alias)
+      if (doc?.options && doc.options.length > 0) return doc.options.map((option) => option.label)
+    }
   }
   return undefined
 }

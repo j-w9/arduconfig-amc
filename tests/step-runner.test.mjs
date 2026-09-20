@@ -134,16 +134,16 @@ test('the runner reproduces every forced parameter in every template', () => {
   )
 })
 
-// Three named values in AMC's templates cannot be resolved against
-// ArduConfigurator's parameter metadata, in two different ways: two labels the
-// metadata does not list, and one parameter it does not carry at all --
-// MOT_PWM_TYPE is absent from arduplane.json, being a Copter and QuadPlane
-// parameter. Real gaps rather than port bugs, pinned so they stay visible and
-// the set cannot quietly grow.
+// One named value in AMC's templates has no number behind it, and it is not a
+// gap: FETtecOneWire is a *serial* ESC protocol, so MOT_PWM_TYPE -- which
+// enumerates PWM output types -- has no value for it. AMC hits the same wall
+// and skips the parameter, so reporting it is the faithful behaviour.
+//
+// The two that used to sit here were ours to fix and are fixed: INA2XX is
+// documented as "INA2XX (INA226 INA228 ...)", which exact matching missed, and
+// Plane carries the quadplane's Q_M_PWM_TYPE rather than MOT_PWM_TYPE.
 const UNDOCUMENTED_VALUES = new Set([
-  "MOT_PWM_TYPE: 'FETtecOneWire' is not one of its documented values",
-  "BATT_MONITOR: 'INA2XX' is not one of its documented values",
-  "MOT_PWM_TYPE: no documentation metadata available, cannot resolve 'Normal'"
+  "MOT_PWM_TYPE: 'FETtecOneWire' is not one of its documented values"
 ])
 
 function allFailures() {
