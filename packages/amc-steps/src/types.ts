@@ -33,25 +33,75 @@ export interface ConfigurationStep {
   readonly delete_parameters?: ParameterDirectives
   /** Patterns for pulling non-default values off the flight controller. */
   readonly autoimport_nondefault_regexp?: readonly string[]
+  /** Why this step exists at all. */
   readonly why?: string
+  /** Why it is done *here* rather than earlier or later. */
   readonly why_now?: string
+  /** How much of this step is required, in AMC's own words. */
+  readonly mandatory_text?: string
   readonly blog_text?: string
   readonly blog_url?: string
   readonly wiki_text?: string
   readonly wiki_url?: string
+  /** A tool outside this app that the step expects you to use. */
   readonly external_tool_text?: string
   readonly external_tool_url?: string
-  readonly mandatory_text?: string
-  readonly instructions_popup?: string
+  /** Shown before the step is worked on, not alongside it. */
+  readonly instructions_popup?: InstructionsPopup
+  /** The component this step configures, e.g. `Frame`. */
   readonly component?: string
+  /**
+   * Something outside this app sets these parameters.
+   *
+   * Usually another program (Mission Planner) or an event (a first flight in
+   * ALT_HOLD). The text says what, and it is a precondition rather than a note.
+   */
   readonly auto_changed_by?: string
+  /** Steps that may be skipped to from here, each with the cost of doing so. */
   readonly jump_possible?: Readonly<Record<string, string>>
-  readonly download_file?: unknown
-  readonly upload_file?: unknown
+  /** A file the step fetches, typically a Lua applet. */
+  readonly download_file?: DownloadFile
+  /** Where that file goes on the flight controller. */
+  readonly upload_file?: UploadFile
+  /** Expression naming the connection this step's parameters belong to. */
   readonly rename_connection?: string
+  /** What this step's file was called in older AMC versions. */
   readonly old_filenames?: readonly string[]
-  readonly related_bin_messages?: readonly string[]
-  readonly plugin?: string
+  /** Log messages that should appear once this step is configured. */
+  readonly related_bin_messages?: Readonly<Record<string, RelatedBinMessage>>
+  /** An embedded tool AMC places beside the step. */
+  readonly plugin?: StepPlugin
+}
+
+/** An instruction shown before the step is worked on. */
+export interface InstructionsPopup {
+  readonly type: 'info' | 'warning' | string
+  readonly msg: string
+}
+
+/** A log message the step's configuration should produce. */
+export interface RelatedBinMessage {
+  readonly name: string
+  /** Absent from a log means the step did not take effect. */
+  readonly required: boolean
+}
+
+export interface DownloadFile {
+  readonly source_url: string
+  readonly dest_local: string
+}
+
+export interface UploadFile {
+  readonly source_local: string
+  readonly dest_on_fc: string
+}
+
+export interface StepPlugin {
+  /** The tool's name, e.g. `ahrs_orientation`. */
+  readonly name: string
+  readonly placement?: string
+  /** Guard expression: the tool applies only to some vehicles. */
+  readonly if?: string
 }
 
 /** A named run of consecutive steps, starting at the step with index `start`. */

@@ -25,6 +25,7 @@ export {
   applyStep,
   vehicleContext
 } from './run.js'
+export { autoImportableParameters, withinTolerance } from './autoimport.js'
 export { componentOptionSources, optionsForField } from './options.js'
 export {
   MANUAL_OVERRIDE_PREFIX,
