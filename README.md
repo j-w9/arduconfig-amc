@@ -23,7 +23,7 @@ frontend keeps the serial link it already has.
 | Path | What it is |
 | --- | --- |
 | `vendor/MethodicConfigurator` | Upstream AMC, pinned. Read-only; the source of truth for the sequence. |
-| `apps/arduconfigurator` | ArduConfigurator, pinned. The frontend being experimented on. |
+| `apps/arduconfigurator` | ArduConfigurator, on its `amc-guided` branch. The frontend being experimented on. |
 | `steps/` | The step files copied out of the vendor pin by `npm run sync`. |
 | `packages/amc-expr` | TypeScript port of AMC's safe expression evaluator. |
 | `packages/amc-steps` | Types, traversal, and the runner that turns a step into parameter changes. |
@@ -115,21 +115,58 @@ A directive that cannot be evaluated is collected and reported, never dropped:
 a half-applied step is worse than a refused one, so the caller decides whether
 an incomplete step may still be written.
 
+## In the app
+
+`apps/arduconfigurator` is on an `amc-guided` branch carrying an **AMC Guided**
+tab, which sits beside the native Guided Setup rather than replacing it so the
+two can be compared on the same vehicle. It is Expert-only and read-only: there
+is deliberately no apply affordance yet.
+
+The packages and step data are resolved into that branch by alias (Vite,
+Vitest and TypeScript each point two levels up at this repo), so the branch
+carries no copy of them:
+
+```sh
+git submodule update --init --depth 50
+npm install                                   # this repo
+cd apps/arduconfigurator && npm install        # the app
+npm run dev:web                                # then: Expert Mode -> AMC Guided
+```
+
+The tab shows the 63-step Copter sequence, a form for declaring the vehicle, and
+per-step the parameters each step would set with the reason from the step file.
+Declaring a single field — a 10-inch propeller — takes it from 52 computed
+parameters to 60, and from 88 blocked directives to 80.
+
+Two things the integration is careful about:
+
+- **The form is derived, not written.** The fields come from walking the parsed
+  expressions, so a step added upstream that reads a new component field makes
+  the field appear.
+- **Declared values are assembled as JSON text**, not through a JavaScript
+  object, because `4` and `4.0` compute differently and `JSON.stringify` would
+  erase the distinction.
+
+The four step files are ~470 KB together, so each is dynamic-imported into its
+own ~15 KB gzipped chunk rather than riding in the main bundle.
+
 ## Where this is going
 
 The sequence and the evaluator are done and proven. The open work is the
 integration:
 
-- **The component editor UI.** `requiredComponents()` derives the fields the
-  operator must supply by walking the parsed expressions, so the form's contents
-  come from the step files rather than from a guess at them — 9 components and
-  about 20 fields today. Nothing renders it yet.
+- **Reading a real vehicle.** The tab compares against live parameters when one
+  is connected, but this has only been exercised against the demo transport.
+- **Better blocked-step copy.** A step that needs an undeclared component says
+  `KeyError: 'ESC'`, which is honest but is the evaluator's voice, not the
+  operator's. The failure knows its expression, so it could name the field to
+  fill in instead.
+- **Writing.** Nothing here has touched a flight controller. An apply path would
+  go through the existing parameter-draft machinery, so changes stay reviewable
+  and revertible rather than being written on sight.
 - **Mapping AMC steps onto ArduConfigurator's guided-mode shape**
   (`setup-flow-helpers`, `setup-exercise-helpers`, `SetupWizard*`), which is
   already criteria-and-actions per section.
-- **Reading and writing parameters** over the existing
-  `@arduconfig/protocol-mavlink` link. Nothing here has touched a flight
-  controller yet.
 - **Filling the three metadata gaps** above, in ArduConfigurator's generated
   parameter documentation.
 
