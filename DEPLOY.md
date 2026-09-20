@@ -13,30 +13,28 @@ from the app repo, and nothing here can overwrite it.
 Deploying from here is deliberate: the site shows one pinned AMC commit paired
 with one pinned app commit, and `dist/build-pins.txt` records which two.
 
-## One-time setup
+## What is already set up
 
-1. **Create the Pages project.** In the Cloudflare dashboard: Workers & Pages →
-   Create → Pages → *Direct Upload*, named `arduconfig-amc`. Direct Upload
-   rather than a Git connection, because the build needs this repo *and* its
-   submodules, which GitHub Actions is already set up to check out.
+Done once, and recorded here so it can be rebuilt or revoked:
 
-2. **Add the custom domain.** In that project → Custom domains →
-   `amc.arduconfigurator.com`. Cloudflare creates the CNAME and issues the
-   certificate itself, since the zone is already on Cloudflare — no DNS record
-   has to be made by hand.
+- **Pages project** `arduconfig-amc` (Direct Upload), serving
+  `arduconfig-amc.pages.dev`.
+- **Custom domain** `amc.arduconfigurator.com` on that project.
+- **An explicit `amc` CNAME** → `arduconfig-amc.pages.dev`, proxied. This one
+  matters: the zone has a `*.arduconfigurator.com` wildcard pointing at a
+  cloudflared tunnel, and without a specific record the wildcard answers for
+  `amc.` and the Pages domain never validates. A specific record beats a
+  wildcard, so the explicit CNAME is what makes the hostname work.
+- **Repository secrets** `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`.
 
-3. **Add the repository secrets** (Settings → Secrets and variables → Actions):
+The token in CI is **scoped**, not the Global API Key: `Cloudflare Pages:Edit`
+on the account, plus `DNS:Edit` and `Zone:Read` on `arduconfigurator.com` only,
+and it expires. The Global API Key covers every zone and the account's billing
+and cannot be narrowed, so it is not a thing to leave sitting in CI. It was used
+once, to mint that token.
 
-   - `CLOUDFLARE_ACCOUNT_ID` — `67e08e4562c23958a7c588a9e3b87c43`
-   - `CLOUDFLARE_API_TOKEN` — a **scoped** token, not the Global API Key:
-     - `Account → Cloudflare Pages → Edit` on this account
-     - `Zone → DNS → Edit` and `Zone → Zone → Read`, on `arduconfigurator.com`
-       only (needed only if the custom domain is ever attached from CI)
-     - give it an expiry
-
-   The Global API Key is deliberately not used anywhere here: it cannot be
-   scoped, it covers every zone and the account's billing, and a CI secret that
-   powerful is worth avoiding when a token limited to one project does the job.
+To replace the token when it expires: create one with those permissions and
+`gh secret set CLOUDFLARE_API_TOKEN --repo j-w9/arduconfig-amc`.
 
 ## Deploying
 
