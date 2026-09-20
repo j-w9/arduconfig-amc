@@ -7,6 +7,7 @@
  */
 
 import type {
+  ConfigurationPhase,
   ConfigurationStep,
   ConfigurationStepFile,
   OrderedStep,
@@ -14,27 +15,32 @@ import type {
   ParameterDirectives
 } from './types.js'
 
-/** `05_board_orientation.param` sorts by its 05, not by its text. */
-function sequenceNumber(filename: string): number {
+/**
+ * The number a step file is named by: `05_board_orientation.param` is 5.
+ *
+ * This is the sequence's own numbering, and it is not the position in the list
+ * -- the numbers have gaps, and phase boundaries are given in these terms, not
+ * in list positions.
+ */
+export function stepNumber(filename: string): number {
   const match = /^(\d+)/.exec(filename)
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER
 }
 
 export function orderSteps(file: ConfigurationStepFile): OrderedStep[] {
   const names = Object.keys(file.steps).sort((a, b) => {
-    const diff = sequenceNumber(a) - sequenceNumber(b)
+    const diff = stepNumber(a) - stepNumber(b)
     return diff !== 0 ? diff : a.localeCompare(b)
   })
 
-  // Phases are declared by the index at which they start and run until the next.
-  const boundaries = Object.entries(file.phases ?? {})
-    .map(([name, phase]) => ({ name, start: phase.start ?? 0 }))
-    .sort((a, b) => a.start - b.start)
+  const boundaries = orderedPhases(file)
 
   return names.map((filename, index) => {
+    const number = stepNumber(filename)
+    // The last boundary at or below this step's own number owns it.
     let phase: string | undefined
     for (const boundary of boundaries) {
-      if (index >= boundary.start) phase = boundary.name
+      if (number >= boundary.start) phase = boundary.name
       else break
     }
     const step = file.steps[filename] as ConfigurationStep
@@ -101,4 +107,55 @@ export function parseStepFile(text: string): ConfigurationStepFile {
     throw new Error('not a configuration-step file: "steps" is not an object')
   }
   return parsed as ConfigurationStepFile
+}
+
+/** A phase of the sequence: a named run of steps, by step number. */
+export interface OrderedPhase {
+  readonly name: string
+  readonly description?: string
+  /** Declared optional by the sequence -- tuning that not every vehicle needs. */
+  readonly optional: boolean
+  /** First step number in the phase. */
+  readonly start: number
+  /** First step number *after* the phase. */
+  readonly end: number
+}
+
+/**
+ * The phases that span steps, in order.
+ *
+ * A phase without a `start` is documentation rather than a range -- "Assemble
+ * all components except the propellers" marks something the operator does
+ * between steps, and owns none of them. AMC excludes those from its own phase
+ * ranges, and so does this: treating a missing start as 0 would make such a
+ * phase swallow the beginning of the sequence.
+ */
+export function orderedPhases(file: ConfigurationStepFile): OrderedPhase[] {
+  const spanning = Object.entries(file.phases ?? {})
+    .filter((entry): entry is [string, ConfigurationPhase & { start: number }] => typeof entry[1].start === 'number')
+    .sort((left, right) => left[1].start - right[1].start)
+
+  const lastStep = Object.keys(file.steps).reduce((highest, filename) => Math.max(highest, stepNumber(filename)), 0)
+
+  return spanning.map(([name, phase], index) => {
+    const next = spanning[index + 1]?.[1].start
+    return {
+      name,
+      optional: phase.optional === true,
+      start: phase.start,
+      // Ends where the next begins; the last one runs to the end of the sequence.
+      end: next ?? lastStep + 1,
+      ...(phase.description === undefined || phase.description === name ? {} : { description: phase.description })
+    }
+  })
+}
+
+/** Phases that mark something to do between steps rather than a run of them. */
+export function milestonePhases(file: ConfigurationStepFile): { name: string; description?: string }[] {
+  return Object.entries(file.phases ?? {})
+    .filter(([, phase]) => typeof phase.start !== 'number')
+    .map(([name, phase]) => ({
+      name,
+      ...(phase.description === undefined || phase.description === name ? {} : { description: phase.description })
+    }))
 }

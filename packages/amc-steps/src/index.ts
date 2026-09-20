@@ -45,8 +45,12 @@ export {
   VALUED_GROUPS,
   type DirectiveGroup,
   type DirectiveRef,
+  type OrderedPhase,
   directivesOf,
   expressionsOf,
+  milestonePhases,
   orderSteps,
+  orderedPhases,
+  stepNumber,
   parseStepFile
 } from './load.js'
