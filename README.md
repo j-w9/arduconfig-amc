@@ -87,10 +87,20 @@ The invariant is asymmetric, and the asymmetry is the point:
   `PSC_ACCZ_*` and `INS_HNTCH_FREQ` come out of flight logs -- so they are
   computed but deliberately not asserted.
 
-The one forced parameter that differs is an upstream data inconsistency rather
-than a computation: the step file hard-codes `LOG_BITMASK` as 407517 and
-`Holybro_X500`'s committed file says 407519. It is pinned in the test, so a
-*second* one would fail the suite.
+Every forced parameter is reproduced, with no exceptions — but getting there
+meant reading a marker rather than assuming a mistake. `Holybro_X500` commits
+`LOG_BITMASK` as 407519 where the step file forces 407517, which looks like an
+inconsistency in the data until you notice the comment on that line begins with
+`@manual_override`.
+
+That is a documented AMC mechanism, not a typo. On a parameter the sequence
+forces or derives, it records that the operator deliberately chose a different
+value, and AMC lets the file's value win over the computed one. Here the
+difference is a single bit: whoever set up that aircraft kept **Medium
+Attitude** logging on during PID notch tuning. The marker is read now
+(`parseParamFile`), so a template that overrides something is understood rather
+than listed as an exception — and the next one is handled without editing a
+test.
 
 ### What running the real sequence surfaced
 
@@ -104,12 +114,14 @@ them port bugs:
   Heli sequences read `MOT_THST_HOVER` and `MOT_BAT_VOLT_MAX` -- Copter
   parameters -- without guarding with `in fc_parameters` first. Upstream
   tolerates this by logging and carrying on, and so do we.
-- **Three named values do not resolve** against ArduConfigurator's parameter
-  metadata. Several steps set a parameter from a component's own words --
-  `FRAME_CLASS` from `'Quad'` -- which needs ArduPilot's documented value lists.
-  `'FETtecOneWire'` and `'INA2XX'` are not in the metadata's options, and
-  `MOT_PWM_TYPE` is missing from `arduplane.json` altogether. Pinned in the test
-  so the set stays visible and cannot quietly grow.
+- **One named value does not resolve**, and should not. Several steps set a
+  parameter from a component's own words — `FRAME_CLASS` from `'Quad'` — which
+  needs ArduPilot's documented value lists. `FETtecOneWire` is a *serial* ESC
+  protocol, so `MOT_PWM_TYPE`, which enumerates PWM output types, has no number
+  for it; AMC hits the same wall and skips the parameter. Two others used to sit
+  here and were ours to fix: `INA2XX` is documented as
+  `INA2XX (INA226 INA228 …)`, which exact matching missed, and Plane carries the
+  quadplane's `Q_M_PWM_TYPE` rather than `MOT_PWM_TYPE`.
 
 A directive that cannot be evaluated is collected and reported, never dropped:
 a half-applied step is worse than a refused one, so the caller decides whether

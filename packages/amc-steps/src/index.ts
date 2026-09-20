@@ -27,6 +27,12 @@ export {
 } from './run.js'
 export { componentOptionSources, optionsForField } from './options.js'
 export {
+  MANUAL_OVERRIDE_PREFIX,
+  type ParamEntry,
+  parameterValues,
+  parseParamFile
+} from './param-file.js'
+export {
   type Diagnosis,
   type DiagnosisKind,
   describePath,

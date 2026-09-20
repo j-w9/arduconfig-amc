@@ -19,6 +19,8 @@ import {
   missingComponents,
   orderSteps,
   parameterDocsFrom,
+  parameterValues,
+  parseParamFile,
   parseStepFile,
   requiredComponents,
   vehicleContext
@@ -55,26 +57,18 @@ const templatesDir = fileURLToPath(
 const stepsDir = fileURLToPath(new URL('../steps/', import.meta.url))
 const VEHICLES = ['ArduCopter', 'ArduPlane', 'Rover', 'Heli']
 
-// One template disagrees with the step file over a hard-coded constant. It is
-// an upstream data inconsistency, not a computation: the step says 407517 and
-// Holybro_X500's committed file says 407519. Pinned so the suite stays green
-// while still failing if a *second* one ever appears.
-const KNOWN_UPSTREAM_DISCREPANCIES = new Set([
-  'ArduCopter/Holybro_X500/27_pid_notch_filter_logging.param/LOG_BITMASK'
-])
+// A template may deliberately disagree with the sequence, and AMC has a marker
+// for it: `@manual_override` on a forced or derived parameter means the
+// operator chose that value and the file's value wins over the computed one.
+//
+// Holybro_X500 uses it to keep Medium Attitude logging on during PID notch
+// tuning (407519 rather than the step file's 407517). That is a decision, not a
+// discrepancy -- so the rule is read from the file rather than the one case
+// being listed here, and the next template to override something is handled
+// without anyone editing this test.
 
-function readParamFile(path) {
-  const params = {}
-  for (const raw of readFileSync(path, 'utf8').split(/\r?\n/)) {
-    const line = raw.split('#')[0].trim()
-    if (!line) continue
-    const match = /^(\S+)[,\s]+(\S+)$/.exec(line)
-    if (!match) continue
-    const value = Number(match[2])
-    if (!Number.isNaN(value)) params[match[1]] = value
-  }
-  return params
-}
+const readEntries = (path) => parseParamFile(readFileSync(path, 'utf8'))
+const readParamFile = (path) => parameterValues(readEntries(path))
 
 function templatesFor(vehicle) {
   const dir = templatesDir + vehicle
@@ -91,6 +85,7 @@ const sequences = new Map(
 test('the runner reproduces every forced parameter in every template', () => {
   const mismatches = []
   let checked = 0
+  let overridden = 0
   let vehicles = 0
 
   for (const vehicle of VEHICLES) {
@@ -106,15 +101,21 @@ test('the runner reproduces every forced parameter in every template', () => {
         const produced = `${template.dir}/${filename}`
         // A template only ships the steps that vehicle went through.
         if (!existsSync(produced)) continue
-        const expected = readParamFile(produced)
+        const expected = readEntries(produced)
         const outcome = applyStep(step, context, { docs: docs.get(vehicle) })
 
         for (const change of outcome.changes) {
           if (change.group !== 'forced_parameters') continue
-          const actual = expected[change.parameter]
-          if (actual === undefined) continue
+          const entry = expected.get(change.parameter)
+          if (entry === undefined) continue
+          // The operator's decision beats the sequence's, which is exactly what
+          // the marker records -- so there is nothing to reproduce here.
+          if (entry.manualOverride) {
+            overridden += 1
+            continue
+          }
+          const actual = entry.value
           const id = `${vehicle}/${template.name}/${filename}/${change.parameter}`
-          if (KNOWN_UPSTREAM_DISCREPANCIES.has(id)) continue
           checked += 1
           const tolerance = Math.max(1e-6, Math.abs(change.value) * 1e-6)
           if (Math.abs(actual - change.value) > tolerance) {
@@ -127,6 +128,9 @@ test('the runner reproduces every forced parameter in every template', () => {
 
   assert.ok(vehicles >= 25, `only ${vehicles} templates found`)
   assert.ok(checked > 1000, `only ${checked} forced parameters checked`)
+  // The mechanism has to stay exercised: if no template overrides anything, the
+  // rule above is no longer being tested by anything.
+  assert.ok(overridden > 0, 'expected at least one @manual_override in the templates')
   assert.equal(
     mismatches.length,
     0,
