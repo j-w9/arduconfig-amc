@@ -108,3 +108,9 @@ export {
   type ImportResult,
   importComponentsFromParameters
 } from './import-components.js'
+export {
+  type LogMessageStatus,
+  type StepLogCheck,
+  checkStepLogMessages,
+  countWithVariants
+} from './log-messages.js'
