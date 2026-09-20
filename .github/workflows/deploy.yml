@@ -1,0 +1,81 @@
+name: Deploy AMC experiment
+
+# The experiment publishes to its own Cloudflare Pages project and its own
+# hostname, so it can never overwrite the production ArduConfigurator deploy --
+# that one lives in the app repo and has a different project name.
+#
+# Manual by default. The sequence this site renders comes from a pinned AMC
+# commit and a pinned app commit, so a deploy is a deliberate statement about
+# which pair is being shown, not something a push should decide.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: cloudflare-pages-amc
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      # The app is a submodule and the step data lives in this repo, so the
+      # build needs both -- that pairing is the whole point of the fork.
+      - name: Check out repository and submodules
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install fork dependencies
+        run: npm ci
+
+      - name: Install app dependencies
+        run: npm ci --prefix apps/arduconfigurator
+
+      - name: Check the port still agrees with CPython
+        run: npm test
+
+      - name: Check the app
+        working-directory: apps/arduconfigurator
+        run: |
+          npm run typecheck
+          npx vitest run --root apps/web
+
+      # Served at the root of its own hostname, so the base path is '/'.
+      # The app's public/_headers and public/_redirects are copied into dist by
+      # its own build, and Cloudflare Pages reads them from there.
+      - name: Build the site
+        working-directory: apps/arduconfigurator
+        env:
+          ARDUCONFIG_WEB_BASE: /
+        run: npm run build:web
+
+      # A banner naming the two pinned commits, so anyone looking at the
+      # experiment can tell which AMC sequence and which app build they are
+      # seeing without reading the repo.
+      - name: Record what this build pins
+        run: |
+          {
+            echo "amc_commit=$(git -C vendor/MethodicConfigurator rev-parse --short HEAD)"
+            echo "app_commit=$(git -C apps/arduconfigurator rev-parse --short HEAD)"
+            echo "built=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } > apps/arduconfigurator/apps/web/dist/build-pins.txt
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy apps/arduconfigurator/apps/web/dist
+            --project-name=arduconfig-amc
+            --branch=main
