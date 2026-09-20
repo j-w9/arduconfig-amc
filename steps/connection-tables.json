@@ -2218,5 +2218,301 @@
    "Volt per cell crit": 1.1,
    "Volt per cell min": 1.05
   }
+ },
+ "PARAM_UPGRADE_DICT_46": {
+  "GPS_CAN_NODEID1": "GPS1_CAN_NODEID",
+  "GPS_CAN_NODEID2": "GPS2_CAN_NODEID",
+  "GPS_COM_PORT": "GPS1_COM_PORT",
+  "GPS_COM_PORT2": "GPS2_COM_PORT",
+  "GPS_DELAY_MS": "GPS1_DELAY_MS",
+  "GPS_DELAY_MS2": "GPS2_DELAY_MS",
+  "GPS_GNSS_MODE": "GPS1_GNSS_MODE",
+  "GPS_GNSS_MODE2": "GPS2_GNSS_MODE",
+  "GPS_MB1_TYPE": "GPS1_MB_TYPE",
+  "GPS_MB2_TYPE": "GPS2_MB_TYPE",
+  "GPS_POS1_X": "GPS1_POS_X",
+  "GPS_POS1_Y": "GPS1_POS_Y",
+  "GPS_POS1_Z": "GPS1_POS_Z",
+  "GPS_POS2_X": "GPS2_POS_X",
+  "GPS_POS2_Y": "GPS2_POS_Y",
+  "GPS_POS2_Z": "GPS2_POS_Z",
+  "GPS_RATE_MS": "GPS1_RATE_MS",
+  "GPS_RATE_MS2": "GPS2_RATE_MS",
+  "GPS_TYPE": "GPS1_TYPE",
+  "GPS_TYPE2": "GPS2_TYPE"
+ },
+ "PARAM_UPGRADE_DICT_47": {
+  "EK3_MAX_FLOW": [
+   "EK3_FLOW_MAX",
+   1.0
+  ],
+  "PHLD_BRAKE_RATE": [
+   "PHLD_BRK_RATE",
+   1.0
+  ],
+  "PSC_ACCZ_D": [
+   "PSC_D_ACC_D",
+   1.0
+  ],
+  "PSC_ACCZ_D_FF": [
+   "PSC_D_ACC_D_FF",
+   1.0
+  ],
+  "PSC_ACCZ_FF": [
+   "PSC_D_ACC_FF",
+   1.0
+  ],
+  "PSC_ACCZ_FLTD": [
+   "PSC_D_ACC_FLTD",
+   1.0
+  ],
+  "PSC_ACCZ_FLTE": [
+   "PSC_D_ACC_FLTE",
+   1.0
+  ],
+  "PSC_ACCZ_FLTT": [
+   "PSC_D_ACC_FLTT",
+   1.0
+  ],
+  "PSC_ACCZ_NEF": [
+   "PSC_D_ACC_NEF",
+   1.0
+  ],
+  "PSC_ACCZ_NTF": [
+   "PSC_D_ACC_NTF",
+   1.0
+  ],
+  "PSC_ACCZ_PDMX": [
+   "PSC_D_ACC_PDMX",
+   1.0
+  ],
+  "PSC_ACCZ_SMAX": [
+   "PSC_D_ACC_SMAX",
+   1.0
+  ],
+  "PSC_JERK_XY": [
+   "PSC_JERK_NE",
+   1.0
+  ],
+  "PSC_JERK_Z": [
+   "PSC_JERK_D",
+   1.0
+  ],
+  "PSC_POSXY_P": [
+   "PSC_NE_POS_P",
+   1.0
+  ],
+  "PSC_POSZ_P": [
+   "PSC_D_POS_P",
+   1.0
+  ],
+  "PSC_VELXY_D": [
+   "PSC_NE_VEL_D",
+   1.0
+  ],
+  "PSC_VELXY_FF": [
+   "PSC_NE_VEL_FF",
+   1.0
+  ],
+  "PSC_VELXY_FLTD": [
+   "PSC_NE_VEL_FLTD",
+   1.0
+  ],
+  "PSC_VELXY_FLTE": [
+   "PSC_NE_VEL_FLTE",
+   1.0
+  ],
+  "PSC_VELXY_I": [
+   "PSC_NE_VEL_I",
+   1.0
+  ],
+  "PSC_VELXY_P": [
+   "PSC_NE_VEL_P",
+   1.0
+  ],
+  "PSC_VELZ_D": [
+   "PSC_D_VEL_D",
+   1.0
+  ],
+  "PSC_VELZ_FF": [
+   "PSC_D_VEL_FF",
+   1.0
+  ],
+  "PSC_VELZ_FLTD": [
+   "PSC_D_VEL_FLTD",
+   1.0
+  ],
+  "PSC_VELZ_FLTE": [
+   "PSC_D_VEL_FLTE",
+   1.0
+  ],
+  "PSC_VELZ_I": [
+   "PSC_D_VEL_I",
+   1.0
+  ],
+  "PSC_VELZ_P": [
+   "PSC_D_VEL_P",
+   1.0
+  ],
+  "SYSID_MYGCS": [
+   "MAV_GCS_SYSID",
+   1.0
+  ],
+  "SYSID_THISMAV": [
+   "MAV_SYSID",
+   1.0
+  ],
+  "TELEM_DELAY": [
+   "MAV_TELEM_DELAY",
+   1.0
+  ],
+  "WPNAV_ACCEL_C": [
+   "WP_ACC_CNR",
+   1.0
+  ],
+  "WPNAV_JERK": [
+   "WP_JERK",
+   1.0
+  ],
+  "WPNAV_RFND_USE": [
+   "WP_RFND_USE",
+   1.0
+  ],
+  "WPNAV_TER_MARGIN": [
+   "WP_TER_MARGIN",
+   1.0
+  ],
+  "ANGLE_MAX": [
+   "ATC_ANGLE_MAX",
+   0.01
+  ],
+  "ATC_ACCEL_P_MAX": [
+   "ATC_ACC_P_MAX",
+   0.01
+  ],
+  "ATC_ACCEL_R_MAX": [
+   "ATC_ACC_R_MAX",
+   0.01
+  ],
+  "ATC_ACCEL_Y_MAX": [
+   "ATC_ACC_Y_MAX",
+   0.01
+  ],
+  "ATC_SLEW_YAW": [
+   "ATC_RATE_WPY_MAX",
+   0.01
+  ],
+  "CIRCLE_RADIUS": [
+   "CIRCLE_RADIUS_M",
+   0.01
+  ],
+  "LAND_ALT_LOW": [
+   "LAND_ALT_LOW_M",
+   0.01
+  ],
+  "LAND_SPEED": [
+   "LAND_SPD_MS",
+   0.01
+  ],
+  "LAND_SPEED_HIGH": [
+   "LAND_SPD_HIGH_MS",
+   0.01
+  ],
+  "LOIT_ACC_MAX": [
+   "LOIT_ACC_MAX_M",
+   0.01
+  ],
+  "LOIT_BRK_ACCEL": [
+   "LOIT_BRK_ACC_M",
+   0.01
+  ],
+  "LOIT_BRK_JERK": [
+   "LOIT_BRK_JRK_M",
+   0.01
+  ],
+  "LOIT_SPEED": [
+   "LOIT_SPEED_MS",
+   0.01
+  ],
+  "PHLD_BRAKE_ANGLE": [
+   "PHLD_BRK_ANGLE",
+   0.01
+  ],
+  "PILOT_ACCEL_Z": [
+   "PILOT_ACC_Z",
+   0.01
+  ],
+  "PILOT_SPEED_DN": [
+   "PILOT_SPD_DN",
+   0.01
+  ],
+  "PILOT_SPEED_UP": [
+   "PILOT_SPD_UP",
+   0.01
+  ],
+  "PILOT_TKOFF_ALT": [
+   "PILOT_TKO_ALT_M",
+   0.01
+  ],
+  "PSC_VELXY_IMAX": [
+   "PSC_NE_VEL_IMAX",
+   0.01
+  ],
+  "PSC_VELZ_IMAX": [
+   "PSC_D_VEL_IMAX",
+   0.01
+  ],
+  "RTL_ALT": [
+   "RTL_ALT_M",
+   0.01
+  ],
+  "RTL_ALT_FINAL": [
+   "RTL_ALT_FINAL_M",
+   0.01
+  ],
+  "RTL_CLIMB_MIN": [
+   "RTL_CLIMB_MIN_M",
+   0.01
+  ],
+  "RTL_SPEED": [
+   "RTL_SPEED_MS",
+   0.01
+  ],
+  "WPNAV_ACCEL": [
+   "WP_ACC",
+   0.01
+  ],
+  "WPNAV_ACCEL_Z": [
+   "WP_ACC_Z",
+   0.01
+  ],
+  "WPNAV_RADIUS": [
+   "WP_RADIUS_M",
+   0.01
+  ],
+  "WPNAV_SPEED": [
+   "WP_SPD",
+   0.01
+  ],
+  "WPNAV_SPEED_DN": [
+   "WP_SPD_DN",
+   0.01
+  ],
+  "WPNAV_SPEED_UP": [
+   "WP_SPD_UP",
+   0.01
+  ],
+  "PSC_ACCZ_P": [
+   "PSC_D_ACC_P",
+   0.1
+  ],
+  "PSC_ACCZ_I": [
+   "PSC_D_ACC_I",
+   0.1
+  ],
+  "PSC_ACCZ_IMAX": [
+   "PSC_D_ACC_IMAX",
+   0.001
+  ]
  }
 }

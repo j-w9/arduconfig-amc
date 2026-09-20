@@ -115,3 +115,10 @@ export {
   checkStepLogMessages,
   countWithVariants
 } from './log-messages.js'
+export {
+  type ParameterRename,
+  type UpgradeResult,
+  type UpgradeTables,
+  upgradeParameters,
+  upgradesBetween
+} from './upgrade.js'

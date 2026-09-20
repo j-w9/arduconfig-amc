@@ -28,7 +28,14 @@ ROOT = Path(__file__).resolve().parent.parent
 VENDOR = ROOT / "vendor/MethodicConfigurator/ardupilot_methodic_configurator"
 # In dependency order: the validation tables reference the battery module's
 # constants at module level.
-SOURCES = [VENDOR / "battery_cell_voltages.py", VENDOR / "data_model_vehicle_components_validation.py"]
+SOURCES = [
+    VENDOR / "battery_cell_voltages.py",
+    VENDOR / "data_model_vehicle_components_validation.py",
+    # Parameter renames between firmware versions. Independent of the tables
+    # above, but the same extraction problem: a few hundred renames where a
+    # typo would silently drop an operator's value.
+    VENDOR / "data_model_parameter_upgrade.py",
+]
 DEST = ROOT / "steps/connection-tables.json"
 
 WANTED = [
@@ -50,6 +57,8 @@ WANTED = [
     "BATTERY_CELL_VOLTAGE_TYPES",
     "BATTERY_DEFAULT_CHEMISTRY",
     "_recommended_battery_cell_voltages",
+    "PARAM_UPGRADE_DICT_46",
+    "PARAM_UPGRADE_DICT_47",
 ]
 
 
