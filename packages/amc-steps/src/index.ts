@@ -36,9 +36,11 @@ export {
 } from './summary.js'
 export { componentOptionSources, optionsForField } from './options.js'
 export {
+  type UnaccountedOptions,
   type VehicleFile,
   type VehicleFilesOptions,
   defaultsFile,
+  unaccountedParameters,
   vehicleFiles
 } from './vehicle-files.js'
 export {
