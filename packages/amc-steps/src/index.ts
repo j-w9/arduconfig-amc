@@ -9,6 +9,30 @@
 
 export * from './types.js'
 export {
+  type ParameterDoc,
+  type ParameterDocs,
+  UnresolvableValueError,
+  parameterDocsFrom,
+  resolveNamedValue
+} from './docs.js'
+export {
+  type FailedDirective,
+  type ParameterChange,
+  type SkippedDirective,
+  type StepOutcome,
+  type ApplyOptions,
+  type VehicleContext,
+  applyStep,
+  vehicleContext
+} from './run.js'
+export {
+  type ComponentPath,
+  type ComponentRequirement,
+  missingComponents,
+  readComponentPath,
+  requiredComponents
+} from './components.js'
+export {
   DIRECTIVE_GROUPS,
   VALUED_GROUPS,
   type DirectiveGroup,

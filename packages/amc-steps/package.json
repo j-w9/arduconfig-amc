@@ -9,5 +9,8 @@
   "scripts": {
     "build": "tsc -b tsconfig.json",
     "typecheck": "tsc -b tsconfig.json --pretty false"
+  },
+  "dependencies": {
+    "@arduconfig/amc-expr": "0.1.0"
   }
 }

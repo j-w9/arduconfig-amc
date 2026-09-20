@@ -26,7 +26,7 @@ frontend keeps the serial link it already has.
 | `apps/arduconfigurator` | ArduConfigurator, pinned. The frontend being experimented on. |
 | `steps/` | The step files copied out of the vendor pin by `npm run sync`. |
 | `packages/amc-expr` | TypeScript port of AMC's safe expression evaluator. |
-| `packages/amc-steps` | Types and traversal for the step files. |
+| `packages/amc-steps` | Types, traversal, and the runner that turns a step into parameter changes. |
 | `tests/` | Parity and semantics tests. |
 
 Both submodules are pinned; `steps/PROVENANCE.json` records the AMC commit the
@@ -75,20 +75,63 @@ wrong answer, not a crash:
 `tests/python-semantics.test.mjs` pins each rule individually, so a regression
 names the rule rather than the vehicle that exposed it.
 
+## End to end, against the templates
+
+AMC ships the `.param` files it produced for each of its 29 vehicle templates,
+which makes them an oracle for the whole stack rather than just the evaluator.
+The invariant is asymmetric, and the asymmetry is the point:
+
+- **`forced_parameters` are non-negotiable**, so the runner must reproduce them.
+  It does: 1,257 of 1,258 across every template and every vehicle type.
+- **`derived_parameters` are starting points** an operator tunes away from --
+  `PSC_ACCZ_*` and `INS_HNTCH_FREQ` come out of flight logs -- so they are
+  computed but deliberately not asserted.
+
+The one forced parameter that differs is an upstream data inconsistency rather
+than a computation: the step file hard-codes `LOG_BITMASK` as 407517 and
+`Holybro_X500`'s committed file says 407519. It is pinned in the test, so a
+*second* one would fail the suite.
+
+### What running the real sequence surfaced
+
+Evaluating every step against every template turned up three things, none of
+them port bugs:
+
+- **Blank templates fail, and should.** The `empty_*` templates have a propeller
+  diameter of 0, so the filter-frequency steps raise rather than inventing a
+  number. That failure is the UI's cue to go ask the operator.
+- **Some steps read parameters the vehicle does not have.** The Plane, Rover and
+  Heli sequences read `MOT_THST_HOVER` and `MOT_BAT_VOLT_MAX` -- Copter
+  parameters -- without guarding with `in fc_parameters` first. Upstream
+  tolerates this by logging and carrying on, and so do we.
+- **Three named values do not resolve** against ArduConfigurator's parameter
+  metadata. Several steps set a parameter from a component's own words --
+  `FRAME_CLASS` from `'Quad'` -- which needs ArduPilot's documented value lists.
+  `'FETtecOneWire'` and `'INA2XX'` are not in the metadata's options, and
+  `MOT_PWM_TYPE` is missing from `arduplane.json` altogether. Pinned in the test
+  so the set stays visible and cannot quietly grow.
+
+A directive that cannot be evaluated is collected and reported, never dropped:
+a half-applied step is worse than a refused one, so the caller decides whether
+an incomplete step may still be written.
+
 ## Where this is going
 
 The sequence and the evaluator are done and proven. The open work is the
 integration:
 
-- `vehicle_components` — AMC's model of the hardware the operator declares
-  (props, ESC, battery monitor, FC MCU series) — drives 75 of the 108
-  expressions, and ArduConfigurator has no equivalent concept today. That data
-  model, and the UI for filling it, is the real remaining work.
-- Mapping AMC steps onto ArduConfigurator's existing guided-mode shape
+- **The component editor UI.** `requiredComponents()` derives the fields the
+  operator must supply by walking the parsed expressions, so the form's contents
+  come from the step files rather than from a guess at them — 9 components and
+  about 20 fields today. Nothing renders it yet.
+- **Mapping AMC steps onto ArduConfigurator's guided-mode shape**
   (`setup-flow-helpers`, `setup-exercise-helpers`, `SetupWizard*`), which is
   already criteria-and-actions per section.
-- Reading and writing parameters over the existing `@arduconfig/protocol-mavlink`
-  link.
+- **Reading and writing parameters** over the existing
+  `@arduconfig/protocol-mavlink` link. Nothing here has touched a flight
+  controller yet.
+- **Filling the three metadata gaps** above, in ArduConfigurator's generated
+  parameter documentation.
 
 ## Licensing
 
