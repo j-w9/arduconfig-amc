@@ -26,6 +26,13 @@ export {
   vehicleContext
 } from './run.js'
 export { autoImportableParameters, withinTolerance } from './autoimport.js'
+export {
+  ID_PARAMETER_NAMES,
+  type ConfigurationSummary,
+  type SummaryCategory,
+  type SummaryEntry,
+  summarize
+} from './summary.js'
 export { componentOptionSources, optionsForField } from './options.js'
 export {
   MANUAL_OVERRIDE_PREFIX,
