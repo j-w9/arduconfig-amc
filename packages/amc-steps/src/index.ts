@@ -36,6 +36,12 @@ export {
 } from './summary.js'
 export { componentOptionSources, optionsForField } from './options.js'
 export {
+  type VehicleFile,
+  type VehicleFilesOptions,
+  defaultsFile,
+  vehicleFiles
+} from './vehicle-files.js'
+export {
   type ParamLine,
   formatParamValue,
   linesFromEntries,
