@@ -100,3 +100,11 @@ export {
   connectionGroupOf,
   orderByPairing
 } from './pairings.js'
+export type { ConnectionEntry, ConnectionTables } from './connection-tables.js'
+export {
+  type DerivedComponent,
+  type FirmwareKind,
+  type ImportOptions,
+  type ImportResult,
+  importComponentsFromParameters
+} from './import-components.js'

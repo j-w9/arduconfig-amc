@@ -1,0 +1,2222 @@
+{
+ "SERIAL_PORTS": [
+  "SERIAL1",
+  "SERIAL2",
+  "SERIAL3",
+  "SERIAL4",
+  "SERIAL5",
+  "SERIAL6",
+  "SERIAL7",
+  "SERIAL8"
+ ],
+ "CAN_PORTS": [
+  "CAN1",
+  "CAN2"
+ ],
+ "I2C_PORTS": [
+  "I2C1",
+  "I2C2",
+  "I2C3",
+  "I2C4"
+ ],
+ "ANALOG_PORTS": [
+  "Analog"
+ ],
+ "OTHER_PORTS": [
+  "other"
+ ],
+ "RC_PORTS": [
+  "RCin/SBUS"
+ ],
+ "PWM_OUT_PORTS": [
+  "Main Out",
+  "AIO"
+ ],
+ "SERVO_FUNCTION_ESC_CONTROL": [
+  33,
+  34,
+  35,
+  36,
+  73,
+  74
+ ],
+ "ESC_TELEMETRY_ONLY_PROTOCOLS": [
+  "ESC Telemetry",
+  "Scripting"
+ ],
+ "SERIAL_PROTOCOLS_DICT": {
+  "-1": {
+   "type": [
+    "None"
+   ],
+   "protocol": "None",
+   "component": null
+  },
+  "1": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MAVLink1",
+   "component": "Telemetry"
+  },
+  "2": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MAVLink2",
+   "component": "Telemetry"
+  },
+  "3": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Frsky D",
+   "component": null
+  },
+  "4": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Frsky SPort",
+   "component": null
+  },
+  "5": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "GPS",
+   "component": "GNSS Receiver"
+  },
+  "7": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Alexmos Gimbal Serial",
+   "component": null
+  },
+  "8": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Gimbal",
+   "component": null
+  },
+  "9": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Rangefinder",
+   "component": null
+  },
+  "10": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "FrSky SPort Passthrough (OpenTX)",
+   "component": null
+  },
+  "11": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Lidar360",
+   "component": null
+  },
+  "13": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Beacon",
+   "component": null
+  },
+  "14": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Volz servo out",
+   "component": null
+  },
+  "15": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SBus servo out",
+   "component": null
+  },
+  "16": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "ESC Telemetry",
+   "component": "ESC"
+  },
+  "17": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Devo Telemetry",
+   "component": null
+  },
+  "18": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "OpticalFlow",
+   "component": null
+  },
+  "19": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "RobotisServo",
+   "component": null
+  },
+  "20": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "NMEA Output",
+   "component": null
+  },
+  "21": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "WindVane",
+   "component": null
+  },
+  "22": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SLCAN",
+   "component": null
+  },
+  "23": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "RCIN",
+   "component": "RC Receiver"
+  },
+  "24": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "EFI Serial",
+   "component": null
+  },
+  "25": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "LTM",
+   "component": null
+  },
+  "26": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "RunCam",
+   "component": null
+  },
+  "27": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "HottTelem",
+   "component": null
+  },
+  "28": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Scripting",
+   "component": "ESC"
+  },
+  "29": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Crossfire VTX",
+   "component": null
+  },
+  "30": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Generator",
+   "component": null
+  },
+  "31": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Winch",
+   "component": null
+  },
+  "32": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MSP",
+   "component": null
+  },
+  "33": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "DJI FPV",
+   "component": null
+  },
+  "34": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "AirSpeed",
+   "component": null
+  },
+  "35": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "ADSB",
+   "component": null
+  },
+  "36": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "AHRS",
+   "component": null
+  },
+  "37": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SmartAudio",
+   "component": null
+  },
+  "38": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "FETtecOneWire",
+   "component": "ESC"
+  },
+  "39": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Torqeedo",
+   "component": "ESC"
+  },
+  "40": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "AIS",
+   "component": null
+  },
+  "41": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "CoDevESC",
+   "component": "ESC"
+  },
+  "42": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "DisplayPort",
+   "component": null
+  },
+  "43": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MAVLink High Latency",
+   "component": "Telemetry"
+  },
+  "44": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "IRC Tramp",
+   "component": null
+  },
+  "45": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "DDS XRCE",
+   "component": null
+  },
+  "46": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "IMUDATA",
+   "component": null
+  },
+  "48": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "PPP",
+   "component": "Telemetry"
+  },
+  "49": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "i-BUS Telemetry",
+   "component": null
+  }
+ },
+ "BATT_MONITOR_CONNECTION": {
+  "0": {
+   "type": [
+    "None"
+   ],
+   "protocol": "Disabled"
+  },
+  "3": {
+   "type": [
+    "Analog"
+   ],
+   "protocol": "Analog Voltage Only"
+  },
+  "4": {
+   "type": [
+    "Analog"
+   ],
+   "protocol": "Analog Voltage and Current"
+  },
+  "5": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "Solo"
+  },
+  "6": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "Bebop"
+  },
+  "7": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "SMBus-Generic"
+  },
+  "8": {
+   "type": [
+    "CAN1",
+    "CAN2"
+   ],
+   "protocol": "DroneCAN-BatteryInfo"
+  },
+  "9": {
+   "type": [
+    "other"
+   ],
+   "protocol": "ESC"
+  },
+  "10": {
+   "type": [
+    "other"
+   ],
+   "protocol": "Sum Of Selected Monitors"
+  },
+  "11": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "FuelFlow"
+  },
+  "12": {
+   "type": [
+    "PWM"
+   ],
+   "protocol": "FuelLevelPWM"
+  },
+  "13": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "SMBUS-SUI3"
+  },
+  "14": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "SMBUS-SUI6"
+  },
+  "15": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "NeoDesign"
+  },
+  "16": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "SMBus-Maxell"
+  },
+  "17": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "Generator-Elec"
+  },
+  "18": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "Generator-Fuel"
+  },
+  "19": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "Rotoye"
+  },
+  "20": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "MPPT"
+  },
+  "21": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "INA2XX"
+  },
+  "22": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "LTC2946"
+  },
+  "23": {
+   "type": [
+    "other"
+   ],
+   "protocol": "Torqeedo"
+  },
+  "24": {
+   "type": [
+    "Analog"
+   ],
+   "protocol": "FuelLevelAnalog"
+  },
+  "25": {
+   "type": [
+    "Analog"
+   ],
+   "protocol": "Synthetic Current and Analog Voltage"
+  },
+  "26": {
+   "type": [
+    "SPI"
+   ],
+   "protocol": "INA239_SPI"
+  },
+  "27": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "EFI"
+  },
+  "28": {
+   "type": [
+    "I2C1",
+    "I2C2",
+    "I2C3",
+    "I2C4"
+   ],
+   "protocol": "AD7091R5"
+  },
+  "29": {
+   "type": [
+    "other"
+   ],
+   "protocol": "Scripting"
+  }
+ },
+ "GNSS_RECEIVER_CONNECTION": {
+  "0": {
+   "type": [
+    "None"
+   ],
+   "protocol": "None"
+  },
+  "1": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "AUTO"
+  },
+  "2": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "uBlox"
+  },
+  "5": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "NMEA"
+  },
+  "6": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SiRF"
+  },
+  "7": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "HIL"
+  },
+  "8": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SwiftNav"
+  },
+  "9": {
+   "type": [
+    "CAN1",
+    "CAN2"
+   ],
+   "protocol": "DroneCAN"
+  },
+  "10": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Septentrio(SBF)"
+  },
+  "11": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Trimble(GSOF)"
+  },
+  "13": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "ERB"
+  },
+  "14": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MAVLink"
+  },
+  "15": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "NOVA"
+  },
+  "16": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "HemisphereNMEA"
+  },
+  "17": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "uBlox-MovingBaseline-Base"
+  },
+  "18": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "uBlox-MovingBaseline-Rover"
+  },
+  "19": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MSP"
+  },
+  "20": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "AllyStar"
+  },
+  "21": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "ExternalAHRS"
+  },
+  "22": {
+   "type": [
+    "CAN1",
+    "CAN2"
+   ],
+   "protocol": "DroneCAN-MovingBaseline-Base"
+  },
+  "23": {
+   "type": [
+    "CAN1",
+    "CAN2"
+   ],
+   "protocol": "DroneCAN-MovingBaseline-Rover"
+  },
+  "24": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "UnicoreNMEA"
+  },
+  "25": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "UnicoreMovingBaselineNMEA"
+  },
+  "26": {
+   "type": [
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Septentrio-DualAntenna(SBF)"
+  }
+ },
+ "RC_PROTOCOLS_DICT": {
+  "1": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "All"
+  },
+  "2": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "PPM"
+  },
+  "4": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "IBUS"
+  },
+  "8": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SBUS"
+  },
+  "16": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SBUS_NI"
+  },
+  "32": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "DSM"
+  },
+  "64": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SUMD"
+  },
+  "128": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SRXL"
+  },
+  "256": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "SRXL2"
+  },
+  "512": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "CRSF"
+  },
+  "1024": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "ST24"
+  },
+  "2048": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "FPORT"
+  },
+  "4096": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "FPORT2"
+  },
+  "8192": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "FastSBUS"
+  },
+  "16384": {
+   "type": [
+    "CAN1",
+    "CAN2"
+   ],
+   "protocol": "DroneCAN"
+  },
+  "32768": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "Ghost"
+  },
+  "65536": {
+   "type": [
+    "RCin/SBUS",
+    "SERIAL1",
+    "SERIAL2",
+    "SERIAL3",
+    "SERIAL4",
+    "SERIAL5",
+    "SERIAL6",
+    "SERIAL7",
+    "SERIAL8"
+   ],
+   "protocol": "MAVRadio"
+  }
+ },
+ "ESC_CONNECTION_DICT": {
+  "ArduCopter": {
+   "0": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Normal",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "Scripting"
+    }
+   },
+   "1": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "2": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot125",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "3": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Brushed",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "4": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot150",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "5": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot300",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "6": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot600",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "7": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot1200",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "8": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMRange",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "9": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMAngle",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "100": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "FETtecOneWire",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "101": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "Torqeedo",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "102": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "CoDevESC",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "200": {
+    "type": [
+     "CAN1",
+     "CAN2"
+    ],
+    "protocol": "DroneCAN",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   }
+  },
+  "Heli": {
+   "0": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Normal",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "Scripting"
+    }
+   },
+   "1": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "2": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot125",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "3": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Brushed",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "4": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot150",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "5": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot300",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "6": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot600",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "7": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot1200",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "8": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMRange",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "9": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMAngle",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "100": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "FETtecOneWire",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "101": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "Torqeedo",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "102": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "CoDevESC",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "200": {
+    "type": [
+     "CAN1",
+     "CAN2"
+    ],
+    "protocol": "DroneCAN",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   }
+  },
+  "Rover": {
+   "0": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Normal",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "Scripting"
+    }
+   },
+   "1": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "2": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot125",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "3": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "BrushedWithRelay",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "4": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "BrushedBiPolar",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "5": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot150",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "6": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot300",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "7": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot600",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "8": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot1200",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "9": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMRange",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "10": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMAngle",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "100": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "FETtecOneWire",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "101": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "Torqeedo",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "102": {
+    "type": [
+     "SERIAL1",
+     "SERIAL2",
+     "SERIAL3",
+     "SERIAL4",
+     "SERIAL5",
+     "SERIAL6",
+     "SERIAL7",
+     "SERIAL8"
+    ],
+    "protocol": "CoDevESC",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   },
+   "200": {
+    "type": [
+     "CAN1",
+     "CAN2"
+    ],
+    "protocol": "DroneCAN",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   }
+  },
+  "ArduPlane": {
+   "0": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Normal",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "Scripting"
+    }
+   },
+   "1": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "2": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "OneShot125",
+    "ESC_to_FC": {
+     "None": "None",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "3": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "Brushed",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "4": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot150",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "5": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot300",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "6": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot600",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "7": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "DShot1200",
+    "ESC_to_FC": {
+     "None": "None",
+     "same_as_FC_to_ESC": "BDShotOnly",
+     "SERIAL1|SERIAL2|SERIAL3|SERIAL4|SERIAL5|SERIAL6|SERIAL7|SERIAL8": "ESC Telemetry"
+    }
+   },
+   "8": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMRange",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "9": {
+    "type": [
+     "Main Out",
+     "AIO"
+    ],
+    "protocol": "PWMAngle",
+    "ESC_to_FC": {
+     "None": "None"
+    }
+   },
+   "200": {
+    "type": [
+     "CAN1",
+     "CAN2"
+    ],
+    "protocol": "DroneCAN",
+    "ESC_to_FC": {
+     "same_as_FC_to_ESC": "same_as_FC_to_ESC"
+    }
+   }
+  }
+ },
+ "FRAME_CLASS_DICT": {
+  "ArduCopter": {
+   "0": "Undefined",
+   "1": "Quad",
+   "2": "Hexa",
+   "3": "Octa",
+   "4": "OctaQuad",
+   "5": "Y6",
+   "6": "Heli",
+   "7": "Tri",
+   "8": "SingleCopter",
+   "9": "CoaxCopter",
+   "10": "BiCopter",
+   "11": "Heli_Dual",
+   "12": "DodecaHexa",
+   "13": "HeliQuad",
+   "14": "Deca",
+   "15": "Scripting Matrix",
+   "16": "6DoF Scripting",
+   "17": "Dynamic Scripting Matrix"
+  },
+  "Heli": {
+   "0": "Undefined",
+   "6": "Heli",
+   "8": "SingleCopter",
+   "9": "CoaxCopter",
+   "10": "BiCopter",
+   "11": "Heli_Dual",
+   "13": "HeliQuad"
+  },
+  "Rover": {
+   "0": "Undefined",
+   "1": "Rover",
+   "2": "Boat",
+   "3": "BalanceBot"
+  },
+  "ArduPlane": {
+   "0": "Undefined",
+   "1": "Quad",
+   "2": "Hexa",
+   "3": "Octa",
+   "4": "OctaQuad",
+   "5": "Y6",
+   "7": "Tri",
+   "10": "Single/Dual",
+   "12": "DodecaHexa",
+   "14": "Deca",
+   "15": "Scripting Matrix",
+   "17": "Dynamic Scripting Matrix"
+  }
+ },
+ "BATTERY_CELL_VOLTAGE_TYPES": [
+  "Volt per cell max",
+  "Volt per cell arm",
+  "Volt per cell low",
+  "Volt per cell crit",
+  "Volt per cell min"
+ ],
+ "BATTERY_DEFAULT_CHEMISTRY": "Lipo",
+ "_recommended_battery_cell_voltages": {
+  "LiIon": {
+   "absolute_max": 4.2,
+   "absolute_min": 2.5,
+   "Volt per cell max": 4.1,
+   "Volt per cell arm": 3.6,
+   "Volt per cell low": 3.1,
+   "Volt per cell crit": 2.8,
+   "Volt per cell min": 2.7
+  },
+  "LiIonSS": {
+   "absolute_max": 4.2,
+   "absolute_min": 2.4,
+   "Volt per cell max": 4.2,
+   "Volt per cell arm": 3.6,
+   "Volt per cell low": 3.0,
+   "Volt per cell crit": 2.7,
+   "Volt per cell min": 2.6
+  },
+  "LiIonSSHV": {
+   "absolute_max": 4.45,
+   "absolute_min": 2.4,
+   "Volt per cell max": 4.45,
+   "Volt per cell arm": 3.8,
+   "Volt per cell low": 3.0,
+   "Volt per cell crit": 2.7,
+   "Volt per cell min": 2.6
+  },
+  "Lipo": {
+   "absolute_max": 4.2,
+   "absolute_min": 3.0,
+   "Volt per cell max": 4.2,
+   "Volt per cell arm": 3.8,
+   "Volt per cell low": 3.6,
+   "Volt per cell crit": 3.3,
+   "Volt per cell min": 3.2
+  },
+  "LipoHV": {
+   "absolute_max": 4.35,
+   "absolute_min": 3.0,
+   "Volt per cell max": 4.35,
+   "Volt per cell arm": 3.9,
+   "Volt per cell low": 3.6,
+   "Volt per cell crit": 3.3,
+   "Volt per cell min": 3.2
+  },
+  "LipoHVSS": {
+   "absolute_max": 4.2,
+   "absolute_min": 2.9,
+   "Volt per cell max": 4.2,
+   "Volt per cell arm": 3.8,
+   "Volt per cell low": 3.5,
+   "Volt per cell crit": 3.2,
+   "Volt per cell min": 3.1
+  },
+  "NiCd": {
+   "absolute_max": 1.45,
+   "absolute_min": 1.0,
+   "Volt per cell max": 1.4,
+   "Volt per cell arm": 1.28,
+   "Volt per cell low": 1.2,
+   "Volt per cell crit": 1.1,
+   "Volt per cell min": 1.05
+  },
+  "NiMH": {
+   "absolute_max": 1.45,
+   "absolute_min": 1.0,
+   "Volt per cell max": 1.4,
+   "Volt per cell arm": 1.28,
+   "Volt per cell low": 1.2,
+   "Volt per cell crit": 1.1,
+   "Volt per cell min": 1.05
+  }
+ }
+}
