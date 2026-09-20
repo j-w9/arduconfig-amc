@@ -12,10 +12,15 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 
-import { connectionGroupOf, orderByPairing } from '../packages/amc-steps/dist/index.js'
+import { connectionGroupOf, orderByPairing, protocolsForConnection } from '../packages/amc-steps/dist/index.js'
 
 const pairings = JSON.parse(
   readFileSync(fileURLToPath(new URL('../steps/component-pairings.json', import.meta.url)), 'utf8')
+)
+// The authoritative tables, extracted from AMC's source: what a connection
+// type can actually carry, as opposed to what the templates happen to show.
+const tables = JSON.parse(
+  readFileSync(fileURLToPath(new URL('../steps/connection-tables.json', import.meta.url)), 'utf8')
 )
 
 test('the pairings observed are the ones the templates actually show', () => {
@@ -70,4 +75,61 @@ test('only a connection field has a counterpart to be constrained by', () => {
   // Not a connection pair: a propeller diameter constrains nothing.
   assert.equal(connectionGroupOf(['Propellers', 'Specifications', 'Diameter_inches']), undefined)
   assert.equal(connectionGroupOf(['Flight Controller', 'Notes']), undefined)
+})
+
+// ── What a connection TYPE can actually carry ────────────────────────────
+//
+// Unlike the template pairings above this is a RULE, not evidence: the tables
+// come from ArduPilot's own parameter values. So it may genuinely constrain,
+// and the tests below are about where it must refuse to.
+
+
+test('a CAN GNSS speaks DroneCAN and a serial one does not', () => {
+  const can = protocolsForConnection(tables, 'GNSS Receiver', 'CAN1')
+  assert.ok(can?.has('DroneCAN'))
+  assert.ok(!can?.has('uBlox'), 'a CAN receiver was offered a serial protocol')
+
+  const serial = protocolsForConnection(tables, 'GNSS Receiver', 'SERIAL3')
+  assert.ok(serial?.has('uBlox'))
+  assert.ok(!serial?.has('DroneCAN'), 'a serial receiver was offered DroneCAN')
+})
+
+test('an analog battery monitor is not offered an I2C protocol', () => {
+  const analog = protocolsForConnection(tables, 'Battery Monitor', 'Analog')
+  assert.ok(analog?.has('Analog Voltage and Current'))
+  assert.ok(!analog?.has('Solo'), 'an analog monitor was offered an I2C protocol')
+})
+
+test('an unfamiliar type gets no opinion rather than an empty list', () => {
+  // "Nothing is valid" and "I have not heard of this" are very different
+  // answers, and only one of them should empty a dropdown. A vehicle newer
+  // than these tables must not lose its options.
+  assert.equal(protocolsForConnection(tables, 'GNSS Receiver', 'SERIAL9'), undefined)
+  assert.equal(protocolsForConnection(tables, 'GNSS Receiver', ''), undefined)
+})
+
+test('a component whose protocol no parameter enumerates is left alone', () => {
+  // A telemetry radio's protocol comes from SERIAL*_PROTOCOL, which lists
+  // every serial protocol rather than a per-type rule. Constraining it would
+  // be inventing a rule ArduPilot does not have.
+  assert.equal(protocolsForConnection(tables, 'Telemetry', 'SERIAL1'), undefined)
+  assert.equal(protocolsForConnection(tables, 'Propellers', 'SERIAL1'), undefined)
+})
+
+test('every protocol the templates actually used is allowed by the rule', () => {
+  // The strongest check available: 29 real vehicles, and not one of them may
+  // be told its own wiring is invalid. A rule that fails this is wrong, not
+  // the vehicles.
+  const refuted = []
+  for (const [group, byType] of Object.entries(pairings)) {
+    const component = group.split('/')[0]
+    for (const [type, protocols] of Object.entries(byType)) {
+      const allowed = protocolsForConnection(tables, component, type)
+      if (!allowed) continue
+      for (const protocol of protocols) {
+        if (!allowed.has(protocol)) refuted.push(`${group} ${type} → ${protocol}`)
+      }
+    }
+  }
+  assert.deepEqual(refuted, [], `the rule refutes wiring real vehicles use:\n${refuted.join('\n')}`)
 })

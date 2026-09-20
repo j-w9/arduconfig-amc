@@ -56,3 +56,61 @@ export function orderByPairing(
   }
   return { ordered, likely }
 }
+
+/**
+ * The protocols a connection TYPE can actually carry.
+ *
+ * Unlike the template pairings above, this is a rule rather than evidence: the
+ * tables come from ArduPilot's own parameter values, so a GNSS on CAN1 speaks
+ * DroneCAN and nothing else, and a GNSS on SERIAL3 speaks anything except
+ * DroneCAN. Offering the whole list under every type invites a declaration the
+ * sequence cannot resolve, and the operator has no way to know which of thirty
+ * entries their wiring supports.
+ *
+ * Returns undefined when nothing is known — an unfamiliar type, or a component
+ * with no table — because "no opinion" and "nothing is valid" are very
+ * different answers and only one of them should empty a dropdown.
+ */
+export function protocolsForConnection(
+  tables: ConnectionTablesLike,
+  component: string,
+  type: string
+): ReadonlySet<string> | undefined {
+  const table = CONNECTION_TABLES[component]
+  if (!table) return undefined
+
+  const entries = tables[table] as Readonly<Record<string, { type: readonly string[]; protocol: string }>> | undefined
+  if (!entries) return undefined
+
+  const protocols = new Set<string>()
+  let sawType = false
+  for (const entry of Object.values(entries)) {
+    if (!entry?.type?.includes(type)) continue
+    sawType = true
+    protocols.add(entry.protocol)
+  }
+  // A type no entry mentions is one this version has not heard of. Saying
+  // nothing beats emptying the list on a vehicle newer than these tables.
+  return sawType ? protocols : undefined
+}
+
+/**
+ * Which table governs a component's connection.
+ *
+ * Only the components whose protocol is enumerated by a PARAMETER appear here.
+ * A telemetry radio's protocol comes from SERIAL*_PROTOCOL, which is a list of
+ * every serial protocol rather than a per-type rule, so constraining it would
+ * be inventing a rule ArduPilot does not have.
+ */
+const CONNECTION_TABLES: Readonly<Record<string, keyof ConnectionTablesLike>> = {
+  'GNSS Receiver': 'GNSS_RECEIVER_CONNECTION',
+  'Battery Monitor': 'BATT_MONITOR_CONNECTION',
+  'RC Receiver': 'RC_PROTOCOLS_DICT'
+}
+
+/** The parts of the connection tables this module reads. */
+interface ConnectionTablesLike {
+  readonly GNSS_RECEIVER_CONNECTION?: unknown
+  readonly BATT_MONITOR_CONNECTION?: unknown
+  readonly RC_PROTOCOLS_DICT?: unknown
+}

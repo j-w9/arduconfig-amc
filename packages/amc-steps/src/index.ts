@@ -98,7 +98,8 @@ export {
 export {
   type ConnectionPairings,
   connectionGroupOf,
-  orderByPairing
+  orderByPairing,
+  protocolsForConnection
 } from './pairings.js'
 export type { ConnectionEntry, ConnectionTables } from './connection-tables.js'
 export {
