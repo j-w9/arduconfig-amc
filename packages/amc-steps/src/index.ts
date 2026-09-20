@@ -81,3 +81,11 @@ export {
   stepNumber,
   parseStepFile
 } from './load.js'
+export {
+  type ProjectFile,
+  type ProjectRename,
+  type ReadStepFile,
+  type VehicleProject,
+  readVehicleProject
+} from './read-project.js'
+export { type ZipEntry, buildZip } from './zip.js'
