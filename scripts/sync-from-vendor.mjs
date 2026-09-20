@@ -37,6 +37,8 @@ const observed = new Map()
 // the set. Hiding a valid protocol because no template happened to use it
 // would be worse than showing an unlikely one.
 const pairings = new Map()
+// Each template's declaration, keyed "<vehicle>/<template>".
+const templates = {}
 const notePairing = (component, group, node) => {
   const type = node?.Type
   const protocol = node?.Protocol
@@ -81,6 +83,10 @@ if (existsSync(templatesDir)) {
         const components = JSON.parse(readFileSync(file, 'utf8')).Components ?? {}
         walkComponents(components, [])
         walkPairings(components)
+        // The template itself, as a starting point an operator can choose. A
+        // vehicle much like one AMC already describes is most of the
+        // declaration form answered by someone who owned that aircraft.
+        templates[`${vehicle}/${template}`] = components
       } catch {
         // A template we cannot read contributes no suggestions; the field just
         // falls back to free text.
@@ -116,6 +122,15 @@ writeFileSync(
   ) + '\n'
 )
 
+writeFileSync(
+  join(dest, 'vehicle-templates.json'),
+  JSON.stringify(
+    Object.fromEntries(Object.entries(templates).sort(([a], [b]) => a.localeCompare(b))),
+    null,
+    1
+  ) + '\n'
+)
+
 const pin = execFileSync('git', ['-C', join(root, 'vendor/MethodicConfigurator'), 'rev-parse', 'HEAD'])
   .toString()
   .trim()
@@ -124,5 +139,5 @@ writeFileSync(
   JSON.stringify({ upstream: 'https://github.com/ArduPilot/MethodicConfigurator', commit: pin, files: wanted, syncedBy: 'scripts/sync-from-vendor.mjs' }, null, 2) + '\n'
 )
 console.log(
-  `synced ${wanted.length} step files, ${observed.size} observed component fields and ${pairings.size} connection pairings from AMC @ ${pin.slice(0, 8)}`
+  `synced ${wanted.length} step files, ${observed.size} observed component fields, ${pairings.size} connection pairings and ${Object.keys(templates).length} vehicle templates from AMC @ ${pin.slice(0, 8)}`
 )
