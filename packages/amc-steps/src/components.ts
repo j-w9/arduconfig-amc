@@ -28,7 +28,7 @@ export interface ComponentRequirement {
  * Only constant string keys are collected: a computed key cannot be known
  * before the vehicle is, and none of the step files use one.
  */
-function collectPaths(node: Node, root: string, into: (path: string[]) => void): void {
+export function collectPaths(node: Node, root: string, into: (path: string[]) => void): void {
   const chain = (current: Node): string[] | undefined => {
     if (current.kind === 'name') return current.id === root ? [] : undefined
     if (current.kind !== 'index') return undefined
@@ -81,6 +81,19 @@ function collectPaths(node: Node, root: string, into: (path: string[]) => void):
   }
 
   visit(node)
+}
+
+/** Every path into `root` that one expression reads, with no duplicates. */
+export function pathsRead(expression: string, root: string): ComponentPath[] {
+  const found: string[][] = []
+  const seen = new Set<string>()
+  collectPaths(parse(expression), root, (path) => {
+    const key = path.join('\u0000')
+    if (seen.has(key)) return
+    seen.add(key)
+    found.push(path)
+  })
+  return found
 }
 
 /**

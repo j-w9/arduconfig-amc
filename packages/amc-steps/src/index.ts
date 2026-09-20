@@ -26,9 +26,16 @@ export {
   vehicleContext
 } from './run.js'
 export {
+  type Diagnosis,
+  type DiagnosisKind,
+  describePath,
+  diagnose
+} from './diagnose.js'
+export {
   type ComponentPath,
   type ComponentRequirement,
   missingComponents,
+  pathsRead,
   readComponentPath,
   requiredComponents
 } from './components.js'
