@@ -16,6 +16,7 @@ import { autoImportableParameters } from './autoimport.js'
 import type { ParameterDocs } from './docs.js'
 import type { OrderedStep } from './types.js'
 import { parseParamFile } from './param-file.js'
+import type { ConfigurationSummary, SummaryEntry } from './summary.js'
 import { type ParamLine, writeParamFile } from './param-file-writer.js'
 import { applyStep } from './run.js'
 import type { VehicleContext } from './run.js'
@@ -251,4 +252,43 @@ export function completeFile(files: readonly VehicleFile[]): VehicleFile {
     count: sorted.length,
     incomplete: 0
   }
+}
+
+/**
+ * The summary files AMC writes beside the sequence's own.
+ *
+ * `complete.param` says what the method decided; these say what the VEHICLE
+ * now holds, split by who decided it. The split is the useful part: a
+ * calibration result is not a choice anyone made, a read-only value is the
+ * firmware talking about itself, and an identity value belongs to this
+ * airframe and not to the next one. Someone reusing a configuration wants the
+ * fourth file and none of the first three, which is exactly why AMC writes
+ * them apart.
+ *
+ * Empty categories are left out rather than written empty: a file asserting
+ * "nothing was calibrated" is a claim, and its absence is not.
+ */
+export function summaryFiles(summary: ConfigurationSummary): VehicleFile[] {
+  const files: VehicleFile[] = []
+  const add = (filename: string, entries: readonly SummaryEntry[]): void => {
+    if (entries.length === 0) return
+    const lines = entries.map((entry) => ({ name: entry.parameter, value: entry.value }))
+    files.push({
+      filename,
+      text: writeParamFile(lines),
+      count: lines.length,
+      incomplete: 0
+    })
+  }
+
+  // AMC's names, so a directory written here is one its tooling recognises.
+  add('non-default_read-only.param', summary.readOnly)
+  add('non-default_writable_calibrations.param', summary.calibration)
+  add('non-default_writable_ids.param', summary.identity)
+  add('non-default_writable_non-calibrations_non-ids.param', summary.chosen)
+  // What another vehicle of the same design could take as-is: everything
+  // chosen, with this airframe's identity and its own calibration left behind.
+  add('reusable.param', summary.chosen)
+
+  return files
 }

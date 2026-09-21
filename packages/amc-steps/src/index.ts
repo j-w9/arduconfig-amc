@@ -41,6 +41,7 @@ export {
   type VehicleFilesOptions,
   completeFile,
   defaultsFile,
+  summaryFiles,
   unaccountedParameters,
   vehicleFiles
 } from './vehicle-files.js'

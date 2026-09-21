@@ -74,6 +74,11 @@ const COMPONENTS_FILENAME = 'vehicle_components.json'
  */
 const NON_STEP_FILES: ReadonlySet<string> = new Set([
   'complete.param',
+  'reusable.param',
+  'non-default_read-only.param',
+  'non-default_writable_calibrations.param',
+  'non-default_writable_ids.param',
+  'non-default_writable_non-calibrations_non-ids.param',
   'fc_params_not_accounted_for.param',
   'last_uploaded_filename.txt',
   'apm.pdef.xml',
