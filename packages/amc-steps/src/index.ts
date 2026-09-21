@@ -155,3 +155,4 @@ export {
 } from './resume.js'
 export { type PlotOptions, plotTemperatureFit } from './tempcal-plot.js'
 export { hasTuningHistory, tuningReport } from './tuning-report.js'
+export { type RebootWaitInputs, changesBootDelay, rebootWaitSeconds } from './reboot.js'
