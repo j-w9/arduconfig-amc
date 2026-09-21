@@ -17,6 +17,7 @@ import type { ParameterDocs } from './docs.js'
 import type { OrderedStep } from './types.js'
 import { parseParamFile } from './param-file.js'
 import type { ConfigurationSummary, SummaryEntry } from './summary.js'
+import { type Additions, additionsFor } from './additions.js'
 import { type ParamLine, writeParamFile } from './param-file-writer.js'
 import { applyStep } from './run.js'
 import type { VehicleContext } from './run.js'
@@ -34,6 +35,14 @@ export interface VehicleFilesOptions {
    * does not undo the decision.
    */
   readonly overrides?: ReadonlyMap<string, { value: number; reason?: string }>
+  /**
+   * Parameters the operator added to a step themselves, by step filename.
+   *
+   * AMC's step files are editable, and this is how a vehicle's own settings
+   * get recorded against the step they belong to -- the telemetry port's baud
+   * rate, the antenna offset -- none of which the sequence decides.
+   */
+  readonly additions?: Additions
 }
 
 export interface VehicleFile {
@@ -58,7 +67,7 @@ export function vehicleFiles(
   context: VehicleContext,
   options: VehicleFilesOptions = {}
 ): VehicleFile[] {
-  const { docs, defaults, parameters = {}, overrides } = options
+  const { docs, defaults, parameters = {}, overrides, additions } = options
 
   return sequence.map(({ filename, step }) => {
     const outcome = applyStep(step, context, docs ? { docs } : {})
@@ -81,6 +90,19 @@ export function vehicleFiles(
         name: captured,
         value: parameters[captured] as number,
         comment: 'Read from the flight controller'
+      })
+    }
+
+    // What the operator added to this step. Before the overrides, so a value
+    // they then overrode still reads as their decision rather than as two.
+    // Marked, because on the way back in there is otherwise no way to tell an
+    // added parameter from one the sequence used to compute and no longer does.
+    for (const [name, addition] of additionsFor(additions, filename)) {
+      lines.set(name, {
+        name,
+        value: addition.value,
+        manualOverride: true,
+        ...(addition.reason === undefined ? {} : { comment: addition.reason })
       })
     }
 

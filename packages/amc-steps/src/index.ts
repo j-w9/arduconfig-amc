@@ -212,3 +212,13 @@ export {
   backupFiles,
   nextBackupNumber
 } from './backup.js'
+export {
+  type Addition,
+  type AdditionProblem,
+  type Additions,
+  type AddableOptions,
+  addableParameters,
+  additionsFor,
+  checkAddition,
+  startingValue
+} from './additions.js'
