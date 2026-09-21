@@ -1,0 +1,600 @@
+{
+ "chemistries": {
+  "LiIon": {
+   "max": 4.2,
+   "min": 2.5,
+   "recommended": {
+    "Volt per cell arm": 3.6,
+    "Volt per cell crit": 2.8,
+    "Volt per cell low": 3.1,
+    "Volt per cell max": 4.1,
+    "Volt per cell min": 2.7
+   }
+  },
+  "LiIonSS": {
+   "max": 4.2,
+   "min": 2.4,
+   "recommended": {
+    "Volt per cell arm": 3.6,
+    "Volt per cell crit": 2.7,
+    "Volt per cell low": 3.0,
+    "Volt per cell max": 4.2,
+    "Volt per cell min": 2.6
+   }
+  },
+  "LiIonSSHV": {
+   "max": 4.45,
+   "min": 2.4,
+   "recommended": {
+    "Volt per cell arm": 3.8,
+    "Volt per cell crit": 2.7,
+    "Volt per cell low": 3.0,
+    "Volt per cell max": 4.45,
+    "Volt per cell min": 2.6
+   }
+  },
+  "Lipo": {
+   "max": 4.2,
+   "min": 3.0,
+   "recommended": {
+    "Volt per cell arm": 3.8,
+    "Volt per cell crit": 3.3,
+    "Volt per cell low": 3.6,
+    "Volt per cell max": 4.2,
+    "Volt per cell min": 3.2
+   }
+  },
+  "LipoHV": {
+   "max": 4.35,
+   "min": 3.0,
+   "recommended": {
+    "Volt per cell arm": 3.9,
+    "Volt per cell crit": 3.3,
+    "Volt per cell low": 3.6,
+    "Volt per cell max": 4.35,
+    "Volt per cell min": 3.2
+   }
+  },
+  "LipoHVSS": {
+   "max": 4.2,
+   "min": 2.9,
+   "recommended": {
+    "Volt per cell arm": 3.8,
+    "Volt per cell crit": 3.2,
+    "Volt per cell low": 3.5,
+    "Volt per cell max": 4.2,
+    "Volt per cell min": 3.1
+   }
+  },
+  "NiCd": {
+   "max": 1.45,
+   "min": 1.0,
+   "recommended": {
+    "Volt per cell arm": 1.28,
+    "Volt per cell crit": 1.1,
+    "Volt per cell low": 1.2,
+    "Volt per cell max": 1.4,
+    "Volt per cell min": 1.05
+   }
+  },
+  "NiMH": {
+   "max": 1.45,
+   "min": 1.0,
+   "recommended": {
+    "Volt per cell arm": 1.28,
+    "Volt per cell crit": 1.1,
+    "Volt per cell low": 1.2,
+    "Volt per cell max": 1.4,
+    "Volt per cell min": 1.05
+   }
+  }
+ },
+ "duplicates": [
+  {
+   "entries": [
+    [
+     [
+      "Telemetry",
+      "FC Connection",
+      "Type"
+     ],
+     "SERIAL1"
+    ],
+    [
+     [
+      "GNSS Receiver",
+      "FC Connection",
+      "Type"
+     ],
+     "SERIAL1"
+    ]
+   ],
+   "errors": [
+    "Duplicate FC connection type 'SERIAL1' for GNSS Receiver>FC Connection>Type"
+   ],
+   "label": "two components on SERIAL1",
+   "valid": false
+  },
+  {
+   "entries": [
+    [
+     [
+      "Telemetry",
+      "FC Connection",
+      "Type"
+     ],
+     "SERIAL2"
+    ],
+    [
+     [
+      "RC Receiver",
+      "FC Connection",
+      "Type"
+     ],
+     "SERIAL2"
+    ]
+   ],
+   "errors": [],
+   "label": "telemetry and rc receiver may share",
+   "valid": true
+  },
+  {
+   "entries": [
+    [
+     [
+      "GNSS Receiver",
+      "FC Connection",
+      "Type"
+     ],
+     "CAN1"
+    ],
+    [
+     [
+      "Battery Monitor",
+      "FC Connection",
+      "Type"
+     ],
+     "CAN1"
+    ]
+   ],
+   "errors": [],
+   "label": "a CAN bus is shared by design",
+   "valid": true
+  },
+  {
+   "entries": [
+    [
+     [
+      "Telemetry",
+      "FC Connection",
+      "Type"
+     ],
+     "None"
+    ],
+    [
+     [
+      "GNSS Receiver",
+      "FC Connection",
+      "Type"
+     ],
+     "None"
+    ]
+   ],
+   "errors": [],
+   "label": "None is not a port",
+   "valid": true
+  },
+  {
+   "entries": [
+    [
+     [
+      "ESC",
+      "FC->ESC Connection",
+      "Type"
+     ],
+     "SERIAL5"
+    ],
+    [
+     [
+      "ESC",
+      "ESC->FC Telemetry",
+      "Type"
+     ],
+     "SERIAL5"
+    ]
+   ],
+   "errors": [],
+   "label": "esc telemetry shares the esc's own serial line",
+   "valid": true
+  },
+  {
+   "entries": [
+    [
+     [
+      "ESC",
+      "FC->ESC Connection",
+      "Type"
+     ],
+     "SERIAL5"
+    ],
+    [
+     [
+      "Telemetry",
+      "FC Connection",
+      "Type"
+     ],
+     "SERIAL5"
+    ]
+   ],
+   "errors": [
+    "Duplicate FC connection type 'SERIAL5' for Telemetry>FC Connection>Type"
+   ],
+   "label": "an esc does not share with telemetry",
+   "valid": false
+  }
+ ],
+ "entry": [
+  {
+   "label": "tow max in range",
+   "message": "",
+   "path": [
+    "Frame",
+    "Specifications",
+    "TOW max Kg"
+   ],
+   "suggestion": null,
+   "value": "1.2"
+  },
+  {
+   "label": "tow max over 600",
+   "message": "Takeoff Weight must be a float between 0.01 and 600",
+   "path": [
+    "Frame",
+    "Specifications",
+    "TOW max Kg"
+   ],
+   "suggestion": 600,
+   "value": "700"
+  },
+  {
+   "label": "tow max under 0.01",
+   "message": "Takeoff Weight must be a float between 0.01 and 600",
+   "path": [
+    "Frame",
+    "Specifications",
+    "TOW max Kg"
+   ],
+   "suggestion": 0.01,
+   "value": "0.001"
+  },
+  {
+   "label": "tow max not a number",
+   "message": "Invalid float value for Takeoff Weight",
+   "path": [
+    "Frame",
+    "Specifications",
+    "TOW max Kg"
+   ],
+   "suggestion": null,
+   "value": "heavy"
+  },
+  {
+   "label": "cells in range",
+   "message": "",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Number of cells"
+   ],
+   "suggestion": null,
+   "value": "6"
+  },
+  {
+   "label": "cells zero",
+   "message": "Nr of cells must be a int between 1 and 50",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Number of cells"
+   ],
+   "suggestion": 1,
+   "value": "0"
+  },
+  {
+   "label": "cells over 50",
+   "message": "Nr of cells must be a int between 1 and 50",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Number of cells"
+   ],
+   "suggestion": 50,
+   "value": "51"
+  },
+  {
+   "label": "cells fractional",
+   "message": "Invalid int value for Nr of cells",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Number of cells"
+   ],
+   "suggestion": null,
+   "value": "4.5"
+  },
+  {
+   "label": "capacity too small",
+   "message": "mAh capacity must be a int between 100 and 1000000",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Capacity mAh"
+   ],
+   "suggestion": 100,
+   "value": "99"
+  },
+  {
+   "label": "capacity fine",
+   "message": "",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Capacity mAh"
+   ],
+   "suggestion": null,
+   "value": "5200"
+  },
+  {
+   "label": "poles fine",
+   "message": "",
+   "path": [
+    "Motors",
+    "Specifications",
+    "Poles"
+   ],
+   "suggestion": null,
+   "value": "14"
+  },
+  {
+   "label": "poles below 2",
+   "message": "Motor Poles must be a int between 2 and 100",
+   "path": [
+    "Motors",
+    "Specifications",
+    "Poles"
+   ],
+   "suggestion": 2,
+   "value": "1"
+  },
+  {
+   "label": "poles over 100",
+   "message": "Motor Poles must be a int between 2 and 100",
+   "path": [
+    "Motors",
+    "Specifications",
+    "Poles"
+   ],
+   "suggestion": 100,
+   "value": "102"
+  },
+  {
+   "label": "prop diameter fine",
+   "message": "",
+   "path": [
+    "Propellers",
+    "Specifications",
+    "Diameter_inches"
+   ],
+   "suggestion": null,
+   "value": "10"
+  },
+  {
+   "label": "prop diameter tiny",
+   "message": "Propeller Diameter must be a float between 0.3 and 400",
+   "path": [
+    "Propellers",
+    "Specifications",
+    "Diameter_inches"
+   ],
+   "suggestion": 0.3,
+   "value": "0.2"
+  },
+  {
+   "label": "tow max below tow min",
+   "message": "is below the TOW min Kg of 0.6",
+   "path": [
+    "Frame",
+    "Specifications",
+    "TOW max Kg"
+   ],
+   "suggestion": 0.61,
+   "value": "0.3"
+  },
+  {
+   "label": "tow min above tow max",
+   "message": "is above the TOW max Kg of 1.2",
+   "path": [
+    "Frame",
+    "Specifications",
+    "TOW min Kg"
+   ],
+   "suggestion": 1.19,
+   "value": "3"
+  },
+  {
+   "label": "cell max fine",
+   "message": "",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell max"
+   ],
+   "suggestion": null,
+   "value": "4.2"
+  },
+  {
+   "label": "cell max above lipo limit",
+   "message": "is above the Lipo maximum limit of 4.2",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell max"
+   ],
+   "suggestion": 4.2,
+   "value": "4.35"
+  },
+  {
+   "label": "cell min below lipo limit",
+   "message": "is below the Lipo minimum limit of 3.0",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell min"
+   ],
+   "suggestion": 3.0,
+   "value": "2.5"
+  },
+  {
+   "label": "cell voltage not a number",
+   "message": "could not convert string to float: 'flat'\nInvalid value. Will be set to the recommended value.",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell low"
+   ],
+   "suggestion": 3.6,
+   "value": "flat"
+  },
+  {
+   "label": "cell max below arm",
+   "message": "is below the Volt per cell arm of 3.8",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell max"
+   ],
+   "suggestion": 3.8099999999999996,
+   "value": "3.5"
+  },
+  {
+   "label": "cell arm above max",
+   "message": "is above the Lipo maximum limit of 4.2",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell arm"
+   ],
+   "suggestion": 4.2,
+   "value": "4.3"
+  },
+  {
+   "label": "cell arm below low",
+   "message": "is below the Volt per cell low of 3.6",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell arm"
+   ],
+   "suggestion": 3.61,
+   "value": "3.4"
+  },
+  {
+   "label": "cell low above arm",
+   "message": "is above the Volt per cell arm of 3.8",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell low"
+   ],
+   "suggestion": 3.79,
+   "value": "3.9"
+  },
+  {
+   "label": "cell low below crit",
+   "message": "is below the Volt per cell crit of 3.3",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell low"
+   ],
+   "suggestion": 3.3099999999999996,
+   "value": "3.1"
+  },
+  {
+   "label": "cell crit above low",
+   "message": "is above the Volt per cell low of 3.6",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell crit"
+   ],
+   "suggestion": 3.5900000000000003,
+   "value": "3.7"
+  },
+  {
+   "label": "cell min above low",
+   "message": "is above the Volt per cell low of 3.6",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell min"
+   ],
+   "suggestion": 3.5900000000000003,
+   "value": "3.7"
+  },
+  {
+   "label": "cell min above crit is fine",
+   "message": "",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell min"
+   ],
+   "suggestion": null,
+   "value": "3.5"
+  },
+  {
+   "label": "cell crit below min is fine",
+   "message": "",
+   "path": [
+    "Battery",
+    "Specifications",
+    "Volt per cell crit"
+   ],
+   "suggestion": null,
+   "value": "3.1"
+  }
+ ],
+ "poles": [
+  {
+   "errors": [],
+   "value": "14"
+  },
+  {
+   "errors": [
+    "Number of magnetic rotor poles must be even for Motors>Specifications>Poles"
+   ],
+   "value": "13"
+  },
+  {
+   "errors": [],
+   "value": "2"
+  },
+  {
+   "errors": [
+    "Number of magnetic rotor poles must be even for Motors>Specifications>Poles"
+   ],
+   "value": "3"
+  },
+  {
+   "errors": [
+    "Invalid integer value for Motors>Specifications>Poles"
+   ],
+   "value": "many"
+  },
+  {
+   "errors": [],
+   "value": "42"
+  }
+ ]
+}

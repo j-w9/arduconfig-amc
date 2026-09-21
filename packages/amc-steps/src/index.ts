@@ -171,3 +171,16 @@ export {
   defaultSelection,
   externalParamWrites
 } from './external-params.js'
+export {
+  ENTRY_LIMITS,
+  type ComponentPath as DeclarationPath,
+  type Declaration,
+  type ValidateOptions,
+  type ValidationError,
+  cellVoltagesFor,
+  declarationFrom,
+  validateCellVoltage,
+  validateDeclaration,
+  validateEntryLimit,
+  validateMotorPoles
+} from './validate-components.js'
