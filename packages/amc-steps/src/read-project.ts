@@ -16,7 +16,7 @@
  */
 
 import { type ParamEntry, parseParamFile } from './param-file.js'
-import { type ResumePoint, lastWrittenFrom, resumePoint } from './resume.js'
+import { type ResumeOptions, type ResumePoint, lastWrittenFrom, resumePoint } from './resume.js'
 import type { OrderedStep } from './types.js'
 
 /** A file handed in, however the caller got hold of it. */
@@ -118,7 +118,8 @@ const NON_STEP_PATTERN =
  */
 export function readVehicleProject(
   sequence: readonly OrderedStep[],
-  files: readonly ProjectFile[]
+  files: readonly ProjectFile[],
+  options: ResumeOptions = {}
 ): VehicleProject {
   const byName = new Map<string, ProjectFile>()
   for (const file of files) {
@@ -175,7 +176,7 @@ export function readVehicleProject(
 
   return {
     steps,
-    resume: resumePoint(sequence, lastWrittenFrom(files)),
+    resume: resumePoint(sequence, lastWrittenFrom(files), options),
     ...(defaultsFile ? { defaults: parameterValuesOf(defaultsFile.text) } : {}),
     ...(componentsFile ? { components: componentsFile.text } : {}),
     overrides,

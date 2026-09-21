@@ -22,7 +22,7 @@ export interface ResumePoint {
   /** The step to open, or undefined when the sequence has nothing to resume. */
   readonly filename?: string
   /** Why that step: worth saying, because "start over" surprises people. */
-  readonly reason: 'after-last-written' | 'finished' | 'unrecognised' | 'fresh'
+  readonly reason: 'after-last-written' | 'finished' | 'unrecognised' | 'fresh' | 'fresh-no-tempcal'
   /** The step the directory says was written last, when it named a real one. */
   readonly lastWritten?: string
 }
@@ -35,15 +35,49 @@ export interface ResumePoint {
  * by an older AMC names steps this one renamed, so the name is resolved
  * through `old_filenames` before being called unrecognised.
  */
+export interface ResumeOptions {
+  /**
+   * Whether this firmware has the IMU temperature calibration at all.
+   *
+   * It is a build-time option in ArduPilot, left out on boards short of flash,
+   * and AMC tests for it by name: `"INS_TCAL1_ENABLE" in fc_parameters`. When
+   * the firmware does not have it, AMC opens a fresh directory two steps in
+   * rather than on a calibration the vehicle can never perform.
+   *
+   * Undefined means "not known", which AMC treats as available -- its own
+   * check is true when there are no parameters at all, because a tab opened on
+   * the bench should show the sequence from its start.
+   */
+  readonly supportsTemperatureCalibration?: boolean
+}
+
+/** How many leading steps the temperature calibration occupies. */
+const TEMPCAL_LEADING_STEPS = 2
+
 export function resumePoint(
   sequence: readonly OrderedStep[],
-  lastWritten: string | undefined
+  lastWritten: string | undefined,
+  options: ResumeOptions = {}
 ): ResumePoint {
   if (sequence.length === 0) return { reason: 'fresh' }
 
   const first = sequence[0]?.filename
   const recorded = lastWritten?.trim()
-  if (!recorded) return { ...(first ? { filename: first } : {}), reason: 'fresh' }
+  if (!recorded) {
+    // A firmware without the temperature calibration opens past it. Otherwise
+    // every such vehicle starts on a step it can never do, and the operator's
+    // first impression of the method is a dead end.
+    if (options.supportsTemperatureCalibration === false) {
+      // Fewer steps than the calibration occupies would leave nothing to open;
+      // the last is then the only honest answer, as it is in AMC.
+      const past =
+        sequence.length > TEMPCAL_LEADING_STEPS
+          ? sequence[TEMPCAL_LEADING_STEPS]?.filename
+          : sequence[sequence.length - 1]?.filename
+      return { ...(past ? { filename: past } : {}), reason: 'fresh-no-tempcal' }
+    }
+    return { ...(first ? { filename: first } : {}), reason: 'fresh' }
+  }
 
   // Resolve through the renames first: a directory from an older AMC records
   // a name this sequence has since changed, and treating that as unrecognised

@@ -68,7 +68,13 @@ const ACCOUNTED_FOR = {
  * have at all -- was invisible for the same reason. Naming the methods to look
  * at was choosing what could be found.
  */
-const BEHAVIOUR_MODULES = ['data_model_parameter_editor.py', 'data_model_configuration_step.py']
+const BEHAVIOUR_MODULES = [
+  'data_model_parameter_editor.py',
+  'data_model_configuration_step.py',
+  // Where the directory itself is built and read. Added after the two
+  // autobackup files turned out to live here and nowhere the audit looked.
+  'backend_filesystem.py'
+]
 
 function publicBehaviour() {
   const found = new Set()
@@ -183,7 +189,48 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   get_sorted_phases_with_end_and_weight: "widths for AMC's phase bar; the phase navigation here is a list, not a proportional bar",
   get_last_configuration_step_number: "an index into AMC's file list",
   get_log_analysis_context_inputs: "inputs for AMC's log analysis window; the log is read here for the calibration, the defaults and the step evidence",
-  revert_vehicle_components: 'undo on the declaration form; the browser form and the stored progress already cover reopening'
+  revert_vehicle_components: 'undo on the declaration form; the browser form and the stored progress already cover reopening',
+
+  // backend_filesystem: building and reading the directory.
+  read_params_from_files: 'readVehicleProject',
+  rename_parameter_files: "old_filenames, resolved when a directory is read",
+  compound_params: 'completeFile, which accumulates every step in order',
+  export_to_param: 'writeParamFile',
+  annotate_intermediate_comments_to_param_dict: 'annotateParamFile, behind the documentation toggle',
+  categorize_parameters: 'summarize, and the four non-default summary files',
+  zip_files: 'buildZip, deterministic and checked against system unzip',
+  add_configuration_file_to_zip: 'the same writer, one entry at a time',
+  zip_file_path: 'projectFilename',
+  write_last_uploaded_filename: 'lastWrittenFile, which is what resuming reads',
+  get_start_file: 'resumePoint, including opening past the temperature calibration on a firmware that has none',
+  backup_fc_parameters_to_file: 'backupFiles',
+  find_lowest_available_backup_number: 'nextBackupNumber',
+  get_eval_variables: 'vehicleContext',
+  calculate_derived_and_forced_param_changes: 'applyStep',
+  merge_forced_or_derived_parameters: 'the same, which merges as it evaluates',
+  apply_computed_changes: 'the same',
+  save_vehicle_params_to_files: 'vehicleFiles, whose caller decides where bytes go',
+  set_param_default_values_if_different: 'defaultsFile',
+  write_param_default_values_to_file: 'the same',
+  get_download_url_and_local_filename: "onInstallFile, for the two steps needing a Lua applet",
+  get_upload_local_and_remote_filenames: 'the same',
+  copy_template_files_to_new_vehicle_dir: "the baseline, seeded from AMC's empty template for the firmware",
+  tempcal_imu_result_param_tuple: 'the calibration is written into the step that owns it',
+  vehicle_configuration_file_exists: 'a directory here is a set of files in memory, not a path',
+  vehicle_configuration_files_exist: 'the same',
+  directory_exists: 'the same',
+  new_vehicle_dir: 'the same',
+  get_vehicle_directory_name: 'the same',
+  get_directory_name_from_full_path: 'the same',
+  getcwd: 'the same',
+  zip_file_exists: 'the archive is a download, never a file on disk here',
+  remove_created_files_and_vehicle_dir: 'nothing is created on disk to remove',
+  re_init: 'switching sequence rebuilds the form and re-runs the steps',
+  vehicle_image_filepath: 'a photo of the aircraft, which the operator supplies',
+  vehicle_image_exists: 'the same',
+  str_to_bool: "a parsing helper for AMC's own settings",
+  get_git_commit_hash: "AMC's build metadata, about the tool rather than the vehicle",
+  add_argparse_arguments: "AMC's command line, which a browser tab has no equivalent of"
 }
 
 test('every public behaviour AMC has, somebody has looked at', () => {

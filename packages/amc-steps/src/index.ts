@@ -229,3 +229,4 @@ export {
   baselineVersions,
   releaseLine
 } from './baseline.js'
+export type { ResumeOptions } from './resume.js'

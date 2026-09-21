@@ -96,3 +96,43 @@ test('what is written is what reads back', () => {
   assert.equal(lastWrittenFrom([written]), sequence[5].filename)
   assert.equal(resumePoint(sequence, lastWrittenFrom([written])).filename, sequence[6].filename)
 })
+
+test('a firmware without the temperature calibration opens past it', () => {
+  // ArduPilot leaves the IMU temperature calibration out on boards short of
+  // flash. AMC tests for it by name — "INS_TCAL1_ENABLE" in fc_parameters —
+  // and opens a fresh directory two steps in rather than on a calibration the
+  // vehicle can never perform.
+  const point = resumePoint(sequence, undefined, { supportsTemperatureCalibration: false })
+  assert.equal(point.reason, 'fresh-no-tempcal')
+  assert.equal(point.filename, sequence[2].filename)
+  // And that really is past both calibration steps.
+  assert.match(sequence[0].filename, /imu_temperature_calibration/)
+  assert.match(sequence[1].filename, /imu_temperature_calibration/)
+  assert.doesNotMatch(point.filename, /imu_temperature_calibration_setup|_results/)
+})
+
+test('a firmware that has it opens at the start, and so does an unknown one', () => {
+  // AMC's own check is true when there are no parameters at all: a tab opened
+  // on the bench should show the sequence from its beginning.
+  for (const options of [{ supportsTemperatureCalibration: true }, {}]) {
+    const point = resumePoint(sequence, undefined, options)
+    assert.equal(point.reason, 'fresh')
+    assert.equal(point.filename, sequence[0].filename)
+  }
+})
+
+test('a recorded position beats the temperature-calibration rule', () => {
+  // The rule is about where to START. An operator who has got somewhere is
+  // owed their place back regardless of what the firmware supports.
+  const point = resumePoint(sequence, sequence[4].filename, {
+    supportsTemperatureCalibration: false
+  })
+  assert.equal(point.reason, 'after-last-written')
+  assert.equal(point.filename, sequence[5].filename)
+})
+
+test('a sequence too short to skip into still opens somewhere', () => {
+  const tiny = sequence.slice(0, 2)
+  const point = resumePoint(tiny, undefined, { supportsTemperatureCalibration: false })
+  assert.equal(point.filename, tiny[tiny.length - 1].filename)
+})
