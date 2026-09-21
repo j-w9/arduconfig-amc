@@ -12,7 +12,12 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 
-import { connectionGroupOf, orderByPairing, protocolsForConnection } from '../packages/amc-steps/dist/index.js'
+import {
+  connectionGroupOf,
+  escTelemetryMirror,
+  orderByPairing,
+  protocolsForConnection
+} from '../packages/amc-steps/dist/index.js'
 
 const pairings = JSON.parse(
   readFileSync(fileURLToPath(new URL('../steps/component-pairings.json', import.meta.url)), 'utf8')
@@ -132,4 +137,47 @@ test('every protocol the templates actually used is allowed by the rule', () => 
     }
   }
   assert.deepEqual(refuted, [], `the rule refutes wiring real vehicles use:\n${refuted.join('\n')}`)
+})
+
+// ── ESC telemetry carried by the control connection ──────────────────────
+
+test('a single-wire ESC protocol mirrors its telemetry connection', () => {
+  // FETtecOneWire, Torqeedo, CoDevESC and DroneCAN carry telemetry back over
+  // the link that drives the motors. Asking the operator to declare it
+  // separately is asking a question with one answer, and inviting a different
+  // one that the sequence would then compute from.
+  for (const protocol of ['FETtecOneWire', 'Torqeedo', 'CoDevESC', 'DroneCAN']) {
+    const mirror = escTelemetryMirror(tables, 'ArduCopter', protocol)
+    assert.equal(mirror.type, true, `${protocol} should mirror its telemetry type`)
+    assert.equal(mirror.protocol, true, `${protocol} should mirror its telemetry protocol`)
+  }
+})
+
+test('DShot does NOT mirror, because there the question is real', () => {
+  // It can answer back on the same wire (BDShot), use a dedicated serial
+  // port, or none at all.
+  const mirror = escTelemetryMirror(tables, 'ArduCopter', 'DShot600')
+  assert.equal(mirror.type, false)
+  assert.equal(mirror.protocol, false)
+})
+
+test('a plain PWM ESC does not mirror either', () => {
+  const mirror = escTelemetryMirror(tables, 'ArduCopter', 'Normal')
+  assert.equal(mirror.type, false)
+  assert.equal(mirror.protocol, false)
+})
+
+test('the MOT_PWM_TYPE number works as well as the protocol name', () => {
+  // The form knows the protocol; the vehicle's parameters know the number.
+  assert.deepEqual(
+    escTelemetryMirror(tables, 'ArduCopter', '100'),
+    escTelemetryMirror(tables, 'ArduCopter', 'FETtecOneWire')
+  )
+})
+
+test('an unknown protocol or firmware mirrors nothing', () => {
+  // Greying out a field on a guess would stop an operator describing their
+  // own vehicle.
+  assert.deepEqual(escTelemetryMirror(tables, 'ArduCopter', 'NoSuchProtocol'), { type: false, protocol: false })
+  assert.deepEqual(escTelemetryMirror(tables, 'NoSuchFirmware', 'DroneCAN'), { type: false, protocol: false })
 })

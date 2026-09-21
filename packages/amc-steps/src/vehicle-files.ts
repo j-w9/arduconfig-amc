@@ -216,3 +216,39 @@ export function unaccountedParameters(
 function sameWithin(a: number, b: number, tolerance: number): boolean {
   return Math.abs(a - b) <= Math.max(tolerance, Math.abs(a) * tolerance)
 }
+
+/**
+ * Every value the sequence decided, compounded into one file.
+ *
+ * AMC writes this as `complete.param`, and it answers a question the per-step
+ * files cannot: what does the method say this vehicle should be, all told?
+ * Several steps set the same parameter — LOG_BITMASK is touched by half a
+ * dozen — so the answer is the LAST step to set it, not the first, and
+ * reading the directory in order is the only way to get it.
+ */
+export function completeFile(files: readonly VehicleFile[]): VehicleFile {
+  const lines = new Map<string, ParamLine>()
+  for (const file of files) {
+    // The firmware's own defaults are not decisions, so they are not part of
+    // what the method decided.
+    if (file.filename === '00_default.param') continue
+    for (const entry of parseParamFile(file.text).values()) {
+      lines.set(entry.name, {
+        name: entry.name,
+        value: entry.value,
+        // The step that settled it, which is the thing a compounded file
+        // otherwise loses: without it, a value has no account of itself.
+        comment: `${file.filename}${entry.comment ? ` — ${entry.comment}` : ''}`,
+        ...(entry.manualOverride ? { manualOverride: true } : {})
+      })
+    }
+  }
+
+  const sorted = [...lines.values()].sort((a, b) => a.name.localeCompare(b.name))
+  return {
+    filename: 'complete.param',
+    text: writeParamFile(sorted),
+    count: sorted.length,
+    incomplete: 0
+  }
+}

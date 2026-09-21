@@ -39,12 +39,16 @@ export {
   type UnaccountedOptions,
   type VehicleFile,
   type VehicleFilesOptions,
+  completeFile,
   defaultsFile,
   unaccountedParameters,
   vehicleFiles
 } from './vehicle-files.js'
 export {
+  type AnnotationDoc,
+  type AnnotationDocs,
   type ParamLine,
+  annotateParamFile,
   formatParamValue,
   linesFromEntries,
   writeParamFile
@@ -99,7 +103,9 @@ export {
 } from './thread.js'
 export {
   type ConnectionPairings,
+  type EscTelemetryMirror,
   connectionGroupOf,
+  escTelemetryMirror,
   orderByPairing,
   protocolsForConnection
 } from './pairings.js'
@@ -136,3 +142,10 @@ export {
   imuSamplesFromLog,
   polyfit
 } from './tempcal.js'
+export {
+  LAST_WRITTEN_FILENAME,
+  type ResumePoint,
+  lastWrittenFile,
+  lastWrittenFrom,
+  resumePoint
+} from './resume.js'

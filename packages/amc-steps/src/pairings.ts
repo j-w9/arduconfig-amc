@@ -114,3 +114,57 @@ interface ConnectionTablesLike {
   readonly BATT_MONITOR_CONNECTION?: unknown
   readonly RC_PROTOCOLS_DICT?: unknown
 }
+
+export interface EscTelemetryMirror {
+  /** The ESC->FC Telemetry Type is fixed to the control connection's. */
+  readonly type: boolean
+  /** The telemetry Protocol is fixed to the control connection's. */
+  readonly protocol: boolean
+}
+
+/**
+ * Whether an ESC's telemetry is carried by its control connection.
+ *
+ * Some ESC protocols are one conversation on one wire: FETtecOneWire,
+ * Torqeedo, CoDevESC and DroneCAN all carry telemetry back over the same link
+ * that drives the motors. For those, asking the operator to declare the
+ * telemetry connection separately is asking a question with one possible
+ * answer — and inviting them to give a different one, which the sequence
+ * would then compute from.
+ *
+ * DShot deliberately does NOT mirror. It can answer back on the same wire
+ * (BDShot), but it can also use a dedicated serial port or none at all, so
+ * the telemetry connection is a real question there.
+ *
+ * Read from the same table AMC reads: an entry whose only telemetry option is
+ * `same_as_FC_to_ESC` mirrors the type; one where that appears as a VALUE
+ * mirrors the protocol.
+ */
+export function escTelemetryMirror(
+  tables: EscTablesLike,
+  firmware: string,
+  pwmTypeOrProtocol: string
+): EscTelemetryMirror {
+  const byFirmware = tables.ESC_CONNECTION_DICT?.[firmware] as
+    | Readonly<Record<string, { protocol?: string; ESC_to_FC?: Readonly<Record<string, string>> }>>
+    | undefined
+  if (!byFirmware) return { type: false, protocol: false }
+
+  // Named by value ("6") or by protocol ("DShot600"), because the form knows
+  // the protocol while the parameters know the number.
+  const entry =
+    byFirmware[pwmTypeOrProtocol] ??
+    Object.values(byFirmware).find((candidate) => candidate?.protocol === pwmTypeOrProtocol)
+  const escToFc = entry?.ESC_to_FC
+  if (!escToFc) return { type: false, protocol: false }
+
+  const keys = Object.keys(escToFc)
+  return {
+    type: keys.length === 1 && keys[0] === 'same_as_FC_to_ESC',
+    protocol: Object.values(escToFc).includes('same_as_FC_to_ESC')
+  }
+}
+
+interface EscTablesLike {
+  readonly ESC_CONNECTION_DICT?: Readonly<Record<string, unknown>>
+}

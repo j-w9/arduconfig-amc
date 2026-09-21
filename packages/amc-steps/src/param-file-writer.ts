@@ -69,3 +69,79 @@ export function linesFromEntries(entries: ReadonlyMap<string, ParamEntry>): Para
     ...(entry.manualOverride ? { manualOverride: true } : {})
   }))
 }
+
+/**
+ * A parameter file with ArduPilot's documentation written above each value.
+ *
+ * AMC can annotate the files it writes, and the reason is the method's: a
+ * directory is something an operator opens months later, or hands to someone
+ * who did not configure the vehicle. `ATC_RAT_RLL_P,0.135` means nothing on
+ * its own; with its name, its range and its units above it, the file explains
+ * itself without ArduPilot's wiki open in another window.
+ *
+ * The annotation is a comment block, so an annotated file still parses as an
+ * ordinary `.param` file — which is what lets `readVehicleProject` read a
+ * directory back whether or not it was annotated.
+ */
+export function annotateParamFile(text: string, docs: AnnotationDocs): string {
+  const out: string[] = []
+  let first = true
+
+  for (const rawLine of text.split('\n')) {
+    const line = rawLine.trim()
+    if (line.length === 0 || line.startsWith('#')) {
+      if (line.length > 0) out.push(rawLine)
+      continue
+    }
+    const name = /^([^,\s]+)/.exec(line)?.[1]
+    const doc = name ? docs(name) : undefined
+    if (doc) {
+      // A blank line between entries, but not above the first: a file that
+      // opens with one looks like it lost something.
+      if (!first) out.push('')
+      for (const comment of annotationLines(doc)) out.push(`# ${comment}`)
+    }
+    out.push(rawLine)
+    first = false
+  }
+
+  return out.length > 0 ? `${out.join('\n')}\n` : ''
+}
+
+/** What annotation needs from the parameter documentation. */
+export type AnnotationDocs = (parameter: string) => AnnotationDoc | undefined
+
+export interface AnnotationDoc {
+  readonly label?: string
+  readonly description?: string
+  readonly units?: string
+  readonly minimum?: number
+  readonly maximum?: number
+  readonly options?: readonly { readonly value: number; readonly label: string }[]
+  readonly rebootRequired?: boolean
+}
+
+function annotationLines(doc: AnnotationDoc): string[] {
+  const lines: string[] = []
+  if (doc.label) lines.push(doc.label)
+  if (doc.description && doc.description !== doc.label) lines.push(doc.description)
+
+  const facts: string[] = []
+  if (doc.minimum !== undefined && doc.maximum !== undefined) {
+    facts.push(`Range: ${doc.minimum} to ${doc.maximum}`)
+  }
+  if (doc.units) facts.push(`Units: ${doc.units}`)
+  // Worth its own line rather than buried: a value that does nothing until
+  // the vehicle restarts is the commonest way a change looks like it failed.
+  if (doc.rebootRequired) facts.push('Reboot required')
+  if (facts.length > 0) lines.push(facts.join(' · '))
+
+  if (doc.options && doc.options.length > 0) {
+    // Capped, because a bitmask parameter can carry dozens and the file is
+    // meant to be readable rather than complete.
+    const shown = doc.options.slice(0, 12).map((option) => `${option.value}: ${option.label}`)
+    if (doc.options.length > shown.length) shown.push(`… ${doc.options.length - shown.length} more`)
+    lines.push(`Values: ${shown.join(', ')}`)
+  }
+  return lines
+}

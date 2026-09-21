@@ -64,6 +64,29 @@ const DEFAULTS_FILENAME = '00_default.param'
 const COMPONENTS_FILENAME = 'vehicle_components.json'
 
 /**
+ * Files a vehicle directory holds that are not steps.
+ *
+ * Reported as "left unread" they would look like the operator's work being
+ * dropped, when in fact they are the directory's own bookkeeping: a summary
+ * of what every step decided, a note of where the operator got to, the
+ * parameters the sequence did not account for, and the documentation and
+ * plots AMC writes alongside.
+ */
+const NON_STEP_FILES: ReadonlySet<string> = new Set([
+  'complete.param',
+  'fc_params_not_accounted_for.param',
+  'last_uploaded_filename.txt',
+  'apm.pdef.xml',
+  'vehicle.jpg',
+  'tempcal_gyro.png',
+  'tempcal_acc.png',
+  'tuning_report.csv'
+])
+
+/** AMC also writes per-step documentation beside each file. */
+const NON_STEP_PATTERN = /\.pdef\.xml$|^fc_params_missing_or_different/
+
+/**
  * Read a directory against a sequence.
  *
  * The sequence is what gives the files meaning, so reading a Copter directory
@@ -117,7 +140,14 @@ export function readVehicleProject(
   const defaultsFile = byName.get(DEFAULTS_FILENAME)
   const componentsFile = byName.get(COMPONENTS_FILENAME)
   const unmatched = [...byName.keys()]
-    .filter((name) => !claimed.has(name) && name !== DEFAULTS_FILENAME && name !== COMPONENTS_FILENAME)
+    .filter(
+      (name) =>
+        !claimed.has(name) &&
+        name !== DEFAULTS_FILENAME &&
+        name !== COMPONENTS_FILENAME &&
+        !NON_STEP_FILES.has(name) &&
+        !NON_STEP_PATTERN.test(name)
+    )
     .sort()
 
   return {
