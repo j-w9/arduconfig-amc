@@ -103,7 +103,14 @@ def _exec_literals(path: Path, namespace: dict) -> None:
             # The annotation is dropped rather than kept: `dict[str, tuple[...] | str]`
             # is evaluated at runtime and fails without the real imports, and
             # only the VALUE is wanted here.
-            kept.append(ast.Assign(targets=[node.target], value=node.value, lineno=node.lineno))
+            # Every position copied from the node it replaces, not just
+            # `lineno`. Setting the start alone leaves `end_lineno` pointing at
+            # wherever the default put it, and Python 3.13+ validates that the
+            # range is ordered -- it raises "AST node line range (13, 1) is not
+            # valid" and compiles nothing. Python 3.9 does not check, so this
+            # ran locally and failed in CI for seven hours.
+            replacement = ast.Assign(targets=[node.target], value=node.value)
+            kept.append(ast.copy_location(replacement, node))
     module = ast.fix_missing_locations(ast.Module(body=kept, type_ignores=[]))
     exec(compile(module, str(path), "exec"), namespace)  # noqa: S102
 
