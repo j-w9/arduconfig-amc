@@ -204,3 +204,11 @@ export {
   answerableFromVehicle,
   templateOnlyParameters
 } from './template-only.js'
+export {
+  FIRST_BACKUP,
+  MAX_BACKUP,
+  type BackupFile,
+  type BackupOptions,
+  backupFiles,
+  nextBackupNumber
+} from './backup.js'

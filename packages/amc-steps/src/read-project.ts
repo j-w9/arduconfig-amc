@@ -98,8 +98,16 @@ const NON_STEP_FILES: ReadonlySet<string> = new Set([
   'tuning_report.csv'
 ])
 
-/** AMC also writes per-step documentation beside each file. */
-const NON_STEP_PATTERN = /\.pdef\.xml$|^fc_params_missing_or_different|^tempcal_[a-z]+(_imu\d+)?\.(png|svg)$/
+/**
+ * AMC also writes per-step documentation beside each file, and the parameter
+ * snapshots it takes of the vehicle.
+ *
+ * `autobackup_*` is the directory's own bookkeeping, not a step: reporting one
+ * as a file left unread would tell the operator their work was dropped when
+ * nothing of the sort happened -- the same way a retired step file used to.
+ */
+const NON_STEP_PATTERN =
+  /\.pdef\.xml$|^fc_params_missing_or_different|^autobackup_|^tempcal_[a-z]+(_imu\d+)?\.(png|svg)$/
 
 /**
  * Read a directory against a sequence.

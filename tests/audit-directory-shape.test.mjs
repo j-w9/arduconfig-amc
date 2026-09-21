@@ -10,7 +10,7 @@
 // rather than as something nobody noticed.
 
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 
@@ -30,11 +30,20 @@ const vendor = fileURLToPath(
  *     a fragment rather than a filename.
  */
 function amcDirectoryFiles() {
-  const sources = ['backend_filesystem.py', 'data_model_parameter_editor.py']
+  // Every module, not a chosen two.
+  //
+  // This used to read backend_filesystem.py and data_model_parameter_editor.py
+  // only, and missed that AMC writes autobackup_00_before_... into the vehicle
+  // directory -- the snapshot of what the aircraft held before AMC ever
+  // touched it -- because that literal lives in __main__.py. Picking the
+  // modules to scrape was picking the answer.
   const found = new Set()
-  for (const source of sources) {
+  for (const source of readdirSync(vendor)) {
+    if (!source.endsWith('.py')) continue
     const text = readFileSync(vendor + source, 'utf8')
-    for (const match of text.matchAll(/"([a-z0-9_.-]+\.(?:param|csv|txt|json|xml|png|jpg))"/g)) {
+    // The `f?` and the brace class catch f-strings: autobackup_{n:02d}.param
+    // is a real filename AMC writes and a plain-literal scrape cannot see it.
+    for (const match of text.matchAll(/f?"([a-z0-9_.{}:<>-]+\.(?:param|csv|txt|json|xml|png|jpg|svg))"/g)) {
       const filename = match[1]
       // A fragment, not a name: nothing is written to ".pdef.xml".
       if (filename.startsWith('.')) continue
@@ -57,6 +66,8 @@ const OURS = new Set([
   'non-default_writable_non-calibrations_non-ids.param',
   'last_uploaded_filename.txt',
   'tuning_report.csv',
+  'autobackup_00_before_ardupilot_methodic_configurator.param',
+  'autobackup_{backup_num:02d}.param',
   // Generated names, matched by shape below rather than spelled out.
   'tempcal_gyro_imu1.svg',
   'fc_params_missing_or_different_in_the_amc_param_files_X_to_Y.param'
@@ -70,7 +81,21 @@ const DELIBERATELY_ABSENT = new Map([
   ['apm.pdef.xml', 'ArduPilot\'s whole parameter documentation — the app ships this metadata already, and the opt-in annotation writes it into the files themselves rather than beside them'],
   ['vehicle.jpg', 'a photo of the aircraft, which the operator supplies and nothing here can generate'],
   ['tempcal_gyro.png', 'drawn as SVG instead, per IMU, and written under tempcal_gyro_imuN.svg'],
-  ['tempcal_acc.png', 'the accelerometer fit is written into the parameters; only the gyro is plotted']
+  ['tempcal_acc.png', 'the accelerometer fit is written into the parameters; only the gyro is plotted'],
+  // Not vehicle-directory files at all. Scraping every module rather than two
+  // chosen ones is what makes the audit trustworthy, and the cost of that is
+  // having to say why each of these does not belong to a vehicle.
+  ['configuration_steps_schema.json', 'AMC\'s own install data — the schema its step files are validated against, not something a vehicle directory holds'],
+  ['vehicle_components_schema.json', 'likewise install data; vendored under steps/ for validation rather than written per vehicle'],
+  ['system_vehicle_components_template.json', 'the blank declaration AMC ships, which this tab builds from the sequence instead'],
+  ['user_vehicle_components_template.json', 'a declaration the operator saved for reuse, which belongs to AMC\'s install and not to one aircraft'],
+  ['settings.json', 'AMC\'s program settings, in the user config directory'],
+  ['what_gets_uploaded.png', 'a documentation image shipped inside AMC'],
+  ['temp_lastlog.txt', 'a scratch file AMC uses while pulling a log off the vehicle; this tab fetches the log into memory'],
+  ['params.param', 'an output name from AMC\'s standalone MAVFTP example script'],
+  ['defaults.param', 'the same example script\'s companion output'],
+  ['devid.json', 'a lookup table for decode_devid.py, shipped beside it'],
+  ['{next_prefix:02d}_imported_{source}_parameters.param', 'AMC creates a PROJECT from a log or a connected vehicle and puts the leftovers in a numbered step file; this tab declares and computes instead, and writes the same information as fc_params_missing_or_different_*']
 ])
 
 test('every file AMC writes is one we write or have decided not to', () => {
