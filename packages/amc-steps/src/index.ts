@@ -163,3 +163,11 @@ export {
   nextRequiredStep,
   previousRequiredStep
 } from './navigation.js'
+export {
+  type ExternalParamFile,
+  type ExternalParamRow,
+  type ExternalParamStatus,
+  compareExternalParams,
+  defaultSelection,
+  externalParamWrites
+} from './external-params.js'
