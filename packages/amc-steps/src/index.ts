@@ -156,3 +156,10 @@ export {
 export { type PlotOptions, plotTemperatureFit } from './tempcal-plot.js'
 export { hasTuningHistory, tuningReport } from './tuning-report.js'
 export { type RebootWaitInputs, changesBootDelay, rebootWaitSeconds } from './reboot.js'
+export {
+  OPTIONAL_THRESHOLD_PERCENT,
+  isStepOptional,
+  mandatoryPercent,
+  nextRequiredStep,
+  previousRequiredStep
+} from './navigation.js'
