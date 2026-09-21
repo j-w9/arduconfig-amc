@@ -230,3 +230,4 @@ export {
   releaseLine
 } from './baseline.js'
 export type { ResumeOptions } from './resume.js'
+export { type LegacyBatteryFill, batteryFieldOrder, legacyBatteryFields } from './legacy-battery.js'

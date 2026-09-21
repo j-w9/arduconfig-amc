@@ -21,6 +21,14 @@ export interface ExplainedValue {
   /** The named bits a bitmask value sets, in bit order. Empty for a choice. */
   readonly bits: readonly string[]
   readonly kind: 'choice' | 'bitmask'
+  /**
+   * Bits set that this firmware's documentation does not name.
+   *
+   * AMC raises this (`has_unknown_bits_set`), and it is worth raising: a mask
+   * carrying bits nobody can name usually came from a different firmware
+   * version, where those bits meant something they no longer do.
+   */
+  readonly unknownBits?: number
 }
 
 /**
@@ -77,5 +85,5 @@ function explainBitmask(
         ? bits.join(', ')
         : `${bits.length} of ${options.length}: ${bits.slice(0, 2).join(', ')}…`
 
-  return { summary, bits, kind: 'bitmask' }
+  return { summary, bits, kind: 'bitmask', ...(unnamed > 0 ? { unknownBits: unnamed } : {}) }
 }

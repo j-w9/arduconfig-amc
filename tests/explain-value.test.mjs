@@ -82,3 +82,16 @@ test('a value that is not a whole mask is left alone', () => {
   // than merely incomplete.
   assert.equal(explainValue('LOG_BITMASK', 2 ** 32, docs), undefined)
 })
+
+test('bits nobody can name are reported, not just counted into the summary', () => {
+  // AMC raises this as a warning of its own (has_unknown_bits_set), and it is
+  // worth raising: a mask carrying bits this firmware cannot name usually came
+  // from a different version, where they meant something they no longer do.
+  const explained = explainValue('LOG_BITMASK', 1 | (1 << 30), docs)
+  assert.equal(explained.unknownBits, 1)
+})
+
+test('a mask whose bits are all named reports none', () => {
+  const explained = explainValue('LOG_BITMASK', 1 | (1 << 2), docs)
+  assert.equal(explained.unknownBits, undefined)
+})
