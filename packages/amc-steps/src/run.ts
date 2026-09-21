@@ -172,6 +172,33 @@ function describe(error: unknown): { error: string; errorType: string } {
   return { error: error instanceof Error ? error.message : String(error), errorType: 'Error' }
 }
 
+/**
+ * A change reason, which is usually prose and occasionally an expression.
+ *
+ * Seven directives across the four sequences pick their wording from the
+ * vehicle -- "Use throttle-based dynamic notch filter" or "Use ESC telemetry
+ * RPM", depending on what the ESC reports. AMC evaluates a reason only when it
+ * looks conditional, testing for `" if "` and `" else "`, and says why: the
+ * other 516 are literal prose and are not valid Python at all, so running them
+ * through the evaluator would be 516 failures to swallow.
+ *
+ * A reason that cannot be evaluated falls back to its raw text, as AMC's does.
+ * Losing the explanation entirely would be worse than an awkward one.
+ */
+function changeReason(raw: unknown, scope: Map<string, PyValue>): string | undefined {
+  if (typeof raw !== 'string' || raw.length === 0) return undefined
+  if (!raw.includes(' if ') || !raw.includes(' else ')) return raw
+  try {
+    const value = evaluateIn(raw, scope)
+    // A reason is prose; anything else the expression produced is not one, and
+    // `None` least of all. AMC keeps a falsy result out of the file entirely.
+    if (value.t !== 'str') return undefined
+    return value.v.length > 0 ? value.v : undefined
+  } catch {
+    return raw
+  }
+}
+
 /** Evaluate a directive's guard. A directive with no guard always applies. */
 function guardPasses(
   directive: ParameterDirective,
@@ -269,20 +296,22 @@ export function applyStep(step: ConfigurationStep, vehicle: VehicleContext, opti
     }
 
     if (typeof raw === 'number') {
+      const reason = changeReason(directive['Change Reason'], scope)
       changes.push(
-        directive['Change Reason'] === undefined
+        reason === undefined
           ? { parameter, value: raw, group, source: 'literal' }
-          : { parameter, value: raw, group, reason: directive['Change Reason'], source: 'literal' }
+          : { parameter, value: raw, group, reason, source: 'literal' }
       )
       continue
     }
 
     try {
       const value = toNumber(parameter, evaluateIn(raw, scope), options.docs)
+      const reason = changeReason(directive['Change Reason'], scope)
       changes.push(
-        directive['Change Reason'] === undefined
+        reason === undefined
           ? { parameter, value, group, source: 'expression' }
-          : { parameter, value, group, reason: directive['Change Reason'], source: 'expression' }
+          : { parameter, value, group, reason, source: 'expression' }
       )
     } catch (error) {
       failures.push({ parameter, group, expression: raw, ...describe(error) })

@@ -5,7 +5,7 @@
 // Regenerate the fixture with `npm run fixtures` after `npm run sync`.
 
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { test } from 'node:test'
 
 import { PyError, evaluateIn, fromJsonText, fromParameterMap } from '../packages/amc-expr/dist/index.js'
@@ -113,4 +113,38 @@ test('every step expression matches CPython across every vehicle template', () =
 test('the fixture covers the whole step corpus', () => {
   assert.ok(fixture.cases.length > 2000, `only ${fixture.cases.length} cases`)
   assert.equal(fixture.cases.length, fixture.expressions * fixture.contexts.length)
+})
+
+test('the fixture is the CURRENT step files, not an older set of them', () => {
+  // The check above is internal consistency: it would hold just as well over a
+  // corpus generated before upstream added an expression. Nothing compared it
+  // to the steps on disk, so a vendor bump could have left every parity
+  // assertion running against a set of expressions that no longer existed.
+  //
+  // Counted exactly the way scripts/gen_expr_fixtures.py counts: the `if` and
+  // `New Value` keys, anywhere in the document, deduplicated.
+  const seen = new Set()
+  const walk = (node) => {
+    if (node === null || typeof node !== 'object') return
+    if (Array.isArray(node)) {
+      for (const value of node) walk(value)
+      return
+    }
+    for (const [key, value] of Object.entries(node)) {
+      if ((key === 'if' || key === 'New Value') && typeof value === 'string') seen.add(value)
+      walk(value)
+    }
+  }
+  const stepsDir = new URL('../steps/', import.meta.url)
+  for (const name of readdirSync(stepsDir)) {
+    if (!name.startsWith('configuration_steps_') || !name.endsWith('.json')) continue
+    if (name.includes('schema')) continue
+    walk(JSON.parse(readFileSync(new URL(name, stepsDir), 'utf8')))
+  }
+
+  assert.equal(
+    fixture.expressions,
+    seen.size,
+    `the fixture holds ${fixture.expressions} expressions and the step files hold ${seen.size} — run \`npm run sync && npm run fixtures\``
+  )
 })

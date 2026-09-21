@@ -99,7 +99,10 @@ test('the sequence overrides the baseline, and is right to', () => {
   )
   const line = parseParamFile(file.text).get('INS_HNTCH_MODE')
   assert.equal(line.value, 1)
-  assert.match(line.comment, /throttle-based/)
+  // The WHOLE reason. This used to be a /throttle-based/ match, which passed
+  // while the file held the unevaluated Python that produces that phrase --
+  // the substring was in the source too.
+  assert.equal(line.comment, 'Use throttle-based dynamic notch filter to reduce propeller noise')
 })
 
 test('a baseline value carries no reason, because it is not a decision', () => {
