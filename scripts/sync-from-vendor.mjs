@@ -154,6 +154,40 @@ emit(
   ) + '\n'
 )
 
+// The tables extracted from AMC's Python (connection-tables.json,
+// migration.json) are produced by scripts/extract-connection-tables.py, which
+// executes the vendor's module literals -- there is no reading them from
+// JavaScript. Run from here so one command syncs everything and `--check`
+// covers them too; without this they sat outside the drift audit entirely,
+// which is precisely the blind spot the audit exists to remove.
+const extractor = join(root, 'scripts/extract-connection-tables.py')
+const extracted = ['connection-tables.json', 'migration.json']
+if (existsSync(extractor)) {
+  const before = new Map(
+    extracted.map((name) => [
+      name,
+      existsSync(join(dest, name)) ? readFileSync(join(dest, name), 'utf8') : undefined
+    ])
+  )
+  try {
+    execFileSync('python3', [extractor], { cwd: root, stdio: 'pipe' })
+  } catch (error) {
+    // A missing or too-old Python is a reason to say so, not to quietly report
+    // that the extracted tables are in sync when nothing checked them.
+    console.error(`could not run ${extractor}: ${error.message}`)
+    process.exit(1)
+  }
+  if (checkOnly) {
+    for (const [name, original] of before) {
+      const now = existsSync(join(dest, name)) ? readFileSync(join(dest, name), 'utf8') : undefined
+      if (now !== original) drifted.push(name)
+      // The extractor writes in place, so the committed file is restored --
+      // `--check` promises to touch nothing.
+      if (original !== undefined && now !== original) writeFileSync(join(dest, name), original)
+    }
+  }
+}
+
 const pin = execFileSync('git', ['-C', join(root, 'vendor/MethodicConfigurator'), 'rev-parse', 'HEAD'])
   .toString()
   .trim()

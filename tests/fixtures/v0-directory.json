@@ -1,0 +1,7 @@
+{
+ "vehicle_components.json": "{\"Components\": {\"Flight Controller\": {\"Firmware\": {\"Type\": \"ArduCopter\"}}}}",
+ "04_board_orientation.param": "AHRS_ORIENTATION,0  # mounted forward\nBRD_HEAT_TARG,45  # @manual_override warm board\nLOG_DISARMED,1\n",
+ "05_remote_controller.param": "ARMING_RUDDER,2\nRC1_OPTION,0\nRC7_OPTION,7\nFS_THR_VALUE,975\nRC_PROTOCOLS,1\n",
+ "09_batt2.param": "BATT2_MONITOR,4\n",
+ "13_general_configuration.param": "BRD_SAFETY_DEFLT,0\nSCHED_LOOP_RATE,400\n"
+}

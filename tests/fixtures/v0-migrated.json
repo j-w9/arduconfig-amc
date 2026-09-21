@@ -1,0 +1,21 @@
+{
+ "files": {
+  "04_board_orientation.param": "AHRS_ORIENTATION,0  # mounted forward\n",
+  "04_imu_temperature_calibration_finish.param": "BRD_HEAT_TARG,45  # @manual_override warm board\nLOG_DISARMED,1\n",
+  "05_remote_controller.param": "RC_PROTOCOLS,1\n",
+  "07_remote_controller_controller.param": "ARMING_RUDDER,2\nRC1_OPTION,0\nRC7_OPTION,7\nFS_THR_VALUE,975\n",
+  "10_battery_monitor.param": "BATT2_MONITOR,4\n",
+  "13_general_configuration.param": "BRD_SAFETY_DEFLT,0\nSCHED_LOOP_RATE,400\n",
+  "18_osd.param": "OSD_TYPE,0\n",
+  "27_pid_notch_filter_logging.param": "INS_LOG_BAT_MASK,1  # PID notch filters require batch logging, not raw logging\nINS_LOG_BAT_OPT,4  # PID notch filters require batch pre- and post- filters logging\nINS_RAW_LOG_OPT,0  # PID notch filters require batch logging, not raw logging\nLOG_BITMASK,2242525  # Log relevant data for PID notch filters tuning. Later on we'll change this to other subsystems\n",
+  "28_pid_notch_filter_results.param": "ATC_RAT_RLL_NTF,0\nATC_RAT_PIT_NTF,0\nATC_RAT_YAW_NTF,0\nPSC_ACCZ_NTF,0\nATC_RAT_RLL_NEF,0\nATC_RAT_PIT_NEF,0\nATC_RAT_YAW_NEF,0\nPSC_ACCZ_NEF,0\n",
+  "45_autotune_finish.param": "ATC_THR_MIX_MAX,0.9  # Maximize attitude control authority at high throttle\n",
+  "46_pid_d_ff.param": "ATC_RAT_RLL_D_FF,0\nATC_RAT_PIT_D_FF,0\nATC_RAT_YAW_D_FF,0\nPSC_ACCZ_D_FF,0\n",
+  "49_windspeed_estimation_finish.param": "LOG_DISARMED,0  # was only needed for wind speed estimation\nLOG_REPLAY,0  # was only needed for wind speed estimation\n",
+  "50_system_id_input_roll.param": "ANGLE_MAX,3000\nARMING_CHECK,1\nATC_ANG_PIT_P,4.5\nATC_ANG_RLL_P,4.5\nATC_ANG_YAW_P,4.5\nATC_RAT_RLL_I,0.135\nATC_RATE_FF_ENAB,1\nFLTMODE5,0\nLOG_BITMASK,176126\nSID_AXIS,1  # Inject chip on the input roll signal\nSID_F_START_HZ,0.05\nSID_F_STOP_HZ,5\nSID_MAGNITUDE,0.15\nSID_T_FADE_IN,5\nSID_T_FADE_OUT,5\nSID_T_REC,130\nTUNE,0\nTUNE_MAX,0\nTUNE_MIN,0\n",
+  "51_system_id_input_pitch.param": "ANGLE_MAX,3000\nARMING_CHECK,1\nATC_ANG_PIT_P,4.5\nATC_ANG_RLL_P,4.5\nATC_ANG_YAW_P,4.5\nATC_RAT_RLL_I,0.135\nATC_RATE_FF_ENAB,1\nFLTMODE5,0\nLOG_BITMASK,176126\nSID_AXIS,2  # Inject chip on the input pitch signal\nSID_F_START_HZ,0.05\nSID_F_STOP_HZ,5\nSID_MAGNITUDE,0.15\nSID_T_FADE_IN,5\nSID_T_FADE_OUT,5\nSID_T_REC,130\nTUNE,0\nTUNE_MAX,0\nTUNE_MIN,0\n",
+  "52_system_id_input_yaw.param": "ANGLE_MAX,3000\nARMING_CHECK,1\nATC_ANG_PIT_P,4.5\nATC_ANG_RLL_P,4.5\nATC_ANG_YAW_P,4.5\nATC_RAT_RLL_I,0.135\nATC_RATE_FF_ENAB,1\nFLTMODE5,0\nLOG_BITMASK,176126\nSID_AXIS,3  # Inject chip on the input yaw signal\nSID_F_START_HZ,0.05\nSID_F_STOP_HZ,5\nSID_MAGNITUDE,0.15\nSID_T_FADE_IN,5\nSID_T_FADE_OUT,5\nSID_T_REC,130\nTUNE,0\nTUNE_MAX,0\nTUNE_MIN,0\n",
+  "vehicle_components.json": "{\n    \"Components\": {\n        \"Flight Controller\": {\n            \"Firmware\": {\n                \"Type\": \"ArduCopter\"\n            }\n        }\n    },\n    \"Format version\": 1\n}\n"
+ },
+ "migrated": true
+}

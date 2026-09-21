@@ -38,6 +38,20 @@ SOURCES = [
 ]
 DEST = ROOT / "steps/connection-tables.json"
 
+# Migrating a directory an older AMC wrote. Kept in its own file because it
+# answers a different question from the tables above -- not "what does this
+# parameter imply about the hardware" but "where did this parameter used to
+# live" -- and because it is the one table whose absence is silent: a
+# pre-v1 directory reads *almost* correctly without it.
+MIGRATION_SOURCE = VENDOR / "backend_filesystem_migration.py"
+MIGRATION_DEST = ROOT / "steps/migration.json"
+MIGRATION_WANTED = [
+    "VEHICLE_COMPONENTS_FORMAT_VERSION",
+    "_PARAM_MOVES_V0_TO_V1",
+    "_NEW_FILES_V0_TO_V1",
+    "_FILES_TO_DELETE_V0_TO_V1",
+]
+
 WANTED = [
     "SERIAL_PORTS",
     "CAN_PORTS",
@@ -114,6 +128,22 @@ def jsonable(value):
     return str(value)
 
 
+def write_migration() -> int:
+    """The v0 -> v1 tables, as their own file."""
+    if not MIGRATION_SOURCE.exists():
+        print(f"vendor source missing: {MIGRATION_SOURCE}", file=sys.stderr)
+        return 1
+    namespace = load_module_literals([MIGRATION_SOURCE])
+    missing = [name for name in MIGRATION_WANTED if name not in namespace]
+    if missing:
+        print(f"migration tables missing from upstream: {', '.join(missing)}", file=sys.stderr)
+        return 1
+    tables = {name.strip("_"): jsonable(namespace[name]) for name in MIGRATION_WANTED}
+    MIGRATION_DEST.write_text(json.dumps(tables, indent=1, sort_keys=False) + "\n", encoding="utf-8")
+    print(f"wrote {MIGRATION_DEST.relative_to(ROOT)}")
+    return 0
+
+
 def main() -> int:
     for source in SOURCES:
         if not source.exists():
@@ -130,7 +160,7 @@ def main() -> int:
     DEST.write_text(json.dumps(tables, indent=1, sort_keys=False) + "\n", encoding="utf-8")
     counts = ", ".join(f"{name}={len(tables[name])}" for name in WANTED)
     print(f"wrote {DEST.relative_to(ROOT)} ({counts})")
-    return 0
+    return write_migration()
 
 
 if __name__ == "__main__":

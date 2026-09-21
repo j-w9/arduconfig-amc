@@ -184,3 +184,12 @@ export {
   validateEntryLimit,
   validateMotorPoles
 } from './validate-components.js'
+export {
+  type MigratableFile,
+  type Migration,
+  type MigrationTables,
+  formatVersionOf,
+  migrateProject,
+  vehicleTypeOf,
+  withFormatVersion
+} from './migrate.js'
