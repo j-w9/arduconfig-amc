@@ -154,6 +154,37 @@ emit(
   ) + '\n'
 )
 
+// The empty templates, as the baseline a directory starts from.
+//
+// AMC seeds a vehicle directory by copying a template's .param files and then
+// lets the sequence edit them. When it creates a project from a connected
+// flight controller it uses the EMPTY template matching that firmware --
+// empty_<major>.<minor>.x -- not somebody's aircraft
+// (data_model_vehicle_project._get_fc_template_dir_for_project_creation).
+//
+// That is the honest baseline to carry across: firmware-shaped starting
+// values with none of the geometry, wiring or tuning that belongs to whoever
+// contributed a real template.
+const baselines = {}
+for (const vehicle of readdirSync(templatesDir)) {
+  const vehicleDir = join(templatesDir, vehicle)
+  if (!statSync(vehicleDir).isDirectory()) continue
+  for (const entry of readdirSync(vehicleDir)) {
+    const match = /^empty_(\d+)\.(\d+)\.x$/.exec(entry)
+    if (!match) continue
+    const files = {}
+    for (const file of readdirSync(join(vehicleDir, entry))) {
+      if (!file.endsWith('.param')) continue
+      files[file] = readFileSync(join(vehicleDir, entry, file), 'utf8')
+    }
+    if (Object.keys(files).length === 0) continue
+    baselines[vehicle] ??= {}
+    baselines[vehicle][`${match[1]}.${match[2]}`] = files
+  }
+}
+
+emit('baselines.json', JSON.stringify(baselines, null, 1) + '\n')
+
 // What AMC's directories hold that this sequence never decides.
 //
 // AMC seeds a vehicle directory by COPYING a template's .param files and then

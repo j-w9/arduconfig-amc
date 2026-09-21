@@ -18,6 +18,7 @@ import type { OrderedStep } from './types.js'
 import { parseParamFile } from './param-file.js'
 import type { ConfigurationSummary, SummaryEntry } from './summary.js'
 import { type Additions, additionsFor } from './additions.js'
+import type { Baseline } from './baseline.js'
 import { type ParamLine, writeParamFile } from './param-file-writer.js'
 import { applyStep } from './run.js'
 import type { VehicleContext } from './run.js'
@@ -43,6 +44,14 @@ export interface VehicleFilesOptions {
    * rate, the antenna offset -- none of which the sequence decides.
    */
   readonly additions?: Additions
+  /**
+   * The values each step starts from, before the sequence edits any of them.
+   *
+   * AMC copies a template's `.param` files and lets the directives override
+   * what they have an opinion about; without this a directory holds only what
+   * the sequence decides, which is about a tenth of what AMC's own does.
+   */
+  readonly baseline?: Baseline
 }
 
 export interface VehicleFile {
@@ -67,11 +76,18 @@ export function vehicleFiles(
   context: VehicleContext,
   options: VehicleFilesOptions = {}
 ): VehicleFile[] {
-  const { docs, defaults, parameters = {}, overrides, additions } = options
+  const { docs, defaults, parameters = {}, overrides, additions, baseline } = options
 
   return sequence.map(({ filename, step }) => {
     const outcome = applyStep(step, context, docs ? { docs } : {})
     const lines = new Map<string, ParamLine>()
+
+    // What the step starts from. First, and carrying no reason: these are not
+    // decisions, they are the firmware-shaped values AMC's empty template
+    // holds, and everything below overrides whatever it has an opinion about.
+    for (const [name, value] of baseline?.files.get(filename) ?? []) {
+      lines.set(name, { name, value })
+    }
 
     for (const change of outcome.changes) {
       lines.set(change.parameter, {

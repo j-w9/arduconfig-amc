@@ -8,22 +8,27 @@
 // step directives. Most of what is in an AMC directory is therefore template
 // content, not computed content.
 //
-// That is a real architectural difference and not necessarily a defect --
-// copying another aircraft's antenna offsets into this one's directory would
-// be actively wrong -- but it must be a number somebody can see, not a
-// phrase. This records it so a change either way is visible.
+// The directives-only number is still worth recording, because it says how
+// much of a directory the METHOD decides as opposed to inherits. What closed
+// the gap was seeding from AMC's own empty template for the firmware -- which
+// is what AMC itself does when it creates a project from a connected vehicle
+// -- rather than from somebody's aircraft. Both numbers are asserted here:
+// what the directives produce, and that a seeded directory holds everything
+// AMC's own does.
 
 import assert from 'node:assert/strict'
-import { readFileSync, existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 
 import {
   applyStep,
+  baselineFor,
   orderSteps,
   parseParamFile,
   parseStepFile,
-  vehicleContext
+  vehicleContext,
+  vehicleFiles
 } from '../packages/amc-steps/dist/index.js'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
@@ -78,6 +83,30 @@ test("the sequence's directives produce only part of AMC's directory", () => {
     computed <= inFile * 0.3,
     `${computed} of ${inFile} — coverage has changed enough that this audit's premise should be rechecked`
   )
+})
+
+test('a seeded directory holds everything AMC\'s own does', () => {
+  // The other half of the number above. The directives decide a tenth; the
+  // baseline supplies the rest, and together they account for all of it.
+  const dir = templates + BASELINE
+  const table = JSON.parse(readFileSync(root + 'steps/baselines.json', 'utf8'))
+  const context = vehicleContext(readFileSync(dir + '/vehicle_components.json', 'utf8'), {})
+  const baseline = baselineFor(table, 'ArduCopter', '4.6')
+  assert.ok(baseline, 'no baseline for the firmware the empty template is named for')
+
+  let theirs = 0
+  let missing = []
+  for (const file of vehicleFiles(sequence, context, { baseline })) {
+    const path = `${dir}/${file.filename}`
+    if (!existsSync(path)) continue
+    const mine = new Set(parseParamFile(file.text).keys())
+    for (const name of parseParamFile(readFileSync(path, 'utf8')).keys()) {
+      theirs += 1
+      if (!mine.has(name)) missing.push(`${file.filename}:${name}`)
+    }
+  }
+  assert.ok(theirs > 500, `only ${theirs} parameters to compare against`)
+  assert.deepEqual(missing.slice(0, 6), [], `${missing.length} of AMC's parameters are missing`)
 })
 
 test('the steps the sequence fully decides are the ones it should', () => {

@@ -222,3 +222,10 @@ export {
   checkAddition,
   startingValue
 } from './additions.js'
+export {
+  type Baseline,
+  type BaselineTable,
+  baselineFor,
+  baselineVersions,
+  releaseLine
+} from './baseline.js'
