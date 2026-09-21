@@ -195,3 +195,4 @@ export {
 } from './migrate.js'
 export { type LogParameters, logHasDefaults, parametersFromLog } from './log-parameters.js'
 export { type ExplainedValue, explainValue } from './explain-value.js'
+export type { StepAdvisory } from './run.js'
