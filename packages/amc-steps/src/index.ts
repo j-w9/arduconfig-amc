@@ -193,3 +193,4 @@ export {
   vehicleTypeOf,
   withFormatVersion
 } from './migrate.js'
+export { type LogParameters, logHasDefaults, parametersFromLog } from './log-parameters.js'
