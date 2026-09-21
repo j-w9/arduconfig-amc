@@ -149,3 +149,4 @@ export {
   lastWrittenFrom,
   resumePoint
 } from './resume.js'
+export { type PlotOptions, plotTemperatureFit } from './tempcal-plot.js'

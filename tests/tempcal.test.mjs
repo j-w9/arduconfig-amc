@@ -57,6 +57,25 @@ function samples(count, f, from = 5, to = 65) {
 
 const drift = (t) => 0.002 + 0.0001 * t + 1e-6 * t * t + 1e-8 * t * t * t
 
+test("the fit also matches ArduPilot's own incremental one", () => {
+  // AMC can fit either way: numpy's polyfit, or OnlineIMUfit — a
+  // transcription of the incremental least-squares the flight controller runs
+  // in flight. They are the same mathematics reached differently, and this
+  // port accumulates normal equations like the second one, so agreeing with
+  // BOTH is what says the choice of fit is not a behavioural difference.
+  for (const item of golden) {
+    const ours = polyfit(item.x, item.y, POLYNOMIAL_ORDER)
+    for (let i = 0; i < ours.length; i += 1) {
+      const expected = item.online[i]
+      const tolerance = Math.max(1e-9, Math.abs(expected) * 1e-6)
+      assert.ok(
+        Math.abs(ours[i] - expected) <= tolerance,
+        `${item.name} coefficient ${i}: ours ${ours[i]}, ArduPilot's online fit ${expected}`
+      )
+    }
+  }
+})
+
 test('a fitted IMU produces the parameters ArduPilot applies', () => {
   const { calibrations, rejected } = fitTemperatureCalibration([
     { imu: 0, accel: samples(60, drift), gyro: samples(60, drift) }

@@ -27,13 +27,56 @@ CASES = [
      lambda t: 0.5 - 0.02 * t + 0.0009 * t**2 - 0.000_02 * t**3),
 ]
 
+class OnlineIMUfit:
+    """
+    ArduPilot's own incremental least-squares, as AMC ports it.
+
+    Transcribed from tempcal_imu.py so the TypeScript port can be compared
+    against BOTH fits. It accumulates the normal equations sample by sample
+    rather than forming a Vandermonde system, which is what the flight
+    controller does in flight — and what the TypeScript solver does too, so
+    the comparison is the more meaningful of the two.
+    """
+
+    def __init__(self) -> None:
+        self.porder = 0
+        self.mat = np.zeros((1, 1))
+        self.vec = np.zeros(1)
+
+    def _update(self, x, y):
+        temp = 1.0
+        for i in range(2 * (self.porder - 1), -1, -1):
+            k = 0 if (i < self.porder) else (i - self.porder + 1)
+            for j in range(i - k, k - 1, -1):
+                self.mat[j][i - j] += temp
+            temp *= x
+        temp = 1.0
+        for i in range(self.porder - 1, -1, -1):
+            self.vec[i] += y * temp
+            temp *= x
+
+    def polyfit(self, x, y, order):
+        self.porder = order + 1
+        self.mat = np.zeros((self.porder, self.porder))
+        self.vec = np.zeros(self.porder)
+        for i, value in enumerate(x):
+            self._update(value, y[i])
+        inv_mat = np.linalg.inv(self.mat)
+        res = np.zeros(self.porder)
+        for i in range(self.porder):
+            for j in range(self.porder):
+                res[i] += inv_mat[i][j] * self.vec[j]
+        return res
+
+
 out = []
 for name, xs, f in CASES:
     xs = [float(x) for x in xs]
     ys = [float(f(x)) for x in xs]
     # Highest order first, exactly as generate_calibration_file consumes it.
     coefficients = [float(c) for c in np.polyfit(np.array(xs), np.array(ys), 3)]
-    out.append({"name": name, "x": xs, "y": ys, "coefficients": coefficients})
+    online = [float(c) for c in OnlineIMUfit().polyfit(np.array(xs), np.array(ys), 3)]
+    out.append({"name": name, "x": xs, "y": ys, "coefficients": coefficients, "online": online})
 
 path = Path(__file__).resolve().parent.parent / "tests/fixtures/polyfit.json"
 path.parent.mkdir(parents=True, exist_ok=True)
