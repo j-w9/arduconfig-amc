@@ -59,6 +59,28 @@ const ACCOUNTED_FOR = {
   workflow_image_filepath: { verdict: 'declined', where: "a path helper for AMC's step images, not a workflow" }
 }
 
+/**
+ * The public surface of the two modules that implement the method itself.
+ *
+ * `*_workflow` was never the whole of it. `reset_all_parameters_to_default`
+ * had to be named by hand because it does not carry the suffix, and
+ * `add_parameter_to_current_file` -- an editing capability this fork did not
+ * have at all -- was invisible for the same reason. Naming the methods to look
+ * at was choosing what could be found.
+ */
+const BEHAVIOUR_MODULES = ['data_model_parameter_editor.py', 'data_model_configuration_step.py']
+
+function publicBehaviour() {
+  const found = new Set()
+  for (const filename of BEHAVIOUR_MODULES) {
+    const text = readFileSync(SOURCE + filename, 'utf8')
+    for (const match of text.matchAll(/^\s{4}def ([a-z]\w*)\s*\(/gm)) {
+      found.add(match[1])
+    }
+  }
+  return found
+}
+
 /** The `*_workflow` methods AMC defines, plus the reset it offers beside them. */
 function amcWorkflows() {
   const found = new Set()
@@ -96,6 +118,95 @@ test('nothing is answered for that AMC no longer has', () => {
   const workflows = amcWorkflows()
   const stale = Object.keys(ACCOUNTED_FOR).filter((name) => !workflows.has(name)).sort()
   assert.deepEqual(stale, [], `answers for workflows AMC no longer has: ${stale.join(', ')}`)
+})
+
+/**
+ * The rest of that surface, beyond the workflows.
+ *
+ * Shorter entries than the workflow map above: most are accessors over data
+ * this tab already holds, and spelling out a sentence for each would be
+ * ceremony rather than accounting. What the list is for is that a method
+ * appearing upstream has to be looked at by somebody.
+ */
+const BEHAVIOUR_ACCOUNTED_FOR = {
+  // Things this tab does.
+  connected_vehicle_type: 'the firmware the link reports, used to pick a sequence',
+  is_fc_connected: 'the connected prop',
+  fc_parameters: 'the live parameter map',
+  ensure_upload_preconditions: "the app's own draft validation, which every write goes through",
+  update_parameter_value: 'staging into the draft bar',
+  update_parameter_object: 'the same path',
+  get_different_parameters: "each step's changes, compared against the live value",
+  get_possible_add_param_names: 'addableParameters',
+  add_parameter_to_current_file: "the step's own add control",
+  delete_parameter_from_current_file: 'removing one you added; the sequence\'s own values are not deletable here',
+  load_external_parameter_file: 'compareExternalParams',
+  parameter_files: 'the ordered sequence',
+  parameter_documentation_available: "the docs prop, absent until ArduPilot's metadata loads",
+  configuration_phases: 'the phase navigation',
+  open_documentation_in_browser: "each step's reference links",
+  get_documentation_text_and_url: 'the same links',
+  get_why_why_now_tooltip: "the step's why and why-now text, shown inline rather than on hover",
+  parse_mandatory_level_percentage: 'mandatoryPercent',
+  is_configuration_step_optional: 'isStepOptional',
+  get_next_non_optional_file: 'nextRequiredStep',
+  get_previous_non_optional_file: 'previousRequiredStep',
+  get_current_component: "the step's component",
+  refresh_current_step_computed_parameters: 'the sequence re-runs on every change to the declaration',
+  update_vehicle_components: 'the declaration form',
+  save_vehicle_components: 'the form, persisted per vehicle',
+  process_configuration_step: 'applyStep',
+  filter_different_parameters: 'the same comparison',
+  calculate_connection_rename_operations: 'planConnectionRenames',
+  download_flight_controller_parameters: "the app's own parameter sync",
+  is_mavftp_supported: "the app's MAVFTP support, which the packed-defaults read depends on",
+
+  // Answered elsewhere in ArduConfigurator.
+  reset_all_parameters_to_default: 'the Firmware and Presets tabs, which this tab links to',
+  get_vehicle_directory: 'a directory is a download here, not a path on disk',
+
+  // Internal to AMC's own object model, with no separate behaviour.
+  parameters_as_par_dict: "a conversion between AMC's own types",
+  get_parameters_as_par_dict: 'the same',
+  create_ardupilot_parameter: "constructs AMC's parameter object",
+  get_component_editor_deps: "wiring for AMC's component editor window",
+
+  // Deliberately not carried across.
+  add_parameters_to_current_file: 'bulk add; one at a time is the whole of the need here, and a bulk paste invites values nobody read',
+  generate_bulk_add_feedback_message: 'the message that bulk add would produce',
+  get_plugin: "AMC's plugin system, which this tab has no equivalent of",
+  create_plugin_data_model: 'the same',
+  get_instructions_popup: "AMC's first-run usage popups; this tab explains itself inline",
+  should_display_bitmask_parameter_editor_usage: 'one of those popups',
+  get_documentation_frame_title: "a title for AMC's documentation pane",
+  get_fc_banner_text: "the banner AMC's own window shows; the app has its own connection status",
+  get_sorted_phases_with_end_and_weight: "widths for AMC's phase bar; the phase navigation here is a list, not a proportional bar",
+  get_last_configuration_step_number: "an index into AMC's file list",
+  get_log_analysis_context_inputs: "inputs for AMC's log analysis window; the log is read here for the calibration, the defaults and the step evidence",
+  revert_vehicle_components: 'undo on the declaration form; the browser form and the stored progress already cover reopening'
+}
+
+test('every public behaviour AMC has, somebody has looked at', () => {
+  const unexamined = [...publicBehaviour()]
+    .filter((name) => !(name in ACCOUNTED_FOR) && !(name in BEHAVIOUR_ACCOUNTED_FOR))
+    .sort()
+  assert.deepEqual(
+    unexamined,
+    [],
+    `AMC's method modules have public methods nobody has looked at: ${unexamined.join(', ')}`
+  )
+})
+
+test('the behaviour scrape finds a real surface', () => {
+  const surface = publicBehaviour()
+  assert.ok(surface.size >= 40, `only found ${surface.size} public methods`)
+  assert.ok(surface.has('process_configuration_step'))
+})
+
+test('nothing is accounted for that AMC no longer has', () => {
+  const surface = publicBehaviour()
+  const stale = Object.keys(BEHAVIOUR_ACCOUNTED_FOR).filter((name) => !surface.has(name)).sort()
+  assert.deepEqual(stale, [], `answers for methods AMC no longer has: ${stale.join(', ')}`)
 })
 
 test('every answer says where, and says it in words', () => {
