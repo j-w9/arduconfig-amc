@@ -109,3 +109,92 @@ function parseVersion(version: string): number | undefined {
   if (!match) return undefined
   return Number(`${match[1]}.${match[2]}`)
 }
+
+/**
+ * Stream-rate parameters, which 4.6 renamed by POSITION rather than by name.
+ *
+ * `SR0_*` through `SR6_*` set how often a serial port streams telemetry, and
+ * 4.6 replaced them with `MAV1_*`, `MAV2_*` and so on — numbered by which
+ * MAVLink port a serial is, not by which serial it is. A vehicle with MAVLink
+ * on SERIAL1 and SERIAL2 maps `SR1_` to `MAV1_` and `SR2_` to `MAV2_`; one
+ * with MAVLink only on SERIAL2 maps `SR2_` to `MAV1_`.
+ *
+ * So the rename cannot come from a table: it depends on the vehicle's own
+ * `SERIAL*_PROTOCOL` values. Reading a pre-4.6 directory without this drops
+ * every stream-rate the operator set, silently — and an audit against AMC's
+ * tables is how this turned up, because the static renames alone looked
+ * complete.
+ */
+export function streamRateRenames(
+  parameters: ReadonlyMap<string, { readonly value: number }> | Readonly<Record<string, number>>,
+  mavlinkProtocols: readonly number[]
+): ReadonlyMap<string, string> {
+  const protocols = new Set(mavlinkProtocols)
+  const ports: number[] = []
+
+  const entries: [string, number][] =
+    parameters instanceof Map
+      ? [...parameters].map(([name, entry]) => [name, entry.value])
+      : Object.entries(parameters)
+
+  for (const [name, value] of entries) {
+    const match = /^SERIAL(\d+)_PROTOCOL$/.exec(name)
+    if (!match) continue
+    if (!protocols.has(Math.trunc(value))) continue
+    ports.push(Number(match[1]))
+  }
+
+  // Sorted, because "first MAVLink port" means lowest-numbered and a Map's
+  // insertion order is whatever the file happened to be written in.
+  ports.sort((a, b) => a - b)
+
+  const renames = new Map<string, string>()
+  ports.forEach((port, index) => {
+    renames.set(`SR${port}_`, `MAV${index + 1}_`)
+  })
+  return renames
+}
+
+/** The SERIAL protocol numbers that mean MAVLink, from AMC's own table. */
+export function mavlinkProtocolNumbers(
+  serialProtocols: Readonly<Record<string, { readonly protocol: string }>>
+): number[] {
+  return Object.entries(serialProtocols)
+    .filter(([, entry]) => entry.protocol.startsWith('MAVLink'))
+    .map(([value]) => Number(value))
+    .filter((value) => Number.isFinite(value))
+}
+
+/**
+ * Apply the stream-rate renames to a parameter map.
+ *
+ * Separate from `upgradeParameters` because it needs the whole vehicle's
+ * serial configuration, not just the file being upgraded — the same `SR2_`
+ * becomes a different `MAV` depending on what the other ports are doing.
+ */
+export function upgradeStreamRates<T>(
+  parameters: ReadonlyMap<string, T>,
+  renames: ReadonlyMap<string, string>
+): UpgradeResult<T> {
+  if (renames.size === 0) return { parameters, renamed: [] }
+
+  const out = new Map(parameters)
+  const moved: ParameterRename[] = []
+  for (const [name, entry] of parameters) {
+    const match = /^(SR\d+_)(.+)$/.exec(name)
+    const prefix = match?.[1]
+    const to = prefix ? renames.get(prefix) : undefined
+    if (!match || !to) continue
+    const renamedTo = `${to}${match[2]}`
+    // Already upgraded: the current value wins over the stale one beside it,
+    // exactly as the static renames behave.
+    if (out.has(renamedTo)) {
+      out.delete(name)
+      continue
+    }
+    out.delete(name)
+    out.set(renamedTo, entry)
+    moved.push({ from: name, to: renamedTo, value: Number.NaN })
+  }
+  return { parameters: out, renamed: moved }
+}

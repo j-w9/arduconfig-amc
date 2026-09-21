@@ -128,7 +128,10 @@ export {
   type ParameterRename,
   type UpgradeResult,
   type UpgradeTables,
+  mavlinkProtocolNumbers,
+  streamRateRenames,
   upgradeParameters,
+  upgradeStreamRates,
   upgradesBetween
 } from './upgrade.js'
 export {
@@ -151,3 +154,4 @@ export {
   resumePoint
 } from './resume.js'
 export { type PlotOptions, plotTemperatureFit } from './tempcal-plot.js'
+export { hasTuningHistory, tuningReport } from './tuning-report.js'

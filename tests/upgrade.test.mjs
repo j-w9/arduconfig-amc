@@ -115,3 +115,78 @@ test('the tables are the real ones, not an empty stub', () => {
   const scaled = Object.values(tables.PARAM_UPGRADE_DICT_47).filter(([, scale]) => scale !== 1)
   assert.ok(scaled.length > 0, 'no unit-changing renames survived extraction')
 })
+
+// ── Stream rates, which 4.6 renamed by POSITION ──────────────────────────
+//
+// SR0_* set how often a serial port streams telemetry, and 4.6 replaced them
+// with MAV1_*, MAV2_* — numbered by which MAVLink port a serial IS, not by
+// which serial it is. So the rename depends on the vehicle's own config and
+// cannot come from a table. An audit against AMC's own tables is what turned
+// this up: the static renames alone looked complete.
+
+import {
+  mavlinkProtocolNumbers,
+  streamRateRenames,
+  upgradeStreamRates
+} from '../packages/amc-steps/dist/index.js'
+
+const MAVLINK = mavlinkProtocolNumbers(tables.SERIAL_PROTOCOLS_DICT)
+
+test('MAVLink protocol numbers come from AMC\'s own table', () => {
+  assert.ok(MAVLINK.includes(1), 'MAVLink1')
+  assert.ok(MAVLINK.includes(2), 'MAVLink2')
+  assert.ok(!MAVLINK.includes(5), 'GPS is not MAVLink')
+})
+
+test('the Nth MAVLink port becomes MAVN, not the Nth serial', () => {
+  // The whole subtlety. MAVLink on SERIAL2 and SERIAL5 only: SR2_ is the
+  // FIRST MAVLink port, so it becomes MAV1_, and SR5_ becomes MAV2_.
+  const renames = streamRateRenames(
+    { SERIAL1_PROTOCOL: 5, SERIAL2_PROTOCOL: 2, SERIAL5_PROTOCOL: 1 },
+    MAVLINK
+  )
+  assert.equal(renames.get('SR2_'), 'MAV1_')
+  assert.equal(renames.get('SR5_'), 'MAV2_')
+  assert.equal(renames.has('SR1_'), false, 'a GPS port has no stream rates')
+})
+
+test('the order is by port number, not by file order', () => {
+  // A Map preserves insertion order, and a .param file may list SERIAL5
+  // before SERIAL2. "First MAVLink port" means lowest-numbered.
+  const renames = streamRateRenames({ SERIAL5_PROTOCOL: 2, SERIAL2_PROTOCOL: 2 }, MAVLINK)
+  assert.equal(renames.get('SR2_'), 'MAV1_')
+  assert.equal(renames.get('SR5_'), 'MAV2_')
+})
+
+test('the stream rates move with their prefix', () => {
+  const renames = streamRateRenames({ SERIAL1_PROTOCOL: 2 }, MAVLINK)
+  const { parameters, renamed } = upgradeStreamRates(
+    new Map([['SR1_RAW_SENS', 5], ['SR1_EXT_STAT', 2], ['LOG_BITMASK', 1]]),
+    renames
+  )
+  assert.equal(parameters.get('MAV1_RAW_SENS'), 5)
+  assert.equal(parameters.get('MAV1_EXT_STAT'), 2)
+  assert.equal(parameters.has('SR1_RAW_SENS'), false)
+  // Untouched parameters stay put.
+  assert.equal(parameters.get('LOG_BITMASK'), 1)
+  assert.equal(renamed.length, 2)
+})
+
+test('a directory already holding the new name keeps the current value', () => {
+  const renames = streamRateRenames({ SERIAL1_PROTOCOL: 2 }, MAVLINK)
+  const { parameters } = upgradeStreamRates(
+    new Map([['SR1_RAW_SENS', 5], ['MAV1_RAW_SENS', 9]]),
+    renames
+  )
+  assert.equal(parameters.get('MAV1_RAW_SENS'), 9)
+  assert.equal(parameters.has('SR1_RAW_SENS'), false)
+})
+
+test('a vehicle with no MAVLink port renames nothing', () => {
+  const renames = streamRateRenames({ SERIAL1_PROTOCOL: 5 }, MAVLINK)
+  assert.equal(renames.size, 0)
+  const before = new Map([['SR1_RAW_SENS', 5]])
+  const { parameters, renamed } = upgradeStreamRates(before, renames)
+  assert.equal(parameters, before)
+  assert.deepEqual(renamed, [])
+})

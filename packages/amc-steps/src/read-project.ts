@@ -16,6 +16,7 @@
  */
 
 import { type ParamEntry, parseParamFile } from './param-file.js'
+import { type ResumePoint, lastWrittenFrom, resumePoint } from './resume.js'
 import type { OrderedStep } from './types.js'
 
 /** A file handed in, however the caller got hold of it. */
@@ -40,6 +41,16 @@ export interface ProjectRename {
 
 export interface VehicleProject {
   readonly steps: readonly ReadStepFile[]
+  /**
+   * Where to pick the sequence up.
+   *
+   * Computed here rather than by the caller: a directory records the step it
+   * stopped on, and anything that reads one should learn that at the same
+   * time as it learns the rest. The app had it and the fork did not, which an
+   * audit over AMC's own vehicles found — every one of them "resumed at
+   * undefined".
+   */
+  readonly resume: ResumePoint
   /** `00_default.param`, absent in a directory written without a vehicle. */
   readonly defaults?: ReadonlyMap<string, number>
   /** `vehicle_components.json` verbatim, for the caller to parse and validate. */
@@ -79,7 +90,6 @@ const NON_STEP_FILES: ReadonlySet<string> = new Set([
   'non-default_writable_calibrations.param',
   'non-default_writable_ids.param',
   'non-default_writable_non-calibrations_non-ids.param',
-  'fc_params_not_accounted_for.param',
   'last_uploaded_filename.txt',
   'apm.pdef.xml',
   'vehicle.jpg',
@@ -89,7 +99,7 @@ const NON_STEP_FILES: ReadonlySet<string> = new Set([
 ])
 
 /** AMC also writes per-step documentation beside each file. */
-const NON_STEP_PATTERN = /\.pdef\.xml$|^fc_params_missing_or_different/
+const NON_STEP_PATTERN = /\.pdef\.xml$|^fc_params_missing_or_different|^tempcal_[a-z]+(_imu\d+)?\.(png|svg)$/
 
 /**
  * Read a directory against a sequence.
@@ -157,6 +167,7 @@ export function readVehicleProject(
 
   return {
     steps,
+    resume: resumePoint(sequence, lastWrittenFrom(files)),
     ...(defaultsFile ? { defaults: parameterValuesOf(defaultsFile.text) } : {}),
     ...(componentsFile ? { components: componentsFile.text } : {}),
     overrides,

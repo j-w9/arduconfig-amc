@@ -183,10 +183,12 @@ export function unaccountedParameters(
 
   // Every parameter the sequence's files set, at the value they leave it.
   const accounted = new Map<string, number>()
-  for (const file of files) {
-    if (file.filename === '00_default.param') continue
+  const steps = files.filter((file) => file.filename !== '00_default.param')
+  for (const file of steps) {
     for (const entry of parseParamFile(file.text).values()) accounted.set(entry.name, entry.value)
   }
+  const firstStep = (steps[0]?.filename ?? 'unknown.param').replace(/\.param$/, '')
+  const lastStep = steps.at(-1)?.filename ?? 'unknown.param'
 
   const lines: ParamLine[] = []
   for (const [name, value] of Object.entries(parameters)) {
@@ -207,7 +209,11 @@ export function unaccountedParameters(
 
   lines.sort((a, b) => a.name.localeCompare(b.name))
   return {
-    filename: 'fc_params_not_accounted_for.param',
+    // AMC's name for this, so a directory written here is one its tooling
+    // recognises. It spells out the range of steps it covers, which is what
+    // makes the claim checkable: "not accounted for" is only meaningful
+    // against a stated set of files.
+    filename: `fc_params_missing_or_different_in_the_amc_param_files_${firstStep}_to_${lastStep}`,
     text: writeParamFile(lines),
     count: lines.length,
     incomplete: 0
