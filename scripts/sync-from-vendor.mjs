@@ -154,6 +154,83 @@ emit(
   ) + '\n'
 )
 
+// What AMC's directories hold that this sequence never decides.
+//
+// AMC seeds a vehicle directory by COPYING a template's .param files and then
+// lets the sequence edit them; this fork computes purely from the step
+// directives. So most of an AMC directory is template content -- 69 of the 662
+// parameters in empty_4.6.x come from directives, and the rest do not.
+//
+// Copying those values wholesale would be wrong: GPS_POS1_X is one particular
+// aircraft's antenna offset, not this one's. What can be carried across
+// honestly is the QUESTION -- which parameters AMC's templates consistently
+// set for each step -- so the tab can say what the sequence does not decide
+// instead of leaving it unmentioned.
+//
+// "Decided by the sequence" is judged structurally: a parameter NAMED by any
+// directive of that step, guard or no guard. If the sequence mentions it at
+// all it is the sequence's business; everything else is template content.
+const stepsByVehicle = new Map()
+for (const f of wanted) {
+  const vehicle = f.replace(/^configuration_steps_|\.json$/g, '')
+  const parsed = JSON.parse(readFileSync(join(src, f), 'utf8'))
+  const named = new Map()
+  for (const [filename, step] of Object.entries(parsed.steps ?? {})) {
+    const names = new Set()
+    for (const group of ['forced_parameters', 'derived_parameters', 'add_parameters', 'delete_parameters']) {
+      for (const parameter of Object.keys(step[group] ?? {})) names.add(parameter)
+    }
+    named.set(filename, names)
+  }
+  stepsByVehicle.set(vehicle, named)
+}
+
+/** Parameter names in a .param file, tolerant in the same places AMC is. */
+function namesIn(text) {
+  const names = []
+  for (const raw of text.split(/\r?\n/)) {
+    const hash = raw.indexOf('#')
+    const body = (hash === -1 ? raw : raw.slice(0, hash)).trim()
+    if (body.length === 0) continue
+    const match = /^(\S+)[,\s]+\S+$/.exec(body)
+    if (match) names.push(match[1])
+  }
+  return names
+}
+
+const templateOnly = {}
+for (const [vehicle, named] of stepsByVehicle) {
+  const vehicleDir = join(templatesDir, vehicle)
+  if (!existsSync(vehicleDir)) continue
+  const counts = new Map()
+  let templateCount = 0
+  for (const entry of readdirSync(vehicleDir)) {
+    const dir = join(vehicleDir, entry)
+    if (!statSync(dir).isDirectory()) continue
+    templateCount += 1
+    for (const file of readdirSync(dir)) {
+      if (!file.endsWith('.param')) continue
+      const decided = named.get(file)
+      // A file no step of this sequence claims is not this sequence's concern.
+      if (decided === undefined) continue
+      for (const parameter of namesIn(readFileSync(join(dir, file), 'utf8'))) {
+        if (decided.has(parameter)) continue
+        const key = `${file}|${parameter}`
+        counts.set(key, (counts.get(key) ?? 0) + 1)
+      }
+    }
+  }
+  const byStep = {}
+  for (const [key, count] of [...counts].sort(([a], [b]) => a.localeCompare(b))) {
+    const [file, parameter] = key.split('|')
+    byStep[file] ??= {}
+    byStep[file][parameter] = count
+  }
+  templateOnly[vehicle] = { templates: templateCount, steps: byStep }
+}
+
+emit('template-only.json', JSON.stringify(templateOnly, null, 1) + '\n')
+
 // The tables extracted from AMC's Python (connection-tables.json,
 // migration.json) are produced by scripts/extract-connection-tables.py, which
 // executes the vendor's module literals -- there is no reading them from

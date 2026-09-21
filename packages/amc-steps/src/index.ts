@@ -196,3 +196,11 @@ export {
 export { type LogParameters, logHasDefaults, parametersFromLog } from './log-parameters.js'
 export { type ExplainedValue, explainValue } from './explain-value.js'
 export type { StepAdvisory } from './run.js'
+export {
+  COMMON_SHARE,
+  type TemplateOnlyOptions,
+  type TemplateOnlyParameter,
+  type TemplateOnlyTable,
+  answerableFromVehicle,
+  templateOnlyParameters
+} from './template-only.js'
