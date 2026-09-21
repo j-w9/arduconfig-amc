@@ -13,13 +13,36 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const src = join(root, 'vendor/MethodicConfigurator/ardupilot_methodic_configurator')
 const dest = join(root, 'steps')
 
-mkdirSync(dest, { recursive: true })
+// `--check` answers "is what is committed still what the vendor says?" without
+// touching anything. The failure it exists for is a vendor pin that moved
+// while the derived files stayed behind: the sequence and every table read off
+// AMC's templates would then be describing a version of AMC nobody is running,
+// and nothing would say so. The audit test runs this.
+const checkOnly = process.argv.includes('--check')
+/** Paths whose committed contents differ from what this run would write. */
+const drifted = []
+
+function emit(filename, contents) {
+  const path = join(dest, filename)
+  if (!checkOnly) {
+    writeFileSync(path, contents)
+    return
+  }
+  const current = existsSync(path) ? readFileSync(path, 'utf8') : undefined
+  if (current !== contents) drifted.push(filename)
+}
+
+function emitCopy(filename, from) {
+  emit(filename, readFileSync(from, 'utf8'))
+}
+
+if (!checkOnly) mkdirSync(dest, { recursive: true })
 
 const wanted = readdirSync(src).filter(
   (f) => f.startsWith('configuration_steps_') && f.endsWith('.json')
 )
-for (const f of wanted) copyFileSync(join(src, f), join(dest, f))
-copyFileSync(join(src, 'vehicle_components_schema.json'), join(dest, 'vehicle_components_schema.json'))
+for (const f of wanted) emitCopy(f, join(src, f))
+emitCopy('vehicle_components_schema.json', join(src, 'vehicle_components_schema.json'))
 
 // The values AMC's own vehicle templates use, per component field.
 //
@@ -95,8 +118,8 @@ if (existsSync(templatesDir)) {
   }
 }
 
-writeFileSync(
-  join(dest, 'component-values.json'),
+emit(
+  'component-values.json',
   JSON.stringify(
     Object.fromEntries([...observed].map(([key, values]) => [key, [...values].sort()])),
     null,
@@ -104,8 +127,8 @@ writeFileSync(
   ) + '\n'
 )
 
-writeFileSync(
-  join(dest, 'component-pairings.json'),
+emit(
+  'component-pairings.json',
   JSON.stringify(
     Object.fromEntries(
       [...pairings]
@@ -122,8 +145,8 @@ writeFileSync(
   ) + '\n'
 )
 
-writeFileSync(
-  join(dest, 'vehicle-templates.json'),
+emit(
+  'vehicle-templates.json',
   JSON.stringify(
     Object.fromEntries(Object.entries(templates).sort(([a], [b]) => a.localeCompare(b))),
     null,
@@ -134,10 +157,21 @@ writeFileSync(
 const pin = execFileSync('git', ['-C', join(root, 'vendor/MethodicConfigurator'), 'rev-parse', 'HEAD'])
   .toString()
   .trim()
-writeFileSync(
-  join(dest, 'PROVENANCE.json'),
+emit(
+  'PROVENANCE.json',
   JSON.stringify({ upstream: 'https://github.com/ArduPilot/MethodicConfigurator', commit: pin, files: wanted, syncedBy: 'scripts/sync-from-vendor.mjs' }, null, 2) + '\n'
 )
-console.log(
-  `synced ${wanted.length} step files, ${observed.size} observed component fields, ${pairings.size} connection pairings and ${Object.keys(templates).length} vehicle templates from AMC @ ${pin.slice(0, 8)}`
-)
+if (checkOnly) {
+  if (drifted.length > 0) {
+    console.error(
+      `${drifted.length} file(s) no longer match AMC @ ${pin.slice(0, 8)}: ${drifted.join(', ')}\n` +
+        'Run `npm run sync` and commit the result.'
+    )
+    process.exit(1)
+  }
+  console.log(`steps/ is in sync with AMC @ ${pin.slice(0, 8)}`)
+} else {
+  console.log(
+    `synced ${wanted.length} step files, ${observed.size} observed component fields, ${pairings.size} connection pairings and ${Object.keys(templates).length} vehicle templates from AMC @ ${pin.slice(0, 8)}`
+  )
+}
