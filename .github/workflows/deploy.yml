@@ -50,6 +50,12 @@ jobs:
           npm run typecheck
           npx vitest run --root apps/web
 
+      # The WebAssembly SITL binaries are committed in this repo, not the app's,
+      # and Vite only copies the app's own public/ into dist -- so they are
+      # staged across before the build rather than fetched or rebuilt here.
+      - name: Stage the SITL WebAssembly artifacts
+        run: npm run sitl:stage
+
       # Served at the root of its own hostname, so the base path is '/'.
       # The app's public/_headers and public/_redirects are copied into dist by
       # its own build, and Cloudflare Pages reads them from there.

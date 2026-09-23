@@ -4,6 +4,10 @@ dist/
 .DS_Store
 tmp/
 
+# Where scripts/build-sitl-wasm.sh clones ArduPilot and emsdk. Gigabytes of
+# other people's source; the artifacts it produces are committed under sitl/.
+.sitl-build/
+
 # Compiled output belongs in dist/. An ad-hoc `tsc` run without the project's
 # own config emits next to the sources instead, where Vite resolves the stale
 # .js ahead of the .ts it was built from -- which looks like code that will not
