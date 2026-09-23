@@ -93,6 +93,50 @@ for vehicle in "${VEHICLES[@]}"; do
   echo "    $(ls -lh "$DEST/$target.wasm" | awk '{print $5}')  $target.wasm"
 done
 
+# The frames each vehicle offers and the home locations SITL knows, read out of
+# the same checkout that produced the binaries. Extracted rather than
+# transcribed, for the reason every other table here is: a list typed by hand
+# is a list that silently stops matching upstream.
+echo "==> extracting frames and locations"
+python3 - "$AP" "$DEST" <<'PY_EXTRACT'
+import json, sys
+from pathlib import Path
+
+ap, dest = Path(sys.argv[1]), Path(sys.argv[2])
+info = json.loads((ap / "Tools/autotest/pysim/vehicleinfo.json").read_text())
+
+# Only the vehicles built above have a binary to run; offering a frame for one
+# that was never compiled would be a dead option in the picker.
+wanted = {"copter": "ArduCopter", "plane": "ArduPlane", "rover": "Rover", "heli": "Helicopter"}
+frames = {}
+for short, key in wanted.items():
+    if not (dest / f"ardu{short}.wasm").exists():
+        continue
+    entry = info.get(key)
+    if entry:
+        frames[short] = sorted(entry["frames"])
+
+locations = {}
+for line in (ap / "Tools/autotest/locations.txt").read_text().splitlines():
+    line = line.strip()
+    if not line or line.startswith("#") or "=" not in line:
+        continue
+    name, _, rest = line.partition("=")
+    parts = rest.split(",")
+    if len(parts) < 4:
+        continue
+    try:
+        lat, lon, alt, heading = (float(p) for p in parts[:4])
+    except ValueError:
+        continue
+    locations[name] = {"lat": lat, "lon": lon, "alt": alt, "heading": heading}
+
+(dest / "sim-options.json").write_text(
+    json.dumps({"frames": frames, "locations": locations}, indent=1, sort_keys=True) + "\n"
+)
+print(f"    {sum(len(f) for f in frames.values())} frames across {len(frames)} vehicles, {len(locations)} locations")
+PY_EXTRACT
+
 # The commit these were built from, so a binary in git can always be traced
 # back to a source tree.
 {

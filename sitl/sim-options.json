@@ -1,0 +1,787 @@
+{
+ "frames": {
+  "copter": [
+   "+",
+   "Callisto",
+   "IrisRos",
+   "X",
+   "airsim-copter",
+   "bfx",
+   "calibration",
+   "coaxcopter",
+   "copter-PPP",
+   "copter-periph-compass",
+   "cwx",
+   "deca",
+   "deca-cwx",
+   "djix",
+   "dodeca-hexa",
+   "dotriaconta_octaquad_x",
+   "freestyle",
+   "gazebo-iris",
+   "heli",
+   "heli-blade360",
+   "heli-ddfptail",
+   "heli-ddvptail",
+   "heli-dual",
+   "heli-gas",
+   "heli-quad",
+   "hexa",
+   "hexa-cwx",
+   "hexa-dji",
+   "hexadeca-octa",
+   "hexadeca-octa-cwx",
+   "hexax",
+   "octa",
+   "octa-cwx",
+   "octa-dji",
+   "octa-quad",
+   "octa-quad-cor",
+   "octa-quad-cw-cor",
+   "octa-quad-cwx",
+   "quad",
+   "quad-can",
+   "scrimmage-copter",
+   "singlecopter",
+   "tri",
+   "y6"
+  ],
+  "plane": [
+   "CRRCSim",
+   "calibration",
+   "firefly",
+   "gazebo-zephyr",
+   "glider",
+   "jsbsim",
+   "last_letter",
+   "plane",
+   "plane-3d",
+   "plane-dspoilers",
+   "plane-elevon",
+   "plane-elevrev",
+   "plane-ice",
+   "plane-jet",
+   "plane-redundant",
+   "plane-soaring",
+   "plane-tailsitter",
+   "plane-vtail",
+   "quadplane",
+   "quadplane-PPP",
+   "quadplane-can",
+   "quadplane-cl84",
+   "quadplane-copter_tailsitter",
+   "quadplane-ice",
+   "quadplane-tilt",
+   "quadplane-tilthvec",
+   "quadplane-tilttri",
+   "quadplane-tilttrivec",
+   "quadplane-tri",
+   "scrimmage-plane",
+   "stratoblimp"
+  ]
+ },
+ "locations": {
+  "3DRBerkeley": {
+   "alt": 20.0,
+   "heading": 260.0,
+   "lat": 37.872991,
+   "lon": -122.302348
+  },
+  "AAMEastField": {
+   "alt": 1809.0,
+   "heading": 106.0,
+   "lat": 39.842288,
+   "lon": -105.212928
+  },
+  "AAMWestField": {
+   "alt": 1814.0,
+   "heading": 90.5,
+   "lat": 39.842218,
+   "lon": -105.219375
+  },
+  "ANUSC": {
+   "alt": 556.0,
+   "heading": 90.0,
+   "lat": -35.29988055,
+   "lon": 149.1003601
+  },
+  "ARACE_copter": {
+   "alt": 198.0,
+   "heading": 55.0,
+   "lat": 47.5211929,
+   "lon": 18.8082355
+  },
+  "ARACE_hand": {
+   "alt": 198.0,
+   "heading": 55.0,
+   "lat": 47.5211516,
+   "lon": 18.8081607
+  },
+  "ARACE_plane": {
+   "alt": 198.0,
+   "heading": 55.0,
+   "lat": 47.5210876,
+   "lon": 18.8083948
+  },
+  "ARDUCOPTER_AUTOTEST": {
+   "alt": 584.0,
+   "heading": 270.0,
+   "lat": -35.362938,
+   "lon": 149.165085
+  },
+  "AVC": {
+   "alt": 1583.702759,
+   "heading": 246.0,
+   "lat": 40.0713749,
+   "lon": -105.2297889
+  },
+  "AVC_copter": {
+   "alt": 1586.0,
+   "heading": 0.0,
+   "lat": 40.072842,
+   "lon": -105.230575
+  },
+  "AVC_plane": {
+   "alt": 1586.0,
+   "heading": 80.0,
+   "lat": 40.072842,
+   "lon": -105.230575
+  },
+  "AlasDeLaSierra_E": {
+   "alt": 941.0,
+   "heading": 82.0,
+   "lat": 40.673014,
+   "lon": -4.070681
+  },
+  "AlasDeLaSierra_N": {
+   "alt": 939.0,
+   "heading": 350.0,
+   "lat": 40.672921,
+   "lon": -4.069313
+  },
+  "AlasDeLaSierra_S": {
+   "alt": 940.0,
+   "heading": 170.0,
+   "lat": 40.673596,
+   "lon": -4.069451
+  },
+  "AlasDeLaSierra_W": {
+   "alt": 939.0,
+   "heading": 262.0,
+   "lat": 40.673204,
+   "lon": -4.068919
+  },
+  "BHV": {
+   "alt": 0.0,
+   "heading": 324.0,
+   "lat": 53.547767,
+   "lon": 8.62644
+  },
+  "BMAC": {
+   "alt": 588.0,
+   "heading": 301.0,
+   "lat": -35.226343,
+   "lon": 149.132122
+  },
+  "Ballarat": {
+   "alt": 485.0,
+   "heading": 165.0,
+   "lat": -37.598705,
+   "lon": 143.881744
+  },
+  "Boquig": {
+   "alt": 3.0,
+   "heading": 0.0,
+   "lat": 16.090473,
+   "lon": 120.361478
+  },
+  "Breivikeidet": {
+   "alt": 55.0,
+   "heading": 235.0,
+   "lat": 69.624025,
+   "lon": 19.414047
+  },
+  "CMAC": {
+   "alt": 584.0,
+   "heading": 353.0,
+   "lat": -35.363261,
+   "lon": 149.16523
+  },
+  "CMAC2": {
+   "alt": 584.0,
+   "heading": 270.0,
+   "lat": -35.362889,
+   "lon": 149.165221
+  },
+  "CMAC_PILOTSBOX": {
+   "alt": 586.0,
+   "heading": 270.0,
+   "lat": -35.362734,
+   "lon": 149.1653
+  },
+  "CMAC_PILOTSBOX2": {
+   "alt": 584.0,
+   "heading": 270.0,
+   "lat": -35.362749,
+   "lon": 149.165359
+  },
+  "CMAC_South": {
+   "alt": 584.0,
+   "heading": 173.0,
+   "lat": -35.363261,
+   "lon": 149.16523
+  },
+  "Carstensz": {
+   "alt": 606.0,
+   "heading": 60.0,
+   "lat": -35.331302,
+   "lon": 149.132103
+  },
+  "CobbCountyRC": {
+   "alt": 280.0,
+   "heading": 105.0,
+   "lat": 34.013819,
+   "lon": -84.724446
+  },
+  "Colonche": {
+   "alt": 110.17,
+   "heading": 12.0,
+   "lat": -2.0124065,
+   "lon": -80.5412181
+  },
+  "Dalby": {
+   "alt": 343.0,
+   "heading": 8.7,
+   "lat": -27.274439,
+   "lon": 151.290064
+  },
+  "EPIgijon": {
+   "alt": 22.0,
+   "heading": 0.0,
+   "lat": 43.521902,
+   "lon": -5.62431
+  },
+  "Egge": {
+   "alt": 198.0,
+   "heading": 303.0,
+   "lat": 60.21572,
+   "lon": 10.324071
+  },
+  "EliField": {
+   "alt": 206.0,
+   "heading": 37.0,
+   "lat": 40.059488,
+   "lon": -88.551314
+  },
+  "ElliottField": {
+   "alt": 450.0,
+   "heading": 130.0,
+   "lat": 34.458281,
+   "lon": -84.180209
+  },
+  "Elvenes": {
+   "alt": 17.0,
+   "heading": 256.0,
+   "lat": 68.871422,
+   "lon": 17.98669
+  },
+  "Flicker": {
+   "alt": 2158.0,
+   "heading": 180.0,
+   "lat": 39.018801,
+   "lon": -104.893081
+  },
+  "Garrawarra": {
+   "alt": 293.0,
+   "heading": 165.0,
+   "lat": -34.159752,
+   "lon": 150.967395
+  },
+  "Goretovka": {
+   "alt": 200.0,
+   "heading": 290.0,
+   "lat": 55.9689,
+   "lon": 37.1101
+  },
+  "GrandCanyon": {
+   "alt": 1425.6,
+   "heading": 90.0,
+   "lat": 36.146,
+   "lon": -113.89
+  },
+  "GrupoSicoss": {
+   "alt": 0.0,
+   "heading": 0.0,
+   "lat": 19.316518,
+   "lon": -99.220255
+  },
+  "Gundaroo": {
+   "alt": 576.8,
+   "heading": 0.0,
+   "lat": -35.02349196,
+   "lon": 149.26496411
+  },
+  "HMAS": {
+   "alt": 18.0,
+   "heading": 0.0,
+   "lat": -33.6615,
+   "lon": 150.841431
+  },
+  "HachinoheMine": {
+   "alt": 56.0,
+   "heading": 270.0,
+   "lat": 40.4539496,
+   "lon": 141.5419051
+  },
+  "Hata": {
+   "alt": 6.0,
+   "heading": 165.0,
+   "lat": 35.671497,
+   "lon": 140.083934
+  },
+  "HighwayField": {
+   "alt": 240.0,
+   "heading": 300.0,
+   "lat": -33.950458,
+   "lon": 22.977709
+  },
+  "IAAI_KMITL": {
+   "alt": 3.0,
+   "heading": 0.0,
+   "lat": 13.730264,
+   "lon": 100.787441
+  },
+  "Jervis_Bay": {
+   "alt": 0.0,
+   "heading": 0.0,
+   "lat": -35.1192416,
+   "lon": 150.7296753
+  },
+  "JuanDeLaCierva_E": {
+   "alt": 625.0,
+   "heading": 80.0,
+   "lat": 40.221659,
+   "lon": -3.734951
+  },
+  "JuanDeLaCierva_NW": {
+   "alt": 625.0,
+   "heading": 295.0,
+   "lat": 40.221544,
+   "lon": -3.734174
+  },
+  "JuanDeLaCierva_SE": {
+   "alt": 625.0,
+   "heading": 115.0,
+   "lat": 40.221812,
+   "lon": -3.734933
+  },
+  "JuanDeLaCierva_W": {
+   "alt": 625.0,
+   "heading": 260.0,
+   "lat": 40.221735,
+   "lon": -3.734388
+  },
+  "KFC": {
+   "alt": 196.36,
+   "heading": 338.0,
+   "lat": 34.841292,
+   "lon": 136.2154873
+  },
+  "KNUI": {
+   "alt": 7.0,
+   "heading": 70.0,
+   "lat": 38.145322,
+   "lon": -76.426652
+  },
+  "KSFO": {
+   "alt": 5.3,
+   "heading": 118.0,
+   "lat": 37.619373,
+   "lon": -122.376637
+  },
+  "Kaga": {
+   "alt": 44.0,
+   "heading": 0.0,
+   "lat": 36.3268982,
+   "lon": 136.3316638
+  },
+  "KalaupapaCliffs": {
+   "alt": 165.25,
+   "heading": 0.0,
+   "lat": 21.16564233,
+   "lon": -156.8868016
+  },
+  "Karuizawa": {
+   "alt": 926.0,
+   "heading": 0.0,
+   "lat": 36.323203,
+   "lon": 138.618215
+  },
+  "Kawachi": {
+   "alt": 7.0,
+   "heading": 0.0,
+   "lat": 35.879129,
+   "lon": 140.339683
+  },
+  "KawaguchiLake": {
+   "alt": 965.0,
+   "heading": 90.0,
+   "lat": 35.4712023,
+   "lon": 138.7450261
+  },
+  "KazakoshiPark": {
+   "alt": 932.0,
+   "heading": 0.0,
+   "lat": 36.321909,
+   "lon": 138.596021
+  },
+  "Kingaroy": {
+   "alt": 444.0,
+   "heading": 169.0,
+   "lat": -26.583528,
+   "lon": 151.84044
+  },
+  "Kris": {
+   "alt": 21.0,
+   "heading": 0.0,
+   "lat": 22.7400596,
+   "lon": 120.30975281
+  },
+  "LGAT": {
+   "alt": 21.0,
+   "heading": 330.0,
+   "lat": 37.889063,
+   "lon": 23.731863
+  },
+  "LaHerradura": {
+   "alt": 2.0,
+   "heading": 340.0,
+   "lat": -2.1475969,
+   "lon": -79.7876454
+  },
+  "LakeGeorgeLookout": {
+   "alt": 708.12,
+   "heading": 90.0,
+   "lat": -35.10122092,
+   "lon": 149.37517574
+  },
+  "LeeField": {
+   "alt": 75.0,
+   "heading": 260.0,
+   "lat": 32.42553,
+   "lon": -84.79109
+  },
+  "Madera": {
+   "alt": 82.0,
+   "heading": 290.0,
+   "lat": 36.9287648,
+   "lon": -119.8498046
+  },
+  "Marcopter": {
+   "alt": 0.0,
+   "heading": 90.0,
+   "lat": 44.806968,
+   "lon": 11.610389
+  },
+  "McMillan": {
+   "alt": 275.0,
+   "heading": 295.0,
+   "lat": 35.718719,
+   "lon": -120.769818
+  },
+  "McMillan_East": {
+   "alt": 275.0,
+   "heading": 295.0,
+   "lat": 35.7168007,
+   "lon": -120.7644466
+  },
+  "NDRCC": {
+   "alt": 163.5,
+   "heading": 167.0,
+   "lat": 33.24065965,
+   "lon": -96.93759168
+  },
+  "NFSC": {
+   "alt": 13.0,
+   "heading": 345.0,
+   "lat": 53.637561,
+   "lon": 9.9298
+  },
+  "NKRAFA": {
+   "alt": 235.0,
+   "heading": 66.0,
+   "lat": 14.652423,
+   "lon": 101.187369
+  },
+  "OSRF0": {
+   "alt": 0.0,
+   "heading": 353.0,
+   "lat": 37.4003371,
+   "lon": -122.0800351
+  },
+  "OSRF0_PILOTSBOX": {
+   "alt": 2.0,
+   "heading": 270.0,
+   "lat": 37.4003371,
+   "lon": -122.0800351
+  },
+  "Peg": {
+   "alt": 141.0,
+   "heading": 289.0,
+   "lat": 36.7099085,
+   "lon": -119.4076592
+  },
+  "PerkinsField": {
+   "alt": 137.0,
+   "heading": 20.0,
+   "lat": 36.163609,
+   "lon": -78.806864
+  },
+  "Portmoak": {
+   "alt": 164.0,
+   "heading": 270.0,
+   "lat": 56.191,
+   "lon": -3.323271
+  },
+  "Pyramid": {
+   "alt": 0.0,
+   "heading": 0.0,
+   "lat": 29.9764,
+   "lon": 31.1339
+  },
+  "QMAC": {
+   "alt": 740.0,
+   "heading": 312.0,
+   "lat": -35.363724,
+   "lon": 149.430011
+  },
+  "RATBeach": {
+   "alt": 0.0,
+   "heading": 270.0,
+   "lat": 33.810313,
+   "lon": -118.393867
+  },
+  "RFRanch": {
+   "alt": 1297.88,
+   "heading": 180.0,
+   "lat": 37.118079,
+   "lon": -2.77369
+  },
+  "RF_AirStadium": {
+   "alt": 1434.0,
+   "heading": 0.0,
+   "lat": 36.893328,
+   "lon": -2.720371
+  },
+  "RF_BuenaVista": {
+   "alt": 2390.0,
+   "heading": 0.0,
+   "lat": 37.093686,
+   "lon": -2.890969
+  },
+  "RF_Castle": {
+   "alt": 2736.0,
+   "heading": 0.0,
+   "lat": 37.090662,
+   "lon": -3.074557
+  },
+  "RF_Garage": {
+   "alt": 788.0,
+   "heading": 0.0,
+   "lat": 37.621798,
+   "lon": -2.646596
+  },
+  "RTAF_UTC": {
+   "alt": 69.0,
+   "heading": 50.0,
+   "lat": 13.765885,
+   "lon": 102.312067
+  },
+  "Rabi": {
+   "alt": 7.5,
+   "heading": 90.0,
+   "lat": -16.51273251,
+   "lon": 179.97642023
+  },
+  "Range11": {
+   "alt": 220.0,
+   "heading": 180.0,
+   "lat": 41.360461,
+   "lon": -74.032838
+  },
+  "Rotherham": {
+   "alt": 21.0,
+   "heading": 360.0,
+   "lat": 53.275131,
+   "lon": -1.19404
+  },
+  "SCCMAS": {
+   "alt": 102.0,
+   "heading": 315.0,
+   "lat": 37.1730398,
+   "lon": -121.6815865
+  },
+  "SFO_Bay": {
+   "alt": 0.0,
+   "heading": 0.0,
+   "lat": 37.62561973,
+   "lon": -122.33235387
+  },
+  "SKT": {
+   "alt": 45.0,
+   "heading": 0.0,
+   "lat": 44.850687,
+   "lon": -0.684029
+  },
+  "Semisopochnoi": {
+   "alt": 120.0,
+   "heading": 90.0,
+   "lat": 51.9634,
+   "lon": 179.756
+  },
+  "SkyViperFactory": {
+   "alt": 13.0,
+   "heading": 0.0,
+   "lat": 23.021754,
+   "lon": 114.073139
+  },
+  "Skyrocket": {
+   "alt": 11.0,
+   "heading": 134.0,
+   "lat": 33.982069,
+   "lon": -118.426372
+  },
+  "Snarbyeidet": {
+   "alt": 87.0,
+   "heading": 170.0,
+   "lat": 69.775839,
+   "lon": 19.548929
+  },
+  "SpringValley": {
+   "alt": 580.8,
+   "heading": 5.0,
+   "lat": -35.280252,
+   "lon": 149.005821
+  },
+  "SpringValley2": {
+   "alt": 582.0,
+   "heading": 10.0,
+   "lat": -35.28240059,
+   "lon": 149.00542037
+  },
+  "SpringValley3": {
+   "alt": 579.0,
+   "heading": 12.6,
+   "lat": -35.28240515,
+   "lon": 149.00716878
+  },
+  "SpringValley4": {
+   "alt": 594.99,
+   "heading": 0.0,
+   "lat": -35.2824768,
+   "lon": 149.0071759
+  },
+  "SpringValleyRoad": {
+   "alt": 603.0,
+   "heading": 162.7,
+   "lat": -35.28899126,
+   "lon": 149.00553365
+  },
+  "StMarysCountyRegional": {
+   "alt": 40.0,
+   "heading": 20.0,
+   "lat": 38.315464,
+   "lon": -76.55053
+  },
+  "Sterling": {
+   "alt": 88.0,
+   "heading": 90.0,
+   "lat": 38.98248,
+   "lon": -77.439567
+  },
+  "TagusPark": {
+   "alt": 151.0,
+   "heading": 0.0,
+   "lat": 38.740195,
+   "lon": -9.301843
+  },
+  "TomCarpark": {
+   "alt": 6.0,
+   "heading": 270.0,
+   "lat": 26.04895,
+   "lon": -80.254219
+  },
+  "TrescasasField_NE": {
+   "alt": 1092.0,
+   "heading": 30.0,
+   "lat": 40.968861,
+   "lon": -4.05275
+  },
+  "TrescasasField_SW": {
+   "alt": 1092.0,
+   "heading": 210.0,
+   "lat": 40.968861,
+   "lon": -4.05275
+  },
+  "Tyndall": {
+   "alt": 7.0,
+   "heading": 0.0,
+   "lat": 30.0142232,
+   "lon": -85.4984701
+  },
+  "UCSB": {
+   "alt": 0.0,
+   "heading": 0.0,
+   "lat": 34.413963,
+   "lon": -119.848946
+  },
+  "UChicago": {
+   "alt": 191.0,
+   "heading": 0.0,
+   "lat": 41.7886079,
+   "lon": -87.59871329999999
+  },
+  "Unalga": {
+   "alt": 42.0,
+   "heading": 270.0,
+   "lat": 51.578,
+   "lon": -179.0483
+  },
+  "Williams": {
+   "alt": 23.0,
+   "heading": 0.0,
+   "lat": 39.16124,
+   "lon": -122.13187
+  },
+  "WilliamsVtol": {
+   "alt": 23.0,
+   "heading": 180.0,
+   "lat": 39.165264,
+   "lon": -122.131755
+  },
+  "YPG": {
+   "alt": 252.97,
+   "heading": 235.0,
+   "lat": 32.976658,
+   "lon": -114.266699
+  },
+  "YUVIC": {
+   "alt": 250.89,
+   "heading": 180.0,
+   "lat": 35.48188274269,
+   "lon": 138.480289578438
+  },
+  "Yachiyo": {
+   "alt": 36.0,
+   "heading": 90.0,
+   "lat": 35.770481,
+   "lon": 140.107929
+  },
+  "Yuma": {
+   "alt": 95.0,
+   "heading": 0.0,
+   "lat": 32.638083,
+   "lon": -114.403104
+  }
+ }
+}
