@@ -37,7 +37,20 @@ if (!existsSync(from)) {
  * entry. The hash is over the files themselves, so an unchanged build keeps
  * its URL and stays cached.
  */
+/**
+ * Bump to force a new path when the FILES are unchanged but the URL must be.
+ *
+ * A CDN caches headers along with the body, so a response cached while the
+ * headers were wrong stays wrong until something changes -- and a
+ * content-addressed path does not change when the content did not. That
+ * happened once: a duplicated Cross-Origin-Embedder-Policy got cached, which
+ * the worker-script check rejects as invalid, and the simulator hung on
+ * "starting worker threads" for anyone the edge served that copy to.
+ */
+const LAYOUT = 2
+
 const digest = createHash('sha256')
+digest.update(String(LAYOUT))
 for (const name of readdirSync(from).sort()) {
   digest.update(name)
   digest.update(readFileSync(join(from, name)))
