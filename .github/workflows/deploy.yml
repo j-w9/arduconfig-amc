@@ -49,6 +49,12 @@ jobs:
         run: |
           npm run typecheck
           npx vitest run --root apps/web
+          # The app's own node:test suite -- a thousand tests covering the
+          # runtime, the MAVLink layer and the parameter catalog, none of
+          # which vitest picks up. It was not running here at all, so a
+          # change to the shared runtime could reach the deployed site with
+          # nothing but typecheck behind it. ~40s.
+          npm test
 
       # The WebAssembly SITL binaries are committed in this repo, not the app's,
       # and Vite only copies the app's own public/ into dist -- so they are
