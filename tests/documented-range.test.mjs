@@ -23,6 +23,9 @@ import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 
 import { applyStep, orderSteps, parameterDocsFrom, parseStepFile, vehicleContext } from '../packages/amc-steps/dist/index.js'
+// The app's own rule, imported rather than restated: an audit that reimplements
+// what it audits can agree with itself while disagreeing with the app.
+import { optionsAreExhaustive } from '../apps/arduconfigurator/packages/ardupilot-core/dist/index.js'
 
 const R = new URL('..', import.meta.url)
 const templates = fileURLToPath(
@@ -62,7 +65,16 @@ function judge(definition, value) {
   if (definition.minimum !== undefined && value < definition.minimum) return 'below-minimum'
   const maximum = definition.maximum ?? bitmaskMaximum(definition)
   if (maximum !== undefined && value > maximum) return 'above-maximum'
-  if (definition.options?.length && !definition.bitmask && !definition.options.some((o) => Object.is(o.value, value))) {
+  // Options alongside a numeric range can be presets on a continuous
+  // parameter rather than an enumeration of the only legal values -- see
+  // optionsAreExhaustive, which the app's own draft validation uses. The
+  // audit has to apply the same rule or it stops describing the app.
+  if (
+    definition.options?.length &&
+    !definition.bitmask &&
+    optionsAreExhaustive(definition) &&
+    !definition.options.some((o) => Object.is(o.value, value))
+  ) {
     return 'enum-mismatch'
   }
   return undefined
@@ -133,7 +145,12 @@ const KNOWN = new Set([
   'ATC_ANG_RLL_P:below-minimum',
   // A small, light quad accelerates harder than the documented 1800 deg/s/s.
   'ATC_ACC_P_MAX:above-maximum',
-  'ATC_ACC_R_MAX:above-maximum'
+  'ATC_ACC_R_MAX:above-maximum',
+  // 4. A deliberate placeholder. v4.4.5 gave the Plane sequence the QuadPlane
+  // mirrors of the Copter attitude parameters; this one is seeded at 0 with
+  // "Initial value, will be improved at a later step", below a documented
+  // minimum of 5, exactly as the ATC_RAT_*_FLTE family above.
+  'Q_A_RAT_YAW_FLTD:below-minimum'
 ])
 
 test('the sequence and the documented ranges disagree only where we know', () => {

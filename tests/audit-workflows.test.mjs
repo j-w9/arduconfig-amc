@@ -178,6 +178,12 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   // Answered elsewhere in ArduConfigurator.
   reset_all_parameters_to_default: 'the Firmware and Presets tabs, which this tab links to',
   get_vehicle_directory: 'a directory is a download here, not a path on disk',
+  // v4.4.5. Evicts a project's cached apm.pdef.xml when it was written for a
+  // different firmware than the connected board reports. No counterpart: the
+  // port never caches parameter metadata on disk, it ships generated catalogs
+  // per firmware and picks between them from the heartbeat.
+  remove_cached_parameter_metadata_for_mismatched_firmware:
+    'no on-disk metadata cache to evict; catalogs are shipped per firmware',
 
   // Internal to AMC's own object model, with no separate behaviour.
   parameters_as_par_dict: "a conversion between AMC's own types",
@@ -329,6 +335,16 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   application_logo_filepath: "the same",
   what_gets_uploaded_image_filepath: "a documentation image shipped inside AMC",
   create_new_vehicle_dir: "no directory is created on disk here",
+  // v4.4.5. Reads Components > Flight Controller > Firmware > Type out of a
+  // template's vehicle_components.json, so AMC can warn when a template is
+  // opened against a board running different firmware.
+  //
+  // The port narrows its template list by the directory the template came
+  // from (ArduCopter/..., ArduPlane/...) rather than by that recorded field.
+  // Same answer for all 25 templates AMC ships -- checked, none disagree --
+  // and there is no separate "open a template against a board" moment here to
+  // warn at: the sequence is already chosen from the heartbeat.
+  vehicle_type_from_template: 'the template directory decides the sequence, not the field inside',
   valid_directory_name: "projectFilename reduces whatever was typed to a safe archive name",
   store_recently_used_template_dirs: "a recent-files list, which a browser tab has no equivalent of",
   store_template_dir: "the same",

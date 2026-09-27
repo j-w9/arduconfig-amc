@@ -49,12 +49,8 @@
     "RC8_OPTION": 1,
     "RC9_OPTION": 1,
     "RSSI_TYPE": 20,
-    "SERIAL1_PROTOCOL": 3,
     "SERIAL2_BAUD": 1,
-    "SERIAL2_OPTIONS": 1,
-    "SERIAL2_PROTOCOL": 1,
-    "SERIAL4_PROTOCOL": 1,
-    "SERIAL6_PROTOCOL": 2
+    "SERIAL2_OPTIONS": 1
    },
    "07_remote_controller_controller.param": {
     "ARMING_RUDDER": 18,
@@ -102,9 +98,7 @@
     "BRD_SER1_RTSCTS": 19,
     "SERIAL1_BAUD": 17,
     "SERIAL1_OPTIONS": 4,
-    "SERIAL1_PROTOCOL": 8,
     "SERIAL2_BAUD": 2,
-    "SERIAL2_PROTOCOL": 2,
     "SERIAL4_BAUD": 1
    },
    "09_esc_telemetry.param": {
@@ -1069,8 +1063,7 @@
    },
    "06_remote_controller_receiver.param": {
     "RC_OPTIONS": 2,
-    "RSSI_TYPE": 2,
-    "SERIAL2_PROTOCOL": 2
+    "RSSI_TYPE": 2
    },
    "07_remote_controller_controller.param": {
     "ARMING_RUDDER": 2,
@@ -1082,9 +1075,7 @@
    "08_telemetry.param": {
     "BRD_SER2_RTSCTS": 2,
     "SERIAL2_BAUD": 1,
-    "SERIAL2_PROTOCOL": 1,
-    "SERIAL4_BAUD": 1,
-    "SERIAL4_PROTOCOL": 1
+    "SERIAL4_BAUD": 1
    },
    "09_esc_telemetry.param": {
     "SERIAL5_BAUD": 2,
@@ -1286,6 +1277,10 @@
     "OSD1_XTRACK_Y": 2
    },
    "20_esc.param": {
+    "MOT_SPIN_ARM": 2,
+    "MOT_SPIN_MAX": 2,
+    "MOT_SPIN_MIN": 2,
+    "MOT_THST_EXPO": 2,
     "NTF_BUZZ_TYPES": 2,
     "NTF_LED_TYPES": 2,
     "SERVO1_MAX": 2,
@@ -1340,6 +1335,16 @@
     "EK3_ACC_P_NSE": 2,
     "EK3_ALT_M_NSE": 2
    },
+   "28_pid_notch_filter_results.param": {
+    "ATC_RAT_PIT_NEF": 2,
+    "ATC_RAT_PIT_NTF": 2,
+    "ATC_RAT_RLL_NEF": 2,
+    "ATC_RAT_RLL_NTF": 2,
+    "ATC_RAT_YAW_NEF": 2,
+    "ATC_RAT_YAW_NTF": 2,
+    "PSC_ACCZ_NEF": 2,
+    "PSC_ACCZ_NTF": 2
+   },
    "29_quick_tune_setup.param": {
     "QUIK_AUTO_FILTER": 2,
     "QUIK_AUTO_SAVE": 2,
@@ -1354,6 +1359,18 @@
     "QUIK_Y_PI_RATIO": 2,
     "QUIK_YAW_D_MAX": 2,
     "QUIK_YAW_P_MAX": 2
+   },
+   "30_quick_tune_results.param": {
+    "ATC_RAT_PIT_D": 2,
+    "ATC_RAT_PIT_I": 2,
+    "ATC_RAT_PIT_P": 2,
+    "ATC_RAT_RLL_D": 2,
+    "ATC_RAT_RLL_I": 2,
+    "ATC_RAT_RLL_P": 2,
+    "ATC_RAT_YAW_D": 2,
+    "ATC_RAT_YAW_FLTD": 2,
+    "ATC_RAT_YAW_I": 2,
+    "ATC_RAT_YAW_P": 2
    },
    "32_inflight_magnetometer_fit_results.param": {
     "COMPASS_DIA_X": 2,
@@ -1371,6 +1388,12 @@
     "COMPASS_OFS_Z": 2,
     "COMPASS_ORIENT": 2,
     "COMPASS_SCALE": 2
+   },
+   "33_evaluate_the_aircraft_tune_ff_disable.param": {
+    "ATC_RATE_FF_ENAB": 2
+   },
+   "34_evaluate_the_aircraft_tune_ff_enable.param": {
+    "ATC_RATE_FF_ENAB": 2
    },
    "35_autotune_roll_setup.param": {
     "AUTOTUNE_AGGR": 2
@@ -1393,6 +1416,7 @@
     "ATC_RAT_PIT_P": 2
    },
    "39_autotune_yaw_setup.param": {
+    "ATC_RAT_YAW_FLTD": 2,
     "AUTOTUNE_AGGR": 2
    },
    "40_autotune_yaw_results.param": {
@@ -1427,6 +1451,9 @@
     "ATC_RAT_RLL_D": 2,
     "ATC_RAT_RLL_I": 2,
     "ATC_RAT_RLL_P": 2
+   },
+   "45_autotune_finish.param": {
+    "ATC_THR_MIX_MAX": 2
    },
    "46_pid_d_ff.param": {
     "ATC_RAT_PIT_D_FF": 2,
@@ -1562,6 +1589,7 @@
     "SID_T_REC": 2
    },
    "57_analytical_pid_optimization.param": {
+    "ATC_RATE_FF_ENAB": 2,
     "PSC_ACCZ_I": 2
    },
    "60_position_controller.param": {
