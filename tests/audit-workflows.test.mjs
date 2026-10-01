@@ -40,7 +40,9 @@ const ACCOUNTED_FOR = {
   handle_param_file_change_workflow: { verdict: 'ours', where: 'read-project.ts, including old_filenames and @manual_override' },
   handle_copy_fc_values_workflow: { verdict: 'ours', where: 'the step\'s "Take N from the vehicle"' },
   handle_imu_temperature_calibration_workflow: { verdict: 'ours', where: 'tempcal.ts and tempcal-plot.ts, fitted against NumPy' },
-  download_last_flight_log_workflow: { verdict: 'ours', where: "the tab's log fetch, off the vehicle rather than via another tab" },
+  // Lost its _workflow suffix in AMC v4.5.1, so it is now scraped as plain
+  // behaviour rather than a workflow; the answer is unchanged and lives in
+  // BEHAVIOUR_ACCOUNTED_FOR below.
   reset_and_reconnect_workflow: { verdict: 'ours', where: 'onRebootAndReconnect — reboot, wait out the boot delay, reconnect' },
   should_upload_file_to_fc_workflow: { verdict: 'ours', where: 'onInstallFile, for the two steps that need a Lua applet' },
   _should_download_file_from_url_workflow: { verdict: 'ours', where: 'the same install path, which fetches before it writes' },
@@ -143,6 +145,64 @@ test('nothing is answered for that AMC no longer has', () => {
  * appearing upstream has to be looked at by somebody.
  */
 const BEHAVIOUR_ACCOUNTED_FOR = {
+  // --- AMC v4.5.1 ---------------------------------------------------------
+  //
+  // Parameter export (data_model_parameter_export.py). A new window that
+  // writes a .param file of the CONNECTED controller's values, filtered on
+  // four axes -- calibrations, read-only, default-valued, outside-limits --
+  // with the chosen filters spelled into the filename and a header naming the
+  // vehicle and board. Distinct from writing the sequence's own files, which
+  // the port has had all along.
+  //
+  // The app's parameter backup is the same job with a smaller dial: it writes
+  // the connected vehicle's parameters with per-group exclusions (Calibration,
+  // Stream rates, Mission) rather than AMC's four include/exclude pairs. The
+  // filename and header carry the vehicle and board either way.
+  export_parameters: 'the app parameter backup, with group exclusions instead of filter pairs',
+  get_fc_parameters_for_export: 'the same',
+  filter_parameters_for_export: 'the same exclusions, applied at the same point',
+  sorted_export_parameter_names: 'the same',
+  sort_key: 'the same',
+  build_export_filename: 'the backup names itself after the vehicle and the time, not the filters',
+  filename_suffix: 'no filter suffix, because there are no filter pairs to spell',
+  build_export_header:
+    'the backup records board type, version, vendor/product id, UID and the app build -- as fields on the backup, not comment lines in a .param file',
+  create_fc_parameter_snapshot: 'the same',
+  is_outside_limits: "the app's own draft validation decides this, from the same documented ranges",
+  matches: 'the include/exclude test behind the filter pairs above',
+  pairs: 'the same',
+
+  // Remote files over MAVFTP (data_model_parameter_editor.py). The app has
+  // had a MAVFTP service since long before this: the Files tab lists, fetches,
+  // uploads, renames and deletes, and the Logs tab downloads.
+  get_remote_files: "the Files tab's listing",
+  download_remote_file: 'the same',
+  upload_file_to_fc: 'the same',
+  verify_remote_file: 'not ported -- the MAVFTP upload is not read back or CRC-checked afterwards',
+  rename_remote_path: 'not ported -- the Files tab lists, fetches, uploads and deletes, but cannot rename',
+  delete_remote_path: 'the same',
+  make_remote_directory: 'not ported -- no directory is created on the vehicle',
+  download_last_flight_log: "the tab's log fetch, off the vehicle rather than via another tab",
+
+  // Comparing an outside file against the vehicle
+  // (data_model_parameter_compare_and_upload.py). The port already has this
+  // as its own panel -- a tune off a forum post or a file saved earlier,
+  // staged against what the vehicle holds.
+  for_external_parameter_file: 'the compare-and-upload panel',
+  for_connected_flight_controller: 'the same',
+  selected_external_parameters: 'the same -- the operator picks which rows to take',
+  unselected_manual_edits: 'the same',
+  confirm_external_upload_selection: 'the same',
+  refresh_external_fc_values: 'the same',
+  update_parameters_from_fc_values: 'the same',
+  is_fc_link_connected: 'the app knows whether it is connected; every view reads it',
+  load_parameter_metadata_for_flight_controller: 'catalogs are shipped per firmware and picked from the heartbeat',
+
+  // A calibration recorded in one step going stale because a later step
+  // changed what it was measured against.
+  find_other_steps_with_stale_calibration_values:
+    'not ported -- the directory does not yet cross-check one step against another',
+
   // Things this tab does.
   connected_vehicle_type: 'the firmware the link reports, used to pick a sequence',
   is_fc_connected: 'the connected prop',
