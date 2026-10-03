@@ -178,10 +178,10 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   get_remote_files: "the Files tab's listing",
   download_remote_file: 'the same',
   upload_file_to_fc: 'the same',
-  verify_remote_file: 'not ported -- the MAVFTP upload is not read back or CRC-checked afterwards',
-  rename_remote_path: 'not ported -- the Files tab lists, fetches, uploads and deletes, but cannot rename',
+  verify_remote_file: 'uploadRemoteFileVerified -- CALC_FILE_CRC32 against the bytes that went up',
+  rename_remote_path: 'renameRemotePath, both paths NUL-separated in one payload',
   delete_remote_path: 'the same',
-  make_remote_directory: 'not ported -- no directory is created on the vehicle',
+  make_remote_directory: 'makeRemoteDirectory',
   download_last_flight_log: "the tab's log fetch, off the vehicle rather than via another tab",
 
   // Comparing an outside file against the vehicle
@@ -198,10 +198,10 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   is_fc_link_connected: 'the app knows whether it is connected; every view reads it',
   load_parameter_metadata_for_flight_controller: 'catalogs are shipped per firmware and picked from the heartbeat',
 
-  // A calibration recorded in one step going stale because a later step
-  // changed what it was measured against.
+  // A calibration recorded in one step going stale because the vehicle has
+  // since been recalibrated.
   find_other_steps_with_stale_calibration_values:
-    'not ported -- the directory does not yet cross-check one step against another',
+    "stepsWithStaleCalibration -- same tolerance, same refusal to rewrite the other files",
 
   // Things this tab does.
   connected_vehicle_type: 'the firmware the link reports, used to pick a sequence',

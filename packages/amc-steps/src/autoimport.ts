@@ -77,3 +77,40 @@ export function autoImportableParameters(
   }
   return captured.sort()
 }
+
+/**
+ * Other step files whose recorded value for a freshly calibrated parameter no
+ * longer matches the vehicle.
+ *
+ * AMC's `find_other_steps_with_stale_calibration_values`. The situation it is
+ * for: a calibration is run, the flight controller now holds new numbers, and
+ * every other step file in the directory still records the old ones. Those
+ * files are now a record of something that is not true, and nothing else in
+ * the directory notices.
+ *
+ * Reports only. AMC never rewrites the other files and neither does this: the
+ * directory is the operator's account of how the aircraft was configured, and
+ * silently editing steps they are not looking at is not a correction, it is a
+ * forgery.
+ */
+export function stepsWithStaleCalibration(
+  directory: Readonly<Record<string, Readonly<Record<string, number>>>>,
+  currentStep: string | undefined,
+  calibratedValues: Readonly<Record<string, number>>
+): readonly string[] {
+  const stale: string[] = []
+  for (const [filename, recorded] of Object.entries(directory)) {
+    // The step the calibration belongs to is being written right now; it is
+    // not stale, it is the source.
+    if (filename === currentStep) continue
+    for (const [parameter, value] of Object.entries(calibratedValues)) {
+      const held = recorded[parameter]
+      if (held === undefined) continue
+      if (!withinTolerance(held, value)) {
+        stale.push(filename)
+        break
+      }
+    }
+  }
+  return stale
+}

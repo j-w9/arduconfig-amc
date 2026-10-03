@@ -25,7 +25,7 @@ export {
   applyStep,
   vehicleContext
 } from './run.js'
-export { autoImportableParameters, withinTolerance } from './autoimport.js'
+export { autoImportableParameters, stepsWithStaleCalibration, withinTolerance } from './autoimport.js'
 export { type RenamePlan, connectionRenames, planConnectionRenames } from './rename.js'
 export {
   ID_PARAMETER_NAMES,
