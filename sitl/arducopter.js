@@ -1791,15 +1791,8 @@ var FS_stdin_getChar = () => {
       var BUFSIZE = 256;
       var buf = Buffer.alloc(BUFSIZE);
       var bytesRead = 0;
-      // For some reason we must suppress a closure warning here, even though
-      // fd definitely exists on process.stdin, and is even the proper way to
-      // get the fd of stdin,
-      // https://github.com/nodejs/help/issues/2136#issuecomment-523649904
-      // This started to happen after moving this logic out of library_tty.js,
-      // so it is related to the surrounding code in some unclear manner.
-      /** @suppress {missingProperties} */ var fd = process.stdin.fd;
       try {
-        bytesRead = fs.readSync(fd, buf, 0, BUFSIZE);
+        bytesRead = fs.readSync(process.stdin.fd, buf, 0, BUFSIZE);
       } catch (e) {
         // Cross-platform differences: on Windows, reading EOF throws an
         // exception, but on other OSes, reading EOF returns 0. Uniformize
@@ -1807,7 +1800,7 @@ var FS_stdin_getChar = () => {
         if (e.toString().includes("EOF")) bytesRead = 0; else throw e;
       }
       if (bytesRead > 0) {
-        result = buf.slice(0, bytesRead).toString("utf-8");
+        result = buf.toString("utf-8", 0, bytesRead);
       }
     } else if (globalThis.window?.prompt) {
       // Browser.
@@ -3690,8 +3683,8 @@ var FS = {
     return stream.stream_ops.ioctl(stream, cmd, arg);
   },
   readFile(path, opts = {}) {
-    opts.flags = opts.flags ?? 0;
-    opts.encoding = opts.encoding ?? "binary";
+    opts.flags ??= 0;
+    opts.encoding ??= "binary";
     if (opts.encoding !== "utf8" && opts.encoding !== "binary") {
       abort(`Invalid encoding type "${opts.encoding}"`);
     }
@@ -3707,7 +3700,7 @@ var FS = {
     return buf;
   },
   writeFile(path, data, opts = {}) {
-    opts.flags = opts.flags ?? 577;
+    opts.flags ??= 577;
     var stream = FS.open(path, opts.flags, opts.mode);
     data = FS_fileDataToTypedArray(data);
     FS.write(stream, data, 0, data.byteLength, undefined, opts.canOwn);
@@ -3865,14 +3858,8 @@ var FS = {
       }
     }
   },
-  findObject(path, dontResolveLastLink) {
-    var ret = FS.analyzePath(path, dontResolveLastLink);
-    if (!ret.exists) {
-      return null;
-    }
-    return ret.object;
-  },
   analyzePath(path, dontResolveLastLink) {
+    warnOnce("FS.analyzePath is deprecated; use FS.lookupPath or FS.stat instead");
     // operate from within the context of the symlink's target
     try {
       var lookup = FS.lookupPath(path, {
@@ -4483,12 +4470,21 @@ var SOCKFS = {
       };
     },
     poll(sock) {
-      if (sock.type === 1 && sock.server) {
+      if (sock.type === 1 && (sock.server || sock.listening)) {
+        if (sock.error) {
+          return 8;
+        }
+        if (!sock.server) {
+          return 16;
+        }
         // listen sockets should only say they're available for reading
         // if there are pending clients.
         return sock.pending.length ? (64 | 1) : 0;
       }
       var mask = 0;
+      if (sock.error) {
+        mask |= 8;
+      }
       var dest = sock.type === 1 ? // we only care about the socket state for connection-based sockets
       SOCKFS.websocket_sock_ops.getPeer(sock, sock.daddr, sock.dport) : null;
       if (sock.recv_queue.length || !dest || // connection-less sockets are always ready to read
@@ -4538,6 +4534,7 @@ var SOCKFS = {
       }
     },
     close(sock) {
+      sock.listening = false;
       // if we've spawned a listen server, close it
       if (sock.server) {
         try {
@@ -4611,7 +4608,7 @@ var SOCKFS = {
       if (!ENVIRONMENT_IS_NODE) {
         throw new FS.ErrnoError(138);
       }
-      if (sock.server) {
+      if (sock.server || sock.listening) {
         throw new FS.ErrnoError(28);
       }
       var WebSocketServer = require("ws").Server;
@@ -4620,6 +4617,7 @@ var SOCKFS = {
         host,
         port: sock.sport
       });
+      sock.listening = true;
       SOCKFS.emit("listen", sock.stream.fd);
       // Send Event with listen fd.
       sock.server.on("connection", ws => {
@@ -4647,18 +4645,22 @@ var SOCKFS = {
         sock.server = null;
       });
       sock.server.on("error", error => {
-        // Although the ws library may pass errors that may be more descriptive than
-        // ECONNREFUSED they are not necessarily the expected error code e.g.
-        // ENOTFOUND on getaddrinfo seems to be node.js specific, so using EHOSTUNREACH
-        // is still probably the most useful thing to do. This error shouldn't
-        // occur in a well written app as errors should get trapped in the compiled
-        // app's own getaddrinfo call.
-        sock.error = 23;
-        // Used in getsockopt for SOL_SOCKET/SO_ERROR test.
-        SOCKFS.emit("error", [ sock.stream.fd, sock.error, "EHOSTUNREACH: Host is unreachable" ]);
+        sock.error = (error.code && ERRNO_CODES[error.code]) || 29;
+        SOCKFS.emit("error", [ sock.stream.fd, sock.error, error.message || error.code || "Server error" ]);
+        if (sock.server) {
+          try {
+            sock.server.close();
+          } catch (e) {}
+          sock.server = null;
+        }
       });
     },
     accept(listensock) {
+      if (listensock.error) {
+        var err = listensock.error;
+        listensock.error = null;
+        throw new FS.ErrnoError(err);
+      }
       if (!listensock.server || !listensock.pending.length) {
         throw new FS.ErrnoError(28);
       }
@@ -5135,15 +5137,17 @@ var SYSCALLS = {
     (growMemViews(), HEAP64)[(((buf) + (24)) >> 3)] = BigInt(stat.size);
     (growMemViews(), HEAP32)[(((buf) + (32)) >> 2)] = 4096;
     (growMemViews(), HEAP32)[(((buf) + (36)) >> 2)] = stat.blocks;
-    var atime = stat.atime.getTime();
-    var mtime = stat.mtime.getTime();
-    var ctime = stat.ctime.getTime();
+    // Prefer `*Ms` properties if available (e.g. from NODEFS / host `fs.Stats`)
+    // for sub-millisecond precision; fall back to Date#getTime for other filesystems.
+    var atime = stat.atimeMs ?? stat.atime.getTime();
+    var mtime = stat.mtimeMs ?? stat.mtime.getTime();
+    var ctime = stat.ctimeMs ?? stat.ctime.getTime();
     (growMemViews(), HEAP64)[(((buf) + (40)) >> 3)] = BigInt(Math.floor(atime / 1e3));
-    (growMemViews(), HEAPU32)[(((buf) + (48)) >> 2)] = (atime % 1e3) * 1e3 * 1e3;
+    (growMemViews(), HEAPU32)[(((buf) + (48)) >> 2)] = Math.floor((atime % 1e3) * 1e6);
     (growMemViews(), HEAP64)[(((buf) + (56)) >> 3)] = BigInt(Math.floor(mtime / 1e3));
-    (growMemViews(), HEAPU32)[(((buf) + (64)) >> 2)] = (mtime % 1e3) * 1e3 * 1e3;
+    (growMemViews(), HEAPU32)[(((buf) + (64)) >> 2)] = Math.floor((mtime % 1e3) * 1e6);
     (growMemViews(), HEAP64)[(((buf) + (72)) >> 3)] = BigInt(Math.floor(ctime / 1e3));
-    (growMemViews(), HEAPU32)[(((buf) + (80)) >> 2)] = (ctime % 1e3) * 1e3 * 1e3;
+    (growMemViews(), HEAPU32)[(((buf) + (80)) >> 2)] = Math.floor((ctime % 1e3) * 1e6);
     (growMemViews(), HEAP64)[(((buf) + (88)) >> 3)] = BigInt(stat.ino);
     return 0;
   },
@@ -6139,25 +6143,22 @@ function ___syscall_utimensat(dirfd, path, times, flags) {
       atime = now;
       mtime = now;
     } else {
-      var seconds = readI53FromI64(times);
-      var nanoseconds = (growMemViews(), HEAP32)[(((times) + (8)) >> 2)];
-      if (nanoseconds == 1073741823) {
-        atime = now;
-      } else if (nanoseconds == 1073741822) {
-        atime = null;
-      } else {
-        atime = (seconds * 1e3) + (nanoseconds / (1e3 * 1e3));
+      function readTimespec(ptr) {
+        var tv_nsec = (growMemViews(), HEAP32)[(((ptr) + (8)) >> 2)];
+        if (tv_nsec == 1073741823) {
+          return now;
+        }
+        if (tv_nsec == 1073741822) {
+          return null;
+        }
+        var tv_sec = readI53FromI64(ptr);
+        // Round down tv_nsec to the nearest 10 microseconds (10,000 ns) to prevent
+        // floating-point rounding into the next whole second when converting to host/Windows timestamps.
+        tv_nsec = (tv_nsec / 1e4 | 0) * 1e4;
+        return (tv_sec + (tv_nsec / 1e9)) * 1e3;
       }
-      times += 16;
-      seconds = readI53FromI64(times);
-      nanoseconds = (growMemViews(), HEAP32)[(((times) + (8)) >> 2)];
-      if (nanoseconds == 1073741823) {
-        mtime = now;
-      } else if (nanoseconds == 1073741822) {
-        mtime = null;
-      } else {
-        mtime = (seconds * 1e3) + (nanoseconds / (1e3 * 1e3));
-      }
+      atime = readTimespec(times);
+      mtime = readTimespec(times + 16);
     }
     // null here means UTIME_OMIT was passed. If both were set to UTIME_OMIT then
     // we can skip the call completely.
@@ -6222,13 +6223,13 @@ var maybeExit = () => {
   }
 };
 
-var callUserCallback = func => {
+var callUserCallback = (func, ...args) => {
   if (ABORT) {
     err("user callback triggered after runtime exited or application aborted.  Ignoring.");
     return;
   }
   try {
-    return func();
+    return func(...args);
   } catch (e) {
     handleException(e);
   } finally {
@@ -6462,7 +6463,7 @@ function __setitimer_js(which, timeout_ms) {
   var id = setTimeout(() => {
     assert(which in timers);
     delete timers[which];
-    callUserCallback(() => __emscripten_timeout(which, _emscripten_get_now()));
+    callUserCallback(__emscripten_timeout, which, _emscripten_get_now());
   }, timeout_ms);
   timers[which] = {
     id,
@@ -6538,7 +6539,7 @@ function _clock_time_get(clk_id, ignored_precision, ptime) {
     return 52;
   }
   // "now" is in ms, and wasi times are in ns.
-  var nsec = Math.round(now * 1e3 * 1e3);
+  var nsec = Math.round(now * 1e6);
   (growMemViews(), HEAP64)[((ptime) >> 3)] = BigInt(nsec);
   return 0;
 }
@@ -6996,7 +6997,7 @@ var missingLibrarySymbols = [ "writeI53ToI64", "writeI53ToI64Clamped", "writeI53
 
 missingLibrarySymbols.forEach(missingLibrarySymbol);
 
-var unexportedSymbols = [ "run", "out", "err", "callMain", "abort", "wasmExports", "writeStackCookie", "checkStackCookie", "readI53FromI64", "INT53_MAX", "INT53_MIN", "bigintToI53Checked", "HEAP8", "HEAP16", "HEAPU16", "HEAP32", "HEAPU32", "HEAPF32", "HEAPF64", "HEAP64", "HEAPU64", "stackSave", "stackRestore", "stackAlloc", "ptrToString", "zeroMemory", "exitJS", "getHeapMax", "growMemory", "ENV", "ERRNO_CODES", "strError", "inetPton4", "inetNtop4", "inetPton6", "inetNtop6", "readSockaddr", "writeSockaddr", "DNS", "Protocols", "Sockets", "timers", "warnOnce", "readEmAsmArgsArray", "getExecutableName", "handleException", "keepRuntimeAlive", "runtimeKeepalivePush", "runtimeKeepalivePop", "callUserCallback", "maybeExit", "asyncLoad", "alignMemory", "mmapAlloc", "wasmTable", "wasmMemory", "getUniqueRunDependency", "noExitRuntime", "addRunDependency", "removeRunDependency", "addOnPreRun", "ccall", "freeTableIndexes", "functionsInTableMap", "PATH", "PATH_FS", "UTF8Decoder", "UTF8ArrayToString", "UTF8ToString", "stringToUTF8Array", "stringToUTF8", "lengthBytesUTF8", "intArrayFromString", "UTF16Decoder", "stringToUTF8OnStack", "writeArrayToMemory", "JSEvents", "specialHTMLTargets", "findCanvasEventTarget", "restoreOldWindowedStyle", "UNWIND_CACHE", "ExitStatus", "getEnvStrings", "checkWasiClock", "doReadv", "doWritev", "initRandomFill", "randomFill", "emSetImmediate", "emClearImmediate_deps", "emClearImmediate", "promiseMap", "Browser", "requestFullscreen", "setCanvasSize", "getUserMedia", "createContext", "getPreloadedImageData__data", "wget", "MONTH_DAYS_REGULAR", "MONTH_DAYS_LEAP", "MONTH_DAYS_REGULAR_CUMULATIVE", "MONTH_DAYS_LEAP_CUMULATIVE", "SYSCALLS", "getSocketFromFD", "getSocketAddress", "preloadPlugins", "FS_createPreloadedFile", "FS_preloadFile", "FS_modeStringToFlags", "FS_getMode", "FS_fileDataToTypedArray", "FS_stdin_getChar_buffer", "FS_stdin_getChar", "FS_unlink", "FS_createPath", "FS_createDevice", "FS_readFile", "FS_root", "FS_mounts", "FS_devices", "FS_streams", "FS_nextInode", "FS_nameTable", "FS_currentPath", "FS_initialized", "FS_ignorePermissions", "FS_filesystems", "FS_syncFSRequests", "FS_lookupPath", "FS_getPath", "FS_hashName", "FS_hashAddNode", "FS_hashRemoveNode", "FS_lookupNode", "FS_createNode", "FS_destroyNode", "FS_isRoot", "FS_isMountpoint", "FS_isFile", "FS_isDir", "FS_isLink", "FS_isChrdev", "FS_isBlkdev", "FS_isFIFO", "FS_isSocket", "FS_flagsToPermissionString", "FS_nodePermissions", "FS_mayLookup", "FS_mayCreate", "FS_mayDelete", "FS_mayOpen", "FS_checkOpExists", "FS_nextfd", "FS_getStreamChecked", "FS_getStream", "FS_createStream", "FS_closeStream", "FS_dupStream", "FS_doSetAttr", "FS_chrdev_stream_ops", "FS_major", "FS_minor", "FS_makedev", "FS_registerDevice", "FS_getDevice", "FS_getMounts", "FS_syncfs", "FS_mount", "FS_unmount", "FS_lookup", "FS_mknod", "FS_statfs", "FS_statfsStream", "FS_statfsNode", "FS_create", "FS_mkdir", "FS_mkdev", "FS_symlink", "FS_link", "FS_rename", "FS_rmdir", "FS_readdir", "FS_readlink", "FS_stat", "FS_fstat", "FS_lstat", "FS_doChmod", "FS_chmod", "FS_lchmod", "FS_fchmod", "FS_doChown", "FS_chown", "FS_lchown", "FS_fchown", "FS_doTruncate", "FS_truncate", "FS_ftruncate", "FS_utime", "FS_open", "FS_close", "FS_isClosed", "FS_llseek", "FS_read", "FS_write", "FS_mmap", "FS_msync", "FS_ioctl", "FS_writeFile", "FS_cwd", "FS_chdir", "FS_createDefaultDirectories", "FS_createDefaultDevices", "FS_createSpecialDirectories", "FS_createStandardStreams", "FS_staticInit", "FS_init", "FS_quit", "FS_findObject", "FS_analyzePath", "FS_createFile", "FS_createDataFile", "FS_forceLoadFile", "FS_createLazyFile", "MEMFS", "TTY", "PIPEFS", "SOCKFS", "tempFixedLengthArray", "miniTempWebGLFloatBuffers", "miniTempWebGLIntBuffers", "GL", "AL", "GLUT", "EGL", "GLEW", "IDBStore", "SDL", "SDL_gfx", "waitAsyncPolyfilled", "print", "printErr", "jstoi_s", "PThread", "terminateWorker", "cleanupThread", "registerTLSInit", "spawnThread", "exitOnMainThread", "proxyToMainThread", "proxiedJSCallArgs", "invokeEntryPoint", "checkMailbox" ];
+var unexportedSymbols = [ "run", "out", "err", "callMain", "abort", "wasmExports", "writeStackCookie", "checkStackCookie", "readI53FromI64", "INT53_MAX", "INT53_MIN", "bigintToI53Checked", "HEAP8", "HEAP16", "HEAPU16", "HEAP32", "HEAPU32", "HEAPF32", "HEAPF64", "HEAP64", "HEAPU64", "stackSave", "stackRestore", "stackAlloc", "ptrToString", "zeroMemory", "exitJS", "getHeapMax", "growMemory", "ENV", "ERRNO_CODES", "strError", "inetPton4", "inetNtop4", "inetPton6", "inetNtop6", "readSockaddr", "writeSockaddr", "DNS", "Protocols", "Sockets", "timers", "warnOnce", "readEmAsmArgsArray", "getExecutableName", "handleException", "keepRuntimeAlive", "runtimeKeepalivePush", "runtimeKeepalivePop", "callUserCallback", "maybeExit", "asyncLoad", "alignMemory", "mmapAlloc", "wasmTable", "wasmMemory", "getUniqueRunDependency", "noExitRuntime", "addRunDependency", "removeRunDependency", "addOnPreRun", "ccall", "freeTableIndexes", "functionsInTableMap", "PATH", "PATH_FS", "UTF8Decoder", "UTF8ArrayToString", "UTF8ToString", "stringToUTF8Array", "stringToUTF8", "lengthBytesUTF8", "intArrayFromString", "UTF16Decoder", "stringToUTF8OnStack", "writeArrayToMemory", "JSEvents", "specialHTMLTargets", "findCanvasEventTarget", "restoreOldWindowedStyle", "UNWIND_CACHE", "ExitStatus", "getEnvStrings", "checkWasiClock", "doReadv", "doWritev", "initRandomFill", "randomFill", "emSetImmediate", "emClearImmediate_deps", "emClearImmediate", "promiseMap", "Browser", "requestFullscreen", "setCanvasSize", "getUserMedia", "createContext", "getPreloadedImageData__data", "wget", "MONTH_DAYS_REGULAR", "MONTH_DAYS_LEAP", "MONTH_DAYS_REGULAR_CUMULATIVE", "MONTH_DAYS_LEAP_CUMULATIVE", "SYSCALLS", "getSocketFromFD", "getSocketAddress", "preloadPlugins", "FS_createPreloadedFile", "FS_preloadFile", "FS_modeStringToFlags", "FS_getMode", "FS_fileDataToTypedArray", "FS_stdin_getChar_buffer", "FS_stdin_getChar", "FS_unlink", "FS_createPath", "FS_createDevice", "FS_readFile", "FS_root", "FS_mounts", "FS_devices", "FS_streams", "FS_nextInode", "FS_nameTable", "FS_currentPath", "FS_initialized", "FS_ignorePermissions", "FS_filesystems", "FS_syncFSRequests", "FS_lookupPath", "FS_getPath", "FS_hashName", "FS_hashAddNode", "FS_hashRemoveNode", "FS_lookupNode", "FS_createNode", "FS_destroyNode", "FS_isRoot", "FS_isMountpoint", "FS_isFile", "FS_isDir", "FS_isLink", "FS_isChrdev", "FS_isBlkdev", "FS_isFIFO", "FS_isSocket", "FS_flagsToPermissionString", "FS_nodePermissions", "FS_mayLookup", "FS_mayCreate", "FS_mayDelete", "FS_mayOpen", "FS_checkOpExists", "FS_nextfd", "FS_getStreamChecked", "FS_getStream", "FS_createStream", "FS_closeStream", "FS_dupStream", "FS_doSetAttr", "FS_chrdev_stream_ops", "FS_major", "FS_minor", "FS_makedev", "FS_registerDevice", "FS_getDevice", "FS_getMounts", "FS_syncfs", "FS_mount", "FS_unmount", "FS_lookup", "FS_mknod", "FS_statfs", "FS_statfsStream", "FS_statfsNode", "FS_create", "FS_mkdir", "FS_mkdev", "FS_symlink", "FS_link", "FS_rename", "FS_rmdir", "FS_readdir", "FS_readlink", "FS_stat", "FS_fstat", "FS_lstat", "FS_doChmod", "FS_chmod", "FS_lchmod", "FS_fchmod", "FS_doChown", "FS_chown", "FS_lchown", "FS_fchown", "FS_doTruncate", "FS_truncate", "FS_ftruncate", "FS_utime", "FS_open", "FS_close", "FS_isClosed", "FS_llseek", "FS_read", "FS_write", "FS_mmap", "FS_msync", "FS_ioctl", "FS_writeFile", "FS_cwd", "FS_chdir", "FS_createDefaultDirectories", "FS_createDefaultDevices", "FS_createSpecialDirectories", "FS_createStandardStreams", "FS_staticInit", "FS_init", "FS_quit", "FS_analyzePath", "FS_createFile", "FS_createDataFile", "FS_forceLoadFile", "FS_createLazyFile", "MEMFS", "TTY", "PIPEFS", "SOCKFS", "tempFixedLengthArray", "miniTempWebGLFloatBuffers", "miniTempWebGLIntBuffers", "GL", "AL", "GLUT", "EGL", "GLEW", "IDBStore", "SDL", "SDL_gfx", "waitAsyncPolyfilled", "print", "printErr", "jstoi_s", "PThread", "terminateWorker", "cleanupThread", "registerTLSInit", "spawnThread", "exitOnMainThread", "proxyToMainThread", "proxiedJSCallArgs", "invokeEntryPoint", "checkMailbox" ];
 
 unexportedSymbols.forEach(unexportedRuntimeSymbol);
 
@@ -7361,13 +7362,8 @@ function checkUnflushedContent() {
     // it doesn't matter if it fails
     _fflush(0);
     // also flush in the JS FS layer
-    for (var name of [ "stdout", "stderr" ]) {
-      var info = FS.analyzePath("/dev/" + name);
-      if (!info) return;
-      var stream = info.object;
-      var rdev = stream.rdev;
-      var tty = TTY.ttys[rdev];
-      if (tty?.output?.length) {
+    for (var tty of Object.values(TTY.ttys)) {
+      if (tty.output.length) {
         has = true;
       }
     }

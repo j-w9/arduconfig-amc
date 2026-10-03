@@ -46,6 +46,15 @@
    "tri",
    "y6"
   ],
+  "heli": [
+   "heli",
+   "heli-blade360",
+   "heli-ddfptail",
+   "heli-ddvptail",
+   "heli-dual",
+   "heli-gas",
+   "heli-quad"
+  ],
   "plane": [
    "CRRCSim",
    "calibration",
@@ -78,6 +87,20 @@
    "quadplane-tri",
    "scrimmage-plane",
    "stratoblimp"
+  ],
+  "rover": [
+   "airsim-rover",
+   "balancebot",
+   "calibration",
+   "gazebo-rover",
+   "motorboat",
+   "motorboat-skid",
+   "rover",
+   "rover-omni3mecanum",
+   "rover-skid",
+   "rover-vectored",
+   "sailboat",
+   "sailboat-motor"
   ]
  },
  "locations": {

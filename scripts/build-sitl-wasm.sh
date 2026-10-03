@@ -86,11 +86,30 @@ echo "==> waf configure --board wasm"
 
 mkdir -p "$DEST"
 for vehicle in "${VEHICLES[@]}"; do
-  target="ardu${vehicle}"
+  # A traditional helicopter is not its own firmware: ArduPilot builds it from
+  # the Copter sources under a second program name (ArduCopter/wscript,
+  # program_name='arducopter-heli'), so `bin/arduheli` is a target that has
+  # never existed. It is still copied in as arduheli.* -- the app asks for
+  # ardu<vehicle> and heli is a vehicle as far as AMC's sequence is concerned.
+  case "$vehicle" in
+    heli) target="arducopter-heli" ;;
+    *) target="ardu${vehicle}" ;;
+  esac
   echo "==> building $target"
   ./waf build --target "bin/$target" >/dev/null
-  cp "build/wasm/bin/$target.js" "build/wasm/bin/$target.wasm" "$DEST/"
-  echo "    $(ls -lh "$DEST/$target.wasm" | awk '{print $5}')  $target.wasm"
+  cp "build/wasm/bin/$target.wasm" "$DEST/ardu${vehicle}.wasm"
+  # Emscripten bakes the .wasm filename into its loader, so a pair that is
+  # renamed on the way in asks for a file that is not there -- and a dev
+  # server answers a missing .wasm with index.html, which surfaces as
+  # "expected magic word 00 61 73 6d, found 3c 21 64 6f" (that is "<!do").
+  # Only heli is renamed, but the rewrite is unconditional: a no-op for every
+  # vehicle whose target already matches its name.
+  # Both names: the .wasm it instantiates, and its own .js, which it reopens
+  # by name to start each worker (PROXY_TO_PTHREAD).
+  sed -e "s/${target}\.wasm/ardu${vehicle}.wasm/g" \
+      -e "s/${target}\.js/ardu${vehicle}.js/g" \
+      "build/wasm/bin/$target.js" > "$DEST/ardu${vehicle}.js"
+  echo "    $(ls -lh "$DEST/ardu${vehicle}.wasm" | awk '{print $5}')  ardu${vehicle}.wasm"
 done
 
 # The frames each vehicle offers and the home locations SITL knows, read out of

@@ -784,10 +784,10 @@ var wasmBinaryFile;
 
 function findWasmBinary() {
   if (Module["locateFile"]) {
-    return locateFile("arduplane.wasm");
+    return locateFile("ardurover.wasm");
   }
   // Use bundler-friendly `new URL(..., import.meta.url)` pattern; works in browsers too.
-  return new URL("arduplane.wasm", import.meta.url).href;
+  return new URL("ardurover.wasm", import.meta.url).href;
 }
 
 function getBinarySync(file) {
@@ -1351,7 +1351,7 @@ var PThread = {
     // the first case in their bundling step. The latter ends up producing an invalid
     // URL to import from the server (e.g., for webpack the file:// path).
     // See https://github.com/webpack/webpack/issues/12638
-    worker = new Worker(new URL("arduplane.js", import.meta.url), {
+    worker = new Worker(new URL("ardurover.js", import.meta.url), {
       "type": "module",
       // This is the way that we signal to the node worker that it is hosting
       // a pthread.

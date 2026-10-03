@@ -1,4 +1,4 @@
-ardupilot_commit=66c89850794972639a1b7d48fc571ea6c7e93fac
-emcc_version=emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.10 (d6c521a7f05449857c76bd99e396895583cf2083)
-vehicles=copter plane
-built=2026-09-23T19:40:21Z
+ardupilot_commit=e204ca77a8012342b52af17beb78adaca598113c
+emcc_version=emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.11 (a0014542110d6078c3a1a7941fa1ddb3a2281f16)
+vehicles=copter plane rover heli
+built=2026-10-03T12:44:12Z
