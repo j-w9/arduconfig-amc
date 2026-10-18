@@ -59,10 +59,17 @@ export interface ConfigurationStep {
   readonly auto_changed_by?: string
   /** Steps that may be skipped to from here, each with the cost of doing so. */
   readonly jump_possible?: Readonly<Record<string, string>>
-  /** A file the step fetches, typically a Lua applet. */
-  readonly download_file?: DownloadFile
-  /** Where that file goes on the flight controller. */
-  readonly upload_file?: UploadFile
+  /**
+   * Files the step fetches, typically Lua applets.
+   *
+   * One object (the original form) or a non-empty array, since AMC v4.5.x --
+   * in-flight magfit needs two scripts. Read it through stepFiles(), which
+   * normalizes both the way AMC does on load; touching this field directly
+   * is how the array form arrived as `undefined` the first time.
+   */
+  readonly download_file?: DownloadFile | readonly DownloadFile[]
+  /** Where those files go on the flight controller. Same two shapes. */
+  readonly upload_file?: UploadFile | readonly UploadFile[]
   /** Expression naming the connection this step's parameters belong to. */
   readonly rename_connection?: string
   /** What this step's file was called in older AMC versions. */

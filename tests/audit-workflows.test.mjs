@@ -45,7 +45,6 @@ const ACCOUNTED_FOR = {
   // BEHAVIOUR_ACCOUNTED_FOR below.
   reset_and_reconnect_workflow: { verdict: 'ours', where: 'onRebootAndReconnect — reboot, wait out the boot delay, reconnect' },
   should_upload_file_to_fc_workflow: { verdict: 'ours', where: 'onInstallFile, for the two steps that need a Lua applet' },
-  _should_download_file_from_url_workflow: { verdict: 'ours', where: 'the same install path, which fetches before it writes' },
   _handle_file_jump_workflow: { verdict: 'ours', where: 'jumpToStep, and nextRequiredStep for the optional ones' },
 
   // Answered by ArduConfigurator itself, which this tab points at rather than
@@ -145,6 +144,59 @@ test('nothing is answered for that AMC no longer has', () => {
  * appearing upstream has to be looked at by somebody.
  */
 const BEHAVIOUR_ACCOUNTED_FOR = {
+  // --- AMC v4.5.7 ---------------------------------------------------------
+  //
+  // Step files that install scripts (backend_filesystem). Since v4.5.x
+  // download_file and upload_file may be lists, and every installing step
+  // now uses the list form; in-flight magfit installs two scripts.
+  get_download_files: 'stepFiles -- the same normalization to a list, paired with the uploads',
+  get_upload_files: 'stepFiles',
+  upload_files: "the AMC tab's per-step install, one button per file",
+  vehicle_configuration_file_size: 'no step files on disk here to size',
+
+  // MAVLink inspector (data_model_mavlink_inspector) -- the app has its own tab.
+  fields: "the MAVLink Inspector tab",
+  identifier: 'the same',
+  rows: 'the same',
+  sort_by: 'the same',
+  values: 'the same',
+  update: 'the same, and the live telemetry readouts',
+  clear_live_data: 'the live readouts reset with the link',
+
+  // Firmware catalog (data_model_firmware_catalog) -- the Flash tab's Find
+  // firmware, which mainline added in the same weeks.
+  find_firmware_release: "the Flash tab's Find firmware",
+  firmware_targets: 'the same',
+  firmware_types: 'the same',
+  firmware_versions: 'the same',
+  firmware_type_label: 'the same',
+  label: 'the same',
+  releases_for_board: 'the same, with the connected board pre-selected',
+  preferred_board_target: 'the same',
+  preferred_catalog_choice: 'the same',
+  preferred_firmware_type: 'the same',
+
+  // Flight-controller diagnostics (data_model_fc_diagnostics).
+  assemble: 'the runtime reassembles STATUSTEXT chunks in sequence order',
+  clear: 'the same',
+  decode_status_text: 'the same',
+  message_source: 'the same',
+  status_text_bytes: 'the same',
+  get_fc_status_text: 'status text arrives as notices on every tab',
+  poll_fc_status_text: 'the same, pushed rather than polled',
+  device_rows: 'not ported -- there is no table of decoded device IDs, bus and address per sensor',
+
+  // Transfer progress (data_model_transfer_progress).
+  from_sizes: 'the write and download progress bars',
+  snapshot: 'the same',
+  start_file: 'the same',
+  finish: 'the same',
+  estimate_transfer: 'not ported -- progress is shown, a time remaining is not',
+
+  // Parameter editor.
+  get_parameter_choices: "the AMC tab's dropdowns, from each parameter's documented options",
+  flight_controller: "the runtime's vehicle identity",
+
   // --- AMC v4.5.1 ---------------------------------------------------------
   //
   // Parameter export (data_model_parameter_export.py). A new window that

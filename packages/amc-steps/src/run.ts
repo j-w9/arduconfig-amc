@@ -94,6 +94,15 @@ export interface RenamedParameter {
 }
 
 export interface StepOutcome {
+  /**
+   * Whether the step's tool (its `plugin`) applies to this vehicle.
+   *
+   * A plugin may carry an `if`, and AMC offers the tool only when that holds
+   * -- autotune_gain_backoff, for one, is for firmware before 4.7. A condition
+   * that cannot be evaluated hides the tool, as AMC's get_plugin does, rather
+   * than offering it on a guess. True when the step has no condition.
+   */
+  readonly pluginApplies: boolean
   /** Parameters to write, in the order the step lists them. */
   readonly changes: readonly ParameterChange[]
   /** Parameters this step removes from the vehicle's file. */
@@ -370,7 +379,17 @@ export function applyStep(step: ConfigurationStep, vehicle: VehicleContext, opti
     return false
   })
 
+  let pluginApplies = true
+  if (step.plugin?.if !== undefined) {
+    try {
+      pluginApplies = guardPasses({ if: step.plugin.if } as ParameterDirective, scope).applies
+    } catch {
+      pluginApplies = false
+    }
+  }
+
   return {
+    pluginApplies,
     changes: kept,
     deletions: deletions.map((name) => moved.get(name) ?? name),
     skipped,

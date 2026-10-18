@@ -1735,6 +1735,26 @@
     "BRD_SER1_RTSCTS": 1,
     "SERIAL2_BAUD": 1
    },
+   "27_autotune_pitch_RatePD_results.param": {
+    "ATC_RAT_PIT_D": 1,
+    "ATC_RAT_PIT_I": 1,
+    "ATC_RAT_PIT_P": 1
+   },
+   "29_autotune_roll_RatePD_results.param": {
+    "ATC_RAT_RLL_D": 1,
+    "ATC_RAT_RLL_I": 1,
+    "ATC_RAT_RLL_P": 1
+   },
+   "31_autotune_roll_pitch_AngleP_results.param": {
+    "ATC_ACCEL_P_MAX": 1,
+    "ATC_ACCEL_R_MAX": 1,
+    "ATC_ANG_PIT_P": 1,
+    "ATC_ANG_RLL_P": 1
+   },
+   "35_autotune_yaw_AngleP_results.param": {
+    "ATC_ACCEL_Y_MAX": 1,
+    "ATC_ANG_YAW_P": 1
+   },
    "40_autotune_yaw_results.param": {
     "ATC_ANG_YAW_P": 1,
     "ATC_RAT_YAW_I": 1,

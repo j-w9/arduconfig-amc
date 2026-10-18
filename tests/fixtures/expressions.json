@@ -1,6 +1,6 @@
 {
  "generatedBy": "scripts/gen_expr_fixtures.py",
- "provenance": "0997133fdea06cd035521a0a3146ea786f5dc1ac",
+ "provenance": "7140cf6d53ea2750aee57854296f5db2509850a1",
  "contexts": [
   "ArduCopter/AirCar_v1",
   "ArduCopter/Big_Owl",
@@ -28,7 +28,7 @@
   "Rover/AION_R1",
   "Rover/Carisma_SCA-1E"
  ],
- "expressions": 144,
+ "expressions": 150,
  "cases": [
   {
    "expr": "'ARMING_CHECK' in fc_parameters",
@@ -318,6 +318,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/AirCar_v1",
@@ -532,6 +560,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/AirCar_v1",
    "value": true,
@@ -1322,6 +1364,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Big_Owl",
@@ -1536,6 +1606,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Big_Owl",
    "value": true,
@@ -2326,6 +2410,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Chimera7",
@@ -2540,6 +2652,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Chimera7",
    "value": true,
@@ -3330,6 +3456,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Demo32Motor_PeterHall",
@@ -3544,6 +3698,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Demo32Motor_PeterHall",
    "value": true,
@@ -4334,6 +4502,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/ESM450X-Des",
@@ -4548,6 +4744,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ESM450X-Des",
    "value": true,
@@ -5338,6 +5548,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/FETtec-5",
@@ -5552,6 +5790,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/FETtec-5",
    "value": true,
@@ -6342,6 +6594,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/GazeboIrisWithTargetFollow",
@@ -6556,6 +6836,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/GazeboIrisWithTargetFollow",
    "value": true,
@@ -7346,6 +7640,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Holybro_X500",
@@ -7560,6 +7882,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500",
    "value": true,
@@ -8350,6 +8686,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Holybro_X500_V2",
@@ -8564,6 +8928,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500_V2",
    "value": true,
@@ -9354,6 +9732,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Holybro_X650_LTE",
@@ -9568,6 +9974,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X650_LTE",
    "value": true,
@@ -10358,6 +10778,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Hoverit_X11+",
@@ -10572,6 +11020,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X11+",
    "value": true,
@@ -11362,6 +11824,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Hoverit_X13",
@@ -11576,6 +12066,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X13",
    "value": true,
@@ -12366,6 +12870,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Marmotte5v2",
@@ -12580,6 +13112,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Marmotte5v2",
    "value": true,
@@ -13370,6 +13916,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/ReadyToSkyZD550",
@@ -13584,6 +14158,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ReadyToSkyZD550",
    "value": true,
@@ -14374,6 +14962,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/TarotFY680Hexacopter",
@@ -14588,6 +15204,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/TarotFY680Hexacopter",
    "value": true,
@@ -15378,6 +16008,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/Tarot_X4",
@@ -15592,6 +16250,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Tarot_X4",
    "value": true,
@@ -16382,6 +17054,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/X11_plus",
@@ -16596,6 +17296,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/X11_plus",
    "value": true,
@@ -17386,6 +18100,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/empty_4.5.x",
@@ -17603,6 +18345,20 @@
    "kind": "if",
    "context": "ArduCopter/empty_4.5.x",
    "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
    "type": "bool"
   },
   {
@@ -18387,6 +19143,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/empty_4.6.x",
@@ -18604,6 +19388,20 @@
    "kind": "if",
    "context": "ArduCopter/empty_4.6.x",
    "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
    "type": "bool"
   },
   {
@@ -19388,6 +20186,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduCopter/empty_4.7.x",
@@ -19602,6 +20428,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.7.x",
    "value": false,
@@ -20389,6 +21229,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduPlane/empty_4.7.x",
@@ -20599,6 +21467,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduPlane/empty_4.7.x",
    "value": false,
@@ -21387,6 +22269,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "ArduPlane/normal_plane",
@@ -21604,6 +22514,20 @@
    "kind": "if",
    "context": "ArduPlane/normal_plane",
    "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
    "type": "bool"
   },
   {
@@ -22389,6 +23313,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "Heli/OMP_M4",
@@ -22599,6 +23551,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/OMP_M4",
    "value": true,
@@ -23387,6 +24353,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "Rover/AION_R1",
@@ -23597,6 +24591,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/AION_R1",
    "value": true,
@@ -24385,6 +25393,34 @@
    "type": "bool"
   },
   {
+   "expr": "'RCMAP_PITCH' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_ROLL' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_THROTTLE' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'RCMAP_YAW' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "0",
    "kind": "New Value",
    "context": "Rover/Carisma_SCA-1E",
@@ -24595,6 +25631,20 @@
   },
   {
    "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7')",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0')",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "Version(vehicle_components['Flight Controller']['Firmware']['Version'].split(' ')[0]) < Version('4.7.0') and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/Carisma_SCA-1E",
    "value": true,
