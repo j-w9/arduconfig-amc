@@ -48,6 +48,13 @@ export const onRequestGet: PagesFunction<unknown, keyof Params, Params> = async 
     headers: {
       // OSM's policy asks for an identifying User-Agent rather than a browser's.
       'User-Agent': 'ArduConfigurator-AMC (+https://amc.arduconfigurator.com)',
+      // And a Referer naming the site. Upstream ArduConfigurator found browser
+      // tile requests without one answered with an "Access blocked" image
+      // (osm.wiki/Blocked) and started sending one from the page. This branch
+      // fetches tiles here instead, so the Referer has to come from here too
+      // -- the User-Agent alone is accepted today, and the rule has tightened
+      // once already.
+      Referer: 'https://amc.arduconfigurator.com/',
       Accept: 'image/png'
     },
     // Cloudflare's own cache, so a tile is fetched from OSM once per edge.
