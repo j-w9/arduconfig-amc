@@ -232,3 +232,4 @@ export {
 export type { ResumeOptions } from './resume.js'
 export { type LegacyBatteryFill, batteryFieldOrder, legacyBatteryFields } from './legacy-battery.js'
 export { stepFiles, type StepFile } from './step-files.js'
+export { decodeDeviceId, deviceRows, deviceTypeName, type DecodedDeviceId, type DeviceCategory, type DeviceRow, type DevIdTables } from './device-ids.js'

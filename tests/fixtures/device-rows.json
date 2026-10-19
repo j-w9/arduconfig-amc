@@ -1,0 +1,1912 @@
+[
+ {
+  "params": {
+   "COMPASS_DEV_ID": 65537.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    0,
+    "HMC5883_OLD",
+    null,
+    "COMPASS_DEV_ID: 65537"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 134410.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    13,
+    "LSM303D",
+    null,
+    "COMPASS_DEV_ID: 134410"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 268820.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SITL",
+    2,
+    26,
+    "AK8963",
+    null,
+    "COMPASS_DEV_ID: 268820"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 337693.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "MSP",
+    3,
+    39,
+    "BMM150",
+    null,
+    "COMPASS_DEV_ID: 337693"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 406529.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    52,
+    "LSM9DS1",
+    null,
+    "COMPASS_DEV_ID: 406529"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 475402.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    65,
+    "HMC5883",
+    null,
+    "COMPASS_DEV_ID: 475402"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 544276.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SITL",
+    2,
+    78,
+    "LIS3MDL",
+    null,
+    "COMPASS_DEV_ID: 544276"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 613149.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "MSP",
+    3,
+    91,
+    "AK0991x",
+    null,
+    "COMPASS_DEV_ID: 613149"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 681985.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    104,
+    "IST8310",
+    null,
+    "COMPASS_DEV_ID: 681985"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 750858.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    117,
+    "ICM20948",
+    null,
+    "COMPASS_DEV_ID: 750858"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 819732.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SITL",
+    2,
+    130,
+    "MMC3416",
+    null,
+    "COMPASS_DEV_ID: 819732"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 888605.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "MSP",
+    3,
+    143,
+    "QMC5883L",
+    null,
+    "COMPASS_DEV_ID: 888605"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 957441.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    156,
+    "MAG3110",
+    null,
+    "COMPASS_DEV_ID: 957441"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1026314.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    169,
+    "SITL",
+    null,
+    "COMPASS_DEV_ID: 1026314"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1095188.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SITL",
+    2,
+    182,
+    "IST8308",
+    null,
+    "COMPASS_DEV_ID: 1095188"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1164061.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "MSP",
+    3,
+    195,
+    "RM3100",
+    null,
+    "COMPASS_DEV_ID: 1164061"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1232897.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    208,
+    "RM3100_2",
+    null,
+    "COMPASS_DEV_ID: 1232897"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1301770.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    221,
+    "MMC5983",
+    null,
+    "COMPASS_DEV_ID: 1301770"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1370644.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SITL",
+    2,
+    234,
+    "AK09918",
+    null,
+    "COMPASS_DEV_ID: 1370644"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1439517.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "MSP",
+    3,
+    247,
+    "AK09915",
+    null,
+    "COMPASS_DEV_ID: 1439517"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1442817.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    4,
+    "QMC5883P",
+    null,
+    "COMPASS_DEV_ID: 1442817"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1511690.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    17,
+    "BMM350",
+    null,
+    "COMPASS_DEV_ID: 1511690"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1580564.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SITL",
+    2,
+    30,
+    "IIS2MDC",
+    null,
+    "COMPASS_DEV_ID: 1580564"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1649437.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "MSP",
+    3,
+    43,
+    "LIS2MDL",
+    null,
+    "COMPASS_DEV_ID: 1649437"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1718273.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    56,
+    "AF9838",
+    null,
+    "COMPASS_DEV_ID: 1718273"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 1787146.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "SPI",
+    1,
+    69,
+    "AK09940A",
+    null,
+    "COMPASS_DEV_ID: 1787146"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 589825.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    0,
+    "BMI160",
+    null,
+    "INS_ACC_ID: 589825"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1051914.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    13,
+    "L3G4200D",
+    null,
+    "INS_ACC_ID: 1051914"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1120788.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    26,
+    "LSM303D",
+    null,
+    "INS_ACC_ID: 1120788"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1189661.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    39,
+    "BMA180",
+    null,
+    "INS_ACC_ID: 1189661"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1258497.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    52,
+    "MPU6000",
+    null,
+    "INS_ACC_ID: 1258497"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1458442.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    65,
+    "MPU9250",
+    null,
+    "INS_ACC_ID: 1458442"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1527316.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    78,
+    "IIS328DQ",
+    null,
+    "INS_ACC_ID: 1527316"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 1596189.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    91,
+    "LSM9DS1",
+    null,
+    "INS_ACC_ID: 1596189"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2189313.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    104,
+    "MPU6000",
+    null,
+    "INS_ACC_ID: 2189313"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2258186.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    117,
+    "L3GD20",
+    null,
+    "INS_ACC_ID: 2258186"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2392596.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    130,
+    "MPU9250",
+    null,
+    "INS_ACC_ID: 2392596"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2461469.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    143,
+    "I3G4250D",
+    null,
+    "INS_ACC_ID: 2461469"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2530305.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    156,
+    "LSM9DS1",
+    null,
+    "INS_ACC_ID: 2530305"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2599178.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    169,
+    "ICM20789",
+    null,
+    "INS_ACC_ID: 2599178"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2668052.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    182,
+    "ICM20689",
+    null,
+    "INS_ACC_ID: 2668052"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2736925.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    195,
+    "BMI055",
+    null,
+    "INS_ACC_ID: 2736925"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2805761.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    208,
+    "SITL",
+    null,
+    "INS_ACC_ID: 2805761"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2874634.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    221,
+    "BMI088",
+    null,
+    "INS_ACC_ID: 2874634"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 2943508.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    234,
+    "ICM20948",
+    null,
+    "INS_ACC_ID: 2943508"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3012381.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    247,
+    "ICM20648",
+    null,
+    "INS_ACC_ID: 3012381"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3015681.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    4,
+    "ICM20649",
+    null,
+    "INS_ACC_ID: 3015681"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3084554.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    17,
+    "ICM20602",
+    null,
+    "INS_ACC_ID: 3084554"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3153428.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    30,
+    "ICM20601",
+    null,
+    "INS_ACC_ID: 3153428"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3222301.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    43,
+    "ADIS1647X",
+    null,
+    "INS_ACC_ID: 3222301"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3291137.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    56,
+    "SERIAL",
+    null,
+    "INS_ACC_ID: 3291137"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3360010.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    69,
+    "ICM40609",
+    null,
+    "INS_ACC_ID: 3360010"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3428884.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    82,
+    "ICM42688",
+    null,
+    "INS_ACC_ID: 3428884"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3497757.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    95,
+    "ICM42605",
+    null,
+    "INS_ACC_ID: 3497757"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3566593.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    108,
+    "ICM40605",
+    null,
+    "INS_ACC_ID: 3566593"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3635466.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    121,
+    "IIM42652",
+    null,
+    "INS_ACC_ID: 3635466"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3704340.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    134,
+    "BMI270",
+    null,
+    "INS_ACC_ID: 3704340"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3773213.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    147,
+    "BMI085",
+    null,
+    "INS_ACC_ID: 3773213"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3842049.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    160,
+    "ICM42670",
+    null,
+    "INS_ACC_ID: 3842049"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3910922.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    173,
+    "ICM45686",
+    null,
+    "INS_ACC_ID: 3910922"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 3979796.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    186,
+    "SCHA63T",
+    null,
+    "INS_ACC_ID: 3979796"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4048669.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    199,
+    "IIM42653",
+    null,
+    "INS_ACC_ID: 4048669"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4117505.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    212,
+    "LSM6DSV16X",
+    null,
+    "INS_ACC_ID: 4117505"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4186378.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    225,
+    "ASM330",
+    null,
+    "INS_ACC_ID: 4186378"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4255252.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    238,
+    "ADIS16607",
+    null,
+    "INS_ACC_ID: 4255252"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4324125.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "MSP",
+    3,
+    251,
+    "ZEROONE_FPGA_SCH16T",
+    null,
+    "INS_ACC_ID: 4324125"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4327425.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "I2C",
+    0,
+    8,
+    "LSM6DSV32X",
+    null,
+    "INS_ACC_ID: 4327425"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4396298.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    21,
+    "LSM6DSK320X",
+    null,
+    "INS_ACC_ID: 4396298"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC_ID": 4465172.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SITL",
+    2,
+    34,
+    "ICM56686",
+    null,
+    "INS_ACC_ID: 4465172"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 65537.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    0,
+    "SITL",
+    null,
+    "BARO1_DEVID: 65537"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 134410.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SPI",
+    1,
+    13,
+    "BMP085",
+    null,
+    "BARO1_DEVID: 134410"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 203284.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SITL",
+    2,
+    26,
+    "BMP280",
+    null,
+    "BARO1_DEVID: 203284"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 272157.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "MSP",
+    3,
+    39,
+    "BMP388",
+    null,
+    "BARO1_DEVID: 272157"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 340993.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    52,
+    "DPS280",
+    null,
+    "BARO1_DEVID: 340993"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 409866.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SPI",
+    1,
+    65,
+    "DPS310",
+    null,
+    "BARO1_DEVID: 409866"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 478740.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SITL",
+    2,
+    78,
+    "FBM320",
+    null,
+    "BARO1_DEVID: 478740"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 547613.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "MSP",
+    3,
+    91,
+    "ICM20789",
+    null,
+    "BARO1_DEVID: 547613"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 616449.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    104,
+    "KELLERLD",
+    null,
+    "BARO1_DEVID: 616449"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 685322.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SPI",
+    1,
+    117,
+    "LPS2XH",
+    null,
+    "BARO1_DEVID: 685322"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 754196.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SITL",
+    2,
+    130,
+    "MS5611",
+    null,
+    "BARO1_DEVID: 754196"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 823069.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "MSP",
+    3,
+    143,
+    "SPL06",
+    null,
+    "BARO1_DEVID: 823069"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 891905.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    156,
+    "DRONECAN",
+    null,
+    "BARO1_DEVID: 891905"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 960778.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SPI",
+    1,
+    169,
+    "MSP",
+    null,
+    "BARO1_DEVID: 960778"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1029652.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SITL",
+    2,
+    182,
+    "ICP101XX",
+    null,
+    "BARO1_DEVID: 1029652"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1098525.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "MSP",
+    3,
+    195,
+    "ICP201XX",
+    null,
+    "BARO1_DEVID: 1098525"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1167361.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    208,
+    "MS5607",
+    null,
+    "BARO1_DEVID: 1167361"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1236234.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SPI",
+    1,
+    221,
+    "MS5837_30BA",
+    null,
+    "BARO1_DEVID: 1236234"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1305108.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SITL",
+    2,
+    234,
+    "MS5637",
+    null,
+    "BARO1_DEVID: 1305108"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1373981.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "MSP",
+    3,
+    247,
+    "BMP390",
+    null,
+    "BARO1_DEVID: 1373981"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1377281.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    4,
+    "BMP581",
+    null,
+    "BARO1_DEVID: 1377281"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1446154.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SPI",
+    1,
+    17,
+    "SPA06",
+    null,
+    "BARO1_DEVID: 1446154"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1515028.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "SITL",
+    2,
+    30,
+    "AUAV",
+    null,
+    "BARO1_DEVID: 1515028"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "BARO1_DEVID": 1583901.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "MSP",
+    3,
+    43,
+    "MS5837_02BA",
+    null,
+    "BARO1_DEVID: 1583901"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 65537.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "I2C",
+    0,
+    0,
+    "AIRSPEED_SITL",
+    null,
+    "ARSPD_DEVID: 65537"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 134410.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "SPI",
+    1,
+    13,
+    "AIRSPEED_MS4525",
+    null,
+    "ARSPD_DEVID: 134410"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 203284.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "SITL",
+    2,
+    26,
+    "AIRSPEED_MS5525",
+    null,
+    "ARSPD_DEVID: 203284"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 272157.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "MSP",
+    3,
+    39,
+    "AIRSPEED_DLVR",
+    null,
+    "ARSPD_DEVID: 272157"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 340993.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "I2C",
+    0,
+    52,
+    "AIRSPEED_MSP",
+    null,
+    "ARSPD_DEVID: 340993"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 409866.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "SPI",
+    1,
+    65,
+    "AIRSPEED_SDP3X",
+    null,
+    "ARSPD_DEVID: 409866"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 478740.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "SITL",
+    2,
+    78,
+    "AIRSPEED_DRONECAN",
+    null,
+    "ARSPD_DEVID: 478740"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 547613.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "MSP",
+    3,
+    91,
+    "AIRSPEED_ANALOG",
+    null,
+    "ARSPD_DEVID: 547613"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 616449.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "I2C",
+    0,
+    104,
+    "AIRSPEED_NMEA",
+    null,
+    "ARSPD_DEVID: 616449"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 685322.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "SPI",
+    1,
+    117,
+    "AIRSPEED_ASP5033",
+    null,
+    "ARSPD_DEVID: 685322"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 754196.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "SITL",
+    2,
+    130,
+    "AIRSPEED_AUAV",
+    null,
+    "ARSPD_DEVID: 754196"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "ARSPD_DEVID": 823069.0
+  },
+  "rows": [
+   [
+    "ARSPD",
+    "MSP",
+    3,
+    143,
+    "AIRSPEED_SCRIPTING",
+    null,
+    "ARSPD_DEVID: 823069"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 335361.0,
+   "COMPASS_DEV_ID2": 97539.0,
+   "COMPASS_DEV_ID3": 592906.0,
+   "COMPASS_PRIO1_ID": 97539.0,
+   "COMPASS_PRIO2_ID": 335361.0,
+   "COMPASS_PRIO3_ID": 0.0,
+   "INS_ACC_ID": 2818058.0,
+   "INS_ACC2_ID": 2883602.0,
+   "INS_GYR_ID": 2818058.0,
+   "INS_GYR2_ID": 2883602.0,
+   "BARO1_DEVID": 685569.0,
+   "BARO2_DEVID": 720922.0,
+   "ARSPD_DEVID": 0.0,
+   "INS_ACC_BODYFIX": 2.0,
+   "COMPASS_USE": 1.0,
+   "SERIAL1_PROTOCOL": 2.0
+  },
+  "rows": [
+   [
+    "BARO1",
+    "I2C",
+    0,
+    118,
+    "LPS2XH",
+    null,
+    "BARO1_DEVID: 685569"
+   ],
+   [
+    "BARO2",
+    "SPI",
+    3,
+    0,
+    "MS5611",
+    null,
+    "BARO2_DEVID: 720922"
+   ],
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    30,
+    "BMM150",
+    2,
+    "COMPASS_DEV_ID: 335361"
+   ],
+   [
+    "COMPASS2",
+    "DRONECAN",
+    0,
+    125,
+    "DRONECAN",
+    1,
+    "COMPASS_DEV_ID2: 97539"
+   ],
+   [
+    "COMPASS3",
+    "SPI",
+    1,
+    12,
+    "AK0991x",
+    null,
+    "COMPASS_DEV_ID3: 592906"
+   ],
+   [
+    "INS_ACC",
+    "SPI",
+    1,
+    0,
+    "BMI088",
+    null,
+    "INS_ACC_ID: 2818058"
+   ],
+   [
+    "INS_ACC2",
+    "SPI",
+    2,
+    0,
+    "ICM20948",
+    null,
+    "INS_ACC2_ID: 2883602"
+   ],
+   [
+    "INS_GYR",
+    "SPI",
+    1,
+    0,
+    "BMI088",
+    null,
+    "INS_GYR_ID: 2818058"
+   ],
+   [
+    "INS_GYR2",
+    "SPI",
+    2,
+    0,
+    "ICM20948",
+    null,
+    "INS_GYR2_ID: 2883602"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 0.0,
+   "BARO1_DEVID": -5.0,
+   "INS_ACC_ID": 16777216.0
+  },
+  "rows": []
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 97539.7,
+   "INS_GYR_ID": 132618.2
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "DRONECAN",
+    0,
+    125,
+    "DRONECAN",
+    null,
+    "COMPASS_DEV_ID: 97539"
+   ],
+   [
+    "INS_GYR",
+    "SPI",
+    1,
+    6,
+    "UNKNOWN",
+    null,
+    "INS_GYR_ID: 132618"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 335361.0,
+   "COMPASS_PRIO1_ID": 335361.5
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    30,
+    "BMM150",
+    null,
+    "COMPASS_DEV_ID: 335361"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 335361.0,
+   "COMPASS_PRIO2_ID": 335361.0,
+   "COMPASS_PRIO1_ID": 335361.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    30,
+    "BMM150",
+    1,
+    "COMPASS_DEV_ID: 335361"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 16391681.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "I2C",
+    0,
+    30,
+    "UNKNOWN",
+    null,
+    "COMPASS_DEV_ID: 16391681"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "COMPASS_DEV_ID": 335367.0
+  },
+  "rows": [
+   [
+    "COMPASS1",
+    "WSPI",
+    0,
+    30,
+    "BMM150",
+    null,
+    "COMPASS_DEV_ID: 335367"
+   ]
+  ]
+ },
+ {
+  "params": {
+   "INS_ACC3_ID": 2818050.0,
+   "INS_ACC_ID": 2818050.0
+  },
+  "rows": [
+   [
+    "INS_ACC",
+    "SPI",
+    0,
+    0,
+    "BMI088",
+    null,
+    "INS_ACC_ID: 2818050"
+   ],
+   [
+    "INS_ACC3",
+    "SPI",
+    0,
+    0,
+    "BMI088",
+    null,
+    "INS_ACC3_ID: 2818050"
+   ]
+  ]
+ }
+]

@@ -43,6 +43,10 @@ const wanted = readdirSync(src).filter(
 )
 for (const f of wanted) emitCopy(f, join(src, f))
 emitCopy('vehicle_components_schema.json', join(src, 'vehicle_components_schema.json'))
+// Driver names behind the device-type byte of a sensor's DEVID, as AMC ships
+// them (decode_devid.py reads the same file). Data rather than a transcription:
+// the table is generated from ArduPilot's own enums and grows with them.
+emitCopy('devid.json', join(src, 'devid.json'))
 
 // The values AMC's own vehicle templates use, per component field.
 //

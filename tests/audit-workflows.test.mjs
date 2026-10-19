@@ -184,14 +184,14 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   status_text_bytes: 'the same',
   get_fc_status_text: 'status text arrives as notices on every tab',
   poll_fc_status_text: 'the same, pushed rather than polled',
-  device_rows: 'not ported -- there is no table of decoded device IDs, bus and address per sensor',
+  device_rows: "deviceRows, shown as the AMC tab's sensor table -- checked against CPython",
 
   // Transfer progress (data_model_transfer_progress).
   from_sizes: 'the write and download progress bars',
   snapshot: 'the same',
   start_file: 'the same',
   finish: 'the same',
-  estimate_transfer: 'not ported -- progress is shown, a time remaining is not',
+  estimate_transfer: 'estimateTransfer, the time left on the Logs and Files download bar',
 
   // Parameter editor.
   get_parameter_choices: "the AMC tab's dropdowns, from each parameter's documented options",
