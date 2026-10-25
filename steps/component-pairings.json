@@ -60,6 +60,9 @@
   "CAN2": [
    "DroneCAN"
   ],
+  "None": [
+   "None"
+  ],
   "SERIAL3": [
    "AUTO",
    "uBlox"

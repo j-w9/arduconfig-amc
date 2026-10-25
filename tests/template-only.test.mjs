@@ -22,7 +22,7 @@ const table = JSON.parse(
 )
 
 test('a step names what AMC\'s templates set and the sequence does not', () => {
-  const telemetry = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param')
+  const telemetry = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param')
   const names = telemetry.map((entry) => entry.parameter)
 
   // The sequence computes nothing at all for this step; AMC's templates set
@@ -32,7 +32,7 @@ test('a step names what AMC\'s templates set and the sequence does not', () => {
 })
 
 test('the near-universal ones come first, because the count is the evidence', () => {
-  const telemetry = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param')
+  const telemetry = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param')
   for (let i = 1; i < telemetry.length; i += 1) {
     assert.ok(telemetry[i - 1].templates >= telemetry[i].templates)
   }
@@ -42,12 +42,12 @@ test('the near-universal ones come first, because the count is the evidence', ()
 test('one aircraft\'s quirk is not presented as part of the step', () => {
   // SERIAL4_BAUD is set by a single ArduCopter template. That is that
   // builder's own business, not a question this step asks everyone.
-  const shown = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param')
+  const shown = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param')
   assert.ok(!shown.some((entry) => entry.parameter === 'SERIAL4_BAUD'))
 
   // It is still in the table — the threshold is a presentation choice, not a
   // claim that the parameter does not exist.
-  const everything = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param', {
+  const everything = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param', {
     minimumShare: 0
   })
   assert.ok(everything.some((entry) => entry.parameter === 'SERIAL4_BAUD'))
@@ -56,7 +56,7 @@ test('one aircraft\'s quirk is not presented as part of the step', () => {
 test('a parameter the sequence DOES decide is never listed as missing', () => {
   // The whole point is to name what is absent. Listing something the step
   // already sets would send the operator to fix a thing that is not wrong.
-  const receiver = templateOnlyParameters(table, 'ArduCopter', '06_remote_controller_receiver.param', {
+  const receiver = templateOnlyParameters(table, 'ArduCopter', '05_remote_controller_receiver.param', {
     minimumShare: 0
   })
   const names = receiver.map((entry) => entry.parameter)
@@ -66,7 +66,7 @@ test('a parameter the sequence DOES decide is never listed as missing', () => {
 })
 
 test('the vehicle can answer most of them, and that is the honest way to', () => {
-  const telemetry = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param')
+  const telemetry = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param')
   const answered = answerableFromVehicle(telemetry, { SERIAL1_BAUD: 115, BRD_SER1_RTSCTS: 2 })
   assert.deepEqual(
     [...answered].sort((a, b) => a.parameter.localeCompare(b.parameter)),
@@ -78,12 +78,12 @@ test('the vehicle can answer most of them, and that is the honest way to', () =>
 })
 
 test('a vehicle that has none of them answers none', () => {
-  const telemetry = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param')
+  const telemetry = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param')
   assert.deepEqual(answerableFromVehicle(telemetry, {}), [])
 })
 
 test('an unknown vehicle or step gets nothing, rather than a guess', () => {
-  assert.deepEqual(templateOnlyParameters(table, 'ArduSubmarine', '08_telemetry.param'), [])
+  assert.deepEqual(templateOnlyParameters(table, 'ArduSubmarine', '07_telemetry.param'), [])
   assert.deepEqual(templateOnlyParameters(table, 'ArduCopter', '99_invented.param'), [])
 })
 
@@ -98,7 +98,7 @@ test('every sequence AMC ships is covered', () => {
 
 test('the threshold is what it claims to be', () => {
   assert.ok(COMMON_SHARE > 0 && COMMON_SHARE < 1)
-  const strict = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param', { minimumShare: 0.9 })
-  const loose = templateOnlyParameters(table, 'ArduCopter', '08_telemetry.param', { minimumShare: 0 })
+  const strict = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param', { minimumShare: 0.9 })
+  const loose = templateOnlyParameters(table, 'ArduCopter', '07_telemetry.param', { minimumShare: 0 })
   assert.ok(strict.length < loose.length)
 })

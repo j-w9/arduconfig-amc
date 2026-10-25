@@ -139,6 +139,22 @@ test('what is derived from a vehicle agrees with what its operator declared', ()
     }
   }
 
+  // Where AMC's own import reaches the same answer and the template declares
+  // otherwise. AMC 5.0.0's Rover and Heli empty templates switch the GPS off
+  // (GPS1_TYPE,0) and declare no GNSS connection, but leave the firmware's
+  // SERIAL3_PROTOCOL,5 in place. AMC sets the connection to None from
+  // GPS1_TYPE and then its serial pass overwrites that with SERIAL3, because
+  // "None" is not a CAN port (_set_serial_type_from_fc_parameters). Following
+  // AMC is the port's job; each entry must still occur, so this stays exact.
+  const AMC_DERIVES_THE_SAME = [
+    'Rover/empty_4.7.x GNSS Receiver/FC Connection/Type: vehicle says SERIAL3, operator declared None (from SERIAL3_PROTOCOL)',
+    'Heli/empty_4.7.x GNSS Receiver/FC Connection/Type: vehicle says SERIAL3, operator declared None (from SERIAL3_PROTOCOL)'
+  ]
+  for (const known of AMC_DERIVES_THE_SAME) {
+    assert.ok(disagreements.includes(known), `no longer disagrees, drop it from the list: ${known}`)
+  }
+  disagreements.splice(0, disagreements.length, ...disagreements.filter((d) => !AMC_DERIVES_THE_SAME.includes(d)))
+
   assert.ok(ALL.length >= 25, `only ${ALL.length} templates found`)
   assert.ok(compared > 200, `only ${compared} fields compared — the import is deriving almost nothing`)
   assert.equal(

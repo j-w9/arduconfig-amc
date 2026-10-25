@@ -78,6 +78,19 @@ function templatesFor(vehicle) {
     .filter((t) => existsSync(`${t.dir}/vehicle_components.json`))
 }
 
+// Configured vehicles only. Since AMC 5.0.0 the empty_<version> templates
+// hold the firmware's defaults -- AMC restores a project's missing steps from
+// them and applies the sequence on top -- so they are not a record of what
+// the sequence decided.
+const configuredTemplatesFor = (vehicle) => templatesFor(vehicle).filter((t) => !/^empty_/.test(t.name))
+
+// AMC's v1 -> v2 migration moved each Copter's measured MOT_THST_HOVER into
+// 13_initial_atc.param, whose forced value is a 0.2 starting guess. AMC
+// applies a forced value over the file's unless it is marked
+// @manual_override, so AMC itself overwrites the measurement there; the
+// runner computing 0.2 is following it (see tests/vehicle-files.test.mjs).
+const AMC_OVERWRITES_ITS_OWN_TEMPLATE = new Set(['ArduCopter|13_initial_atc.param|MOT_THST_HOVER'])
+
 const sequences = new Map(
   VEHICLES.map((v) => [v, orderSteps(parseStepFile(readFileSync(`${stepsDir}configuration_steps_${v}.json`, 'utf8')))])
 )
@@ -86,10 +99,11 @@ test('the runner reproduces every forced parameter in every template', () => {
   const mismatches = []
   let checked = 0
   let overridden = 0
+  let known = 0
   let vehicles = 0
 
   for (const vehicle of VEHICLES) {
-    for (const template of templatesFor(vehicle)) {
+    for (const template of configuredTemplatesFor(vehicle)) {
       vehicles += 1
       const defaults = `${template.dir}/00_default.param`
       const context = vehicleContext(
@@ -119,6 +133,10 @@ test('the runner reproduces every forced parameter in every template', () => {
           checked += 1
           const tolerance = Math.max(1e-6, Math.abs(change.value) * 1e-6)
           if (Math.abs(actual - change.value) > tolerance) {
+            if (AMC_OVERWRITES_ITS_OWN_TEMPLATE.has(`${vehicle}|${filename}|${change.parameter}`)) {
+              known += 1
+              continue
+            }
             mismatches.push(`${id}: template has ${actual}, runner computed ${change.value}`)
           }
         }
@@ -126,7 +144,7 @@ test('the runner reproduces every forced parameter in every template', () => {
     }
   }
 
-  assert.ok(vehicles >= 25, `only ${vehicles} templates found`)
+  assert.ok(vehicles >= 20, `only ${vehicles} configured templates found`)
   assert.ok(checked > 1000, `only ${checked} forced parameters checked`)
   // The mechanism has to stay exercised: if no template overrides anything, the
   // rule above is no longer being tested by anything.
@@ -136,6 +154,7 @@ test('the runner reproduces every forced parameter in every template', () => {
     0,
     `${mismatches.length} of ${checked} forced parameters diverged:\n${mismatches.slice(0, 10).join('\n')}`
   )
+  assert.ok(known > 0, 'no template contradicts its forced MOT_THST_HOVER any more; drop the exception')
 })
 
 // One named value in AMC's templates has no number behind it, and it is not a

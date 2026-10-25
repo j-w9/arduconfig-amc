@@ -91,11 +91,11 @@ test('an addition is written into the step it was added to, and nowhere else', (
   const context = vehicleContext(JSON.stringify({ Components: {} }), {})
   const files = vehicleFiles(sequence, context, {
     additions: new Map([
-      ['08_telemetry.param', new Map([['SERIAL1_BAUD', { value: 115, reason: 'my ESP32 link' }]])]
+      ['07_telemetry.param', new Map([['SERIAL1_BAUD', { value: 115, reason: 'my ESP32 link' }]])]
     ])
   })
 
-  const telemetry = files.find((file) => file.filename === '08_telemetry.param')
+  const telemetry = files.find((file) => file.filename === '07_telemetry.param')
   const line = parseParamFile(telemetry.text).get('SERIAL1_BAUD')
   assert.equal(line.value, 115)
   assert.equal(line.comment, 'my ESP32 link')
@@ -104,7 +104,7 @@ test('an addition is written into the step it was added to, and nowhere else', (
   assert.equal(line.manualOverride, true)
 
   const elsewhere = files.filter(
-    (file) => file.filename !== '08_telemetry.param' && parseParamFile(file.text).has('SERIAL1_BAUD')
+    (file) => file.filename !== '07_telemetry.param' && parseParamFile(file.text).has('SERIAL1_BAUD')
   )
   assert.deepEqual(elsewhere.map((file) => file.filename), [])
 })
@@ -112,8 +112,8 @@ test('an addition is written into the step it was added to, and nowhere else', (
 test('an addition with no reason is still written', () => {
   const context = vehicleContext(JSON.stringify({ Components: {} }), {})
   const [file] = vehicleFiles(sequence, context, {
-    additions: new Map([['08_telemetry.param', new Map([['SERIAL1_BAUD', { value: 115 }]])]])
-  }).filter((entry) => entry.filename === '08_telemetry.param')
+    additions: new Map([['07_telemetry.param', new Map([['SERIAL1_BAUD', { value: 115 }]])]])
+  }).filter((entry) => entry.filename === '07_telemetry.param')
   assert.equal(parseParamFile(file.text).get('SERIAL1_BAUD').value, 115)
 })
 

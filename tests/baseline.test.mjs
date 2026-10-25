@@ -45,13 +45,14 @@ test('a baseline is found for a firmware AMC ships an empty template for', () =>
   const baseline = baselineFor(table, 'ArduCopter', '4.6.3')
   assert.equal(baseline.version, '4.6')
   assert.ok(baseline.count > 500, `only ${baseline.count} parameters`)
-  assert.ok(baseline.files.get('08_telemetry.param').has('SERIAL1_BAUD'))
+  assert.ok(baseline.files.get('07_telemetry.param').has('SERIAL1_BAUD'))
 })
 
 test('there is no falling back to a neighbouring release', () => {
   // AMC raises rather than substituting: a 4.5 baseline on 4.7 firmware would
-  // seed parameters that have since been renamed.
-  assert.equal(baselineFor(table, 'ArduCopter', '4.4.0'), undefined)
+  // seed parameters that have since been renamed. 4.3 is the release below
+  // the oldest empty template AMC 5.0.0 ships (empty_4.4.x).
+  assert.equal(baselineFor(table, 'ArduCopter', '4.3.8'), undefined)
   assert.equal(baselineFor(table, 'ArduCopter', undefined), undefined)
   // A vehicle AMC ships no empty template for gets none, rather than another
   // vehicle's.
@@ -60,7 +61,7 @@ test('there is no falling back to a neighbouring release', () => {
 
 test('the versions on offer are ordered by release, not alphabetically', () => {
   const versions = baselineVersions(table, 'ArduCopter')
-  assert.deepEqual(versions, ['4.5', '4.6', '4.7'])
+  assert.deepEqual(versions, ['4.4', '4.5', '4.6', '4.7', '4.8'])
   assert.deepEqual(baselineVersions(table, 'ArduSubmarine'), [])
 })
 
@@ -87,15 +88,16 @@ test('a seeded directory holds everything AMC\'s own does', () => {
 })
 
 test('the sequence overrides the baseline, and is right to', () => {
-  // A real case, and the reason the precedence is this way round. AMC's empty
-  // templates ship INS_HNTCH_MODE,3 — ESC telemetry RPM — while their own
-  // declaration says the ESC sends no telemetry, so the sequence computes 1.
-  // The shipped file is stale; the computed value is what AMC's own sequence
-  // says. A baseline that won here would carry that staleness forward.
+  // The reason the precedence is this way round. Until 5.0.0, AMC's empty
+  // templates shipped INS_HNTCH_MODE,3 — ESC telemetry RPM — while their own
+  // declaration said the ESC sends no telemetry, so the sequence computes 1.
+  // The shipped file was stale (5.0.0 corrected it to 1); the computed value
+  // is what AMC's own sequence says, and a baseline that won here would carry
+  // any such staleness forward.
   const context = vehicleContext(readFileSync(emptyDir + '/vehicle_components.json', 'utf8'), {})
   const baseline = baselineFor(table, 'ArduCopter', '4.6.3')
   const file = vehicleFiles(sequence, context, { baseline }).find(
-    (entry) => entry.filename === '21_motor_notch_filter_setup.param'
+    (entry) => entry.filename === '25_motor_notch_filter_setup.param'
   )
   const line = parseParamFile(file.text).get('INS_HNTCH_MODE')
   assert.equal(line.value, 1)
@@ -111,7 +113,7 @@ test('a baseline value carries no reason, because it is not a decision', () => {
   const context = vehicleContext(JSON.stringify({ Components: {} }), {})
   const baseline = baselineFor(table, 'ArduCopter', '4.6.3')
   const file = vehicleFiles(sequence, context, { baseline }).find(
-    (entry) => entry.filename === '08_telemetry.param'
+    (entry) => entry.filename === '07_telemetry.param'
   )
   assert.equal(parseParamFile(file.text).get('SERIAL1_BAUD').comment, undefined)
 })

@@ -1,107 +1,115 @@
 {
  "ArduCopter": {
-  "templates": 21,
+  "templates": 23,
   "steps": {
    "02_imu_temperature_calibration_setup.param": {
     "INS_LOG_BAT_MASK": 1,
-    "INS_TCAL1_TMAX": 20,
-    "INS_TCAL2_TMAX": 20,
+    "INS_TCAL1_TMAX": 22,
+    "INS_TCAL2_TMAX": 22,
     "INS_TCAL3_TMAX": 7
    },
    "03_imu_temperature_calibration_results.param": {
-    "INS_TCAL1_ACC1_X": 20,
-    "INS_TCAL1_ACC1_Y": 20,
-    "INS_TCAL1_ACC1_Z": 20,
-    "INS_TCAL1_ACC2_X": 20,
-    "INS_TCAL1_ACC2_Y": 20,
-    "INS_TCAL1_ACC2_Z": 20,
-    "INS_TCAL1_ACC3_X": 20,
-    "INS_TCAL1_ACC3_Y": 20,
-    "INS_TCAL1_ACC3_Z": 20,
-    "INS_TCAL1_ENABLE": 20,
-    "INS_TCAL1_GYR1_X": 20,
-    "INS_TCAL1_GYR1_Y": 20,
-    "INS_TCAL1_GYR1_Z": 20,
-    "INS_TCAL1_GYR2_X": 20,
-    "INS_TCAL1_GYR2_Y": 20,
-    "INS_TCAL1_GYR2_Z": 20,
-    "INS_TCAL1_GYR3_X": 20,
-    "INS_TCAL1_GYR3_Y": 20,
-    "INS_TCAL1_GYR3_Z": 20,
-    "INS_TCAL1_TMAX": 20,
-    "INS_TCAL1_TMIN": 20
+    "INS_ACC1_CALTEMP": 22,
+    "INS_ACC2_CALTEMP": 22,
+    "INS_ACC3_CALTEMP": 1,
+    "INS_TCAL1_ACC1_X": 22,
+    "INS_TCAL1_ACC1_Y": 22,
+    "INS_TCAL1_ACC1_Z": 22,
+    "INS_TCAL1_ACC2_X": 22,
+    "INS_TCAL1_ACC2_Y": 22,
+    "INS_TCAL1_ACC2_Z": 22,
+    "INS_TCAL1_ACC3_X": 22,
+    "INS_TCAL1_ACC3_Y": 22,
+    "INS_TCAL1_ACC3_Z": 22,
+    "INS_TCAL1_ENABLE": 22,
+    "INS_TCAL1_GYR1_X": 22,
+    "INS_TCAL1_GYR1_Y": 22,
+    "INS_TCAL1_GYR1_Z": 22,
+    "INS_TCAL1_GYR2_X": 22,
+    "INS_TCAL1_GYR2_Y": 22,
+    "INS_TCAL1_GYR2_Z": 22,
+    "INS_TCAL1_GYR3_X": 22,
+    "INS_TCAL1_GYR3_Y": 22,
+    "INS_TCAL1_GYR3_Z": 22,
+    "INS_TCAL1_TMAX": 22,
+    "INS_TCAL1_TMIN": 22
    },
-   "05_board_orientation.param": {
-    "AHRS_ORIENTATION": 20,
-    "LOG_BITMASK": 1,
-    "LOG_DISARMED": 1
-   },
-   "06_remote_controller_receiver.param": {
+   "05_remote_controller_receiver.param": {
     "ARMING_RUDDER": 1,
     "BRD_ALT_CONFIG": 9,
-    "FS_THR_VALUE": 1,
+    "FS_THR_VALUE": 2,
     "PILOT_THR_BHV": 1,
-    "RC_OPTIONS": 20,
+    "RC_OPTIONS": 22,
     "RC10_OPTION": 1,
     "RC2_REVERSED": 1,
     "RC6_OPTION": 1,
     "RC7_OPTION": 1,
     "RC8_OPTION": 1,
     "RC9_OPTION": 1,
-    "RSSI_TYPE": 20,
-    "SERIAL2_BAUD": 1,
-    "SERIAL2_OPTIONS": 1
+    "RSSI_TYPE": 22,
+    "SERIAL2_BAUD": 2,
+    "SERIAL2_OPTIONS": 2
    },
-   "07_remote_controller_controller.param": {
-    "ARMING_RUDDER": 18,
-    "FS_THR_VALUE": 1,
-    "RC1_MAX": 1,
-    "RC1_MIN": 1,
+   "06_remote_controller_controller.param": {
+    "ARMING_RUDDER": 20,
+    "FS_THR_VALUE": 2,
+    "RC1_MAX": 22,
+    "RC1_MIN": 22,
     "RC1_OPTION": 2,
-    "RC10_OPTION": 15,
+    "RC1_TRIM": 22,
+    "RC10_MAX": 15,
+    "RC10_MIN": 15,
+    "RC10_OPTION": 17,
+    "RC10_TRIM": 15,
+    "RC11_MAX": 1,
+    "RC11_MIN": 1,
     "RC11_OPTION": 2,
+    "RC11_TRIM": 1,
     "RC12_OPTION": 2,
     "RC13_OPTION": 2,
     "RC14_OPTION": 2,
     "RC15_OPTION": 2,
     "RC16_OPTION": 2,
-    "RC2_MAX": 1,
-    "RC2_MIN": 1,
+    "RC2_MAX": 22,
+    "RC2_MIN": 22,
     "RC2_OPTION": 2,
-    "RC2_TRIM": 1,
-    "RC3_MAX": 1,
-    "RC3_MIN": 1,
+    "RC2_TRIM": 22,
+    "RC3_MAX": 22,
+    "RC3_MIN": 22,
     "RC3_OPTION": 2,
-    "RC3_TRIM": 1,
-    "RC4_MAX": 1,
-    "RC4_MIN": 1,
+    "RC3_TRIM": 22,
+    "RC4_MAX": 22,
+    "RC4_MIN": 22,
     "RC4_OPTION": 2,
-    "RC4_TRIM": 1,
-    "RC5_MAX": 1,
-    "RC5_MIN": 1,
-    "RC5_TRIM": 1,
-    "RC6_MAX": 1,
-    "RC6_MIN": 1,
-    "RC6_OPTION": 20,
-    "RC6_TRIM": 1,
-    "RC7_MAX": 1,
-    "RC7_MIN": 1,
-    "RC7_OPTION": 20,
-    "RC7_TRIM": 1,
-    "RC8_MAX": 1,
-    "RC8_MIN": 1,
-    "RC8_OPTION": 20,
-    "RC8_TRIM": 1,
-    "RC9_OPTION": 20
+    "RC4_TRIM": 22,
+    "RC5_MAX": 22,
+    "RC5_MIN": 22,
+    "RC5_TRIM": 22,
+    "RC6_MAX": 22,
+    "RC6_MIN": 22,
+    "RC6_OPTION": 22,
+    "RC6_TRIM": 22,
+    "RC7_MAX": 22,
+    "RC7_MIN": 22,
+    "RC7_OPTION": 22,
+    "RC7_TRIM": 22,
+    "RC8_MAX": 22,
+    "RC8_MIN": 22,
+    "RC8_OPTION": 22,
+    "RC8_TRIM": 22,
+    "RC9_MAX": 22,
+    "RC9_MIN": 22,
+    "RC9_OPTION": 22,
+    "RC9_TRIM": 22
    },
-   "08_telemetry.param": {
-    "BRD_SER1_RTSCTS": 19,
-    "SERIAL1_BAUD": 17,
-    "SERIAL1_OPTIONS": 4,
+   "07_telemetry.param": {
+    "BRD_SER1_RTSCTS": 21,
+    "SERIAL1_BAUD": 19,
+    "SERIAL1_OPTIONS": 5,
     "SERIAL2_BAUD": 2,
     "SERIAL4_BAUD": 1
    },
-   "09_esc_telemetry.param": {
+   "08_esc_telemetry.param": {
     "ESC_HW_ENABLE": 2,
     "SERIAL1_BAUD": 1,
     "SERIAL2_BAUD": 2,
@@ -109,10 +117,8 @@
     "SERIAL5_BAUD": 6,
     "SERVO_BLH_TRATE": 5
    },
-   "10_battery_monitor.param": {
-    "BATT_CURR_PIN": 2,
+   "09_battery_monitor.param": {
     "BATT_FS_VOLTSRC": 1,
-    "BATT_VOLT_PIN": 2,
     "BATT2_AMP_PERVLT": 1,
     "BATT2_CURR_PIN": 2,
     "BATT2_MONITOR": 2,
@@ -124,10 +130,10 @@
     "BATT6_MONITOR": 1,
     "BRD_TYPE": 1
    },
-   "11_battery.param": {
-    "BATT_CRT_MAH": 20,
-    "BATT_FS_VOLTSRC": 19,
-    "BATT_LOW_MAH": 20,
+   "10_battery.param": {
+    "BATT_CRT_MAH": 22,
+    "BATT_FS_VOLTSRC": 21,
+    "BATT_LOW_MAH": 22,
     "BATT_LOW_TIMER": 1,
     "BATT_SUM_MASK": 1,
     "BATT2_ARM_VOLT": 1,
@@ -152,177 +158,10 @@
     "BATT6_LOW_VOLT": 1,
     "BATT6_SERIAL_NUM": 1
    },
-   "12_gnss.param": {
-    "BRD_BOOT_DELAY": 3,
-    "BRD_SAFETY_DEFLT": 20,
-    "CAN_D1_PROTOCOL": 10,
-    "CAN_D1_UC_ESC_BM": 1,
-    "CAN_D2_PROTOCOL": 2,
-    "CAN_P1_DRIVER": 10,
-    "CAN_P2_DRIVER": 2,
-    "COMPASS_ORIENT": 5,
-    "COMPASS_ORIENT2": 5,
-    "GPS_AUTO_SWITCH": 6,
-    "GPS_GNSS_MODE": 13,
-    "GPS_POS1_X": 13,
-    "GPS_POS1_Y": 13,
-    "GPS_POS1_Z": 13,
-    "GPS_POS2_X": 2,
-    "GPS_POS2_Y": 2,
-    "GPS_POS2_Z": 2,
-    "GPS_TYPE2": 1,
-    "GPS1_GNSS_MODE": 7,
-    "GPS1_POS_X": 7,
-    "GPS1_POS_Y": 7,
-    "GPS1_POS_Z": 7,
-    "GPS2_GNSS_MODE": 1,
-    "GPS2_POS_X": 1,
-    "GPS2_POS_Y": 1,
-    "GPS2_POS_Z": 1,
-    "GPS2_TYPE": 1,
-    "NTF_LED_TYPES": 13,
-    "SERIAL3_PROTOCOL": 17,
-    "SERIAL4_PROTOCOL": 9,
-    "SERIAL7_PROTOCOL": 1,
-    "WP_RADIUS_M": 1,
-    "WPNAV_RADIUS": 17
-   },
-   "14_mp_setup_mandatory_hardware.param": {
-    "AHRS_TRIM_X": 20,
-    "AHRS_TRIM_Y": 20,
-    "ARMING_CHECK": 1,
-    "ATC_ACC_P_MAX": 1,
-    "ATC_ACC_R_MAX": 1,
-    "ATC_ACC_Y_MAX": 1,
-    "ATC_ACCEL_P_MAX": 19,
-    "ATC_ACCEL_R_MAX": 19,
-    "ATC_ACCEL_Y_MAX": 19,
-    "ATC_RAT_PIT_FLTD": 20,
-    "ATC_RAT_PIT_FLTT": 20,
-    "ATC_RAT_RLL_FLTD": 20,
-    "ATC_RAT_RLL_FLTT": 20,
-    "ATC_RAT_YAW_FLTD": 1,
-    "ATC_RAT_YAW_FLTE": 20,
-    "ATC_RAT_YAW_FLTT": 20,
-    "BARO1_DEVID": 1,
-    "COMPASS_DEC": 1,
-    "COMPASS_DEV_ID": 1,
-    "COMPASS_DEV_ID2": 1,
-    "COMPASS_DIA2_X": 1,
-    "COMPASS_DIA2_Y": 1,
-    "COMPASS_DIA2_Z": 1,
-    "COMPASS_EXTERNAL": 20,
-    "COMPASS_ODI2_X": 1,
-    "COMPASS_ODI2_Y": 1,
-    "COMPASS_ODI2_Z": 1,
-    "COMPASS_OFS_X": 1,
-    "COMPASS_OFS_Y": 1,
-    "COMPASS_OFS_Z": 1,
-    "COMPASS_OFS2_X": 1,
-    "COMPASS_OFS2_Y": 1,
-    "COMPASS_OFS2_Z": 1,
-    "COMPASS_ORIENT": 20,
-    "COMPASS_PRIO1_ID": 20,
-    "COMPASS_PRIO2_ID": 1,
-    "COMPASS_SCALE": 1,
-    "COMPASS_SCALE2": 1,
-    "COMPASS_USE2": 20,
-    "COMPASS_USE3": 20,
-    "FENCE_ACTION": 20,
-    "FENCE_ALT_MAX": 20,
-    "FENCE_ENABLE": 20,
-    "FENCE_RADIUS": 20,
-    "FLOW_TYPE": 1,
-    "FLTMODE1": 20,
-    "FLTMODE2": 20,
-    "FLTMODE3": 20,
-    "FLTMODE4": 20,
-    "FLTMODE5": 20,
-    "FLTMODE6": 20,
-    "FRAME_CLASS": 20,
-    "FRAME_TYPE": 20,
-    "FS_GCS_ENABLE": 1,
-    "INS_ACC_ID": 1,
-    "INS_ACC1_CALTEMP": 20,
-    "INS_ACC2_CALTEMP": 20,
-    "INS_ACC2_ID": 1,
-    "INS_ACC2OFFS_X": 1,
-    "INS_ACC2OFFS_Y": 1,
-    "INS_ACC2OFFS_Z": 1,
-    "INS_ACC3_CALTEMP": 1,
-    "INS_ACCEL_FILTER": 1,
-    "INS_ACCOFFS_X": 1,
-    "INS_ACCOFFS_Y": 1,
-    "INS_ACCOFFS_Z": 1,
-    "INS_ACCSCAL_X": 20,
-    "INS_ACCSCAL_Y": 20,
-    "INS_ACCSCAL_Z": 20,
-    "INS_GYR_ID": 1,
-    "INS_GYR1_CALTEMP": 1,
-    "INS_GYR2_CALTEMP": 1,
-    "INS_GYR2_ID": 1,
-    "INS_GYR2OFFS_X": 1,
-    "INS_GYR2OFFS_Y": 1,
-    "INS_GYR2OFFS_Z": 1,
-    "INS_GYRO_FILTER": 20,
-    "INS_GYROFFS_X": 1,
-    "INS_GYROFFS_Y": 1,
-    "INS_GYROFFS_Z": 1,
-    "INS_USE3": 19,
-    "MOT_BAT_VOLT_MAX": 20,
-    "MOT_BAT_VOLT_MIN": 20,
-    "MOT_SPIN_ARM": 20,
-    "MOT_SPIN_MAX": 20,
-    "MOT_SPIN_MIN": 20,
-    "MOT_THST_EXPO": 20,
-    "MOT_THST_HOVER": 20,
-    "RC1_MAX": 20,
-    "RC1_MIN": 20,
-    "RC1_TRIM": 20,
-    "RC10_MAX": 13,
-    "RC10_MIN": 13,
-    "RC10_TRIM": 13,
-    "RC11_MAX": 1,
-    "RC11_MIN": 1,
-    "RC11_TRIM": 1,
-    "RC2_MAX": 20,
-    "RC2_MIN": 20,
-    "RC2_TRIM": 20,
-    "RC3_MAX": 20,
-    "RC3_MIN": 20,
-    "RC3_TRIM": 20,
-    "RC4_MAX": 20,
-    "RC4_MIN": 20,
-    "RC4_TRIM": 20,
-    "RC5_MAX": 20,
-    "RC5_MIN": 20,
-    "RC5_TRIM": 20,
-    "RC6_MAX": 20,
-    "RC6_MIN": 20,
-    "RC6_TRIM": 20,
-    "RC7_MAX": 20,
-    "RC7_MIN": 20,
-    "RC7_TRIM": 20,
-    "RC8_MAX": 20,
-    "RC8_MIN": 20,
-    "RC8_TRIM": 20,
-    "RC9_MAX": 20,
-    "RC9_MIN": 20,
-    "RC9_TRIM": 20,
-    "RNGFND1_MAX_CM": 1,
-    "RNGFND1_MIN_CM": 1,
-    "RNGFND1_ORIENT": 1,
-    "RNGFND1_TYPE": 1,
-    "RNGFND2_ADDR": 1,
-    "RNGFND2_GNDCLEAR": 1,
-    "RNGFND2_MAX_CM": 1,
-    "RNGFND2_MIN_CM": 1,
-    "RNGFND2_SCALING": 1,
-    "RNGFND2_TYPE": 1,
-    "SERIAL4_BAUD": 1,
-    "SERIAL4_PROTOCOL": 1,
+   "11_servo_outputs.param": {
+    "FRAME_TYPE": 16,
     "SERVO_32_ENABLE": 1,
-    "SERVO1_FUNCTION": 20,
+    "SERVO1_FUNCTION": 22,
     "SERVO10_FUNCTION": 3,
     "SERVO11_FUNCTION": 1,
     "SERVO12_FUNCTION": 1,
@@ -333,7 +172,7 @@
     "SERVO17_FUNCTION": 1,
     "SERVO18_FUNCTION": 1,
     "SERVO19_FUNCTION": 1,
-    "SERVO2_FUNCTION": 20,
+    "SERVO2_FUNCTION": 22,
     "SERVO20_FUNCTION": 1,
     "SERVO21_FUNCTION": 1,
     "SERVO22_FUNCTION": 1,
@@ -344,151 +183,31 @@
     "SERVO27_FUNCTION": 1,
     "SERVO28_FUNCTION": 1,
     "SERVO29_FUNCTION": 1,
-    "SERVO3_FUNCTION": 20,
+    "SERVO3_FUNCTION": 22,
     "SERVO30_FUNCTION": 1,
     "SERVO31_FUNCTION": 1,
     "SERVO32_FUNCTION": 1,
-    "SERVO4_FUNCTION": 20,
+    "SERVO4_FUNCTION": 22,
     "SERVO5_FUNCTION": 3,
     "SERVO5_MAX": 1,
     "SERVO5_MIN": 1,
     "SERVO6_FUNCTION": 2,
     "SERVO7_FUNCTION": 1,
     "SERVO8_FUNCTION": 1,
-    "SERVO9_FUNCTION": 1,
-    "SPRAY_ENABLE": 1
-   },
-   "15_general_configuration.param": {
-    "ACRO_Y_RATE": 1,
-    "ANGLE_MAX": 1,
-    "ATC_SLEW_YAW": 1,
-    "AUTO_OPTIONS": 13,
-    "BRD_BOOT_DELAY": 1,
-    "BRD_HEAT_TARG": 10,
-    "BRD_RTC_TZ_MIN": 20,
-    "BRD_SAFETY_MASK": 2,
-    "BRD_SAFETYOPTION": 1,
-    "CAM1_TRK_COMPID": 1,
-    "CAM1_TRK_ENABLE": 1,
-    "CAM1_TRK_SYSID": 1,
-    "CAM1_TYPE": 1,
-    "CAN_D2_UC_ESC_BM": 1,
-    "CAN_D2_UC_ESC_OF": 1,
-    "CAN_P2_DRIVER": 1,
-    "EK3_IMU_MASK": 1,
-    "EK3_SRC_OPTIONS": 1,
-    "EK3_SRC1_POSZ": 13,
-    "FENCE_TYPE": 1,
-    "FOLL_DIST_MAX": 1,
-    "FOLL_ENABLE": 1,
-    "FOLL_OPTIONS": 1,
-    "FOLL_POS_P": 1,
-    "FOLL_YAW_BEHAVE": 1,
-    "FS_EKF_ACTION": 1,
-    "FS_OPTIONS": 1,
-    "INS_ACCEL_FILTER": 20,
-    "INS_POS1_X": 20,
-    "INS_POS1_Y": 20,
-    "INS_POS2_X": 20,
-    "INS_POS2_Y": 20,
-    "LAND_ALT_LOW": 1,
-    "MOT_YAW_HEADROOM": 1,
-    "NET_ENABLE": 1,
-    "NET_OPTIONS": 1,
-    "NET_P1_IP0": 1,
-    "NET_P1_IP1": 1,
-    "NET_P1_IP2": 1,
-    "NET_P1_IP3": 1,
-    "NET_P1_PORT": 1,
-    "NET_P1_TYPE": 1,
-    "NET_P2_IP0": 1,
-    "NET_P2_IP1": 1,
-    "NET_P2_IP2": 1,
-    "NET_P2_IP3": 1,
-    "NET_P2_PORT": 1,
-    "NET_P2_PROTOCOL": 1,
-    "NET_P2_TYPE": 1,
-    "NTF_BUZZ_PIN": 1,
-    "PILOT_TKOFF_ALT": 2,
-    "PILOT_Y_RATE": 1,
-    "PRX1_TYPE": 1,
-    "RNGFND1_ADDR": 2,
-    "RNGFND1_FUNCTION": 2,
-    "RNGFND1_GNDCLEAR": 2,
-    "RNGFND1_MAX_CM": 2,
-    "RNGFND1_MIN_CM": 2,
-    "RNGFND1_OFFSET": 2,
-    "RNGFND1_ORIENT": 2,
-    "RNGFND1_PIN": 2,
-    "RNGFND1_POS_X": 2,
-    "RNGFND1_POS_Y": 2,
-    "RNGFND1_POS_Z": 2,
-    "RNGFND1_PWRRNG": 2,
-    "RNGFND1_RMETRIC": 2,
-    "RNGFND1_SCALING": 2,
-    "RNGFND1_STOP_PIN": 2,
-    "RNGFND1_TYPE": 3,
-    "RTL_ALT": 2,
-    "RTL_ALT_FINAL": 1,
-    "RTL_LOIT_TIME": 20,
-    "SCHED_LOOP_RATE": 20,
-    "SCR_ENABLE": 17,
-    "SERIAL4_BAUD": 1,
-    "SERIAL4_PROTOCOL": 1,
-    "SERIAL7_BAUD": 1,
-    "SERIAL7_PROTOCOL": 11,
-    "SERVO10_FUNCTION": 1,
-    "SERVO11_FUNCTION": 1,
     "SERVO9_FUNCTION": 1
    },
-   "16_safety_setup.param": {
-    "ARMING_NEED_LOC": 1,
-    "ATC_RAT_PIT_SMAX": 20,
-    "ATC_RAT_RLL_SMAX": 20,
-    "ATC_RAT_YAW_SMAX": 20,
-    "ATC_SLEW_YAW": 1,
-    "BRD_SAFETYOPTION": 1,
-    "FENCE_ALT_MAX": 1,
-    "FENCE_ENABLE": 1,
-    "FENCE_MARGIN": 1,
-    "FENCE_TYPE": 20,
-    "FS_EKF_ACTION": 13,
-    "FS_OPTIONS": 1,
-    "FS_THR_VALUE": 1,
-    "LAND_ALT_LOW": 19,
-    "LAND_ALT_LOW_M": 1,
-    "PSC_ACCZ_SMAX": 19,
-    "PSC_D_ACC_SMAX": 1,
-    "RTL_ALT": 19,
-    "RTL_ALT_M": 1
-   },
-   "17_remote_id.param": {
-    "DID_CANDRIVER": 19,
-    "DID_ENABLE": 19,
-    "DID_MAVPORT": 19,
-    "DID_OPTIONS": 19,
-    "FLTMODE_CH": 1,
-    "FLTMODE1": 1,
-    "FLTMODE2": 1,
-    "FLTMODE3": 1,
-    "FLTMODE4": 1,
-    "FLTMODE5": 1,
-    "FLTMODE6": 1
-   },
-   "18_osd.param": {
-    "OSD_TYPE": 7
-   },
-   "20_esc.param": {
-    "NTF_BUZZ_TYPES": 20,
-    "NTF_LED_TYPES": 20,
+   "14_esc.param": {
+    "BRD_SAFETY_DEFLT": 1,
+    "NTF_BUZZ_TYPES": 22,
+    "NTF_LED_TYPES": 22,
     "SERVO_BLH_RVMASK": 1,
     "SERVO_BLH_TEST": 1,
     "SERVO_FTW_MASK": 1,
     "SERVO_FTW_RVMASK": 1,
-    "SERVO1_FUNCTION": 1,
-    "SERVO1_MAX": 13,
-    "SERVO1_MIN": 13,
-    "SERVO1_TRIM": 13,
+    "SERVO1_FUNCTION": 2,
+    "SERVO1_MAX": 15,
+    "SERVO1_MIN": 15,
+    "SERVO1_TRIM": 15,
     "SERVO10_FUNCTION": 2,
     "SERVO10_MAX": 2,
     "SERVO10_MIN": 1,
@@ -509,10 +228,10 @@
     "SERVO17_MAX": 1,
     "SERVO18_MAX": 1,
     "SERVO19_MAX": 1,
-    "SERVO2_FUNCTION": 1,
-    "SERVO2_MAX": 13,
-    "SERVO2_MIN": 13,
-    "SERVO2_TRIM": 13,
+    "SERVO2_FUNCTION": 2,
+    "SERVO2_MAX": 15,
+    "SERVO2_MIN": 15,
+    "SERVO2_TRIM": 15,
     "SERVO20_MAX": 1,
     "SERVO21_MAX": 1,
     "SERVO22_MAX": 1,
@@ -523,17 +242,17 @@
     "SERVO27_MAX": 1,
     "SERVO28_MAX": 1,
     "SERVO29_MAX": 1,
-    "SERVO3_FUNCTION": 1,
-    "SERVO3_MAX": 13,
-    "SERVO3_MIN": 13,
-    "SERVO3_TRIM": 13,
+    "SERVO3_FUNCTION": 2,
+    "SERVO3_MAX": 15,
+    "SERVO3_MIN": 15,
+    "SERVO3_TRIM": 15,
     "SERVO30_MAX": 1,
     "SERVO31_MAX": 1,
     "SERVO32_MAX": 1,
-    "SERVO4_FUNCTION": 1,
-    "SERVO4_MAX": 13,
-    "SERVO4_MIN": 13,
-    "SERVO4_TRIM": 13,
+    "SERVO4_FUNCTION": 2,
+    "SERVO4_MAX": 15,
+    "SERVO4_MIN": 15,
+    "SERVO4_TRIM": 15,
     "SERVO5_MAX": 1,
     "SERVO6_MAX": 1,
     "SERVO7_MAX": 1,
@@ -544,51 +263,273 @@
     "SERVO9_TRIM": 1,
     "TKOFF_THR_MAX": 2
    },
-   "21_motor_notch_filter_setup.param": {
+   "15_board_orientation.param": {
+    "AHRS_ORIENTATION": 22,
+    "LOG_BITMASK": 1,
+    "LOG_DISARMED": 1
+   },
+   "18_gnss.param": {
+    "BRD_BOOT_DELAY": 4,
+    "BRD_SAFETY_DEFLT": 22,
+    "CAN_D1_PROTOCOL": 11,
+    "CAN_D1_UC_ESC_BM": 1,
+    "CAN_D2_PROTOCOL": 2,
+    "CAN_P1_DRIVER": 11,
+    "CAN_P2_DRIVER": 2,
+    "COMPASS_ORIENT": 6,
+    "COMPASS_ORIENT2": 6,
+    "GPS_AUTO_SWITCH": 8,
+    "GPS_GNSS_MODE": 14,
+    "GPS_POS1_X": 14,
+    "GPS_POS1_Y": 14,
+    "GPS_POS1_Z": 14,
+    "GPS_POS2_X": 3,
+    "GPS_POS2_Y": 3,
+    "GPS_POS2_Z": 3,
+    "GPS_TYPE2": 1,
+    "GPS1_GNSS_MODE": 8,
+    "GPS1_POS_X": 8,
+    "GPS1_POS_Y": 8,
+    "GPS1_POS_Z": 8,
+    "GPS2_GNSS_MODE": 1,
+    "GPS2_POS_X": 1,
+    "GPS2_POS_Y": 1,
+    "GPS2_POS_Z": 1,
+    "GPS2_TYPE": 1,
+    "NTF_LED_TYPES": 15,
+    "SERIAL3_PROTOCOL": 19,
+    "SERIAL4_PROTOCOL": 11,
+    "SERIAL7_PROTOCOL": 1,
+    "WP_RADIUS_M": 2,
+    "WPNAV_RADIUS": 18
+   },
+   "19_compass_calibration.param": {
+    "COMPASS_DEC": 1,
+    "COMPASS_DEV_ID": 1,
+    "COMPASS_DEV_ID2": 1,
+    "COMPASS_DIA2_X": 1,
+    "COMPASS_DIA2_Y": 1,
+    "COMPASS_DIA2_Z": 1,
+    "COMPASS_EXTERNAL": 22,
+    "COMPASS_ODI2_X": 1,
+    "COMPASS_ODI2_Y": 1,
+    "COMPASS_ODI2_Z": 1,
+    "COMPASS_OFS_X": 1,
+    "COMPASS_OFS_Y": 1,
+    "COMPASS_OFS_Z": 1,
+    "COMPASS_OFS2_X": 1,
+    "COMPASS_OFS2_Y": 1,
+    "COMPASS_OFS2_Z": 1,
+    "COMPASS_ORIENT": 22,
+    "COMPASS_PRIO1_ID": 22,
+    "COMPASS_PRIO2_ID": 1,
+    "COMPASS_SCALE": 1,
+    "COMPASS_SCALE2": 1,
+    "COMPASS_USE2": 22,
+    "COMPASS_USE3": 22
+   },
+   "20_remote_id.param": {
+    "DID_CANDRIVER": 21,
+    "DID_ENABLE": 21,
+    "DID_MAVPORT": 21,
+    "DID_OPTIONS": 21,
+    "FLTMODE_CH": 1
+   },
+   "21_osd.param": {
+    "OSD_TYPE": 22
+   },
+   "22_flight_modes.param": {
+    "FLTMODE1": 22,
+    "FLTMODE2": 22,
+    "FLTMODE3": 22,
+    "FLTMODE4": 22,
+    "FLTMODE5": 22,
+    "FLTMODE6": 22,
+    "INITIAL_MODE": 22
+   },
+   "23_general_configuration.param": {
+    "ACRO_Y_RATE": 1,
+    "ANGLE_MAX": 1,
+    "ATC_SLEW_YAW": 1,
+    "AUTO_OPTIONS": 15,
+    "BARO1_DEVID": 1,
+    "BRD_BOOT_DELAY": 1,
+    "BRD_HEAT_TARG": 11,
+    "BRD_RTC_TZ_MIN": 22,
+    "BRD_SAFETY_MASK": 3,
+    "BRD_SAFETYOPTION": 2,
+    "CAM1_TRK_COMPID": 1,
+    "CAM1_TRK_ENABLE": 1,
+    "CAM1_TRK_SYSID": 1,
+    "CAM1_TYPE": 1,
+    "CAN_D2_UC_ESC_BM": 1,
+    "CAN_D2_UC_ESC_OF": 1,
+    "CAN_P2_DRIVER": 1,
+    "EK3_IMU_MASK": 2,
+    "EK3_SRC_OPTIONS": 1,
+    "EK3_SRC1_POSZ": 15,
+    "FENCE_TYPE": 1,
+    "FLOW_TYPE": 1,
+    "FOLL_DIST_MAX": 1,
+    "FOLL_ENABLE": 1,
+    "FOLL_OPTIONS": 1,
+    "FOLL_POS_P": 1,
+    "FOLL_YAW_BEHAVE": 1,
+    "FS_EKF_ACTION": 1,
+    "FS_GCS_ENABLE": 1,
+    "FS_OPTIONS": 2,
+    "INS_ACC_ID": 1,
+    "INS_ACC2_ID": 1,
+    "INS_ACCEL_FILTER": 22,
+    "INS_GYR_ID": 1,
+    "INS_GYR1_CALTEMP": 1,
+    "INS_GYR2_CALTEMP": 1,
+    "INS_GYR2_ID": 1,
+    "INS_GYR2OFFS_X": 1,
+    "INS_GYR2OFFS_Y": 1,
+    "INS_GYR2OFFS_Z": 1,
+    "INS_GYROFFS_X": 1,
+    "INS_GYROFFS_Y": 1,
+    "INS_GYROFFS_Z": 1,
+    "INS_POS1_X": 22,
+    "INS_POS1_Y": 22,
+    "INS_POS2_X": 22,
+    "INS_POS2_Y": 22,
+    "LAND_ALT_LOW": 1,
+    "MOT_YAW_HEADROOM": 1,
+    "NET_ENABLE": 1,
+    "NET_OPTIONS": 1,
+    "NET_P1_IP0": 1,
+    "NET_P1_IP1": 1,
+    "NET_P1_IP2": 1,
+    "NET_P1_IP3": 1,
+    "NET_P1_PORT": 1,
+    "NET_P1_TYPE": 1,
+    "NET_P2_IP0": 1,
+    "NET_P2_IP1": 1,
+    "NET_P2_IP2": 1,
+    "NET_P2_IP3": 1,
+    "NET_P2_PORT": 1,
+    "NET_P2_PROTOCOL": 1,
+    "NET_P2_TYPE": 1,
+    "NTF_BUZZ_PIN": 2,
+    "PILOT_TKOFF_ALT": 2,
+    "PILOT_Y_RATE": 1,
+    "PRX1_TYPE": 2,
+    "RNGFND1_ADDR": 2,
+    "RNGFND1_FUNCTION": 2,
+    "RNGFND1_GNDCLEAR": 2,
+    "RNGFND1_MAX_CM": 3,
+    "RNGFND1_MIN_CM": 3,
+    "RNGFND1_OFFSET": 2,
+    "RNGFND1_ORIENT": 3,
+    "RNGFND1_PIN": 2,
+    "RNGFND1_POS_X": 2,
+    "RNGFND1_POS_Y": 2,
+    "RNGFND1_POS_Z": 2,
+    "RNGFND1_PWRRNG": 2,
+    "RNGFND1_RMETRIC": 2,
+    "RNGFND1_SCALING": 2,
+    "RNGFND1_STOP_PIN": 2,
+    "RNGFND1_TYPE": 5,
+    "RNGFND2_ADDR": 1,
+    "RNGFND2_GNDCLEAR": 1,
+    "RNGFND2_MAX_CM": 1,
+    "RNGFND2_MIN_CM": 1,
+    "RNGFND2_SCALING": 1,
+    "RNGFND2_TYPE": 1,
+    "RTL_ALT": 3,
+    "RTL_ALT_FINAL": 2,
+    "RTL_LOIT_TIME": 22,
+    "SCHED_LOOP_RATE": 22,
+    "SCR_ENABLE": 18,
+    "SERIAL4_BAUD": 3,
+    "SERIAL4_PROTOCOL": 3,
+    "SERIAL7_BAUD": 2,
+    "SERIAL7_PROTOCOL": 12,
+    "SERVO_32_ENABLE": 1,
+    "SERVO10_FUNCTION": 1,
+    "SERVO11_FUNCTION": 1,
+    "SERVO5_MAX": 1,
+    "SERVO5_MIN": 1,
+    "SERVO9_FUNCTION": 1,
+    "SPRAY_ENABLE": 1
+   },
+   "24_safety_setup.param": {
+    "ARMING_NEED_LOC": 2,
+    "ATC_RAT_PIT_SMAX": 22,
+    "ATC_RAT_RLL_SMAX": 22,
+    "ATC_RAT_YAW_SMAX": 22,
+    "ATC_SLEW_YAW": 2,
+    "BRD_SAFETYOPTION": 2,
+    "FENCE_ACTION": 16,
+    "FENCE_ALT_MAX": 22,
+    "FENCE_ENABLE": 18,
+    "FENCE_MARGIN": 2,
+    "FENCE_RADIUS": 21,
+    "FENCE_TYPE": 22,
+    "FS_EKF_ACTION": 15,
+    "FS_GCS_ENABLE": 1,
+    "FS_OPTIONS": 2,
+    "FS_THR_VALUE": 2,
+    "LAND_ALT_LOW": 20,
+    "LAND_ALT_LOW_M": 2,
+    "PSC_ACCZ_SMAX": 20,
+    "PSC_D_ACC_SMAX": 2,
+    "RTL_ALT": 20,
+    "RTL_ALT_M": 2
+   },
+   "25_motor_notch_filter_setup.param": {
     "FFT_ENABLE": 1,
-    "INS_FAST_SAMPLE": 20,
-    "INS_GYRO_RATE": 20,
-    "INS_HNTCH_ATT": 20,
-    "INS_HNTCH_BW": 20,
-    "INS_HNTCH_FM_RAT": 2,
-    "INS_HNTCH_HMNCS": 20,
-    "INS_HNTCH_OPTS": 20,
-    "INS_HNTCH_REF": 20
+    "INS_FAST_SAMPLE": 22,
+    "INS_GYRO_RATE": 22,
+    "INS_HNTCH_ATT": 22,
+    "INS_HNTCH_BW": 22,
+    "INS_HNTCH_FM_RAT": 6,
+    "INS_HNTCH_HMNCS": 22,
+    "INS_HNTCH_OPTS": 22,
+    "INS_HNTCH_REF": 22
    },
-   "22_motor_notch_logging.param": {
-    "INS_LOG_BAT_CNT": 13,
+   "26_motor_notch_logging.param": {
+    "INS_LOG_BAT_CNT": 15,
     "LOG_BACKEND_TYPE": 1,
-    "LOG_FILE_BUFSIZE": 1
+    "LOG_FILE_BUFSIZE": 2
    },
-   "23_optional_pid_adjustment.param": {
-    "ATC_ANG_PIT_P": 13,
-    "ATC_ANG_RLL_P": 13,
-    "ATC_ANG_YAW_P": 13,
-    "ATC_INPUT_TC": 20,
-    "ATC_RAT_PIT_D": 20,
-    "ATC_RAT_PIT_I": 20,
-    "ATC_RAT_PIT_P": 20,
-    "ATC_RAT_RLL_D": 20,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_RLL_P": 20,
-    "ATC_RAT_YAW_D": 20,
-    "ATC_RAT_YAW_I": 20,
-    "ATC_RAT_YAW_P": 20,
-    "PSC_D_POS_P": 1,
-    "PSC_NE_POS_P": 1,
+   "27_optional_pid_adjustment.param": {
+    "ATC_ANG_PIT_P": 15,
+    "ATC_ANG_RLL_P": 15,
+    "ATC_ANG_YAW_P": 15,
+    "ATC_INPUT_TC": 22,
+    "ATC_RAT_PIT_D": 22,
+    "ATC_RAT_PIT_I": 22,
+    "ATC_RAT_PIT_P": 22,
+    "ATC_RAT_RLL_D": 22,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_RLL_P": 22,
+    "ATC_RAT_YAW_D": 22,
+    "ATC_RAT_YAW_I": 22,
+    "ATC_RAT_YAW_P": 22,
+    "PSC_D_POS_P": 2,
+    "PSC_NE_POS_P": 2,
     "PSC_POSXY_P": 4,
     "PSC_POSZ_P": 4
    },
-   "24_throttle_controller.param": {
-    "MOT_BAT_VOLT_MIN": 1,
+   "28_throttle_controller.param": {
+    "MOT_BAT_VOLT_MIN": 3,
     "MOT_HOVER_LEARN": 1,
-    "MOT_SPOOL_TIME": 20,
+    "MOT_SPOOL_TIME": 22,
     "MOT_THST_HOVER": 1,
-    "PSC_ACCZ_SMAX": 1,
-    "TKOFF_SLEW_TIME": 20
+    "PSC_ACCZ_SMAX": 3,
+    "TKOFF_SLEW_TIME": 22
    },
-   "25_motor_notch_filter_results.param": {
-    "INS_GYRO_FILTER": 7,
+   "29_motor_notch_filter_results.param": {
+    "ATC_RAT_PIT_FLTD": 21,
+    "ATC_RAT_PIT_FLTT": 21,
+    "ATC_RAT_RLL_FLTD": 21,
+    "ATC_RAT_RLL_FLTT": 21,
+    "ATC_RAT_YAW_FLTD": 1,
+    "ATC_RAT_YAW_FLTT": 21,
+    "INS_GYRO_FILTER": 22,
     "INS_HNTC2_ATT": 1,
     "INS_HNTC2_BW": 1,
     "INS_HNTC2_ENABLE": 1,
@@ -598,28 +539,28 @@
     "INS_HNTC2_MODE": 1,
     "INS_HNTC2_OPTS": 1,
     "INS_HNTC2_REF": 1,
-    "INS_HNTCH_ATT": 20,
-    "INS_HNTCH_BW": 20,
-    "INS_HNTCH_ENABLE": 1,
-    "INS_HNTCH_FM_RAT": 20,
-    "INS_HNTCH_FREQ": 20,
-    "INS_HNTCH_HMNCS": 20,
+    "INS_HNTCH_ATT": 22,
+    "INS_HNTCH_BW": 22,
+    "INS_HNTCH_ENABLE": 4,
+    "INS_HNTCH_FM_RAT": 22,
+    "INS_HNTCH_FREQ": 22,
+    "INS_HNTCH_HMNCS": 22,
     "INS_HNTCH_MODE": 1,
-    "INS_HNTCH_OPTS": 20,
-    "INS_HNTCH_REF": 14,
+    "INS_HNTCH_OPTS": 22,
+    "INS_HNTCH_REF": 16,
     "LOG_BITMASK": 1
    },
-   "26_ekf_config.param": {
+   "30_ekf_config.param": {
     "ATC_THR_MIX_MAN": 2,
-    "EK3_ACC_P_NSE": 20,
-    "EK3_ALT_M_NSE": 20
+    "EK3_ACC_P_NSE": 22,
+    "EK3_ALT_M_NSE": 22
    },
-   "27_pid_notch_filter_logging.param": {
-    "INS_LOG_BAT_CNT": 1,
-    "LOG_FILE_BUFSIZE": 1,
-    "LOG_FILE_DSRMROT": 1
+   "31_pid_notch_filter_logging.param": {
+    "INS_LOG_BAT_CNT": 2,
+    "LOG_FILE_BUFSIZE": 2,
+    "LOG_FILE_DSRMROT": 2
    },
-   "28_pid_notch_filter_results.param": {
+   "32_pid_notch_filter_results.param": {
     "FILT1_NOTCH_ATT": 1,
     "FILT1_NOTCH_FREQ": 1,
     "FILT1_NOTCH_Q": 1,
@@ -637,394 +578,394 @@
     "FILT4_NOTCH_Q": 1,
     "FILT4_TYPE": 1
    },
-   "29_quick_tune_setup.param": {
-    "QUIK_AUTO_FILTER": 20,
-    "QUIK_AUTO_SAVE": 20,
-    "QUIK_AXES": 20,
-    "QUIK_DOUBLE_TIME": 20,
-    "QUIK_GAIN_MARGIN": 20,
-    "QUIK_MAX_REDUCE": 20,
-    "QUIK_OPTIONS": 20,
-    "QUIK_OSC_SMAX": 20,
-    "QUIK_RC_FUNC": 20,
-    "QUIK_RP_PI_RATIO": 20,
-    "QUIK_Y_PI_RATIO": 20,
-    "QUIK_YAW_D_MAX": 20,
-    "QUIK_YAW_P_MAX": 20
+   "33_quick_tune_setup.param": {
+    "QUIK_AUTO_FILTER": 22,
+    "QUIK_AUTO_SAVE": 22,
+    "QUIK_AXES": 22,
+    "QUIK_DOUBLE_TIME": 22,
+    "QUIK_GAIN_MARGIN": 22,
+    "QUIK_MAX_REDUCE": 22,
+    "QUIK_OPTIONS": 22,
+    "QUIK_OSC_SMAX": 22,
+    "QUIK_RC_FUNC": 22,
+    "QUIK_RP_PI_RATIO": 22,
+    "QUIK_Y_PI_RATIO": 22,
+    "QUIK_YAW_D_MAX": 22,
+    "QUIK_YAW_P_MAX": 22
    },
-   "32_inflight_magnetometer_fit_results.param": {
-    "COMPASS_DIA_X": 20,
-    "COMPASS_DIA_Y": 20,
-    "COMPASS_DIA_Z": 20,
+   "36_inflight_magnetometer_fit_results.param": {
+    "COMPASS_DIA_X": 22,
+    "COMPASS_DIA_Y": 22,
+    "COMPASS_DIA_Z": 22,
     "COMPASS_ENABLE": 2,
     "COMPASS_EXTERN2": 2,
     "COMPASS_EXTERNAL": 2,
-    "COMPASS_MOT_X": 20,
-    "COMPASS_MOT_Y": 20,
-    "COMPASS_MOT_Z": 20,
-    "COMPASS_MOTCT": 20,
-    "COMPASS_ODI_X": 20,
-    "COMPASS_ODI_Y": 20,
-    "COMPASS_ODI_Z": 20,
-    "COMPASS_OFS_X": 20,
-    "COMPASS_OFS_Y": 20,
-    "COMPASS_OFS_Z": 20,
-    "COMPASS_ORIENT": 15,
-    "COMPASS_SCALE": 20,
+    "COMPASS_MOT_X": 22,
+    "COMPASS_MOT_Y": 22,
+    "COMPASS_MOT_Z": 22,
+    "COMPASS_MOTCT": 22,
+    "COMPASS_ODI_X": 22,
+    "COMPASS_ODI_Y": 22,
+    "COMPASS_ODI_Z": 22,
+    "COMPASS_OFS_X": 22,
+    "COMPASS_OFS_Y": 22,
+    "COMPASS_OFS_Z": 22,
+    "COMPASS_ORIENT": 16,
+    "COMPASS_SCALE": 22,
     "COMPASS_USE": 2,
     "COMPASS_USE2": 2,
     "COMPASS_USE3": 3
    },
-   "33_evaluate_the_aircraft_tune_ff_disable.param": {
-    "INS_LOG_BAT_CNT": 1
+   "37_evaluate_the_aircraft_tune_ff_disable.param": {
+    "INS_LOG_BAT_CNT": 2
    },
-   "35_autotune_roll_setup.param": {
-    "AUTOTUNE_AGGR": 20,
-    "RC6_OPTION": 3
+   "39_autotune_roll_setup.param": {
+    "AUTOTUNE_AGGR": 22,
+    "RC6_OPTION": 4
    },
-   "36_autotune_roll_results.param": {
-    "ATC_ACC_R_MAX": 1,
-    "ATC_ACCEL_R_MAX": 19,
-    "ATC_ANG_RLL_P": 20,
-    "ATC_RAT_RLL_D": 20,
-    "ATC_RAT_RLL_FLTD": 1,
-    "ATC_RAT_RLL_FLTT": 1,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_RLL_P": 20,
-    "ATC_RAT_RLL_SMAX": 1
+   "40_autotune_roll_results.param": {
+    "ATC_ACC_R_MAX": 2,
+    "ATC_ACCEL_R_MAX": 20,
+    "ATC_ANG_RLL_P": 22,
+    "ATC_RAT_RLL_D": 22,
+    "ATC_RAT_RLL_FLTD": 5,
+    "ATC_RAT_RLL_FLTT": 5,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_RLL_P": 22,
+    "ATC_RAT_RLL_SMAX": 5
    },
-   "37_autotune_pitch_setup.param": {
-    "AUTOTUNE_AGGR": 20
+   "41_autotune_pitch_setup.param": {
+    "AUTOTUNE_AGGR": 22
    },
-   "38_autotune_pitch_results.param": {
-    "ATC_ACC_P_MAX": 1,
-    "ATC_ACCEL_P_MAX": 19,
-    "ATC_ANG_PIT_P": 20,
-    "ATC_RAT_PIT_D": 20,
-    "ATC_RAT_PIT_I": 20,
-    "ATC_RAT_PIT_P": 20
+   "42_autotune_pitch_results.param": {
+    "ATC_ACC_P_MAX": 2,
+    "ATC_ACCEL_P_MAX": 20,
+    "ATC_ANG_PIT_P": 22,
+    "ATC_RAT_PIT_D": 22,
+    "ATC_RAT_PIT_I": 22,
+    "ATC_RAT_PIT_P": 22
    },
-   "39_autotune_yaw_setup.param": {
-    "AUTOTUNE_AGGR": 20
+   "43_autotune_yaw_setup.param": {
+    "AUTOTUNE_AGGR": 22
    },
-   "40_autotune_yaw_results.param": {
-    "ATC_ACC_Y_MAX": 1,
-    "ATC_ACCEL_Y_MAX": 19,
-    "ATC_ANG_YAW_P": 20,
-    "ATC_RAT_YAW_FLTE": 20,
-    "ATC_RAT_YAW_I": 20,
-    "ATC_RAT_YAW_P": 20
+   "44_autotune_yaw_results.param": {
+    "ATC_ACC_Y_MAX": 2,
+    "ATC_ACCEL_Y_MAX": 20,
+    "ATC_ANG_YAW_P": 22,
+    "ATC_RAT_YAW_FLTE": 22,
+    "ATC_RAT_YAW_I": 22,
+    "ATC_RAT_YAW_P": 22
    },
-   "41_autotune_yawd_setup.param": {
-    "AUTOTUNE_AGGR": 20,
-    "AUTOTUNE_MIN_D": 20
+   "45_autotune_yawd_setup.param": {
+    "AUTOTUNE_AGGR": 22,
+    "AUTOTUNE_MIN_D": 22
    },
-   "42_autotune_yawd_results.param": {
-    "ATC_ACC_Y_MAX": 1,
-    "ATC_ACCEL_Y_MAX": 19,
-    "ATC_ANG_YAW_P": 20,
-    "ATC_RAT_YAW_D": 20,
-    "ATC_RAT_YAW_I": 20,
-    "ATC_RAT_YAW_P": 20
+   "46_autotune_yawd_results.param": {
+    "ATC_ACC_Y_MAX": 2,
+    "ATC_ACCEL_Y_MAX": 20,
+    "ATC_ANG_YAW_P": 22,
+    "ATC_RAT_YAW_D": 22,
+    "ATC_RAT_YAW_I": 22,
+    "ATC_RAT_YAW_P": 22
    },
-   "43_autotune_roll_pitch_retune_setup.param": {
-    "AUTOTUNE_AGGR": 20
+   "47_autotune_roll_pitch_retune_setup.param": {
+    "AUTOTUNE_AGGR": 22
    },
-   "44_autotune_roll_pitch_retune_results.param": {
-    "ATC_ACC_P_MAX": 1,
-    "ATC_ACC_R_MAX": 1,
-    "ATC_ACCEL_P_MAX": 19,
-    "ATC_ACCEL_R_MAX": 19,
-    "ATC_ANG_PIT_P": 20,
-    "ATC_ANG_RLL_P": 20,
-    "ATC_RAT_PIT_D": 20,
-    "ATC_RAT_PIT_I": 20,
-    "ATC_RAT_PIT_P": 20,
-    "ATC_RAT_RLL_D": 20,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_RLL_P": 20
+   "48_autotune_roll_pitch_retune_results.param": {
+    "ATC_ACC_P_MAX": 2,
+    "ATC_ACC_R_MAX": 2,
+    "ATC_ACCEL_P_MAX": 20,
+    "ATC_ACCEL_R_MAX": 20,
+    "ATC_ANG_PIT_P": 22,
+    "ATC_ANG_RLL_P": 22,
+    "ATC_RAT_PIT_D": 22,
+    "ATC_RAT_PIT_I": 22,
+    "ATC_RAT_PIT_P": 22,
+    "ATC_RAT_RLL_D": 22,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_RLL_P": 22
    },
-   "46_pid_d_ff.param": {
-    "ATC_RAT_PIT_D_FF": 20,
-    "ATC_RAT_RLL_D_FF": 20,
-    "ATC_RAT_YAW_D_FF": 20,
-    "PSC_ACCZ_D_FF": 19,
-    "PSC_D_ACC_D_FF": 1
+   "50_pid_d_ff.param": {
+    "ATC_RAT_PIT_D_FF": 22,
+    "ATC_RAT_RLL_D_FF": 22,
+    "ATC_RAT_YAW_D_FF": 22,
+    "PSC_ACCZ_D_FF": 20,
+    "PSC_D_ACC_D_FF": 2
    },
-   "47_windspeed_estimation.param": {
-    "EK3_DRAG_BCOEF_X": 20,
-    "EK3_DRAG_BCOEF_Y": 20,
-    "EK3_DRAG_MCOEF": 20
+   "51_windspeed_estimation.param": {
+    "EK3_DRAG_BCOEF_X": 22,
+    "EK3_DRAG_BCOEF_Y": 22,
+    "EK3_DRAG_MCOEF": 22
    },
-   "48_barometer_compensation.param": {
-    "BARO1_WCF_BCK": 20,
-    "BARO1_WCF_DN": 20,
-    "BARO1_WCF_ENABLE": 20,
-    "BARO1_WCF_FWD": 20,
-    "BARO1_WCF_LFT": 20,
-    "BARO1_WCF_RGT": 20,
-    "BARO1_WCF_UP": 20
+   "52_barometer_compensation.param": {
+    "BARO1_WCF_BCK": 22,
+    "BARO1_WCF_DN": 22,
+    "BARO1_WCF_ENABLE": 22,
+    "BARO1_WCF_FWD": 22,
+    "BARO1_WCF_LFT": 22,
+    "BARO1_WCF_RGT": 22,
+    "BARO1_WCF_UP": 22
    },
-   "50_system_id_input_roll.param": {
-    "ANGLE_MAX": 19,
-    "ARMING_CHECK": 19,
-    "ARMING_SKIPCHK": 1,
-    "ATC_ANG_PIT_P": 20,
-    "ATC_ANG_RLL_P": 20,
-    "ATC_ANG_YAW_P": 20,
-    "ATC_ANGLE_MAX": 1,
-    "ATC_RAT_PIT_I": 1,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_YAW_I": 1,
-    "ATC_RATE_FF_ENAB": 20,
-    "FLTMODE5": 19,
-    "FLTMODE6": 1,
-    "LOG_BITMASK": 20,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20,
-    "TUNE": 20,
-    "TUNE_MAX": 20,
-    "TUNE_MIN": 20
+   "54_system_id_input_roll.param": {
+    "ANGLE_MAX": 20,
+    "ARMING_CHECK": 20,
+    "ARMING_SKIPCHK": 2,
+    "ATC_ANG_PIT_P": 22,
+    "ATC_ANG_RLL_P": 22,
+    "ATC_ANG_YAW_P": 22,
+    "ATC_ANGLE_MAX": 2,
+    "ATC_RAT_PIT_I": 2,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_YAW_I": 2,
+    "ATC_RATE_FF_ENAB": 22,
+    "FLTMODE5": 20,
+    "FLTMODE6": 2,
+    "LOG_BITMASK": 22,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22,
+    "TUNE": 22,
+    "TUNE_MAX": 22,
+    "TUNE_MIN": 22
    },
-   "51_system_id_input_pitch.param": {
-    "ANGLE_MAX": 19,
-    "ARMING_CHECK": 19,
-    "ARMING_SKIPCHK": 1,
-    "ATC_ANG_PIT_P": 20,
-    "ATC_ANG_RLL_P": 20,
-    "ATC_ANG_YAW_P": 20,
-    "ATC_ANGLE_MAX": 1,
-    "ATC_RAT_PIT_I": 1,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_YAW_I": 1,
-    "ATC_RATE_FF_ENAB": 20,
-    "FLTMODE5": 19,
-    "FLTMODE6": 1,
-    "LOG_BITMASK": 20,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20,
-    "TUNE": 20,
-    "TUNE_MAX": 20,
-    "TUNE_MIN": 20
+   "55_system_id_input_pitch.param": {
+    "ANGLE_MAX": 20,
+    "ARMING_CHECK": 20,
+    "ARMING_SKIPCHK": 2,
+    "ATC_ANG_PIT_P": 22,
+    "ATC_ANG_RLL_P": 22,
+    "ATC_ANG_YAW_P": 22,
+    "ATC_ANGLE_MAX": 2,
+    "ATC_RAT_PIT_I": 2,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_YAW_I": 2,
+    "ATC_RATE_FF_ENAB": 22,
+    "FLTMODE5": 20,
+    "FLTMODE6": 2,
+    "LOG_BITMASK": 22,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22,
+    "TUNE": 22,
+    "TUNE_MAX": 22,
+    "TUNE_MIN": 22
    },
-   "52_system_id_input_yaw.param": {
-    "ANGLE_MAX": 19,
-    "ARMING_CHECK": 19,
-    "ARMING_SKIPCHK": 1,
-    "ATC_ANG_PIT_P": 20,
-    "ATC_ANG_RLL_P": 20,
-    "ATC_ANG_YAW_P": 20,
-    "ATC_ANGLE_MAX": 1,
-    "ATC_RAT_PIT_I": 1,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_YAW_I": 1,
-    "ATC_RATE_FF_ENAB": 20,
-    "FLTMODE5": 19,
-    "FLTMODE6": 1,
-    "LOG_BITMASK": 20,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20,
-    "TUNE": 20,
-    "TUNE_MAX": 20,
-    "TUNE_MIN": 20
+   "56_system_id_input_yaw.param": {
+    "ANGLE_MAX": 20,
+    "ARMING_CHECK": 20,
+    "ARMING_SKIPCHK": 2,
+    "ATC_ANG_PIT_P": 22,
+    "ATC_ANG_RLL_P": 22,
+    "ATC_ANG_YAW_P": 22,
+    "ATC_ANGLE_MAX": 2,
+    "ATC_RAT_PIT_I": 2,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_YAW_I": 2,
+    "ATC_RATE_FF_ENAB": 22,
+    "FLTMODE5": 20,
+    "FLTMODE6": 2,
+    "LOG_BITMASK": 22,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22,
+    "TUNE": 22,
+    "TUNE_MAX": 22,
+    "TUNE_MIN": 22
    },
-   "53_system_id_mixer_roll.param": {
-    "ANGLE_MAX": 19,
-    "ARMING_CHECK": 19,
-    "ARMING_SKIPCHK": 1,
-    "ATC_ANG_PIT_P": 20,
-    "ATC_ANG_RLL_P": 20,
-    "ATC_ANG_YAW_P": 20,
-    "ATC_ANGLE_MAX": 1,
-    "ATC_RAT_PIT_I": 1,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RAT_YAW_I": 1,
-    "ATC_RATE_FF_ENAB": 20,
-    "FLTMODE5": 16,
-    "FLTMODE6": 4,
-    "LOG_BITMASK": 20,
-    "LOG_DISARMED": 1,
-    "LOG_REPLAY": 1,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20,
-    "TUNE": 20,
-    "TUNE_MAX": 20,
-    "TUNE_MIN": 20
+   "57_system_id_mixer_roll.param": {
+    "ANGLE_MAX": 20,
+    "ARMING_CHECK": 20,
+    "ARMING_SKIPCHK": 2,
+    "ATC_ANG_PIT_P": 22,
+    "ATC_ANG_RLL_P": 22,
+    "ATC_ANG_YAW_P": 22,
+    "ATC_ANGLE_MAX": 2,
+    "ATC_RAT_PIT_I": 2,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RAT_YAW_I": 2,
+    "ATC_RATE_FF_ENAB": 22,
+    "FLTMODE5": 17,
+    "FLTMODE6": 5,
+    "LOG_BITMASK": 22,
+    "LOG_DISARMED": 2,
+    "LOG_REPLAY": 2,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22,
+    "TUNE": 22,
+    "TUNE_MAX": 22,
+    "TUNE_MIN": 22
    },
-   "54_system_id_mixer_pitch.param": {
-    "ATC_RAT_PIT_I": 20,
-    "ATC_RAT_RLL_I": 20,
-    "ATC_RATE_FF_ENAB": 20,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20
+   "58_system_id_mixer_pitch.param": {
+    "ATC_RAT_PIT_I": 22,
+    "ATC_RAT_RLL_I": 22,
+    "ATC_RATE_FF_ENAB": 22,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22
    },
-   "55_system_id_mixer_yaw.param": {
-    "ATC_RAT_PIT_I": 20,
-    "ATC_RAT_YAW_I": 20,
-    "ATC_RATE_FF_ENAB": 20,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20
+   "59_system_id_mixer_yaw.param": {
+    "ATC_RAT_PIT_I": 22,
+    "ATC_RAT_YAW_I": 22,
+    "ATC_RATE_FF_ENAB": 22,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22
    },
-   "56_system_id_mixer_thrust.param": {
-    "ATC_RAT_YAW_I": 20,
-    "ATC_RATE_FF_ENAB": 20,
-    "PSC_ACCZ_I": 19,
-    "PSC_D_ACC_I": 1,
-    "SID_F_START_HZ": 20,
-    "SID_F_STOP_HZ": 20,
-    "SID_MAGNITUDE": 20,
-    "SID_T_FADE_IN": 20,
-    "SID_T_FADE_OUT": 20,
-    "SID_T_REC": 20
+   "60_system_id_mixer_thrust.param": {
+    "ATC_RAT_YAW_I": 22,
+    "ATC_RATE_FF_ENAB": 22,
+    "PSC_ACCZ_I": 20,
+    "PSC_D_ACC_I": 2,
+    "SID_F_START_HZ": 22,
+    "SID_F_STOP_HZ": 22,
+    "SID_MAGNITUDE": 22,
+    "SID_T_FADE_IN": 22,
+    "SID_T_FADE_OUT": 22,
+    "SID_T_REC": 22
    },
-   "57_analytical_pid_optimization.param": {
-    "ARMING_SKIPCHK": 1,
-    "PSC_ACCZ_I": 19,
-    "PSC_D_ACC_I": 1
+   "61_analytical_pid_optimization.param": {
+    "ARMING_SKIPCHK": 2,
+    "PSC_ACCZ_I": 20,
+    "PSC_D_ACC_I": 2
    },
-   "60_position_controller.param": {
-    "ANGLE_MAX": 19,
-    "LOIT_ACC_MAX": 19,
-    "LOIT_ACC_MAX_M": 1,
-    "LOIT_BRK_ACC_M": 1,
-    "LOIT_BRK_ACCEL": 19,
-    "LOIT_BRK_DELAY": 20,
-    "LOIT_BRK_JERK": 19,
-    "LOIT_BRK_JRK_M": 1,
-    "PSC_ANGLE_MAX": 1,
-    "PSC_NE_VEL_FF": 1,
-    "PSC_VELXY_FF": 19,
-    "WP_ACC": 1,
-    "WP_ACC_CNR": 1,
-    "WP_ACC_Z": 1,
-    "WP_JERK": 1,
-    "WP_SPD": 1,
-    "WP_SPD_DN": 1,
-    "WPNAV_ACCEL": 19,
-    "WPNAV_ACCEL_C": 19,
-    "WPNAV_ACCEL_Z": 19,
-    "WPNAV_JERK": 19,
-    "WPNAV_SPEED": 19,
-    "WPNAV_SPEED_DN": 19
+   "64_position_controller.param": {
+    "ANGLE_MAX": 20,
+    "LOIT_ACC_MAX": 20,
+    "LOIT_ACC_MAX_M": 2,
+    "LOIT_BRK_ACC_M": 2,
+    "LOIT_BRK_ACCEL": 20,
+    "LOIT_BRK_DELAY": 22,
+    "LOIT_BRK_JERK": 20,
+    "LOIT_BRK_JRK_M": 2,
+    "PSC_ANGLE_MAX": 2,
+    "PSC_NE_VEL_FF": 2,
+    "PSC_VELXY_FF": 20,
+    "WP_ACC": 2,
+    "WP_ACC_CNR": 2,
+    "WP_ACC_Z": 2,
+    "WP_JERK": 2,
+    "WP_SPD": 2,
+    "WP_SPD_DN": 2,
+    "WPNAV_ACCEL": 20,
+    "WPNAV_ACCEL_C": 20,
+    "WPNAV_ACCEL_Z": 20,
+    "WPNAV_JERK": 20,
+    "WPNAV_SPEED": 20,
+    "WPNAV_SPEED_DN": 20
    },
-   "61_guided_operation.param": {
-    "FS_GCS_ENABLE": 20,
-    "MAV_GCS_SYSID": 1,
-    "RALLY_INCL_HOME": 20,
-    "RALLY_TOTAL": 20,
-    "SYSID_MYGCS": 19
+   "65_guided_operation.param": {
+    "FS_GCS_ENABLE": 22,
+    "MAV_GCS_SYSID": 2,
+    "RALLY_INCL_HOME": 22,
+    "RALLY_TOTAL": 22,
+    "SYSID_MYGCS": 20
    },
-   "62_precision_land.param": {
-    "EK3_RNG_M_NSE": 20,
-    "EK3_RNG_USE_HGT": 20,
-    "LAND_ALT_LOW": 19,
-    "LAND_ALT_LOW_M": 1,
-    "LAND_SPD_MS": 1,
-    "LAND_SPEED": 19,
-    "PLND_ACC_P_NSE": 20,
-    "PLND_ALT_MAX": 20,
-    "PLND_ALT_MIN": 20,
-    "PLND_BUS": 20,
-    "PLND_CAM_POS_X": 20,
-    "PLND_CAM_POS_Y": 20,
-    "PLND_CAM_POS_Z": 20,
-    "PLND_ENABLED": 20,
-    "PLND_EST_TYPE": 20,
-    "PLND_LAG": 20,
-    "PLND_LAND_OFS_X": 20,
-    "PLND_LAND_OFS_Y": 20,
-    "PLND_OPTIONS": 20,
-    "PLND_RET_BEHAVE": 20,
-    "PLND_RET_MAX": 20,
-    "PLND_STRICT": 20,
-    "PLND_TIMEOUT": 20,
-    "PLND_TYPE": 20,
-    "PLND_XY_DIST_MAX": 20,
-    "PLND_YAW_ALIGN": 20,
-    "PSC_NE_POS_P": 1,
-    "PSC_POSXY_P": 19,
-    "RC10_OPTION": 20,
-    "RC11_OPTION": 20
+   "66_precision_land.param": {
+    "EK3_RNG_M_NSE": 22,
+    "EK3_RNG_USE_HGT": 22,
+    "LAND_ALT_LOW": 20,
+    "LAND_ALT_LOW_M": 2,
+    "LAND_SPD_MS": 2,
+    "LAND_SPEED": 20,
+    "PLND_ACC_P_NSE": 22,
+    "PLND_ALT_MAX": 22,
+    "PLND_ALT_MIN": 22,
+    "PLND_BUS": 22,
+    "PLND_CAM_POS_X": 22,
+    "PLND_CAM_POS_Y": 22,
+    "PLND_CAM_POS_Z": 22,
+    "PLND_ENABLED": 22,
+    "PLND_EST_TYPE": 22,
+    "PLND_LAG": 22,
+    "PLND_LAND_OFS_X": 22,
+    "PLND_LAND_OFS_Y": 22,
+    "PLND_OPTIONS": 22,
+    "PLND_RET_BEHAVE": 22,
+    "PLND_RET_MAX": 22,
+    "PLND_STRICT": 22,
+    "PLND_TIMEOUT": 22,
+    "PLND_TYPE": 22,
+    "PLND_XY_DIST_MAX": 22,
+    "PLND_YAW_ALIGN": 22,
+    "PSC_NE_POS_P": 2,
+    "PSC_POSXY_P": 20,
+    "RC10_OPTION": 22,
+    "RC11_OPTION": 22
    },
-   "63_optical_flow_setup.param": {
-    "EK3_FLOW_DELAY": 18,
-    "EK3_SRC_OPTIONS": 18,
-    "EK3_SRC1_POSXY": 18,
-    "EK3_SRC1_POSZ": 18,
-    "EK3_SRC1_VELXY": 18,
-    "EK3_SRC1_VELZ": 18,
-    "EK3_SRC1_YAW": 18,
-    "EK3_SRC2_POSXY": 18,
-    "EK3_SRC2_POSZ": 18,
-    "EK3_SRC2_VELXY": 18,
-    "EK3_SRC2_VELZ": 18,
-    "EK3_SRC2_YAW": 18,
-    "FLOW_ORIENT_YAW": 18,
-    "FLOW_POS_X": 18,
-    "FLOW_POS_Y": 18,
-    "FLOW_POS_Z": 18,
-    "FLOW_TYPE": 18,
-    "RC8_OPTION": 18,
-    "RC9_OPTION": 18
+   "67_optical_flow_setup.param": {
+    "EK3_FLOW_DELAY": 22,
+    "EK3_SRC_OPTIONS": 22,
+    "EK3_SRC1_POSXY": 22,
+    "EK3_SRC1_POSZ": 22,
+    "EK3_SRC1_VELXY": 22,
+    "EK3_SRC1_VELZ": 22,
+    "EK3_SRC1_YAW": 22,
+    "EK3_SRC2_POSXY": 22,
+    "EK3_SRC2_POSZ": 22,
+    "EK3_SRC2_VELXY": 22,
+    "EK3_SRC2_VELZ": 22,
+    "EK3_SRC2_YAW": 22,
+    "FLOW_ORIENT_YAW": 22,
+    "FLOW_POS_X": 22,
+    "FLOW_POS_Y": 22,
+    "FLOW_POS_Z": 22,
+    "FLOW_TYPE": 22,
+    "RC8_OPTION": 22,
+    "RC9_OPTION": 22
    },
-   "64_optical_flow_results.param": {
-    "FLOW_FXSCALER": 18,
-    "FLOW_FYSCALER": 18,
-    "FLOW_ORIENT_YAW": 18
+   "68_optical_flow_results.param": {
+    "FLOW_FXSCALER": 22,
+    "FLOW_FYSCALER": 22,
+    "FLOW_ORIENT_YAW": 22
    },
-   "65_use_optical_flow_instead_of_gnss.param": {
-    "EK3_SRC_OPTIONS": 18,
-    "EK3_SRC1_POSXY": 18,
-    "EK3_SRC1_POSZ": 18,
-    "EK3_SRC1_VELXY": 18,
-    "EK3_SRC1_VELZ": 18,
-    "EK3_SRC1_YAW": 18,
-    "RC8_OPTION": 18,
-    "RC9_OPTION": 18
+   "69_use_optical_flow_instead_of_gnss.param": {
+    "EK3_SRC_OPTIONS": 22,
+    "EK3_SRC1_POSXY": 22,
+    "EK3_SRC1_POSZ": 22,
+    "EK3_SRC1_VELXY": 22,
+    "EK3_SRC1_VELZ": 22,
+    "EK3_SRC1_YAW": 22,
+    "RC8_OPTION": 22,
+    "RC9_OPTION": 22
    },
-   "66_everyday_use.param": {
+   "70_everyday_use.param": {
     "AFS_GCS_TIMEOUT": 1,
     "AFS_RC": 1,
     "AFS_RC_FAIL_TIME": 1,
     "ATC_THR_MIX_MAX": 1,
-    "BATT_FS_LOW_ACT": 20,
+    "BATT_FS_LOW_ACT": 22,
     "BATT2_FS_LOW_ACT": 11,
     "FS_GCS_ENABLE": 1,
     "FS_GCS_TIMEOUT": 1,
     "FS_OPTIONS": 1,
-    "LOG_BITMASK": 20,
-    "MIS_OPTIONS": 13,
+    "LOG_BITMASK": 22,
+    "MIS_OPTIONS": 15,
     "PILOT_THR_BHV": 1,
     "RC_FS_TIMEOUT": 1,
     "RC_OPTIONS": 1,
-    "RTL_ALT": 19,
-    "RTL_ALT_M": 1,
-    "RTL_CLIMB_MIN": 19,
-    "RTL_CLIMB_MIN_M": 1
+    "RTL_ALT": 20,
+    "RTL_ALT_M": 2,
+    "RTL_CLIMB_MIN": 20,
+    "RTL_CLIMB_MIN_M": 2
    }
   }
  },
@@ -1058,68 +999,12 @@
     "INS_TCAL1_TMAX": 2,
     "INS_TCAL1_TMIN": 2
    },
-   "05_board_orientation.param": {
-    "AHRS_ORIENTATION": 2
-   },
-   "06_remote_controller_receiver.param": {
+   "05_remote_controller_receiver.param": {
     "RC_OPTIONS": 2,
     "RSSI_TYPE": 2
    },
-   "07_remote_controller_controller.param": {
+   "06_remote_controller_controller.param": {
     "ARMING_RUDDER": 2,
-    "RC6_OPTION": 2,
-    "RC7_OPTION": 2,
-    "RC8_OPTION": 2,
-    "RC9_OPTION": 2
-   },
-   "08_telemetry.param": {
-    "BRD_SER2_RTSCTS": 2,
-    "SERIAL2_BAUD": 1,
-    "SERIAL4_BAUD": 1
-   },
-   "09_esc_telemetry.param": {
-    "SERIAL5_BAUD": 2,
-    "SERVO_BLH_TRATE": 2
-   },
-   "11_battery.param": {
-    "BATT_CRT_MAH": 2,
-    "BATT_FS_VOLTSRC": 2,
-    "BATT_LOW_MAH": 2
-   },
-   "12_gnss.param": {
-    "BRD_SAFETY_DEFLT": 2,
-    "GPS_GNSS_MODE": 1,
-    "GPS_POS1_X": 1,
-    "GPS_POS1_Y": 1,
-    "GPS_POS1_Z": 1,
-    "GPS1_GNSS_MODE": 1,
-    "GPS1_POS_X": 1,
-    "GPS1_POS_Y": 1,
-    "GPS1_POS_Z": 1,
-    "SERIAL3_PROTOCOL": 2
-   },
-   "14_mp_setup_mandatory_hardware.param": {
-    "AHRS_TRIM_X": 2,
-    "AHRS_TRIM_Y": 2,
-    "COMPASS_EXTERNAL": 2,
-    "COMPASS_ORIENT": 2,
-    "COMPASS_PRIO1_ID": 2,
-    "COMPASS_USE2": 2,
-    "COMPASS_USE3": 2,
-    "FENCE_ACTION": 2,
-    "FENCE_ALT_MAX": 2,
-    "FENCE_ENABLE": 2,
-    "FENCE_RADIUS": 2,
-    "FLTMODE1": 2,
-    "FLTMODE2": 2,
-    "FLTMODE3": 2,
-    "FLTMODE4": 2,
-    "FLTMODE5": 2,
-    "FLTMODE6": 2,
-    "INS_ACCSCAL_X": 2,
-    "INS_ACCSCAL_Y": 2,
-    "INS_ACCSCAL_Z": 2,
-    "INS_GYRO_FILTER": 2,
     "RC1_MAX": 2,
     "RC1_MIN": 2,
     "RC1_TRIM": 2,
@@ -1137,16 +1022,36 @@
     "RC5_TRIM": 2,
     "RC6_MAX": 2,
     "RC6_MIN": 2,
+    "RC6_OPTION": 2,
     "RC6_TRIM": 2,
     "RC7_MAX": 2,
     "RC7_MIN": 2,
+    "RC7_OPTION": 2,
     "RC7_TRIM": 2,
     "RC8_MAX": 2,
     "RC8_MIN": 2,
+    "RC8_OPTION": 2,
     "RC8_TRIM": 2,
     "RC9_MAX": 2,
     "RC9_MIN": 2,
-    "RC9_TRIM": 2,
+    "RC9_OPTION": 2,
+    "RC9_TRIM": 2
+   },
+   "07_telemetry.param": {
+    "BRD_SER2_RTSCTS": 2,
+    "SERIAL2_BAUD": 1,
+    "SERIAL4_BAUD": 1
+   },
+   "08_esc_telemetry.param": {
+    "SERIAL5_BAUD": 2,
+    "SERVO_BLH_TRATE": 2
+   },
+   "10_battery.param": {
+    "BATT_CRT_MAH": 2,
+    "BATT_FS_VOLTSRC": 2,
+    "BATT_LOW_MAH": 2
+   },
+   "11_servo_outputs.param": {
     "SERVO_AUTO_TRIM": 2,
     "SERVO1_FUNCTION": 2,
     "SERVO1_MAX": 2,
@@ -1166,24 +1071,55 @@
     "SERVO4_REVERSED": 2,
     "SERVO4_TRIM": 2
    },
-   "15_general_configuration.param": {
-    "BRD_RTC_TZ_MIN": 2,
-    "INS_ACCEL_FILTER": 2,
-    "INS_POS1_X": 2,
-    "INS_POS1_Y": 2,
-    "SCHED_LOOP_RATE": 2,
-    "SCR_ENABLE": 2
+   "14_esc.param": {
+    "MOT_SPIN_ARM": 2,
+    "MOT_SPIN_MAX": 2,
+    "MOT_SPIN_MIN": 2,
+    "MOT_THST_EXPO": 2,
+    "NTF_BUZZ_TYPES": 2,
+    "NTF_LED_TYPES": 2,
+    "SERVO1_MAX": 2,
+    "SERVO1_MIN": 2,
+    "SERVO1_TRIM": 2,
+    "SERVO2_MAX": 2,
+    "SERVO2_MIN": 2,
+    "SERVO2_TRIM": 2,
+    "SERVO3_MAX": 2,
+    "SERVO3_MIN": 2,
+    "SERVO3_TRIM": 2,
+    "SERVO4_MAX": 2,
+    "SERVO4_MIN": 2,
+    "SERVO4_TRIM": 2
    },
-   "16_safety_setup.param": {
-    "FENCE_TYPE": 2
+   "15_board_orientation.param": {
+    "AHRS_ORIENTATION": 2
    },
-   "17_remote_id.param": {
+   "18_gnss.param": {
+    "BRD_SAFETY_DEFLT": 2,
+    "GPS_GNSS_MODE": 1,
+    "GPS_POS1_X": 1,
+    "GPS_POS1_Y": 1,
+    "GPS_POS1_Z": 1,
+    "GPS1_GNSS_MODE": 1,
+    "GPS1_POS_X": 1,
+    "GPS1_POS_Y": 1,
+    "GPS1_POS_Z": 1,
+    "SERIAL3_PROTOCOL": 2
+   },
+   "19_compass_calibration.param": {
+    "COMPASS_EXTERNAL": 2,
+    "COMPASS_ORIENT": 2,
+    "COMPASS_PRIO1_ID": 2,
+    "COMPASS_USE2": 2,
+    "COMPASS_USE3": 2
+   },
+   "20_remote_id.param": {
     "DID_CANDRIVER": 2,
     "DID_ENABLE": 2,
     "DID_MAVPORT": 2,
     "DID_OPTIONS": 2
    },
-   "18_osd.param": {
+   "21_osd.param": {
     "OSD_CHAN": 2,
     "OSD_SW_METHOD": 2,
     "OSD_TYPE": 2,
@@ -1276,27 +1212,22 @@
     "OSD1_XTRACK_X": 2,
     "OSD1_XTRACK_Y": 2
    },
-   "20_esc.param": {
-    "MOT_SPIN_ARM": 2,
-    "MOT_SPIN_MAX": 2,
-    "MOT_SPIN_MIN": 2,
-    "MOT_THST_EXPO": 2,
-    "NTF_BUZZ_TYPES": 2,
-    "NTF_LED_TYPES": 2,
-    "SERVO1_MAX": 2,
-    "SERVO1_MIN": 2,
-    "SERVO1_TRIM": 2,
-    "SERVO2_MAX": 2,
-    "SERVO2_MIN": 2,
-    "SERVO2_TRIM": 2,
-    "SERVO3_MAX": 2,
-    "SERVO3_MIN": 2,
-    "SERVO3_TRIM": 2,
-    "SERVO4_MAX": 2,
-    "SERVO4_MIN": 2,
-    "SERVO4_TRIM": 2
+   "23_general_configuration.param": {
+    "BRD_RTC_TZ_MIN": 2,
+    "INS_ACCEL_FILTER": 2,
+    "INS_POS1_X": 2,
+    "INS_POS1_Y": 2,
+    "SCHED_LOOP_RATE": 2,
+    "SCR_ENABLE": 2
    },
-   "21_motor_notch_filter_setup.param": {
+   "24_safety_setup.param": {
+    "FENCE_ACTION": 2,
+    "FENCE_ALT_MAX": 2,
+    "FENCE_ENABLE": 2,
+    "FENCE_RADIUS": 2,
+    "FENCE_TYPE": 2
+   },
+   "25_motor_notch_filter_setup.param": {
     "INS_FAST_SAMPLE": 2,
     "INS_GYRO_RATE": 2,
     "INS_HNTCH_ATT": 2,
@@ -1305,7 +1236,7 @@
     "INS_HNTCH_OPTS": 2,
     "INS_HNTCH_REF": 2
    },
-   "23_optional_pid_adjustment.param": {
+   "27_optional_pid_adjustment.param": {
     "PTCH_RATE_D": 2,
     "PTCH_RATE_FF": 2,
     "PTCH_RATE_FLTD": 2,
@@ -1323,7 +1254,8 @@
     "RLL_RATE_P": 2,
     "RLL2SRV_RMAX": 2
    },
-   "25_motor_notch_filter_results.param": {
+   "29_motor_notch_filter_results.param": {
+    "INS_GYRO_FILTER": 2,
     "INS_HNTCH_ATT": 2,
     "INS_HNTCH_BW": 2,
     "INS_HNTCH_FM_RAT": 2,
@@ -1331,11 +1263,11 @@
     "INS_HNTCH_HMNCS": 2,
     "INS_HNTCH_OPTS": 2
    },
-   "26_ekf_config.param": {
+   "30_ekf_config.param": {
     "EK3_ACC_P_NSE": 2,
     "EK3_ALT_M_NSE": 2
    },
-   "28_pid_notch_filter_results.param": {
+   "32_pid_notch_filter_results.param": {
     "ATC_RAT_PIT_NEF": 2,
     "ATC_RAT_PIT_NTF": 2,
     "ATC_RAT_RLL_NEF": 2,
@@ -1345,7 +1277,7 @@
     "PSC_ACCZ_NEF": 2,
     "PSC_ACCZ_NTF": 2
    },
-   "29_quick_tune_setup.param": {
+   "33_quick_tune_setup.param": {
     "QUIK_AUTO_FILTER": 2,
     "QUIK_AUTO_SAVE": 2,
     "QUIK_AXES": 2,
@@ -1360,7 +1292,7 @@
     "QUIK_YAW_D_MAX": 2,
     "QUIK_YAW_P_MAX": 2
    },
-   "30_quick_tune_results.param": {
+   "34_quick_tune_results.param": {
     "ATC_RAT_PIT_D": 2,
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_PIT_P": 2,
@@ -1372,7 +1304,7 @@
     "ATC_RAT_YAW_I": 2,
     "ATC_RAT_YAW_P": 2
    },
-   "32_inflight_magnetometer_fit_results.param": {
+   "36_inflight_magnetometer_fit_results.param": {
     "COMPASS_DIA_X": 2,
     "COMPASS_DIA_Y": 2,
     "COMPASS_DIA_Z": 2,
@@ -1389,58 +1321,58 @@
     "COMPASS_ORIENT": 2,
     "COMPASS_SCALE": 2
    },
-   "33_evaluate_the_aircraft_tune_ff_disable.param": {
+   "37_evaluate_the_aircraft_tune_ff_disable.param": {
     "ATC_RATE_FF_ENAB": 2
    },
-   "34_evaluate_the_aircraft_tune_ff_enable.param": {
+   "38_evaluate_the_aircraft_tune_ff_enable.param": {
     "ATC_RATE_FF_ENAB": 2
    },
-   "35_autotune_roll_setup.param": {
+   "39_autotune_roll_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "36_autotune_roll_results.param": {
+   "40_autotune_roll_results.param": {
     "ATC_ACCEL_R_MAX": 2,
     "ATC_ANG_RLL_P": 2,
     "ATC_RAT_RLL_D": 2,
     "ATC_RAT_RLL_I": 2,
     "ATC_RAT_RLL_P": 2
    },
-   "37_autotune_pitch_setup.param": {
+   "41_autotune_pitch_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "38_autotune_pitch_results.param": {
+   "42_autotune_pitch_results.param": {
     "ATC_ACCEL_P_MAX": 2,
     "ATC_ANG_PIT_P": 2,
     "ATC_RAT_PIT_D": 2,
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_PIT_P": 2
    },
-   "39_autotune_yaw_setup.param": {
+   "43_autotune_yaw_setup.param": {
     "ATC_RAT_YAW_FLTD": 2,
     "AUTOTUNE_AGGR": 2
    },
-   "40_autotune_yaw_results.param": {
+   "44_autotune_yaw_results.param": {
     "ATC_ACCEL_Y_MAX": 2,
     "ATC_ANG_YAW_P": 2,
     "ATC_RAT_YAW_FLTE": 2,
     "ATC_RAT_YAW_I": 2,
     "ATC_RAT_YAW_P": 2
    },
-   "41_autotune_yawd_setup.param": {
+   "45_autotune_yawd_setup.param": {
     "AUTOTUNE_AGGR": 2,
     "AUTOTUNE_MIN_D": 2
    },
-   "42_autotune_yawd_results.param": {
+   "46_autotune_yawd_results.param": {
     "ATC_ACCEL_Y_MAX": 2,
     "ATC_ANG_YAW_P": 2,
     "ATC_RAT_YAW_D": 2,
     "ATC_RAT_YAW_I": 2,
     "ATC_RAT_YAW_P": 2
    },
-   "43_autotune_roll_pitch_retune_setup.param": {
+   "47_autotune_roll_pitch_retune_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "44_autotune_roll_pitch_retune_results.param": {
+   "48_autotune_roll_pitch_retune_results.param": {
     "ATC_ACCEL_P_MAX": 2,
     "ATC_ACCEL_R_MAX": 2,
     "ATC_ANG_PIT_P": 2,
@@ -1452,21 +1384,21 @@
     "ATC_RAT_RLL_I": 2,
     "ATC_RAT_RLL_P": 2
    },
-   "45_autotune_finish.param": {
+   "49_autotune_finish.param": {
     "ATC_THR_MIX_MAX": 2
    },
-   "46_pid_d_ff.param": {
+   "50_pid_d_ff.param": {
     "ATC_RAT_PIT_D_FF": 2,
     "ATC_RAT_RLL_D_FF": 2,
     "ATC_RAT_YAW_D_FF": 2,
     "PSC_ACCZ_D_FF": 2
    },
-   "47_windspeed_estimation.param": {
+   "51_windspeed_estimation.param": {
     "EK3_DRAG_BCOEF_X": 2,
     "EK3_DRAG_BCOEF_Y": 2,
     "EK3_DRAG_MCOEF": 2
    },
-   "48_barometer_compensation.param": {
+   "52_barometer_compensation.param": {
     "BARO1_WCF_BCK": 2,
     "BARO1_WCF_DN": 2,
     "BARO1_WCF_ENABLE": 2,
@@ -1475,7 +1407,7 @@
     "BARO1_WCF_RGT": 2,
     "BARO1_WCF_UP": 2
    },
-   "50_system_id_input_roll.param": {
+   "54_system_id_input_roll.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -1495,7 +1427,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "51_system_id_input_pitch.param": {
+   "55_system_id_input_pitch.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -1515,7 +1447,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "52_system_id_input_yaw.param": {
+   "56_system_id_input_yaw.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -1535,7 +1467,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "53_system_id_mixer_roll.param": {
+   "57_system_id_mixer_roll.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -1555,7 +1487,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "54_system_id_mixer_pitch.param": {
+   "58_system_id_mixer_pitch.param": {
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_RLL_I": 2,
     "ATC_RATE_FF_ENAB": 2,
@@ -1566,7 +1498,7 @@
     "SID_T_FADE_OUT": 2,
     "SID_T_REC": 2
    },
-   "55_system_id_mixer_yaw.param": {
+   "59_system_id_mixer_yaw.param": {
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_YAW_I": 2,
     "ATC_RATE_FF_ENAB": 2,
@@ -1577,7 +1509,7 @@
     "SID_T_FADE_OUT": 2,
     "SID_T_REC": 2
    },
-   "56_system_id_mixer_thrust.param": {
+   "60_system_id_mixer_thrust.param": {
     "ATC_RAT_YAW_I": 2,
     "ATC_RATE_FF_ENAB": 2,
     "PSC_ACCZ_I": 2,
@@ -1588,11 +1520,38 @@
     "SID_T_FADE_OUT": 2,
     "SID_T_REC": 2
    },
-   "57_analytical_pid_optimization.param": {
+   "61_analytical_pid_optimization.param": {
     "ATC_RATE_FF_ENAB": 2,
     "PSC_ACCZ_I": 2
    },
-   "60_position_controller.param": {
+   "62_range_finder.param": {
+    "ARSPD_BUS": 2,
+    "ARSPD_DEVID": 2,
+    "ARSPD_FBW_MAX": 2,
+    "ARSPD_OFFSET": 2,
+    "ARSPD_RATIO": 2,
+    "ARSPD_TYPE": 2,
+    "ARSPD_USE": 2,
+    "FBWB_CLIMB_RATE": 2,
+    "LAND_ABORT_THR": 2,
+    "LAND_FLARE_ALT": 2,
+    "LAND_FLARE_SEC": 2,
+    "LIM_ROLL_CD": 2,
+    "RNGFND_LANDING": 2,
+    "RNGFND1_MAX_CM": 2,
+    "RNGFND1_MIN_CM": 2,
+    "RNGFND1_TYPE": 2,
+    "RSSI_TYPE": 2,
+    "RTL_AUTOLAND": 2,
+    "SERIAL1_BAUD": 2,
+    "SERIAL1_PROTOCOL": 2,
+    "THR_FS_VALUE": 2,
+    "THR_MAX": 2,
+    "TRIM_ARSPD_CM": 2,
+    "TRIM_PITCH_CD": 2,
+    "WP_RADIUS": 2
+   },
+   "64_position_controller.param": {
     "ANGLE_MAX": 2,
     "LOIT_ACC_MAX": 2,
     "LOIT_BRK_ACCEL": 2,
@@ -1606,13 +1565,13 @@
     "WPNAV_SPEED": 2,
     "WPNAV_SPEED_DN": 2
    },
-   "61_guided_operation.param": {
+   "65_guided_operation.param": {
     "FS_GCS_ENABLE": 2,
     "RALLY_INCL_HOME": 2,
     "RALLY_TOTAL": 2,
     "SYSID_MYGCS": 2
    },
-   "62_precision_land.param": {
+   "66_precision_land.param": {
     "EK3_RNG_M_NSE": 2,
     "EK3_RNG_USE_HGT": 2,
     "LAND_ALT_LOW": 2,
@@ -1641,7 +1600,7 @@
     "RC10_OPTION": 2,
     "RC11_OPTION": 2
    },
-   "63_optical_flow_setup.param": {
+   "67_optical_flow_setup.param": {
     "EK3_FLOW_DELAY": 1,
     "EK3_SRC_OPTIONS": 1,
     "EK3_SRC1_POSXY": 1,
@@ -1662,12 +1621,12 @@
     "RC8_OPTION": 1,
     "RC9_OPTION": 1
    },
-   "64_optical_flow_results.param": {
+   "68_optical_flow_results.param": {
     "FLOW_FXSCALER": 1,
     "FLOW_FYSCALER": 1,
     "FLOW_ORIENT_YAW": 1
    },
-   "65_use_optical_flow_instead_of_gnss.param": {
+   "69_use_optical_flow_instead_of_gnss.param": {
     "EK3_SRC_OPTIONS": 1,
     "EK3_SRC1_POSXY": 1,
     "EK3_SRC1_POSZ": 1,
@@ -1677,7 +1636,7 @@
     "RC8_OPTION": 1,
     "RC9_OPTION": 1
    },
-   "66_everyday_use.param": {
+   "70_everyday_use.param": {
     "BATT_FS_LOW_ACT": 2,
     "BATT2_FS_LOW_ACT": 2,
     "LOG_BITMASK": 2,
@@ -1687,13 +1646,15 @@
   }
  },
  "Heli": {
-  "templates": 1,
+  "templates": 2,
   "steps": {
    "02_imu_temperature_calibration_setup.param": {
     "INS_TCAL1_TMAX": 1,
     "INS_TCAL2_TMAX": 1
    },
    "03_imu_temperature_calibration_results.param": {
+    "INS_ACC1_CALTEMP": 1,
+    "INS_ACC2_CALTEMP": 1,
     "INS_TCAL1_ACC1_X": 1,
     "INS_TCAL1_ACC1_Y": 1,
     "INS_TCAL1_ACC1_Z": 1,
@@ -1719,59 +1680,276 @@
    "05_board_orientation.param": {
     "AHRS_ORIENTATION": 1
    },
-   "06_remote_controller_receiver.param": {
+   "08_remote_controller_receiver.param": {
     "RC_OPTIONS": 1,
     "RSSI_TYPE": 1
    },
-   "07_remote_controller_controller.param": {
-    "ARMING_RUDDER": 1,
-    "RC10_OPTION": 1,
-    "RC6_OPTION": 1,
-    "RC7_OPTION": 1,
-    "RC8_OPTION": 1,
-    "RC9_OPTION": 1
+   "09_heli_airframe.param": {
+    "FRAME_CLASS": 1,
+    "FRAME_TYPE": 1,
+    "FS_CRASH_CHECK": 1,
+    "H_FLYBAR_MODE": 1,
+    "H_HOVER_LEARN": 1,
+    "H_OPTIONS": 1
    },
-   "08_telemetry.param": {
+   "10_remote_controller_controller.param": {
+    "ARMING_RUDDER": 1,
+    "RC1_MAX": 1,
+    "RC1_MIN": 1,
+    "RC1_TRIM": 1,
+    "RC10_MAX": 1,
+    "RC10_MIN": 1,
+    "RC10_OPTION": 1,
+    "RC10_TRIM": 1,
+    "RC2_MAX": 1,
+    "RC2_MIN": 1,
+    "RC2_TRIM": 1,
+    "RC3_MAX": 1,
+    "RC3_MIN": 1,
+    "RC3_TRIM": 1,
+    "RC4_MAX": 1,
+    "RC4_MIN": 1,
+    "RC4_TRIM": 1,
+    "RC5_MAX": 1,
+    "RC5_MIN": 1,
+    "RC5_TRIM": 1,
+    "RC6_MAX": 1,
+    "RC6_MIN": 1,
+    "RC6_OPTION": 1,
+    "RC6_TRIM": 1,
+    "RC7_MAX": 1,
+    "RC7_MIN": 1,
+    "RC7_OPTION": 1,
+    "RC7_TRIM": 1,
+    "RC8_MAX": 1,
+    "RC8_MIN": 1,
+    "RC8_OPTION": 1,
+    "RC8_TRIM": 1,
+    "RC9_MAX": 1,
+    "RC9_MIN": 1,
+    "RC9_OPTION": 1,
+    "RC9_TRIM": 1
+   },
+   "12_swashplate.param": {
+    "H_COL_ANG_MAX": 1,
+    "H_COL_ANG_MIN": 1,
+    "H_COL_HOVER": 1,
+    "H_COL_LAND_MIN": 1,
+    "H_COL_MAX": 1,
+    "H_COL_MIN": 1,
+    "H_COL_ZERO_THRST": 1,
+    "H_CYC_MAX": 1,
+    "H_SW_TYPE": 1,
+    "SERVO1_MAX": 1,
+    "SERVO1_MIN": 1,
+    "SERVO1_REVERSED": 1,
+    "SERVO1_TRIM": 1,
+    "SERVO2_MAX": 1,
+    "SERVO2_MIN": 1,
+    "SERVO2_REVERSED": 1,
+    "SERVO2_TRIM": 1,
+    "SERVO3_MAX": 1,
+    "SERVO3_MIN": 1,
+    "SERVO3_REVERSED": 1,
+    "SERVO3_TRIM": 1
+   },
+   "13_telemetry.param": {
     "BRD_SER1_RTSCTS": 1,
     "SERIAL2_BAUD": 1
    },
-   "27_autotune_pitch_RatePD_results.param": {
-    "ATC_RAT_PIT_D": 1,
-    "ATC_RAT_PIT_I": 1,
-    "ATC_RAT_PIT_P": 1
+   "15_tailrotor.param": {
+    "H_TAIL_TYPE": 1,
+    "SERVO4_MAX": 1,
+    "SERVO4_MIN": 1,
+    "SERVO4_TRIM": 1
    },
-   "29_autotune_roll_RatePD_results.param": {
-    "ATC_RAT_RLL_D": 1,
-    "ATC_RAT_RLL_I": 1,
-    "ATC_RAT_RLL_P": 1
+   "17_esc.param": {
+    "H_RSC_CRITICAL": 1,
+    "H_RSC_IDLE": 1,
+    "H_RSC_MODE": 1,
+    "H_RSC_RAMP_TIME": 1,
+    "H_RSC_RUNUP_TIME": 1,
+    "H_RSC_SETPOINT": 1,
+    "H_RSC_SLEWRATE": 1,
+    "SERVO5_MAX": 1,
+    "SERVO5_MIN": 1,
+    "TKOFF_SLEW_TIME": 1
    },
-   "31_autotune_roll_pitch_AngleP_results.param": {
+   "19_esc_calibration.param": {
+    "RC3_MAX": 1,
+    "RC3_MIN": 1
+   },
+   "20_esc_post_calibration.param": {
+    "RC3_MAX": 1,
+    "RC3_MIN": 1
+   },
+   "21_gnss.param": {
+    "BRD_SAFETY_DEFLT": 1,
+    "CAN_D1_PROTOCOL": 1,
+    "CAN_P1_DRIVER": 1,
+    "GPS_GNSS_MODE": 1,
+    "GPS_POS1_X": 1,
+    "GPS_POS1_Y": 1,
+    "GPS_POS1_Z": 1,
+    "NTF_LED_TYPES": 1,
+    "WPNAV_RADIUS": 1
+   },
+   "22_compass_calibration.param": {
+    "COMPASS_EXTERNAL": 1,
+    "COMPASS_ORIENT": 1,
+    "COMPASS_PRIO1_ID": 1,
+    "COMPASS_USE2": 1,
+    "COMPASS_USE3": 1
+   },
+   "23_batt1.param": {
+    "BATT_AMP_PERVLT": 1,
+    "BATT_ARM_VOLT": 1,
+    "BATT_CAPACITY": 1,
+    "BATT_CRT_MAH": 1,
+    "BATT_CRT_VOLT": 1,
+    "BATT_FS_CRT_ACT": 1,
+    "BATT_FS_LOW_ACT": 1,
+    "BATT_FS_VOLTSRC": 1,
+    "BATT_LOW_MAH": 1,
+    "BATT_LOW_VOLT": 1,
+    "BATT_MONITOR": 1,
+    "BATT_VOLT_MULT": 1
+   },
+   "25_flight_modes.param": {
+    "FLTMODE1": 1,
+    "FLTMODE2": 1,
+    "FLTMODE3": 1,
+    "FLTMODE4": 1,
+    "FLTMODE5": 1,
+    "FLTMODE6": 1
+   },
+   "26_general_configuration.param": {
+    "ARMING_CHECK": 1,
+    "AUTO_OPTIONS": 1,
+    "BRD_HEAT_TARG": 1,
+    "BRD_RTC_TZ_MIN": 1,
+    "EK3_SRC1_POSZ": 1,
+    "FENCE_TYPE": 1,
+    "FS_EKF_ACTION": 1,
+    "INS_ACCEL_FILTER": 1,
+    "INS_POS1_X": 1,
+    "INS_POS1_Y": 1,
+    "INS_POS2_X": 1,
+    "INS_POS2_Y": 1,
+    "LAND_ALT_LOW": 1,
+    "RTL_ALT": 1,
+    "RTL_LOIT_TIME": 1,
+    "SCHED_LOOP_RATE": 1,
+    "SCR_ENABLE": 1,
+    "SERIAL7_PROTOCOL": 1
+   },
+   "27_safety_setup.param": {
+    "FENCE_ACTION": 1,
+    "FENCE_ALT_MAX": 1,
+    "FENCE_ENABLE": 1,
+    "FENCE_RADIUS": 1
+   },
+   "28_logging.param": {
+    "INS_LOG_BAT_CNT": 1,
+    "INS_LOG_BAT_MASK": 1,
+    "INS_LOG_BAT_OPT": 1,
+    "INS_RAW_LOG_OPT": 1,
+    "LOG_BITMASK": 1,
+    "LOG_FILE_DSRMROT": 1
+   },
+   "29_remote_id.param": {
+    "DID_CANDRIVER": 1,
+    "DID_ENABLE": 1,
+    "DID_MAVPORT": 1,
+    "DID_OPTIONS": 1
+   },
+   "31_initial_test_hover_results.param": {
+    "AHRS_TRIM_Y": 1,
+    "ATC_HOVR_ROL_TRM": 1,
+    "SERVO1_TRIM": 1,
+    "SERVO2_TRIM": 1,
+    "SERVO3_TRIM": 1
+   },
+   "33_esc.param": {
+    "MOT_SPIN_ARM": 1,
+    "MOT_SPIN_MAX": 1,
+    "MOT_SPIN_MIN": 1,
+    "MOT_THST_EXPO": 1
+   },
+   "34_notch_filter_setup.param": {
+    "INS_FAST_SAMPLE": 1,
+    "INS_GYRO_RATE": 1,
+    "INS_HNTCH_ATT": 1,
+    "INS_HNTCH_BW": 1,
+    "INS_HNTCH_ENABLE": 1,
+    "INS_HNTCH_FREQ": 1,
+    "INS_HNTCH_HMNCS": 1,
+    "INS_HNTCH_MODE": 1,
+    "INS_HNTCH_OPTS": 1,
+    "INS_HNTCH_REF": 1
+   },
+   "36_notch_filter_results.param": {
+    "INS_HNTCH_ATT": 1,
+    "INS_HNTCH_BW": 1,
+    "INS_HNTCH_FM_RAT": 1,
+    "INS_HNTCH_FREQ": 1,
+    "INS_HNTCH_HMNCS": 1,
+    "INS_HNTCH_OPTS": 1,
+    "INS_HNTCH_REF": 1
+   },
+   "37_initial_yaw.param": {
+    "ATC_ACCEL_Y_MAX": 1,
+    "ATC_ANG_YAW_P": 1,
+    "ATC_RAT_YAW_D": 1,
+    "ATC_RAT_YAW_FF": 1,
+    "ATC_RAT_YAW_FLTD": 1,
+    "ATC_RAT_YAW_FLTE": 1,
+    "ATC_RAT_YAW_FLTT": 1,
+    "ATC_RAT_YAW_I": 1,
+    "ATC_RAT_YAW_ILMI": 1,
+    "ATC_RAT_YAW_IMAX": 1,
+    "ATC_RAT_YAW_P": 1
+   },
+   "39_initial_pid_configuration.param": {
     "ATC_ACCEL_P_MAX": 1,
     "ATC_ACCEL_R_MAX": 1,
     "ATC_ANG_PIT_P": 1,
-    "ATC_ANG_RLL_P": 1
+    "ATC_ANG_RLL_P": 1,
+    "ATC_INPUT_TC": 1,
+    "ATC_RAT_PIT_D": 1,
+    "ATC_RAT_PIT_FF": 1,
+    "ATC_RAT_PIT_FLTD": 1,
+    "ATC_RAT_PIT_FLTE": 1,
+    "ATC_RAT_PIT_FLTT": 1,
+    "ATC_RAT_PIT_I": 1,
+    "ATC_RAT_PIT_ILMI": 1,
+    "ATC_RAT_PIT_IMAX": 1,
+    "ATC_RAT_PIT_P": 1,
+    "ATC_RAT_RLL_D": 1,
+    "ATC_RAT_RLL_FF": 1,
+    "ATC_RAT_RLL_FLTD": 1,
+    "ATC_RAT_RLL_FLTE": 1,
+    "ATC_RAT_RLL_FLTT": 1,
+    "ATC_RAT_RLL_I": 1,
+    "ATC_RAT_RLL_ILMI": 1,
+    "ATC_RAT_RLL_IMAX": 1,
+    "ATC_RAT_RLL_P": 1
    },
-   "35_autotune_yaw_AngleP_results.param": {
-    "ATC_ACCEL_Y_MAX": 1,
-    "ATC_ANG_YAW_P": 1
+   "44_motor_notch_filter_results.param": {
+    "INS_GYRO_FILTER": 1
    },
-   "40_autotune_yaw_results.param": {
-    "ATC_ANG_YAW_P": 1,
-    "ATC_RAT_YAW_I": 1,
-    "ATC_RAT_YAW_P": 1
-   },
-   "46_pid_d_ff.param": {
+   "74_pid_d_ff.param": {
     "ATC_RAT_PIT_D_FF": 1,
     "ATC_RAT_RLL_D_FF": 1,
     "ATC_RAT_YAW_D_FF": 1,
     "PSC_ACCZ_D_FF": 1
    },
-   "47_windspeed_estimation.param": {
+   "75_windspeed_estimation.param": {
     "EK3_DRAG_BCOEF_X": 1,
     "EK3_DRAG_BCOEF_Y": 1,
     "EK3_DRAG_MCOEF": 1
    },
-   "48_barometer_compensation.param": {
+   "76_barometer_compensation.param": {
     "BARO1_WCF_BCK": 1,
     "BARO1_WCF_DN": 1,
     "BARO1_WCF_ENABLE": 1,
@@ -1780,7 +1958,7 @@
     "BARO1_WCF_RGT": 1,
     "BARO1_WCF_UP": 1
    },
-   "50_system_id_input_roll.param": {
+   "78_system_id_input_roll.param": {
     "ANGLE_MAX": 1,
     "ARMING_CHECK": 1,
     "ATC_ANG_PIT_P": 1,
@@ -1800,7 +1978,7 @@
     "TUNE_MAX": 1,
     "TUNE_MIN": 1
    },
-   "51_system_id_input_pitch.param": {
+   "79_system_id_input_pitch.param": {
     "ANGLE_MAX": 1,
     "ARMING_CHECK": 1,
     "ATC_ANG_PIT_P": 1,
@@ -1820,7 +1998,7 @@
     "TUNE_MAX": 1,
     "TUNE_MIN": 1
    },
-   "52_system_id_input_yaw.param": {
+   "80_system_id_input_yaw.param": {
     "ANGLE_MAX": 1,
     "ARMING_CHECK": 1,
     "ATC_ANG_PIT_P": 1,
@@ -1840,7 +2018,7 @@
     "TUNE_MAX": 1,
     "TUNE_MIN": 1
    },
-   "53_system_id_mixer_roll.param": {
+   "81_system_id_mixer_roll.param": {
     "ANGLE_MAX": 1,
     "ARMING_CHECK": 1,
     "ATC_ANG_PIT_P": 1,
@@ -1860,7 +2038,7 @@
     "TUNE_MAX": 1,
     "TUNE_MIN": 1
    },
-   "54_system_id_mixer_pitch.param": {
+   "82_system_id_mixer_pitch.param": {
     "ATC_RAT_PIT_I": 1,
     "ATC_RAT_RLL_I": 1,
     "ATC_RATE_FF_ENAB": 1,
@@ -1871,7 +2049,7 @@
     "SID_T_FADE_OUT": 1,
     "SID_T_REC": 1
    },
-   "55_system_id_mixer_yaw.param": {
+   "83_system_id_mixer_yaw.param": {
     "ATC_RAT_PIT_I": 1,
     "ATC_RAT_YAW_I": 1,
     "ATC_RATE_FF_ENAB": 1,
@@ -1882,7 +2060,7 @@
     "SID_T_FADE_OUT": 1,
     "SID_T_REC": 1
    },
-   "56_system_id_mixer_thrust.param": {
+   "84_system_id_mixer_thrust.param": {
     "ATC_RAT_YAW_I": 1,
     "ATC_RATE_FF_ENAB": 1,
     "PSC_ACCZ_I": 1,
@@ -1893,10 +2071,10 @@
     "SID_T_FADE_OUT": 1,
     "SID_T_REC": 1
    },
-   "57_analytical_pid_optimization.param": {
+   "85_analytical_pid_optimization.param": {
     "PSC_ACCZ_I": 1
    },
-   "60_position_controller.param": {
+   "86_position_controller.param": {
     "ANGLE_MAX": 1,
     "LOIT_ACC_MAX": 1,
     "LOIT_BRK_ACCEL": 1,
@@ -1910,13 +2088,13 @@
     "WPNAV_SPEED": 1,
     "WPNAV_SPEED_DN": 1
    },
-   "61_guided_operation.param": {
+   "87_guided_operation.param": {
     "FS_GCS_ENABLE": 1,
     "RALLY_INCL_HOME": 1,
     "RALLY_TOTAL": 1,
     "SYSID_MYGCS": 1
    },
-   "62_precision_land.param": {
+   "88_precision_land.param": {
     "EK3_RNG_M_NSE": 1,
     "EK3_RNG_USE_HGT": 1,
     "LAND_ALT_LOW": 1,
@@ -1945,7 +2123,7 @@
     "RC10_OPTION": 1,
     "RC11_OPTION": 1
    },
-   "63_optical_flow_setup.param": {
+   "89_optical_flow_setup.param": {
     "EK3_FLOW_DELAY": 1,
     "EK3_SRC_OPTIONS": 1,
     "EK3_SRC1_POSXY": 1,
@@ -1966,12 +2144,12 @@
     "RC8_OPTION": 1,
     "RC9_OPTION": 1
    },
-   "64_optical_flow_results.param": {
+   "90_optical_flow_results.param": {
     "FLOW_FXSCALER": 1,
     "FLOW_FYSCALER": 1,
     "FLOW_ORIENT_YAW": 1
    },
-   "65_use_optical_flow_instead_of_gnss.param": {
+   "91_use_optical_flow_instead_of_gnss.param": {
     "EK3_SRC_OPTIONS": 1,
     "EK3_SRC1_POSXY": 1,
     "EK3_SRC1_POSZ": 1,
@@ -1981,7 +2159,7 @@
     "RC8_OPTION": 1,
     "RC9_OPTION": 1
    },
-   "66_everyday_use.param": {
+   "92_everyday_use.param": {
     "BATT_FS_LOW_ACT": 1,
     "LOG_BITMASK": 1,
     "MIS_OPTIONS": 1,
@@ -1991,13 +2169,28 @@
   }
  },
  "Rover": {
-  "templates": 2,
+  "templates": 3,
   "steps": {
    "02_imu_temperature_calibration_setup.param": {
     "INS_TCAL1_TMAX": 2,
     "INS_TCAL2_TMAX": 2
    },
    "03_imu_temperature_calibration_results.param": {
+    "INS_ACC1_CALTEMP": 2,
+    "INS_ACC2_CALTEMP": 2,
+    "INS_ACC3_CALTEMP": 2,
+    "INS_GYR1_CALTEMP": 2,
+    "INS_GYR2_CALTEMP": 2,
+    "INS_GYR2OFFS_X": 2,
+    "INS_GYR2OFFS_Y": 2,
+    "INS_GYR2OFFS_Z": 2,
+    "INS_GYR3_CALTEMP": 2,
+    "INS_GYR3OFFS_X": 2,
+    "INS_GYR3OFFS_Y": 2,
+    "INS_GYR3OFFS_Z": 2,
+    "INS_GYROFFS_X": 2,
+    "INS_GYROFFS_Y": 2,
+    "INS_GYROFFS_Z": 2,
     "INS_TCAL1_ACC1_X": 2,
     "INS_TCAL1_ACC1_Y": 2,
     "INS_TCAL1_ACC1_Z": 2,
@@ -2023,154 +2216,14 @@
    "05_board_orientation.param": {
     "AHRS_ORIENTATION": 2
    },
-   "06_remote_controller_receiver.param": {
+   "08_remote_controller_receiver.param": {
     "BRD_ALT_CONFIG": 2,
     "MODE_CH": 2,
     "RC_OPTIONS": 2,
     "RSSI_TYPE": 2
    },
-   "07_remote_controller_controller.param": {
+   "09_remote_controller_controller.param": {
     "ARMING_RUDDER": 2,
-    "RC6_OPTION": 2,
-    "RC7_OPTION": 2,
-    "RC8_OPTION": 2,
-    "RC9_OPTION": 2
-   },
-   "08_telemetry.param": {
-    "BRD_SER1_RTSCTS": 1,
-    "SERIAL1_BAUD": 1,
-    "SERIAL1_PROTOCOL": 1,
-    "SERIAL4_BAUD": 1,
-    "SERIAL4_PROTOCOL": 1,
-    "SR0_EXT_STAT": 2,
-    "SR0_EXTRA1": 2,
-    "SR0_EXTRA2": 2,
-    "SR0_EXTRA3": 2,
-    "SR0_POSITION": 2,
-    "SR0_RAW_SENS": 2,
-    "SR0_RC_CHAN": 2,
-    "SR1_EXTRA1": 1,
-    "SR1_EXTRA2": 1,
-    "SR1_EXTRA3": 1,
-    "SR1_POSITION": 1,
-    "SR1_RAW_SENS": 1,
-    "SR1_RC_CHAN": 1
-   },
-   "10_battery_monitor.param": {
-    "BATT2_AMP_PERVLT": 2,
-    "BATT2_CURR_PIN": 2,
-    "BATT2_MONITOR": 2,
-    "BATT2_VOLT_MULT": 2,
-    "BATT2_VOLT_PIN": 2
-   },
-   "11_battery.param": {
-    "BATT_CRT_MAH": 2,
-    "BATT_FS_VOLTSRC": 2,
-    "BATT_LOW_MAH": 2,
-    "BATT2_ARM_VOLT": 2,
-    "BATT2_CAPACITY": 2,
-    "BATT2_CRT_MAH": 2,
-    "BATT2_CRT_VOLT": 2,
-    "BATT2_FS_CRT_ACT": 2,
-    "BATT2_FS_LOW_ACT": 2,
-    "BATT2_FS_VOLTSRC": 2,
-    "BATT2_LOW_MAH": 2,
-    "BATT2_LOW_VOLT": 2
-   },
-   "12_gnss.param": {
-    "BRD_SAFETY_DEFLT": 2,
-    "CAN_D1_PROTOCOL": 2,
-    "CAN_P1_DRIVER": 2,
-    "GPS_AUTO_SWITCH": 2,
-    "GPS_GNSS_MODE": 1,
-    "GPS_POS1_X": 1,
-    "GPS_POS1_Y": 1,
-    "GPS_POS1_Z": 1,
-    "GPS1_GNSS_MODE": 1,
-    "GPS1_POS1_X": 1,
-    "GPS1_POS1_Y": 1,
-    "GPS1_POS1_Z": 1,
-    "SERIAL3_PROTOCOL": 1
-   },
-   "14_mp_setup_mandatory_hardware.param": {
-    "AHRS_TRIM_X": 2,
-    "AHRS_TRIM_Y": 2,
-    "ATC_ACCEL_P_MAX": 2,
-    "ATC_ACCEL_R_MAX": 2,
-    "ATC_ACCEL_Y_MAX": 2,
-    "ATC_RAT_PIT_FLTD": 2,
-    "ATC_RAT_PIT_FLTT": 2,
-    "ATC_RAT_RLL_FLTD": 2,
-    "ATC_RAT_RLL_FLTT": 2,
-    "ATC_RAT_YAW_FLTE": 2,
-    "ATC_RAT_YAW_FLTT": 2,
-    "COMPASS_CAL_FIT": 2,
-    "COMPASS_DEC": 2,
-    "COMPASS_DIA_X": 2,
-    "COMPASS_DIA_Y": 2,
-    "COMPASS_DIA_Z": 2,
-    "COMPASS_EXTERNAL": 2,
-    "COMPASS_ODI_X": 2,
-    "COMPASS_ODI_Y": 2,
-    "COMPASS_ODI_Z": 2,
-    "COMPASS_OFS_X": 2,
-    "COMPASS_OFS_Y": 2,
-    "COMPASS_OFS_Z": 2,
-    "COMPASS_ORIENT": 2,
-    "COMPASS_PRIO1_ID": 2,
-    "COMPASS_PRIO2_ID": 2,
-    "COMPASS_SCALE": 2,
-    "COMPASS_USE2": 2,
-    "COMPASS_USE3": 2,
-    "FENCE_ACTION": 2,
-    "FENCE_ALT_MAX": 2,
-    "FENCE_ENABLE": 2,
-    "FENCE_RADIUS": 2,
-    "FRAME_CLASS": 2,
-    "FRAME_TYPE": 2,
-    "INS_ACC1_CALTEMP": 2,
-    "INS_ACC2_CALTEMP": 2,
-    "INS_ACC2OFFS_X": 2,
-    "INS_ACC2OFFS_Y": 2,
-    "INS_ACC2OFFS_Z": 2,
-    "INS_ACC3_CALTEMP": 2,
-    "INS_ACC3OFFS_X": 2,
-    "INS_ACC3OFFS_Y": 2,
-    "INS_ACC3OFFS_Z": 2,
-    "INS_ACCOFFS_X": 2,
-    "INS_ACCOFFS_Y": 2,
-    "INS_ACCOFFS_Z": 2,
-    "INS_ACCSCAL_X": 2,
-    "INS_ACCSCAL_Y": 2,
-    "INS_ACCSCAL_Z": 2,
-    "INS_GYR1_CALTEMP": 2,
-    "INS_GYR2_CALTEMP": 2,
-    "INS_GYR2OFFS_X": 2,
-    "INS_GYR2OFFS_Y": 2,
-    "INS_GYR2OFFS_Z": 2,
-    "INS_GYR3_CALTEMP": 2,
-    "INS_GYR3OFFS_X": 2,
-    "INS_GYR3OFFS_Y": 2,
-    "INS_GYR3OFFS_Z": 2,
-    "INS_GYRO_FILTER": 2,
-    "INS_GYROFFS_X": 2,
-    "INS_GYROFFS_Y": 2,
-    "INS_GYROFFS_Z": 2,
-    "INS_TCAL3_ENABLE": 2,
-    "INS_USE3": 2,
-    "MODE1": 2,
-    "MODE2": 2,
-    "MODE3": 2,
-    "MODE4": 2,
-    "MODE5": 2,
-    "MODE6": 2,
-    "MOT_BAT_VOLT_MAX": 2,
-    "MOT_BAT_VOLT_MIN": 2,
-    "MOT_SPIN_ARM": 2,
-    "MOT_SPIN_MAX": 2,
-    "MOT_SPIN_MIN": 2,
-    "MOT_THST_EXPO": 2,
-    "MOT_THST_HOVER": 2,
     "RC1_MAX": 2,
     "RC1_MIN": 2,
     "RC1_TRIM": 2,
@@ -2198,26 +2251,114 @@
     "RC5_TRIM": 2,
     "RC6_MAX": 2,
     "RC6_MIN": 2,
+    "RC6_OPTION": 2,
     "RC6_TRIM": 2,
     "RC7_MAX": 2,
     "RC7_MIN": 2,
+    "RC7_OPTION": 2,
     "RC7_TRIM": 2,
     "RC8_MAX": 2,
     "RC8_MIN": 2,
+    "RC8_OPTION": 2,
     "RC8_TRIM": 2,
     "RC9_MAX": 2,
     "RC9_MIN": 2,
+    "RC9_OPTION": 2,
     "RC9_TRIM": 2,
     "RCMAP_PITCH": 2,
     "RCMAP_ROLL": 2,
     "RCMAP_THROTTLE": 2,
-    "RCMAP_YAW": 2,
-    "SERVO1_FUNCTION": 2,
-    "SERVO2_FUNCTION": 2,
-    "SERVO3_FUNCTION": 2,
-    "SERVO4_FUNCTION": 2
+    "RCMAP_YAW": 2
    },
-   "15_general_configuration.param": {
+   "10_telemetry.param": {
+    "BRD_SER1_RTSCTS": 1,
+    "SERIAL1_BAUD": 1,
+    "SERIAL1_PROTOCOL": 1,
+    "SERIAL4_BAUD": 1,
+    "SERIAL4_PROTOCOL": 1,
+    "SR0_EXT_STAT": 2,
+    "SR0_EXTRA1": 2,
+    "SR0_EXTRA2": 2,
+    "SR0_EXTRA3": 2,
+    "SR0_POSITION": 2,
+    "SR0_RAW_SENS": 2,
+    "SR0_RC_CHAN": 2,
+    "SR1_EXTRA1": 1,
+    "SR1_EXTRA2": 1,
+    "SR1_EXTRA3": 1,
+    "SR1_POSITION": 1,
+    "SR1_RAW_SENS": 1,
+    "SR1_RC_CHAN": 1
+   },
+   "12_battery_monitor.param": {
+    "BATT2_AMP_PERVLT": 2,
+    "BATT2_CURR_PIN": 2,
+    "BATT2_MONITOR": 2,
+    "BATT2_VOLT_MULT": 2,
+    "BATT2_VOLT_PIN": 2
+   },
+   "13_battery.param": {
+    "BATT_CRT_MAH": 2,
+    "BATT_FS_VOLTSRC": 2,
+    "BATT_LOW_MAH": 2,
+    "BATT2_ARM_VOLT": 2,
+    "BATT2_CAPACITY": 2,
+    "BATT2_CRT_MAH": 2,
+    "BATT2_CRT_VOLT": 2,
+    "BATT2_FS_CRT_ACT": 2,
+    "BATT2_FS_LOW_ACT": 2,
+    "BATT2_FS_VOLTSRC": 2,
+    "BATT2_LOW_MAH": 2,
+    "BATT2_LOW_VOLT": 2
+   },
+   "14_servo_outputs.param": {
+    "FRAME_CLASS": 2,
+    "FRAME_TYPE": 2
+   },
+   "15_gnss.param": {
+    "BRD_SAFETY_DEFLT": 2,
+    "CAN_D1_PROTOCOL": 2,
+    "CAN_P1_DRIVER": 2,
+    "GPS_AUTO_SWITCH": 2,
+    "GPS_GNSS_MODE": 1,
+    "GPS_POS1_X": 1,
+    "GPS_POS1_Y": 1,
+    "GPS_POS1_Z": 1,
+    "GPS1_GNSS_MODE": 1,
+    "GPS1_POS1_X": 1,
+    "GPS1_POS1_Y": 1,
+    "GPS1_POS1_Z": 1,
+    "SERIAL3_PROTOCOL": 1
+   },
+   "16_compass_calibration.param": {
+    "COMPASS_CAL_FIT": 2,
+    "COMPASS_DEC": 2,
+    "COMPASS_DIA_X": 2,
+    "COMPASS_DIA_Y": 2,
+    "COMPASS_DIA_Z": 2,
+    "COMPASS_EXTERNAL": 2,
+    "COMPASS_ODI_X": 2,
+    "COMPASS_ODI_Y": 2,
+    "COMPASS_ODI_Z": 2,
+    "COMPASS_OFS_X": 2,
+    "COMPASS_OFS_Y": 2,
+    "COMPASS_OFS_Z": 2,
+    "COMPASS_ORIENT": 2,
+    "COMPASS_PRIO1_ID": 2,
+    "COMPASS_PRIO2_ID": 2,
+    "COMPASS_SCALE": 2,
+    "COMPASS_USE2": 2,
+    "COMPASS_USE3": 2
+   },
+   "18_flight_modes.param": {
+    "MODE1": 2,
+    "MODE2": 2,
+    "MODE3": 2,
+    "MODE4": 2,
+    "MODE5": 2,
+    "MODE6": 2
+   },
+   "19_general_configuration.param": {
     "BRD_RTC_TZ_MIN": 2,
     "BRD_SER1_RTSCTS": 1,
     "INS_ACCEL_FILTER": 2,
@@ -2240,16 +2381,23 @@
     "SR1_RAW_SENS": 1,
     "SR1_RC_CHAN": 1
    },
-   "16_safety_setup.param": {
+   "20_safety_setup.param": {
+    "FENCE_ACTION": 2,
+    "FENCE_ALT_MAX": 2,
+    "FENCE_ENABLE": 2,
+    "FENCE_RADIUS": 2,
     "FENCE_TYPE": 2
    },
-   "17_remote_id.param": {
+   "21_remote_id.param": {
     "DID_CANDRIVER": 2,
     "DID_ENABLE": 2,
     "DID_MAVPORT": 2,
     "DID_OPTIONS": 2
    },
-   "20_esc.param": {
+   "24_esc.param": {
+    "MOT_SPIN_ARM": 2,
+    "MOT_SPIN_MAX": 2,
+    "MOT_SPIN_MIN": 2,
     "MOT_THR_MIN": 2,
     "MOT_THST_EXPO": 2,
     "NTF_BUZZ_TYPES": 2,
@@ -2274,11 +2422,11 @@
     "SERVO4_MIN": 2,
     "SERVO4_TRIM": 2
    },
-   "21_motor_notch_filter_setup.param": {
+   "25_motor_notch_filter_setup.param": {
     "INS_FAST_SAMPLE": 2,
     "INS_GYRO_RATE": 2
    },
-   "23_optional_pid_adjustment.param": {
+   "27_optional_pid_adjustment.param": {
     "ACRO_TURN_RATE": 2,
     "ATC_ACCEL_MAX": 2,
     "ATC_DECEL_MAX": 2,
@@ -2299,7 +2447,13 @@
     "WP_RADIUS": 2,
     "WP_SPEED": 2
    },
-   "25_motor_notch_filter_results.param": {
+   "29_motor_notch_filter_results.param": {
+    "ATC_RAT_PIT_FLTD": 2,
+    "ATC_RAT_PIT_FLTT": 2,
+    "ATC_RAT_RLL_FLTD": 2,
+    "ATC_RAT_RLL_FLTT": 2,
+    "ATC_RAT_YAW_FLTT": 2,
+    "INS_GYRO_FILTER": 2,
     "INS_HNTCH_ATT": 2,
     "INS_HNTCH_BW": 2,
     "INS_HNTCH_FM_RAT": 2,
@@ -2307,11 +2461,11 @@
     "INS_HNTCH_HMNCS": 2,
     "INS_HNTCH_OPTS": 2
    },
-   "26_ekf_config.param": {
+   "30_ekf_config.param": {
     "EK3_ACC_P_NSE": 2,
     "EK3_ALT_M_NSE": 2
    },
-   "29_quick_tune_setup.param": {
+   "33_quick_tune_setup.param": {
     "QUIK_AUTO_FILTER": 2,
     "QUIK_AUTO_SAVE": 2,
     "QUIK_AXES": 2,
@@ -2326,7 +2480,7 @@
     "QUIK_YAW_D_MAX": 2,
     "QUIK_YAW_P_MAX": 2
    },
-   "30_quick_tune_results.param": {
+   "34_quick_tune_results.param": {
     "ATC_RAT_PIT_D": 2,
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_PIT_P": 2,
@@ -2338,7 +2492,7 @@
     "ATC_RAT_YAW_I": 2,
     "ATC_RAT_YAW_P": 2
    },
-   "31_inflight_magnetometer_fit_setup.param": {
+   "35_inflight_magnetometer_fit_setup.param": {
     "MAGH_ALT_DELTA": 2,
     "MAGH_B": 2,
     "MAGH_CMD": 2,
@@ -2347,7 +2501,7 @@
     "MAGH_NUM_WP": 2,
     "MAGH_USE_LOITER": 2
    },
-   "32_inflight_magnetometer_fit_results.param": {
+   "36_inflight_magnetometer_fit_results.param": {
     "COMPASS_DIA_X": 2,
     "COMPASS_DIA_Y": 2,
     "COMPASS_DIA_Z": 2,
@@ -2364,51 +2518,51 @@
     "COMPASS_ORIENT": 2,
     "COMPASS_SCALE": 2
    },
-   "35_autotune_roll_setup.param": {
+   "39_autotune_roll_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "36_autotune_roll_results.param": {
+   "40_autotune_roll_results.param": {
     "ATC_ACCEL_R_MAX": 2,
     "ATC_ANG_RLL_P": 2,
     "ATC_RAT_RLL_D": 2,
     "ATC_RAT_RLL_I": 2,
     "ATC_RAT_RLL_P": 2
    },
-   "37_autotune_pitch_setup.param": {
+   "41_autotune_pitch_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "38_autotune_pitch_results.param": {
+   "42_autotune_pitch_results.param": {
     "ATC_ACCEL_P_MAX": 2,
     "ATC_ANG_PIT_P": 2,
     "ATC_RAT_PIT_D": 2,
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_PIT_P": 2
    },
-   "39_autotune_yaw_setup.param": {
+   "43_autotune_yaw_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "40_autotune_yaw_results.param": {
+   "44_autotune_yaw_results.param": {
     "ATC_ACCEL_Y_MAX": 2,
     "ATC_ANG_YAW_P": 2,
     "ATC_RAT_YAW_FLTE": 2,
     "ATC_RAT_YAW_I": 2,
     "ATC_RAT_YAW_P": 2
    },
-   "41_autotune_yawd_setup.param": {
+   "45_autotune_yawd_setup.param": {
     "AUTOTUNE_AGGR": 2,
     "AUTOTUNE_MIN_D": 2
    },
-   "42_autotune_yawd_results.param": {
+   "46_autotune_yawd_results.param": {
     "ATC_ACCEL_Y_MAX": 2,
     "ATC_ANG_YAW_P": 2,
     "ATC_RAT_YAW_D": 2,
     "ATC_RAT_YAW_I": 2,
     "ATC_RAT_YAW_P": 2
    },
-   "43_autotune_roll_pitch_retune_setup.param": {
+   "47_autotune_roll_pitch_retune_setup.param": {
     "AUTOTUNE_AGGR": 2
    },
-   "44_autotune_roll_pitch_retune_results.param": {
+   "48_autotune_roll_pitch_retune_results.param": {
     "ATC_ACCEL_P_MAX": 2,
     "ATC_ACCEL_R_MAX": 2,
     "ATC_ANG_PIT_P": 2,
@@ -2420,18 +2574,18 @@
     "ATC_RAT_RLL_I": 2,
     "ATC_RAT_RLL_P": 2
    },
-   "46_pid_d_ff.param": {
+   "50_pid_d_ff.param": {
     "ATC_RAT_PIT_D_FF": 2,
     "ATC_RAT_RLL_D_FF": 2,
     "ATC_RAT_YAW_D_FF": 2,
     "PSC_ACCZ_D_FF": 2
    },
-   "47_windspeed_estimation.param": {
+   "51_windspeed_estimation.param": {
     "EK3_DRAG_BCOEF_X": 2,
     "EK3_DRAG_BCOEF_Y": 2,
     "EK3_DRAG_MCOEF": 2
    },
-   "48_barometer_compensation.param": {
+   "52_barometer_compensation.param": {
     "BARO1_WCF_BCK": 2,
     "BARO1_WCF_DN": 2,
     "BARO1_WCF_ENABLE": 2,
@@ -2440,7 +2594,7 @@
     "BARO1_WCF_RGT": 2,
     "BARO1_WCF_UP": 2
    },
-   "50_system_id_input_roll.param": {
+   "54_system_id_input_roll.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -2460,7 +2614,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "51_system_id_input_pitch.param": {
+   "55_system_id_input_pitch.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -2480,7 +2634,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "52_system_id_input_yaw.param": {
+   "56_system_id_input_yaw.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -2500,7 +2654,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "53_system_id_mixer_roll.param": {
+   "57_system_id_mixer_roll.param": {
     "ANGLE_MAX": 2,
     "ARMING_CHECK": 2,
     "ATC_ANG_PIT_P": 2,
@@ -2520,7 +2674,7 @@
     "TUNE_MAX": 2,
     "TUNE_MIN": 2
    },
-   "54_system_id_mixer_pitch.param": {
+   "58_system_id_mixer_pitch.param": {
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_RLL_I": 2,
     "ATC_RATE_FF_ENAB": 2,
@@ -2531,7 +2685,7 @@
     "SID_T_FADE_OUT": 2,
     "SID_T_REC": 2
    },
-   "55_system_id_mixer_yaw.param": {
+   "59_system_id_mixer_yaw.param": {
     "ATC_RAT_PIT_I": 2,
     "ATC_RAT_YAW_I": 2,
     "ATC_RATE_FF_ENAB": 2,
@@ -2542,7 +2696,7 @@
     "SID_T_FADE_OUT": 2,
     "SID_T_REC": 2
    },
-   "56_system_id_mixer_thrust.param": {
+   "60_system_id_mixer_thrust.param": {
     "ATC_RAT_YAW_I": 2,
     "ATC_RATE_FF_ENAB": 2,
     "PSC_ACCZ_I": 2,
@@ -2553,10 +2707,10 @@
     "SID_T_FADE_OUT": 2,
     "SID_T_REC": 2
    },
-   "57_analytical_pid_optimization.param": {
+   "61_analytical_pid_optimization.param": {
     "PSC_ACCZ_I": 2
    },
-   "60_position_controller.param": {
+   "64_position_controller.param": {
     "ANGLE_MAX": 2,
     "LOIT_ACC_MAX": 2,
     "LOIT_BRK_ACCEL": 2,
@@ -2570,13 +2724,13 @@
     "WPNAV_SPEED": 2,
     "WPNAV_SPEED_DN": 2
    },
-   "61_guided_operation.param": {
+   "65_guided_operation.param": {
     "FS_GCS_ENABLE": 2,
     "RALLY_INCL_HOME": 2,
     "RALLY_TOTAL": 2,
     "SYSID_MYGCS": 2
    },
-   "62_precision_land.param": {
+   "66_precision_land.param": {
     "EK3_RNG_M_NSE": 2,
     "EK3_RNG_USE_HGT": 2,
     "LAND_ALT_LOW": 2,
@@ -2605,7 +2759,7 @@
     "RC10_OPTION": 2,
     "RC11_OPTION": 2
    },
-   "63_optical_flow_setup.param": {
+   "67_optical_flow_setup.param": {
     "EK3_FLOW_DELAY": 2,
     "EK3_SRC_OPTIONS": 2,
     "EK3_SRC1_POSXY": 2,
@@ -2626,12 +2780,12 @@
     "RC8_OPTION": 2,
     "RC9_OPTION": 2
    },
-   "64_optical_flow_results.param": {
+   "68_optical_flow_results.param": {
     "FLOW_FXSCALER": 2,
     "FLOW_FYSCALER": 2,
     "FLOW_ORIENT_YAW": 2
    },
-   "65_use_optical_flow_instead_of_gnss.param": {
+   "69_use_optical_flow_instead_of_gnss.param": {
     "EK3_SRC_OPTIONS": 2,
     "EK3_SRC1_POSXY": 2,
     "EK3_SRC1_POSZ": 2,
@@ -2641,7 +2795,7 @@
     "RC8_OPTION": 2,
     "RC9_OPTION": 2
    },
-   "66_everyday_use.param": {
+   "70_everyday_use.param": {
     "BATT_FS_LOW_ACT": 2,
     "BATT2_FS_LOW_ACT": 2,
     "LOG_BITMASK": 2,

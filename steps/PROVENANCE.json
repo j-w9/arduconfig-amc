@@ -1,6 +1,6 @@
 {
   "upstream": "https://github.com/ArduPilot/MethodicConfigurator",
-  "commit": "7140cf6d53ea2750aee57854296f5db2509850a1",
+  "commit": "110ebd403cd79fc2b8c12250651cf48d63c48258",
   "files": [
     "configuration_steps_ArduCopter.json",
     "configuration_steps_ArduPlane.json",

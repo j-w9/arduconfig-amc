@@ -42,7 +42,7 @@ function filesFor(vehicle, template) {
 test('a conditional reason is evaluated, not copied in as source', () => {
   const files = filesFor('ArduCopter', 'empty_4.6.x')
   const notch = parseParamFile(
-    files.find((file) => file.filename === '21_motor_notch_filter_setup.param').text
+    files.find((file) => file.filename === '25_motor_notch_filter_setup.param').text
   ).get('INS_HNTCH_MODE')
 
   // The whole string, not a substring of the Python that produces it.
@@ -60,7 +60,7 @@ test('the branch follows the vehicle, which is the point of it being an expressi
     {}
   )
   const step = sequence('ArduCopter').find(
-    (entry) => entry.filename === '21_motor_notch_filter_setup.param'
+    (entry) => entry.filename === '25_motor_notch_filter_setup.param'
   )
   const change = applyStep(step.step, withTelemetry, {}).changes.find(
     (entry) => entry.parameter === 'INS_HNTCH_MODE'
@@ -73,7 +73,7 @@ test('plain prose is left exactly as it is', () => {
   // 516 of the 523 reasons are literal text and are not valid Python at all.
   // Running them through the evaluator would be 516 failures to swallow.
   const step = sequence('ArduCopter').find(
-    (entry) => entry.filename === '05_board_orientation.param'
+    (entry) => entry.filename === '15_board_orientation.param'
   )
   for (const change of applyStep(step.step, vehicleContext(JSON.stringify({ Components: {} }), {}), {}).changes) {
     if (change.reason === undefined) continue

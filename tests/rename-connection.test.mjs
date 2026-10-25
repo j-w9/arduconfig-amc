@@ -93,7 +93,14 @@ import { applyStep, orderSteps, parameterDocsFrom, parseStepFile, vehicleContext
 
 const stepsDir = fileURLToPath(new URL('../steps/', import.meta.url))
 const copter = orderSteps(parseStepFile(readFileSync(`${stepsDir}configuration_steps_ArduCopter.json`, 'utf8')))
-const stepFor = (prefix) => copter.find((entry) => entry.filename.startsWith(prefix)).step
+// By name, not number: AMC renumbers the sequence (5.0.0 moved every step),
+// and a number that now points at a different step makes a test pass
+// vacuously rather than fail.
+const stepFor = (name) => {
+  const found = copter.find((entry) => entry.filename.replace(/^\d+_/, '') === `${name}.param`)
+  assert.ok(found, `no ${name} step in the Copter sequence`)
+  return found.step
+}
 const docs = parameterDocsFrom(
   JSON.parse(
     readFileSync(
@@ -111,7 +118,7 @@ test('the runner reports what it moved, and moves nothing it should not', () => 
   parameters.MOT_PWM_TYPE = 0
 
   const outcome = applyStep(
-    stepFor('09_'),
+    stepFor('esc_telemetry'),
     vehicleContext(
       JSON.stringify({
         Components: {
@@ -137,7 +144,7 @@ test('the runner reports what it moved, and moves nothing it should not', () => 
 })
 
 test('an undeclared connection is reported, not guessed', () => {
-  const outcome = applyStep(stepFor('06_'), vehicleContext('{"Components": {}}', {}), { docs })
+  const outcome = applyStep(stepFor('remote_controller_receiver'), vehicleContext('{"Components": {}}', {}), { docs })
   assert.deepEqual(outcome.renamed, [])
   assert.ok(
     outcome.failures.some((failure) => failure.parameter === '(connection)'),
@@ -147,7 +154,7 @@ test('an undeclared connection is reported, not guessed', () => {
 
 test('a connection of None moves nothing', () => {
   const outcome = applyStep(
-    stepFor('06_'),
+    stepFor('remote_controller_receiver'),
     vehicleContext(
       JSON.stringify({ Components: { 'RC Receiver': { 'FC Connection': { Type: 'None', Protocol: 'None' } } } }),
       {}

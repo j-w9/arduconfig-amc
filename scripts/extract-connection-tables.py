@@ -50,6 +50,14 @@ MIGRATION_WANTED = [
     "_PARAM_MOVES_V0_TO_V1",
     "_NEW_FILES_V0_TO_V1",
     "_FILES_TO_DELETE_V0_TO_V1",
+    # Format version 1 -> 2 (AMC 5.0.0): the old combined mandatory-hardware
+    # step split into calibration, servo-output and flight-mode steps.
+    "_PARAM_MOVES_V1_TO_V2",
+    "_PARAM_COPIES_V1_TO_V2",
+    "_PARAM_DELETES_V1_TO_V2",
+    "_GENERAL_CONFIGURATION_FILENAMES",
+    "_MANDATORY_HARDWARE_OLD_FILENAMES",
+    "_V1_TO_V2_PROVENANCE_FILENAME",
 ]
 
 WANTED = [
@@ -86,7 +94,11 @@ def load_module_literals(paths: list[Path]) -> dict:
     for name in ("Any", "EscToFcTelemetryDict", "ComponentPath", "ComponentData"):
         namespace[name] = stub
     namespace["nan"] = float("nan")
+    # The migration module derives a constant from its own location; the value
+    # is never extracted, it only has to evaluate.
+    namespace["Path"] = Path
     for path in paths:
+        namespace["__file__"] = str(path)
         _exec_literals(path, namespace)
     return namespace
 
@@ -111,6 +123,12 @@ def _exec_literals(path: Path, namespace: dict) -> None:
             # ran locally and failed in CI for seven hours.
             replacement = ast.Assign(targets=[node.target], value=node.value)
             kept.append(ast.copy_location(replacement, node))
+        elif isinstance(node, ast.For):
+            # Top-level loops that extend the tables: AMC 5.0.0 repeats every
+            # mandatory-hardware move for that step's historical file names
+            # this way. Dropping the loop would extract a table that silently
+            # misses those entries.
+            kept.append(node)
     module = ast.fix_missing_locations(ast.Module(body=kept, type_ignores=[]))
     exec(compile(module, str(path), "exec"), namespace)  # noqa: S102
 
@@ -136,7 +154,7 @@ def jsonable(value):
 
 
 def write_migration() -> int:
-    """The v0 -> v1 tables, as their own file."""
+    """The project-format migration tables, as their own file."""
     if not MIGRATION_SOURCE.exists():
         print(f"vendor source missing: {MIGRATION_SOURCE}", file=sys.stderr)
         return 1

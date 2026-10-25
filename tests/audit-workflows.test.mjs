@@ -319,7 +319,8 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
 
   // backend_filesystem: building and reading the directory.
   read_params_from_files: 'readVehicleProject',
-  rename_parameter_files: "old_filenames, resolved when a directory is read",
+  rename_parameter_files:
+    "openProjectLikeAmc applies the same renames, empty-placeholder replacement and sidecar moves -- checked against CPython",
   compound_params: 'completeFile, which accumulates every step in order',
   export_to_param: 'writeParamFile',
   annotate_intermediate_comments_to_param_dict: 'annotateParamFile, behind the documentation toggle',
@@ -634,7 +635,8 @@ const BEHAVIOUR_ACCOUNTED_FOR = {
   get_component: "the step's component",
   get_auto_importable_parameter_names: "autoImportableParameters",
   safe_evaluate: "@arduconfig/amc-expr, a port of the same expression language",
-  migrate_vehicle_project_if_needed: "migrateProject",
+  migrate_vehicle_project_if_needed:
+    'migrateProject: format 0 -> 1 -> 2, template restore included, byte for byte against CPython on every 4.5.7 template',
   build_sr_to_mav_mapping: "streamRateRenames",
   upgrade_file_parameters_46: "upgradeParameters with the 4.6 table",
   upgrade_file_parameters_47: "the same with the 4.7 table",

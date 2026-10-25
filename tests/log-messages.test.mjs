@@ -25,7 +25,7 @@ const stepFor = (filename) => sequence.find((entry) => entry.filename === filena
 
 test('a step whose required messages are all present is satisfied', () => {
   const check = checkStepLogMessages(
-    stepFor('09_esc_telemetry.param'),
+    stepFor('08_esc_telemetry.param'),
     new Map([['ESC', 1200], ['ESCX', 40]])
   )
   assert.equal(check.satisfied, true)
@@ -38,14 +38,14 @@ test('a step whose required messages are all present is satisfied', () => {
 })
 
 test('a missing REQUIRED message is what makes a step unsatisfied', () => {
-  const check = checkStepLogMessages(stepFor('09_esc_telemetry.param'), new Map([['ESCX', 40]]))
+  const check = checkStepLogMessages(stepFor('08_esc_telemetry.param'), new Map([['ESCX', 40]]))
   assert.equal(check.satisfied, false)
   assert.deepEqual(check.missingRequired, ['ESC'])
 })
 
 test('a missing OPTIONAL message does not make a step unsatisfied', () => {
   // Otherwise every step would look failed on a log with default LOG_BITMASK.
-  const check = checkStepLogMessages(stepFor('10_battery_monitor.param'), new Map([['BAT', 900]]))
+  const check = checkStepLogMessages(stepFor('09_battery_monitor.param'), new Map([['BAT', 900]]))
   assert.equal(check.satisfied, true)
   assert.deepEqual(check.missingRequired, [])
   assert.equal(check.messages.filter((m) => !m.present).length, 2)
@@ -57,7 +57,7 @@ test('a numbered sensor counts as its base message', () => {
   // reporting it missing would be wrong.
   const counts = new Map([['IMU2', 500], ['IMU3', 500]])
   assert.equal(countWithVariants(counts, 'IMU'), 1000)
-  const check = checkStepLogMessages(stepFor('21_motor_notch_filter_setup.param'), counts)
+  const check = checkStepLogMessages(stepFor('25_motor_notch_filter_setup.param'), counts)
   assert.ok(!check.missingRequired.includes('IMU'), check.missingRequired.join(', '))
 })
 
@@ -68,7 +68,7 @@ test('a message that merely starts with the same letters is not a variant', () =
 })
 
 test('a step with no related messages is satisfied by any log', () => {
-  const check = checkStepLogMessages(stepFor('05_board_orientation.param'), new Map())
+  const check = checkStepLogMessages(stepFor('15_board_orientation.param'), new Map())
   assert.deepEqual(check.messages, [])
   assert.equal(check.satisfied, true)
 })

@@ -15,7 +15,7 @@
   "50_system_id_input_roll.param": "ANGLE_MAX,3000\nARMING_CHECK,1\nATC_ANG_PIT_P,4.5\nATC_ANG_RLL_P,4.5\nATC_ANG_YAW_P,4.5\nATC_RAT_RLL_I,0.135\nATC_RATE_FF_ENAB,1\nFLTMODE5,0\nLOG_BITMASK,176126\nSID_AXIS,1  # Inject chip on the input roll signal\nSID_F_START_HZ,0.05\nSID_F_STOP_HZ,5\nSID_MAGNITUDE,0.15\nSID_T_FADE_IN,5\nSID_T_FADE_OUT,5\nSID_T_REC,130\nTUNE,0\nTUNE_MAX,0\nTUNE_MIN,0\n",
   "51_system_id_input_pitch.param": "ANGLE_MAX,3000\nARMING_CHECK,1\nATC_ANG_PIT_P,4.5\nATC_ANG_RLL_P,4.5\nATC_ANG_YAW_P,4.5\nATC_RAT_RLL_I,0.135\nATC_RATE_FF_ENAB,1\nFLTMODE5,0\nLOG_BITMASK,176126\nSID_AXIS,2  # Inject chip on the input pitch signal\nSID_F_START_HZ,0.05\nSID_F_STOP_HZ,5\nSID_MAGNITUDE,0.15\nSID_T_FADE_IN,5\nSID_T_FADE_OUT,5\nSID_T_REC,130\nTUNE,0\nTUNE_MAX,0\nTUNE_MIN,0\n",
   "52_system_id_input_yaw.param": "ANGLE_MAX,3000\nARMING_CHECK,1\nATC_ANG_PIT_P,4.5\nATC_ANG_RLL_P,4.5\nATC_ANG_YAW_P,4.5\nATC_RAT_RLL_I,0.135\nATC_RATE_FF_ENAB,1\nFLTMODE5,0\nLOG_BITMASK,176126\nSID_AXIS,3  # Inject chip on the input yaw signal\nSID_F_START_HZ,0.05\nSID_F_STOP_HZ,5\nSID_MAGNITUDE,0.15\nSID_T_FADE_IN,5\nSID_T_FADE_OUT,5\nSID_T_REC,130\nTUNE,0\nTUNE_MAX,0\nTUNE_MIN,0\n",
-  "vehicle_components.json": "{\n    \"Components\": {\n        \"Flight Controller\": {\n            \"Firmware\": {\n                \"Type\": \"ArduCopter\"\n            }\n        }\n    },\n    \"Format version\": 1\n}\n"
+  "vehicle_components.json": "{\n    \"Components\": {\n        \"Flight Controller\": {\n            \"Firmware\": {\n                \"Type\": \"ArduCopter\"\n            }\n        }\n    },\n    \"Format version\": 2\n}\n"
  },
  "migrated": true
 }

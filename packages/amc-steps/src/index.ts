@@ -187,12 +187,24 @@ export {
 export {
   type MigratableFile,
   type Migration,
+  type MigrationContext,
+  type MigrationStep,
   type MigrationTables,
+  type OpenedProject,
   formatVersionOf,
   migrateProject,
+  openProjectLikeAmc,
+  paramNameFromLine,
   vehicleTypeOf,
   withFormatVersion
 } from './migrate.js'
+export {
+  type PyValue,
+  PyObject,
+  pyFloatRepr,
+  pyJsonDumps,
+  pyJsonLoads
+} from './python-json.js'
 export { type LogParameters, logHasDefaults, parametersFromLog } from './log-parameters.js'
 export { type ExplainedValue, explainValue } from './explain-value.js'
 export type { StepAdvisory } from './run.js'

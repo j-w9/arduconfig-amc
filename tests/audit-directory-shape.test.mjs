@@ -45,8 +45,10 @@ function amcDirectoryFiles() {
     // is a real filename AMC writes and a plain-literal scrape cannot see it.
     for (const match of text.matchAll(/f?"([a-z0-9_.{}:<>-]+\.(?:param|csv|txt|json|xml|png|jpg|svg))"/g)) {
       const filename = match[1]
-      // A fragment, not a name: nothing is written to ".pdef.xml".
-      if (filename.startsWith('.')) continue
+      // A fragment, not a name: nothing is written to ".pdef.xml", and
+      // "_inflight_magnetometer_fit_setup.param" is the tail an endswith()
+      // matches whatever the step's number is.
+      if (filename.startsWith('.') || filename.startsWith('_')) continue
       if (filename === 'git_hash.txt') continue
       found.add(filename)
     }
@@ -95,6 +97,7 @@ const DELIBERATELY_ABSENT = new Map([
   ['params.param', 'an output name from AMC\'s standalone MAVFTP example script'],
   ['defaults.param', 'the same example script\'s companion output'],
   ['devid.json', 'a lookup table for decode_devid.py, shipped beside it'],
+  ['configuration_steps_{vehicle_type}.json', 'a project-local replacement for the step list, which AMC READS from the vehicle directory when an operator has put one there and never writes. The migration and renames here read it as AMC\'s do (openProjectLikeAmc); the sequence on screen does not, and still comes from the vehicle type'],
   ['{next_prefix:02d}_imported_{source}_parameters.param', 'AMC creates a PROJECT from a log or a connected vehicle and puts the leftovers in a numbered step file; this tab declares and computes instead, and writes the same information as fc_params_missing_or_different_*']
 ])
 

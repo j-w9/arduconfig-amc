@@ -53,14 +53,14 @@ test('a line that is not a parameter is ignored rather than guessed at', () => {
 test('the real template reads as an override, not as a contradiction', () => {
   // Holybro_X500 keeps Medium Attitude logging on during PID notch tuning:
   // 407519 where the step file forces 407517. Bit 1 is the difference.
-  const file = `${templates}ArduCopter/Holybro_X500/27_pid_notch_filter_logging.param`
+  const file = `${templates}ArduCopter/Holybro_X500/31_pid_notch_filter_logging.param`
   const entry = parseParamFile(readFileSync(file, 'utf8')).get('LOG_BITMASK')
   assert.equal(entry.value, 407519)
   assert.equal(entry.manualOverride, true)
   assert.equal((407519 ^ 407517).toString(2), '10', 'the difference should be bit 1')
 
   // And the template beside it, which does not override, agrees with the step.
-  const plain = `${templates}ArduCopter/Holybro_X500_V2/27_pid_notch_filter_logging.param`
+  const plain = `${templates}ArduCopter/Holybro_X500_V2/31_pid_notch_filter_logging.param`
   const other = parseParamFile(readFileSync(plain, 'utf8')).get('LOG_BITMASK')
   assert.equal(other.value, 407517)
   assert.equal(other.manualOverride, false)

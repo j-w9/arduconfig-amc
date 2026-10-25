@@ -79,7 +79,10 @@ test('every installing step AMC ships resolves every file it uploads', () => {
         assert.match(file.url, /^https:\/\//, `${kind} ${filename}`)
       }
     }
-    const magfit = stepFiles(steps['31_inflight_magnetometer_fit_setup.param']).map((f) => f.name)
+    // Found by name: AMC 5.0.0 numbers it differently per vehicle.
+    const magfitStep = Object.keys(steps).find((name) => name.endsWith('_inflight_magnetometer_fit_setup.param'))
+    assert.ok(magfitStep, `${kind} has no in-flight magfit step`)
+    const magfit = stepFiles(steps[magfitStep]).map((f) => f.name)
     assert.ok(magfit.length >= 2, `${kind} magfit should install both of its scripts, got ${magfit}`)
   }
 })

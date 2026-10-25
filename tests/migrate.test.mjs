@@ -39,18 +39,10 @@ test('a v0 directory comes out exactly as AMC would leave it', () => {
   assert.ok(result, 'a v0 directory needs migrating')
 
   const ours = Object.fromEntries(result.files.map((file) => [file.filename, file.text]))
-  for (const [filename, text] of Object.entries(expected.files)) {
-    // The declaration itself differs: AMC rewrites it in place with its own
-    // indentation, which is a filesystem concern rather than a migration one.
-    if (filename === 'vehicle_components.json') continue
-    assert.equal(ours[filename], text, filename)
-  }
-
-  const theirs = Object.keys(expected.files).filter((name) => name !== 'vehicle_components.json')
-  assert.deepEqual(
-    Object.keys(ours).filter((name) => name !== 'vehicle_components.json').sort(),
-    theirs.sort()
-  )
+  // The declaration included: it is written the way Python's json.dumps
+  // writes it, so it matches too.
+  for (const [filename, text] of Object.entries(expected.files)) assert.equal(ours[filename], text, filename)
+  assert.deepEqual(Object.keys(ours).sort(), Object.keys(expected.files).sort())
 })
 
 test('the parameters that moved are named, not just relocated', () => {
@@ -104,11 +96,14 @@ test('running it twice changes nothing the second time', () => {
 })
 
 test('a current directory is left alone', () => {
-  const current = { 'Format version': 1, Components: {} }
+  const current = { 'Format version': tables.VEHICLE_COMPONENTS_FORMAT_VERSION, Components: {} }
   assert.equal(
     migrateProject([{ filename: 'vehicle_components.json', text: JSON.stringify(current) }], tables),
     undefined
   )
+  // A 4.5.x directory is not current any more: AMC 5.0.0 moved to format 2.
+  const older = { 'Format version': 1, Components: {} }
+  assert.ok(migrateProject([{ filename: 'vehicle_components.json', text: JSON.stringify(older) }], tables))
 })
 
 test('a declaration with no format version predates the field', () => {

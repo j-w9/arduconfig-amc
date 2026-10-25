@@ -66,8 +66,10 @@
   "4.6.2 official",
   "4.6.3",
   "4.6.3 official",
-  "4.7.0",
-  "4.7.1 beta"
+  "4.7.1",
+  "4.7.2",
+  "4.7.2 official",
+  "4.8.0"
  ],
  "Flight Controller/Specifications/MCU Series": [
   "STM32F4xx",
@@ -77,6 +79,8 @@
  ],
  "Flight Controller/Notes": [
   "CubeOrange+ with 94.5mm x 44.3mm x 17.3mm",
+  "Factory-default parameters captured read-only from a CubeOrange running Heli 4.7.2 official.",
+  "Provisional empty_4.7.x scaffold: default parameters are copied from Carisma_SCA-1E running 4.6.2; not a verified Rover 4.7.x factory-default capture.",
   "The Kakute H743 Wing FC",
   "The Pixhawk 6C with dimensions: 84.8 * 44 * 12.4 mm",
   "This is CubeOrange with 94.5mm x 44.3mm x 17.3mm",
@@ -477,6 +481,7 @@
  "GNSS Receiver/FC Connection/Type": [
   "CAN1",
   "CAN2",
+  "None",
   "SERIAL3",
   "SERIAL4",
   "SERIAL7"
@@ -484,6 +489,7 @@
  "GNSS Receiver/FC Connection/Protocol": [
   "AUTO",
   "DroneCAN",
+  "None",
   "uBlox"
  ],
  "GNSS Receiver/Notes": [

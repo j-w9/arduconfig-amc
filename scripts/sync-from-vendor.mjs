@@ -189,6 +189,29 @@ for (const vehicle of readdirSync(templatesDir)) {
 
 emit('baselines.json', JSON.stringify(baselines, null, 1) + '\n')
 
+// The per-step documentation beside the empty templates' files. Opening an
+// older project restores step files it lacks from the empty template, and AMC
+// restores each file's .pdef.xml sidecar with it
+// (backend_filesystem_migration._restore_missing_configuration_step_files).
+// Kept apart from baselines.json, whose readers expect parameter files only.
+// The firmware-wide apm.pdef.xml is not a sidecar and is never restored.
+const sidecars = {}
+for (const vehicle of readdirSync(templatesDir)) {
+  const vehicleDir = join(templatesDir, vehicle)
+  if (!statSync(vehicleDir).isDirectory()) continue
+  for (const entry of readdirSync(vehicleDir)) {
+    const match = /^empty_(\d+)\.(\d+)\.x$/.exec(entry)
+    if (!match) continue
+    for (const file of readdirSync(join(vehicleDir, entry))) {
+      if (!/^\d\d_.*\.pdef\.xml$/.test(file)) continue
+      sidecars[vehicle] ??= {}
+      sidecars[vehicle][`${match[1]}.${match[2]}`] ??= {}
+      sidecars[vehicle][`${match[1]}.${match[2]}`][file] = readFileSync(join(vehicleDir, entry, file), 'utf8')
+    }
+  }
+}
+emit('template-sidecars.json', JSON.stringify(sidecars, null, 1) + '\n')
+
 // What AMC's directories hold that this sequence never decides.
 //
 // AMC seeds a vehicle directory by COPYING a template's .param files and then
