@@ -91,6 +91,8 @@ test('every template gets exactly the report AMC writes for it', () => {
   const fixture = JSON.parse(readFileSync(here('./fixtures/tuning-report.json'), 'utf8'))
   const base = here('../vendor/MethodicConfigurator/ardupilot_methodic_configurator/vehicle_templates/')
   assert.ok(fixture.cases.length >= 29)
+  const pinned = JSON.parse(readFileSync(here('../steps/PROVENANCE.json'), 'utf8')).commit
+  assert.equal(fixture.commit, pinned, 'regenerate with scripts/gen_tuning_report_fixture.py')
   const problems = []
   for (const c of fixture.cases) {
     const dir = `${base}${c.template}`

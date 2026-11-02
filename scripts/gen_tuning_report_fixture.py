@@ -14,6 +14,7 @@ dependencies installed:
 """
 
 import json
+import subprocess
 import sys
 import tempfile
 import types
@@ -49,6 +50,21 @@ from ardupilot_methodic_configurator.data_model_parameter_editor import Paramete
 TEMPLATES = ROOT / "vendor/MethodicConfigurator/ardupilot_methodic_configurator/vehicle_templates"
 
 
+def vendor_commit() -> str:
+    """The AMC commit this was generated from, so a stale fixture can be detected."""
+    return subprocess.run(
+        ["git", "-C", str(ROOT / "vendor/MethodicConfigurator"), "rev-parse", "HEAD"],
+        check=True, capture_output=True, text=True,
+    ).stdout.strip()
+
+
+def vendor_release() -> str:
+    return subprocess.run(
+        ["git", "-C", str(ROOT / "vendor/MethodicConfigurator"), "describe", "--tags", "--always"],
+        check=True, capture_output=True, text=True,
+    ).stdout.strip()
+
+
 def main() -> int:
     cases = []
     for components in sorted(TEMPLATES.glob("**/vehicle_components.json")):
@@ -73,7 +89,7 @@ def main() -> int:
         cases.append(
             {"template": str(directory.relative_to(TEMPLATES)), "vehicleType": vehicle_type, "csv": csv}
         )
-    json.dump({"amc": "v5.0.0", "cases": cases}, sys.stdout, indent=1)
+    json.dump({"amc": vendor_release(), "commit": vendor_commit(), "cases": cases}, sys.stdout, indent=1)
     sys.stdout.write("\n")
     print(f"{len(cases)} templates", file=sys.stderr)
     return 0

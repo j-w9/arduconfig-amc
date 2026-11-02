@@ -1,5 +1,6 @@
 {
- "amc": "v5.0.0",
+ "amc": "v5.0.2",
+ "commit": "c9e9948d441c8484013d83c6f6ef2545effd0059",
  "cases": [
   {
    "template": "ArduCopter/AirCar_v1",

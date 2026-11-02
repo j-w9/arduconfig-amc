@@ -144,6 +144,17 @@ test('nothing is answered for that AMC no longer has', () => {
  * appearing upstream has to be looked at by somebody.
  */
 const BEHAVIOUR_ACCOUNTED_FOR = {
+  // --- AMC v5.0.2 ---------------------------------------------------------
+  //
+  // ESC telemetry table (data_model_esc_telemetry), now shared by AMC's motor
+  // test and ESC plugins. The Motors/Servos outputs table already shows each
+  // ESC's live telemetry from ESC_TELEMETRY_*.
+  visible_esc_indices: 'the outputs table lists the ESCs that report, in output order',
+  row_labels: 'the same table\'s column headings, with units',
+  // Windows installer scopes (backend_filesystem_program_settings).
+  get_other_windows_templates_base_dir:
+    'a Windows per-user/all-users install lookup; nothing is installed here, the templates ship with the page',
+
   // --- AMC v4.5.7 ---------------------------------------------------------
   //
   // Step files that install scripts (backend_filesystem). Since v4.5.x

@@ -41,7 +41,8 @@ const expectedOf = (c) => {
 }
 
 test('the corpus is the one the generator describes', () => {
-  assert.equal(fixture.amc, 'v5.0.0')
+  // Generated from the AMC this repository pins, not an older one.
+  assert.equal(fixture.commit, json('../steps/PROVENANCE.json').commit, 'regenerate with scripts/gen_migration_v2_fixture.py')
   assert.equal(fixture.from, 'v4.5.7')
   const templateCases = fixture.cases.filter((c) => c.name.startsWith('template/'))
   assert.ok(templateCases.length >= 29, `only ${templateCases.length} templates`)

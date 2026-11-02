@@ -362,7 +362,7 @@
    "07_telemetry.param": "BRD_SER2_RTSCTS,2\nSERIAL1_PROTOCOL,2  # Telemetry on SERIAL1 protocol defined in component editor\nSERIAL2_BAUD,230\nSERIAL2_PROTOCOL,2\n",
    "08_esc_telemetry.param": "SERIAL5_BAUD,57\nSERIAL5_PROTOCOL,-1\nSERVO_BLH_TRATE,10\n",
    "09_battery_monitor.param": "BATT_MONITOR,0  # Selected in component editor window\n",
-   "10_battery.param": "BATT_ARM_VOLT,23.2998\nBATT_CAPACITY,3300\nBATT_CRT_MAH,0\nBATT_CRT_VOLT,21\nBATT_FS_CRT_ACT,1\nBATT_FS_LOW_ACT,2\nBATT_FS_VOLTSRC,0\nBATT_LOW_MAH,0\nBATT_LOW_VOLT,22.8\n",
+   "10_battery.param": "BATT_ARM_VOLT,23.2998\nBATT_CAPACITY,3300\nBATT_CRT_MAH,0\nBATT_CRT_VOLT,21\nBATT_FS_CRT_ACT,2\nBATT_FS_LOW_ACT,1\nBATT_FS_VOLTSRC,0\nBATT_LOW_MAH,0\nBATT_LOW_VOLT,22.8\n",
    "11_servo_outputs.param": "SERVO_AUTO_TRIM,0\nSERVO1_FUNCTION,4\nSERVO1_MAX,1900\nSERVO1_MIN,1100\nSERVO2_FUNCTION,19\nSERVO2_MAX,1900\nSERVO2_MIN,1100\nSERVO2_REVERSED,0\nSERVO2_TRIM,1500\nSERVO3_FUNCTION,70\nSERVO3_MAX,1900\nSERVO3_MIN,1100\nSERVO3_TRIM,1100\nSERVO4_FUNCTION,21\nSERVO4_MAX,1900\nSERVO4_MIN,1100\nSERVO4_REVERSED,0\nSERVO4_TRIM,1500\n",
    "12_motor.param": "SERVO_BLH_POLES,14\n",
    "13_initial_atc.param": "INS_ACCEL_FILTER,10  # The default is 20Hz but that is too high in most situations\nINS_GYRO_FILTER,46  # Derived from vehicle component editor propeller size\n",
@@ -371,11 +371,11 @@
    "16_accelerometer_calibration.param": "AHRS_TRIM_X,0\nAHRS_TRIM_Y,0\nAHRS_TRIM_Z,0\nINS_ACC1_CALTEMP,-300\nINS_ACC2_CALTEMP,-300\nINS_ACC2OFFS_X,0\nINS_ACC2OFFS_Y,0\nINS_ACC2OFFS_Z,0\nINS_ACC2SCAL_X,1\nINS_ACC2SCAL_Y,1\nINS_ACC2SCAL_Z,1\nINS_ACC3_CALTEMP,-300\nINS_ACC3OFFS_X,0\nINS_ACC3OFFS_Y,0\nINS_ACC3OFFS_Z,0\nINS_ACC3SCAL_X,1\nINS_ACC3SCAL_Y,1\nINS_ACC3SCAL_Z,1\nINS_ACCOFFS_X,0\nINS_ACCOFFS_Y,0\nINS_ACCOFFS_Z,0\nINS_USE2,1\nINS_USE3,1\nINS_ACCSCAL_X,1\nINS_ACCSCAL_Y,1\nINS_ACCSCAL_Z,1\n",
    "17_accelerometer_level.param": "AHRS_TRIM_X,0\nAHRS_TRIM_Y,0\n",
    "18_gnss.param": "BRD_SAFETY_DEFLT,1\nGPS1_GNSS_MODE,0\nGPS1_POS_X,0\nGPS1_POS_Y,0\nGPS1_POS_Z,0\nGPS1_TYPE,1  # Defined in component editor\nSERIAL3_PROTOCOL,5\n",
-   "19_compass_calibration.param": "COMPASS_EXTERNAL,0\nCOMPASS_ORIENT,0\nCOMPASS_PRIO1_ID,131874\nCOMPASS_USE2,1\nCOMPASS_USE3,1\n",
+   "19_compass_calibration.param": "COMPASS_EXTERNAL,0\nCOMPASS_ORIENT,0\nCOMPASS_USE2,1\nCOMPASS_USE3,1\n",
    "20_remote_id.param": "DID_CANDRIVER,0\nDID_ENABLE,0\nDID_MAVPORT,2\nDID_OPTIONS,0\n",
    "21_osd.param": "OSD_CHAN,5\nOSD_SW_METHOD,1\nOSD_TYPE,0\nOSD_UNITS,1\nOSD1_ALTITUDE_X,40\nOSD1_ALTITUDE_Y,6\nOSD1_ARMING_EN,0\nOSD1_ARMING_X,12\nOSD1_ARMING_Y,9\nOSD1_ASPD1_X,1\nOSD1_ASPD1_Y,5\nOSD1_ASPEED_EN,1\nOSD1_ASPEED_X,0\nOSD1_ASPEED_Y,5\nOSD1_BAT_VOLT_X,0\nOSD1_BAT_VOLT_Y,16\nOSD1_BATTBAR_EN,0\nOSD1_BATTBAR_X,9\nOSD1_BATTBAR_Y,15\nOSD1_BATUSED_X,0\nOSD1_BATUSED_Y,15\nOSD1_CELLVOLT_EN,0\nOSD1_CHAN_MAX,2200\nOSD1_COMPASS_X,24\nOSD1_COMPASS_Y,0\nOSD1_CRSSHAIR_X,10\nOSD1_CRSSHAIR_Y,5\nOSD1_CURRENT_X,41\nOSD1_CURRENT_Y,16\nOSD1_DIST_EN,1\nOSD1_DIST_X,40\nOSD1_DIST_Y,14\nOSD1_EFF_X,24\nOSD1_EFF_Y,9\nOSD1_ENABLE,1\nOSD1_FLTIME_EN,1\nOSD1_FLTIME_X,39\nOSD1_FLTIME_Y,15\nOSD1_FLTMODE_X,0\nOSD1_FLTMODE_Y,1\nOSD1_GPSLAT_EN,0\nOSD1_GPSLAT_X,0\nOSD1_GPSLAT_Y,0\nOSD1_GPSLONG_EN,0\nOSD1_GPSLONG_X,0\nOSD1_GPSLONG_Y,0\nOSD1_GSPEED_X,0\nOSD1_GSPEED_Y,6\nOSD1_HDOP_EN,1\nOSD1_HDOP_X,40\nOSD1_HDOP_Y,1\nOSD1_HEADING_X,23\nOSD1_HEADING_Y,1\nOSD1_HOME_X,20\nOSD1_HOME_Y,16\nOSD1_HOMEDIR_EN,0\nOSD1_HOMEDIR_X,15\nOSD1_HOMEDIR_Y,12\nOSD1_HOMEDIST_EN,0\nOSD1_HOMEDIST_X,20\nOSD1_HOMEDIST_Y,12\nOSD1_HORIZON_X,24\nOSD1_HORIZON_Y,6\nOSD1_MESSAGE_X,10\nOSD1_MESSAGE_Y,8\nOSD1_POWER_EN,0\nOSD1_RNGF_EN,1\nOSD1_RNGF_X,40\nOSD1_RNGF_Y,8\nOSD1_RSSI_X,0\nOSD1_RSSI_Y,0\nOSD1_SATS_X,40\nOSD1_SATS_Y,0\nOSD1_SIDEBARS_X,9\nOSD1_SIDEBARS_Y,4\nOSD1_TER_HGT_EN,1\nOSD1_TER_HGT_X,40\nOSD1_THROTTLE_X,0\nOSD1_THROTTLE_Y,9\nOSD1_TXT_RES,1\nOSD1_VSPEED_X,40\nOSD1_VSPEED_Y,5\nOSD1_WAYPOINT_EN,1\nOSD1_WAYPOINT_X,20\nOSD1_WAYPOINT_Y,14\nOSD1_WIND_EN,1\nOSD1_WIND_X,0\nOSD1_WIND_Y,7\nOSD1_XTRACK_EN,1\nOSD1_XTRACK_X,20\nOSD1_XTRACK_Y,15\n",
    "22_flight_modes.param": "INITIAL_MODE,0\nFLTMODE1,11\nFLTMODE2,11\nFLTMODE3,5\nFLTMODE4,5\nFLTMODE5,0\nFLTMODE6,0\n",
-   "23_general_configuration.param": "BRD_RTC_TZ_MIN,0\nINS_ACCEL_FILTER,20\nINS_POS1_X,0\nINS_POS1_Y,0\nSCHED_LOOP_RATE,50\nSCR_ENABLE,0\n",
+   "23_general_configuration.param": "BRD_RTC_TZ_MIN,0\nINS_POS1_X,0\nINS_POS1_Y,0\nSCHED_LOOP_RATE,50\nSCR_ENABLE,0\n",
    "24_safety_setup.param": "ARMING_CHECK,1\nFENCE_TYPE,4\nFENCE_ACTION,1\nFENCE_ENABLE,0\nFENCE_ALT_MAX,100\nFENCE_RADIUS,300\n",
    "25_motor_notch_filter_setup.param": "INS_FAST_SAMPLE,5\nINS_GYRO_RATE,0\nINS_HNTCH_ATT,20\nINS_HNTCH_BW,20\nINS_HNTCH_ENABLE,1  # Use the first notch filter to filter the noise created by the motors/propellers\nINS_HNTCH_FREQ,28\nINS_HNTCH_HMNCS,1\nINS_HNTCH_MODE,1\nINS_HNTCH_OPTS,0\nINS_HNTCH_REF,1\n",
    "26_motor_notch_logging.param": "INS_LOG_BAT_MASK,0\nINS_LOG_BAT_OPT,4  # Use pre and post filters acc and gyro batch logging on F4 processors or big props, pre-post gyro raw logging on others\nINS_RAW_LOG_OPT,0  # Use pre and post filters acc and gyro batch logging on F4 processors or big props, pre-post gyro raw logging on others\nLOG_BITMASK,145374  # Log relevant data for dynamic notch filter tuning. Later on we'll change this to other subsystems\nLOG_FILE_DSRMROT,1  # One .bin log file per flight, not per battery/reboot\n",
@@ -421,7 +421,7 @@
    "67_optical_flow_setup.param": "EK3_FLOW_DELAY,10\nEK3_SRC_OPTIONS,0\nEK3_SRC1_POSXY,3\nEK3_SRC1_POSZ,1\nEK3_SRC1_VELXY,3\nEK3_SRC1_VELZ,3\nEK3_SRC1_YAW,1\nEK3_SRC2_POSXY,0\nEK3_SRC2_POSZ,1\nEK3_SRC2_VELXY,0\nEK3_SRC2_VELZ,0\nEK3_SRC2_YAW,0\nFLOW_ORIENT_YAW,0\nFLOW_POS_X,0\nFLOW_POS_Y,0\nFLOW_POS_Z,0\nFLOW_TYPE,0\nRC8_OPTION,0\nRC9_OPTION,0\n",
    "68_optical_flow_results.param": "FLOW_FXSCALER,0\nFLOW_FYSCALER,0\nFLOW_ORIENT_YAW,0\n",
    "69_use_optical_flow_instead_of_gnss.param": "EK3_SRC_OPTIONS,0\nEK3_SRC1_POSXY,3\nEK3_SRC1_POSZ,1\nEK3_SRC1_VELXY,3\nEK3_SRC1_VELZ,3\nEK3_SRC1_YAW,1\nRC8_OPTION,0\nRC9_OPTION,0\n",
-   "70_everyday_use.param": "BATT_FS_LOW_ACT,2\nBATT2_FS_LOW_ACT,2\nLOG_BITMASK,65535\nRTL_ALT,3500\nRTL_CLIMB_MIN,0\n"
+   "70_everyday_use.param": "BATT_FS_LOW_ACT,1\nBATT2_FS_LOW_ACT,1\nLOG_BITMASK,65535\nRTL_ALT,3500\nRTL_CLIMB_MIN,0\n"
   }
  },
  "Heli": {
@@ -534,7 +534,7 @@
    "10_telemetry.param": "",
    "11_esc_telemetry.param": "MOT_PWM_TYPE,0  # Specified in component editor window\n",
    "12_battery_monitor.param": "BATT_MONITOR,0  # Selected in component editor window\n",
-   "13_battery.param": "BATT_ARM_VOLT,0  # Only arm above this voltage, to avoid taking off with insufficient battery capacity\nBATT_CAPACITY,0  # Total battery capacity specified in the component editor\nBATT_CRT_VOLT,0  # Critical failsafe voltage x nr. of cells\nBATT_FS_CRT_ACT,1  # Land ASAP\nBATT_FS_LOW_ACT,2  # Return and land at home or rally point\nBATT_LOW_VOLT,0  # Low failsafe voltage x nr. of cells\n",
+   "13_battery.param": "BATT_ARM_VOLT,0  # Only arm above this voltage, to avoid taking off with insufficient battery capacity\nBATT_CAPACITY,0  # Total battery capacity specified in the component editor\nBATT_CRT_VOLT,0  # Critical failsafe voltage x nr. of cells\nBATT_FS_CRT_ACT,2  # Hold: stop the vehicle\nBATT_FS_LOW_ACT,1  # RTL: return to launch\nBATT_LOW_VOLT,0  # Low failsafe voltage x nr. of cells\n",
    "14_servo_outputs.param": "",
    "15_gnss.param": "GPS1_TYPE,0  # Defined in component editor\n",
    "16_compass_calibration.param": "",

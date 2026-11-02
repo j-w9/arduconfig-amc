@@ -1,6 +1,6 @@
 {
  "generatedBy": "scripts/gen_expr_fixtures.py",
- "provenance": "110ebd403cd79fc2b8c12250651cf48d63c48258",
+ "provenance": "c9e9948d441c8484013d83c6f6ef2545effd0059",
  "contexts": [
   "ArduCopter/AirCar_v1",
   "ArduCopter/Big_Owl",
@@ -32,7 +32,7 @@
   "Rover/Carisma_SCA-1E",
   "Rover/empty_4.7.x"
  ],
- "expressions": 198,
+ "expressions": 205,
  "cases": [
   {
    "expr": "'ARMING_CHECK' in fc_parameters",
@@ -441,7 +441,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/AirCar_v1",
    "value": false,
@@ -455,7 +469,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/AirCar_v1",
    "value": false,
@@ -469,7 +497,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/AirCar_v1",
    "value": false,
@@ -1249,6 +1291,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/AirCar_v1",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/AirCar_v1",
@@ -1823,7 +1872,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Big_Owl",
    "value": false,
@@ -1837,7 +1900,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Big_Owl",
    "value": false,
@@ -1851,7 +1928,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Big_Owl",
    "value": false,
@@ -2631,6 +2722,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Big_Owl",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Big_Owl",
@@ -3205,7 +3303,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Chimera7",
    "value": false,
@@ -3219,7 +3331,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Chimera7",
    "value": false,
@@ -3233,7 +3359,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Chimera7",
    "value": false,
@@ -4013,6 +4153,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Chimera7",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Chimera7",
@@ -4587,7 +4734,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Demo32Motor_PeterHall",
    "value": false,
@@ -4601,7 +4762,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Demo32Motor_PeterHall",
    "value": false,
@@ -4615,7 +4790,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Demo32Motor_PeterHall",
    "value": false,
@@ -5395,6 +5584,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Demo32Motor_PeterHall",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Demo32Motor_PeterHall",
@@ -5969,7 +6165,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ESM450X-Des",
    "value": false,
@@ -5983,7 +6193,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ESM450X-Des",
    "value": false,
@@ -5997,7 +6221,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ESM450X-Des",
    "value": false,
@@ -6777,6 +7015,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ESM450X-Des",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/ESM450X-Des",
@@ -7351,7 +7596,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/FETtec-5",
    "value": false,
@@ -7365,7 +7624,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/FETtec-5",
    "value": false,
@@ -7379,7 +7652,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/FETtec-5",
    "value": false,
@@ -8159,6 +8446,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/FETtec-5",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/FETtec-5",
@@ -8733,7 +9027,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/GazeboIrisWithTargetFollow",
    "value": false,
@@ -8747,7 +9055,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/GazeboIrisWithTargetFollow",
    "value": false,
@@ -8761,7 +9083,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/GazeboIrisWithTargetFollow",
    "value": false,
@@ -9541,6 +9877,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/GazeboIrisWithTargetFollow",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/GazeboIrisWithTargetFollow",
@@ -10115,7 +10458,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500",
    "value": false,
@@ -10129,7 +10486,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500",
    "value": false,
@@ -10143,7 +10514,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500",
    "value": false,
@@ -10923,6 +11308,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500",
@@ -11497,7 +11889,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500_V2",
    "value": false,
@@ -11511,7 +11917,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500_V2",
    "value": false,
@@ -11525,7 +11945,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500_V2",
    "value": false,
@@ -12305,6 +12739,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X500_V2",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Holybro_X500_V2",
@@ -12879,7 +13320,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X650_LTE",
    "value": false,
@@ -12893,7 +13348,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X650_LTE",
    "value": false,
@@ -12907,7 +13376,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Holybro_X650_LTE",
    "value": false,
@@ -13687,6 +14170,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Holybro_X650_LTE",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Holybro_X650_LTE",
@@ -14261,7 +14751,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X11+",
    "value": false,
@@ -14275,7 +14779,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X11+",
    "value": false,
@@ -14289,7 +14807,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X11+",
    "value": false,
@@ -15069,6 +15601,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X11+",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X11+",
@@ -15643,7 +16182,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X13",
    "value": false,
@@ -15657,7 +16210,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X13",
    "value": false,
@@ -15671,7 +16238,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X13",
    "value": false,
@@ -16451,6 +17032,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Hoverit_X13",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Hoverit_X13",
@@ -17025,7 +17613,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Marmotte5v2",
    "value": false,
@@ -17039,7 +17641,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Marmotte5v2",
    "value": false,
@@ -17053,7 +17669,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Marmotte5v2",
    "value": false,
@@ -17833,6 +18463,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Marmotte5v2",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Marmotte5v2",
@@ -18407,7 +19044,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ReadyToSkyZD550",
    "value": false,
@@ -18421,7 +19072,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ReadyToSkyZD550",
    "value": false,
@@ -18435,7 +19100,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/ReadyToSkyZD550",
    "value": false,
@@ -19215,6 +19894,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/ReadyToSkyZD550",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/ReadyToSkyZD550",
@@ -19789,7 +20475,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/TarotFY680Hexacopter",
    "value": false,
@@ -19803,7 +20503,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/TarotFY680Hexacopter",
    "value": false,
@@ -19817,7 +20531,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/TarotFY680Hexacopter",
    "value": false,
@@ -20597,6 +21325,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/TarotFY680Hexacopter",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/TarotFY680Hexacopter",
@@ -21171,7 +21906,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Tarot_X4",
    "value": false,
@@ -21185,7 +21934,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Tarot_X4",
    "value": false,
@@ -21199,7 +21962,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/Tarot_X4",
    "value": false,
@@ -21979,6 +22756,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/Tarot_X4",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/Tarot_X4",
@@ -22553,7 +23337,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/X11_plus",
    "value": false,
@@ -22567,7 +23365,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/X11_plus",
    "value": false,
@@ -22581,7 +23393,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/X11_plus",
    "value": false,
@@ -23361,6 +24187,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/X11_plus",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/X11_plus",
@@ -23935,7 +24768,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.4.x",
    "value": false,
@@ -23949,7 +24796,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.4.x",
    "value": false,
@@ -23963,7 +24824,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.4.x",
    "value": false,
@@ -24740,6 +25615,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.4.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/empty_4.4.x",
@@ -25314,7 +26196,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.5.x",
    "value": false,
@@ -25328,7 +26224,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.5.x",
    "value": false,
@@ -25342,7 +26252,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.5.x",
    "value": false,
@@ -26119,6 +27043,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.5.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/empty_4.5.x",
@@ -26693,7 +27624,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.6.x",
    "value": false,
@@ -26707,7 +27652,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.6.x",
    "value": false,
@@ -26721,7 +27680,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.6.x",
    "value": false,
@@ -27498,6 +28471,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.6.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/empty_4.6.x",
@@ -28072,7 +29052,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.7.x",
    "value": false,
@@ -28086,7 +29080,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.7.x",
    "value": false,
@@ -28100,7 +29108,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.7.x",
    "value": false,
@@ -28877,6 +29899,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/empty_4.7.x",
@@ -29451,7 +30480,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.8.x",
    "value": false,
@@ -29465,7 +30508,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.8.x",
    "value": false,
@@ -29479,7 +30536,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduCopter/empty_4.8.x",
    "value": false,
@@ -30256,6 +31327,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduCopter/empty_4.8.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduCopter/empty_4.8.x",
@@ -30830,7 +31908,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduPlane/empty_4.7.x",
    "value": false,
@@ -30844,7 +31936,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduPlane/empty_4.7.x",
    "value": false,
@@ -30858,7 +31964,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduPlane/empty_4.7.x",
    "value": false,
@@ -31632,6 +32752,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduPlane/empty_4.7.x",
@@ -32206,7 +33333,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "ArduPlane/normal_plane",
    "value": false,
@@ -32220,10 +33361,24 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
    "kind": "if",
    "context": "ArduPlane/normal_plane",
    "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
    "type": "bool"
   },
   {
@@ -32234,10 +33389,24 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
    "kind": "if",
    "context": "ArduPlane/normal_plane",
    "value": true,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
    "type": "bool"
   },
   {
@@ -33012,6 +34181,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "ArduPlane/normal_plane",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "ArduPlane/normal_plane",
@@ -33586,7 +34762,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/OMP_M4",
    "value": false,
@@ -33600,7 +34790,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/OMP_M4",
    "value": false,
@@ -33614,7 +34818,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/OMP_M4",
    "value": false,
@@ -34388,6 +35606,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/OMP_M4",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "Heli/OMP_M4",
@@ -34962,7 +36187,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/empty_4.7.x",
    "value": false,
@@ -34976,7 +36215,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/empty_4.7.x",
    "value": false,
@@ -34990,7 +36243,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Heli/empty_4.7.x",
    "value": false,
@@ -35761,6 +37028,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Heli/empty_4.7.x",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "Heli/empty_4.7.x",
@@ -36335,7 +37609,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/AION_R1",
    "value": false,
@@ -36349,7 +37637,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/AION_R1",
    "value": false,
@@ -36363,7 +37665,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/AION_R1",
    "value": false,
@@ -37137,6 +38453,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/AION_R1",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "Rover/AION_R1",
@@ -37711,7 +39034,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/Carisma_SCA-1E",
    "value": false,
@@ -37725,7 +39062,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/Carisma_SCA-1E",
    "value": false,
@@ -37739,7 +39090,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/Carisma_SCA-1E",
    "value": false,
@@ -38513,6 +39878,13 @@
    "type": "str"
   },
   {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/Carisma_SCA-1E",
+   "value": true,
+   "type": "bool"
+  },
+  {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",
    "kind": "if",
    "context": "Rover/Carisma_SCA-1E",
@@ -39087,7 +40459,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACCEL_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/empty_4.7.x",
    "value": false,
@@ -39101,7 +40487,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACCEL_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_P_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_P_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/empty_4.7.x",
    "value": false,
@@ -39115,7 +40515,21 @@
    "type": "bool"
   },
   {
+   "expr": "'Q_A_ACC_R_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
    "expr": "'Q_A_ACC_Y_MAX' in fc_parameters",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": false,
+   "type": "bool"
+  },
+  {
+   "expr": "'Q_A_ACC_Y_MAX' in fc_parameters and vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
    "kind": "if",
    "context": "Rover/empty_4.7.x",
    "value": false,
@@ -39884,6 +41298,13 @@
    "context": "Rover/empty_4.7.x",
    "value": "Rover",
    "type": "str"
+  },
+  {
+   "expr": "vehicle_components['Frame']['Specifications']['Frame class'] != 'Undefined'",
+   "kind": "if",
+   "context": "Rover/empty_4.7.x",
+   "value": true,
+   "type": "bool"
   },
   {
    "expr": "vehicle_components['Frame']['Specifications']['TOW max Kg'] - vehicle_components['Frame']['Specifications']['TOW min Kg'] < 0.01*vehicle_components['Frame']['Specifications']['TOW max Kg']",

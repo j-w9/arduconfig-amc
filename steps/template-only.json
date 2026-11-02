@@ -1109,7 +1109,6 @@
    "19_compass_calibration.param": {
     "COMPASS_EXTERNAL": 2,
     "COMPASS_ORIENT": 2,
-    "COMPASS_PRIO1_ID": 2,
     "COMPASS_USE2": 2,
     "COMPASS_USE3": 2
    },
@@ -1214,7 +1213,6 @@
    },
    "23_general_configuration.param": {
     "BRD_RTC_TZ_MIN": 2,
-    "INS_ACCEL_FILTER": 2,
     "INS_POS1_X": 2,
     "INS_POS1_Y": 2,
     "SCHED_LOOP_RATE": 2,

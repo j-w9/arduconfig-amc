@@ -187,6 +187,21 @@ def variants(projects: dict[str, dict[str, bytes]]) -> list[tuple[str, dict[str,
     return cases
 
 
+def vendor_commit() -> str:
+    """The AMC commit this was generated from, so a stale fixture can be detected."""
+    return subprocess.run(
+        ["git", "-C", str(ROOT / "vendor/MethodicConfigurator"), "rev-parse", "HEAD"],
+        check=True, capture_output=True, text=True,
+    ).stdout.strip()
+
+
+def vendor_release() -> str:
+    return subprocess.run(
+        ["git", "-C", str(ROOT / "vendor/MethodicConfigurator"), "describe", "--tags", "--always"],
+        check=True, capture_output=True, text=True,
+    ).stdout.strip()
+
+
 def main() -> int:
     projects = old_templates()
     cases = [(f"template/{name}", files) for name, files in projects.items()] + variants(projects)
@@ -204,7 +219,7 @@ def main() -> int:
                 "removed": sorted(set(before) - set(after)),
             }
         )
-    json.dump({"amc": "v5.0.0", "from": OLD_RELEASE, "cases": out}, sys.stdout, indent=0, sort_keys=True)
+    json.dump({"amc": vendor_release(), "commit": vendor_commit(), "from": OLD_RELEASE, "cases": out}, sys.stdout, indent=0, sort_keys=True)
     sys.stdout.write("\n")
     print(f"{len(out)} projects", file=sys.stderr)
     return 0
