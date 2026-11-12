@@ -144,6 +144,15 @@ test('nothing is answered for that AMC no longer has', () => {
  * appearing upstream has to be looked at by somebody.
  */
 const BEHAVIOUR_ACCOUNTED_FOR = {
+  // --- AMC v5.1.1 ---------------------------------------------------------
+  //
+  // Remembering the last flight controller that connected
+  // (backend_filesystem_program_settings). The browser keeps the serial ports
+  // the operator has granted, and Connect reuses them (getPorts) and detects
+  // which one speaks MAVLink, so there is no device string to store.
+  get_last_successful_connection: 'the browser\'s granted serial ports, reused and auto-detected on Connect',
+  store_last_successful_connection: 'the same: granting the port is what records it',
+
   // --- AMC v5.0.2 ---------------------------------------------------------
   //
   // ESC telemetry table (data_model_esc_telemetry), now shared by AMC's motor
